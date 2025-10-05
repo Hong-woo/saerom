@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAEROM</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body onload="$('#popup-contract-type1').show();">
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">근로계약서</h3>
+						<a href="#" class="btn btn-back">뒤로가기</a>
+					</div>
+
+					<div class="calculate-wrap">
+						<form>
+							<ul class="form-style-02 sports">
+								<li class="w01">
+									<div class="form-title">계약일</div>
+									<div class="form-con">
+										<div class="datepicker-set-01">
+											<div class="datepicker-01">
+												<input type="text" class="input-datepicker" id="iddate05" placeholder="2023.00.00">
+												<label for="iddate05">등록일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+											</div>
+											<span>~</span>
+											<div class="datepicker-01">
+												<input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+												<label for="iddate06">등록일 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="w02">
+									<div class="form-title">기간선택</div>
+									<div class="form-con">
+										<ul class="radio-set-01">
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0101" name="nameradio01">
+													<label for="idradio0101">1개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0102" name="nameradio01">
+													<label for="idradio0102">3개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0103" name="nameradio01">
+													<label for="idradio0103">6개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0104" name="nameradio01">
+													<label for="idradio0104">1년</label>
+												</p>
+											</li>
+										</ul>
+									</div>
+								</li>								
+							</ul>
+							<ul class="form-style-02 sports">
+								<li class="w03">
+									<div class="form-title">구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">직책전체</option>
+										</select>
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">검색구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">이름</option>
+										</select>
+										
+									</div>
+								</li>
+								<li class="w01">
+									<div class="form-title">키워드</div>
+									<div class="form-con">
+										<input type="text" class="input-02" id="idsearch02">
+									</div>
+								</li>
+							</ul>
+							<div class="form-bottom-01">
+								<a href="#" class="btn btn-blackline-02">초기화</a>
+								<a href="#" class="btn btn-black-02">검색</a>
+							</div>
+						</form>
+
+						<div class="board-top">
+              <div class="left">
+                <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+                <select id="idselect01" class="select-01">
+                  <option value="">10개</option>
+                </select>
+                <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+              </div>
+              <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+            </div>
+
+						<!-- table -->
+            <div class="table-style-02">
+              <table>
+                <caption>구성원 목록</caption>
+                <colgroup>
+
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboardall">
+                        <label for="idboardall" class="btn-allcheck" data-target="boardcheck"><span
+                            class="blind">전체선택</span></label>
+                      </p>
+                    </th>
+                    <th scope="col">번호<a href="#" class="btn btn-sorting"></a></th>
+                    <th scope="col">이름</th>
+                    <th scope="col">사업장명</th>
+                    <th scope="col">직책</th>
+                    <th scope="col">용역구분</th>
+                    <th scope="col">계약일</th>
+                    <th scope="col">계약종료일</th>
+                    <th scope="col">근로계약서</th>
+                    <th scope="col">관리</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+									<tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>100</td>
+                    <td>김남경</td>
+                    <td>구리대명빌리지</td>
+                    <td>경비새롬(주간)</td>
+                    <td>경비</td>
+                    <td>2021-12-11</td>
+                    <td>2021-12-11</td>
+                    <td>
+											<p class="reservation">
+												<a href="">미서명</a>
+                        <span class="box-round-01 orange-01">서명하기</span>
+                      </p>
+										</td>
+                    <td>
+											<div class="btns-table-01">
+												<a href="#" class="btn btn-white-01">작성이력 </a>
+												<a href="#" class="btn btn-blue-01">근로계약서 수정 </a>
+											</div>
+										</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <!-- paging -->
+            <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+              <a href="#" class="btn first">처음으로</a>
+              <a href="#" class="btn prev">이전</a>
+              <a href="#" class="btn">1</a>
+              <a href="#" class="btn active" title="현재 페이지">2</a>
+              <a href="#" class="btn">3</a>
+              <a href="#" class="btn">4</a>
+              <a href="#" class="btn">5</a>
+              <a href="#" class="btn next">다음</a>
+              <a href="#" class="btn last">마지막으로</a>
+            </div>
+
+
+					</div>
+					
+
+				</div>
+			</div>
+
+			<!-- popup start // -->
+			<!-- popup-new-schedule --><!-- 231117 추가 -->
+      <div class="popup-wrap popup-style-02" id="popup-contract-type1">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">근로계약서 작성(격일)</h3>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+
+            <div class="calculate-wrap">
+							<form>
+                <div class="table-style-04 contact">              
+                  <table>
+                    <caption>출금 관리 테이블</caption>
+                    <colgroup>
+                      <col style="width:15%;">
+                      <col style="width:40%">
+                      <col style="width:15%;">
+                      <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th scope="col">사업자명</th>
+                        <td scope="col">남양주 더샵 퍼스트 시티</td>
+                        <th scope="col">도급계약 종료일</th>
+                        <td scope="col">2022-11-29</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">근로자</th>
+                        <td scope="col">경비반장 박영재</td>
+                        <th scope="col">입사일</th>
+                        <td scope="col">2022-01-01</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">이전근로계약</th>
+                        <td colspan="3" scope="col">2021-11-30 ~ 2022-02-28 남양주 더샵퍼스트시티</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">근로계약기간</th>
+                        <td scope="col">
+                          <div class="datepicker-set-01">
+                            <div class="datepicker-01">
+                              <input type="text" class="input-datepicker-03 mtz-monthpicker-widgetcontainer" id="iddate03" readonly="" placeholder="2023.00">
+                              <button type="button" class="">날짜 선택 열기</button>
+                              <label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로
+                                날짜를 직접 입력해주세요.</label>
+                            </div>
+                            <span>~</span>
+                            <div class="datepicker-01">
+                              <input type="text" class="input-datepicker-03 mtz-monthpicker-widgetcontainer" id="iddate04" readonly="" placeholder="2023.00">
+                              <button type="button" class="">날짜 선택 열기</button>
+                              <label for="iddate04" class="blind">희망 지도 기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로
+                                날짜를 직접 입력해주세요.</label>
+                            </div>
+                          </div>
+                        </td>
+                        <th scope="col">근무형태</th>
+                        <td scope="col">격일</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">시급액</th>
+                        <td scope="col">
+                          <div class="input-career-01">
+                            <p class="input-unit-01">
+                              <label for="tc_period" class="blind">시급액</label>
+                              <input type="text" class="input-01 w200" name="tc_period" id="tc_period" value="">
+                              <span class="unit">원</span>
+                            </p>
+                          </div>
+                        </td>
+                        <th scope="col">단지급여일</th>
+                        <td scope="col">10일</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">감액</th>
+                        <td scope="col">
+                          <div class="input-career-01">
+                            <p class="input-unit-01">
+                              <label for="tc_period" class="blind">감액</label>
+                              <input type="text" class="input-01" name="tc_period" id="tc_period" value="">
+                              <span class="unit">%</span>
+                            </p>
+                          </div>
+                        </td>
+                        <th scope="col">야간가산</th>
+                        <td scope="col">
+                          <div class="input-career-01">
+                            <p class="input-unit-01">
+                              <label for="tc_period" class="blind">야간가산</label>
+                              <input type="text" class="input-01" name="tc_period" id="tc_period" value="">
+                              <span class="unit">%</span>
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>                  
+                </div>
+
+                
+                <div class="board-top">
+                  <div class="left"><p class="text-02 lh50"><label for="idmember02">근무형태 > 격일</label></p></div>                  
+                  <div class="right">
+                    <a href="#popup-commission-01" class="btn btn-white-01 btn-popup-open">근무시간 계산</a>
+                  </div>
+                  <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                </div>
+                <div class="table-style-04 mt10">              
+                  <table>
+                    <caption>출금 관리 테이블</caption>
+                    <colgroup>
+                      <col style="width:auto;">
+                      <col style="width:auto;">
+                      <col style="width:auto;">
+                      <col style="width:auto;">
+                      <col style="width:auto;">
+                      <col style="width:auto;">
+                      <col style="width:auto;">
+                      <col style="width:auto;">
+                      <col style="width:auto;">
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th rowspan="2" scope="col">일근무시간</th>
+                        <th rowspan="2" scope="col">야간근무시간</th>
+                        <th colspan="2" scope="col">일휴게시간</th>
+                        <th colspan="2" scope="col">일근로시간</th>
+                        <th colspan="3" scope="col">월근무시간</th>
+                      </tr>
+                      <tr>
+                        <th scope="col">주간</th>
+                        <th scope="col">야간</th>
+                        <th scope="col">전체</th>
+                        <th scope="col">야간</th>
+                        <th scope="col">전체</th>
+                        <th scope="col">야간</th>
+                        <th scope="col">야간가산</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="col">
+                          
+                        </td>
+                        <td scope="col">&nbsp;</td>
+                        <td scope="col">&nbsp;</td>
+                        <td scope="col">&nbsp;</td>
+                        <td scope="col">20.00</td>
+                        <td scope="col">06.00</td>
+                        <td scope="col">304.167</td>
+                        <td scope="col">91.25</td>
+                        <td scope="col">42.254</td>
+                      </tr>
+                    </tbody>
+                  </table>                 
+                </div>
+
+                
+                <div class="board-top">
+                  <div class="left"><p class="text-02 lh50"><label for="idmember02">급여내역(기본급 2,786,167원, 야간근로수당 117,925)</label></p></div>                  
+                  <div class="right">
+                    <a href="#" class="btn btn-red-01">항목삭제</a>
+                    <a href="#" class="btn btn-white-01">항목추가</a>
+                  </div>
+                  <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                </div>
+                <div class="table-style-04 contact mt10">              
+                  <table>
+                    <caption>출금 관리 테이블</caption>
+                    <colgroup>
+                      <col style="width:15%;">
+                      <col style="width:35%;">
+                      <col style="width:15%;">
+                      <col style="width:35%;">
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th scope="col">기본급</th>
+                        <td scope="col">
+                          <div class="input-career-01">
+                            <p class="input-unit-01">
+                              <label for="tc_period" class="blind">기본급</label>
+                              <input type="text" class="input-01 w200" name="tc_period" id="tc_period" value="">
+                              <span class="unit">원</span>
+                            </p>
+                          </div>
+                        </td>
+                        <th scope="col">야간근로수당</th>
+                        <td scope="col">
+                          <div class="input-career-01">
+                            <p class="input-unit-01">
+                              <label for="tc_period" class="blind">기본급</label>
+                              <input type="text" class="input-01 w200" name="tc_period" id="tc_period" value="">
+                              <span class="unit">원</span>
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="col">직책수당</th>
+                        <td scope="col">
+                          <div class="input-career-01">
+                            <p class="input-unit-01">
+                              <label for="tc_period" class="blind">직책수당</label>
+                              <input type="text" class="input-01 w200" name="tc_period" id="tc_period" value="">
+                              <span class="unit">원</span>
+                            </p>
+                          </div>
+                        </td>
+                        <th scope="col">업무수당</th>
+                        <td scope="col">
+                          <div class="input-career-01">
+                            <p class="input-unit-01">
+                              <label for="tc_period" class="blind">업무수당</label>
+                              <input type="text" class="input-01 w200" name="tc_period" id="tc_period" value="">
+                              <span class="unit">원</span>
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>                 
+                </div>
+              </form>
+            </div>
+
+						<div class="btns-page-bottom">
+              <div class="right">
+                <a href="#" class="btn btn-blueline-03 btn-popup-close">취소</a>
+                <a href="#" class="btn btn-blue-03">저장</a>
+              </div>
+            </div>
+					</div>					
+        </div>
+      </div>
+      <!-- // popup end -->
+
+		</div>
+	</body>
+
+</html>

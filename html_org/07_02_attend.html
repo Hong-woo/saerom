@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>출석체크 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <div class="attend-wrap">
+        <!-- .attend-box start // -->
+        <div class="attend-box">
+            <div class="attend-text">
+                <div class="text-wrap">
+                    <h1><img src="../images/logo.svg" alt="Ground Fit"></h1>
+                    <p class="text-01">데이터쿡 피트니스에 <br>오신 것을 환영합니다</p>
+                    <p class="text-02">휴대폰번호 뒤 4자리를 입력해 <br>출석체크 해주세요.</p>
+                </div>
+            </div>
+            <div class="attend-key">
+                <div class="key-top">
+                    <p class="text-01">출석체크</p>
+                    <p class="text-02">휴대폰번호 뒤 4자리를 입력하세요</p>
+                    <div class="input-set-attend">
+                        <label for="idattend01" class="blind">휴대폰번호 뒤 4자리의 첫번째 숫자</label>
+                        <input type="text" id="idattend01" placeholder="●">
+                        <label for="idattend02" class="blind">휴대폰번호 뒤 4자리의 두번째 숫자</label>
+                        <input type="text" id="idattend02" placeholder="●">
+                        <label for="idattend03" class="blind">휴대폰번호 뒤 4자리의 세번째 숫자</label>
+                        <input type="text" id="idattend03" placeholder="●">
+                        <label for="idattend04" class="blind">휴대폰번호 뒤 4자리의 네번째 숫자</label>
+                        <input type="text" id="idattend04" placeholder="●">
+                    </div>
+                </div>
+                <div class="key-num">
+                    <div>
+                        <a href="#" class="btn">1</a>
+                        <a href="#" class="btn">2</a>
+                        <a href="#" class="btn">3</a>
+                        <a href="#" class="btn">4</a>
+                        <a href="#" class="btn">5</a>
+                        <a href="#" class="btn">6</a>
+                        <a href="#" class="btn">7</a>
+                        <a href="#" class="btn">8</a>
+                        <a href="#" class="btn">9</a>
+                        <a href="#" class="btn btn-zero">0</a>
+                        <a href="#" class="btn btn-delete">삭제</a>
+                        <a href="#popup-attend-01" class="btn btn-attend btn-popup-open">출석</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // .attend-box end -->
+
+        <!-- popup start // -->
+        <!-- #popup-attend-01 -->
+        <div class="popup-wrap popup-style-03" id="popup-attend-01">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3>출석체크</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+                <div class="popup-body">
+                    <p class="text-01 bg-01">본인의 이름 및 <br>연락처를 선택해주세요</p>
+                    <p class="text-02">2023-05-23(화) 13:35</p>
+                    <div class="radio-set-07">
+                        <p class="radio-01">
+                            <input type="radio" id="idattend0501" name="idattend05">
+                            <label for="idattend0501">김*현 010-1234-5678</label>
+                        </p>
+                        <p class="radio-01">
+                            <input type="radio" id="idattend0502" name="idattend05">
+                            <label for="idattend0502">김*현 010-1234-5678</label>
+                        </p>
+                    </div>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-white-02 btn-popup-close">취소</a>
+                    <a href="#popup-attend-02" class="btn btn-blue-02 btn-popup-close btn-popup-open">확인</a>
+                </div>
+            </div>
+        </div>
+        <!-- #popup-attend-02 -->
+        <div class="popup-wrap popup-style-03" id="popup-attend-02">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3>출석체크</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+                <div class="popup-body">
+                    <p class="text-01 bg-01"><strong class="text-blue">홍성현</strong>회원님<br>출석할 클래스를 선택해주세요.</p>
+                    <p class="text-02">2023-05-23(화) 13:35</p>
+                    <div class="radio-set-07">
+                        <p class="radio-01">
+                            <input type="radio" id="idattend0601" name="idattend06">
+                            <label for="idattend0601">광명A헬스장 PT권</label>
+                        </p>
+                        <p class="radio-01">
+                            <input type="radio" id="idattend0602" name="idattend06">
+                            <label for="idattend0602">광명A헬스장 골프강습</label>
+                        </p>
+                    </div>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-white-02 btn-popup-close">취소</a>
+                    <a href="#popup-attend-03" class="btn btn-blue-02 btn-popup-close btn-popup-open">확인</a>
+                </div>
+            </div>
+        </div>
+        <!-- #popup-attend-03 -->
+        <div class="popup-wrap popup-style-03" id="popup-attend-03">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3>출석체크</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+                <div class="popup-body">
+                    <p class="text-01 bg-01"><strong class="text-blue">홍성현</strong>회원님<br>‘광명A헬스장 PT권’ 출석완료 했습니다.</p>
+                    <p class="text-02">2023-05-23(화) 13:35</p>
+                    <div class="box-blue-01">
+                        <p class="text-01">잔여 횟수 : 12회</p>
+                        <p class="text-02"><strong>잔여일수 87일</strong> 남았습니다</p>
+                    </div>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-white-02 btn-popup-close">취소</a>
+                    <a href="#" class="btn btn-blue-02">확인</a>
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+
+        
+    </div>
+</body>
+</html>

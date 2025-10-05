@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>영업수주 현황판</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<link rel="stylesheet" href="../css/custom.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">영업수주 현황판</h3>
+						<a href="#" class="btn btn-back">뒤로가기</a>
+						<div class="btns-right">
+							<a href="#none" class="btn btn-toggle">관리 메뉴 열고 닫기</a>
+							<div class="btns-box clearfix">
+								<a href="#none" class="btn btn-pc-blue-01">신규영업</a>
+								<a href="#none" class="btn btn-pc-white-01">재계약 영업</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- .calculate-wrap start // -->
+					<div class="calculate-wrap">
+						<!-- .select-class -->
+						
+						<form>
+							<ul class="form-style-02 sports">
+								<li class="w01">
+									<div class="form-title">인정일</div>
+									<div class="form-con">
+										<div class="datepicker-set-01">
+											<div class="datepicker-01">
+												<input type="text" class="input-datepicker hasDatepicker" id="iddate05" placeholder="2023.00.00">
+												<label for="iddate05">등록일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+											</div>
+											<span>~</span>
+											<div class="datepicker-01">
+												<input type="text" class="input-datepicker hasDatepicker" id="iddate06" placeholder="2023.00.00">
+												<label for="iddate06">등록일 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="w02">
+									<div class="form-title">기간선택</div>
+									<div class="form-con">
+										<ul class="radio-set-01">
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0101" name="nameradio01">
+													<label for="idradio0101">1개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0102" name="nameradio01">
+													<label for="idradio0102">3개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0103" name="nameradio01">
+													<label for="idradio0103">6개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0104" name="nameradio01">
+													<label for="idradio0104">1년</label>
+												</p>
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+							<ul class="form-style-02 sports">
+								<li class="w03">
+									<div class="form-title">구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">등급전체</option>
+										</select>
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">유형전체</option>
+										</select>
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">검색구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">전체</option>
+										</select>
+									</div>
+								</li>
+								<li class="w01">
+									<div class="form-title">키워드</div>
+									<div class="form-con">
+										<input type="text" class="input-02" id="idsearch02">
+									</div>
+								</li>
+							</ul>
+							<div class="form-bottom-01">
+								<a href="#" class="btn btn-blackline-02">초기화</a>
+								<a href="#" class="btn btn-black-02">검색</a>
+							</div>
+						</form>
+
+						<div class="cnt-table-warp">
+						
+							<div class="schedule-wrap month pb200">
+								<h4 class="blind">영업현황</h4>
+								<!-- 스케쥴 유형 선택 -->
+								<div class="schedule-head clearfix">
+									<ul class="btns-select schedule-type">
+										<li><a href="#" onclick="go_srv_src('/biz/activity/SalesStatus/new')" class="btn">진척도별</a></li>
+										<li><a href="#" class="btn active">영업현황</a></li>
+									</ul>
+									<ul class="btns-select schedule-turm">
+										<li><a href="#" onclick="go_srv_src('/biz/activity/SalesStatusMap/new')" class="btn">지역별</a></li>
+										<li><a href="#" onclick="go_srv_src('/biz/activity/SalesStatusMonth/new')" class="btn">월간</a></li>
+									</ul>
+									<div class="schedule-time w520">
+										<p class="num">영업수주 현황판</p>
+									</div>
+								</div>
+						
+								<div class="schedule-time-month ">
+									<div class="table-schedule-01 ssu">
+						
+						
+										<table class="status">
+											<colgroup>
+												<col style="width:11.66%">
+												<col style="width:17.66%">
+												<col style="width:17.66%">
+												<col style="width:17.66%">
+												<col style="width:17.66%">
+												<col style="width:17.66%">
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col" class="t_titth t_line">
+														<span class="ab_tit01">고객심리</span>
+														<span class="ab_tit02">프로세스</span>
+													</th>
+													<th scope="col">정보획득</th>
+													<th scope="col">현장파악</th>
+													<th scope="col">조건검토</th>
+													<th scope="col">제안/입찰</th>
+													<th scope="col">낙찰/계약</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<div class="box-lesson">
+															<p class="title">적합</p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC301" data-visit_result1_cd="VRC100"
+															data-msg="정보획득">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		30%
+																	</button></span></p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC301" data-visit_result1_cd="VRC101"
+															data-msg="현상파악">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		50%
+																	</button></span></p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC301" data-visit_result1_cd="VRC102"
+															data-msg="조건검토">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		70%
+																	</button></span></p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC301" data-visit_result1_cd="VRC103"
+															data-msg="제안/입찰">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		90%
+																	</button></span></p>
+															<ul class="list-lesson-01" data-wp_no="261" data-act_no="251" data-act_visit_no="1200"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/251" data-title="백현마을코아루(414세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">백현마을코아루(414세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-07-24</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">우리관리</span>
+																			<span class="label label-outline-default">영업활동 3회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC301" data-visit_result1_cd="VRC104"
+															data-msg="낙찰/계약">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-blue">
+																		100%
+																	</button></span></p>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="box-lesson">
+															<p class="title">필요</p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC302" data-visit_result1_cd="VRC100"
+															data-msg="정보획득">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		20%
+																	</button></span></p>
+															<ul class="list-lesson-01" data-wp_no="278" data-act_no="268" data-act_visit_no="1055"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/268" data-title="산성역포레스티아(4,089세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">산성역포레스티아(4,089세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-08-28</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">무림하우징</span>
+																			<span class="label label-outline-default">영업활동 2회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC302" data-visit_result1_cd="VRC101"
+															data-msg="현상파악">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		40%
+																	</button></span></p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC302" data-visit_result1_cd="VRC102"
+															data-msg="조건검토">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		60%
+																	</button></span></p>
+															<ul class="list-lesson-01" data-wp_no="260" data-act_no="250" data-act_visit_no="1053"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/250" data-title="삼성타워팰리스2차(813세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">삼성타워팰리스2차(813세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-08-01</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">우리관리</span>
+																			<span class="label label-outline-default">영업활동 3회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC302" data-visit_result1_cd="VRC103"
+															data-msg="제안/입찰">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		80%
+																	</button></span></p>
+															<ul class="list-lesson-01" data-wp_no="265" data-act_no="255" data-act_visit_no="1130"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/255" data-title="영통푸르지오트레센츠(796세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">영통푸르지오트레센츠(796세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-08-01</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">대우TS</span>
+																			<span class="label label-outline-default">영업활동 3회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+															<ul class="list-lesson-01" data-wp_no="238" data-act_no="228" data-act_visit_no="1199"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/228" data-title="문형양우내안애(1,028세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">문형양우내안애(1,028세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-07-18</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">대한산업개발</span>
+																			<span class="label label-outline-default">영업활동 4회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+															<ul class="list-lesson-01" data-wp_no="167" data-act_no="137" data-act_visit_no="1052"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/137" data-title="매탄임광(1,320세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">매탄임광(1,320세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-05-22</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">현대하우징</span>
+																			<span class="label label-outline-default">영업활동 5회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC302" data-visit_result1_cd="VRC104"
+															data-msg="낙찰/계약">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-blue">
+																		100%
+																	</button></span></p>
+															<ul class="list-lesson-01" data-wp_no="95" data-act_no="76" data-act_visit_no="500" draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/76" data-title="위례래미안e편한세상(1,540세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">위례래미안e편한세상(1,540세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-03-01</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">타워PMC</span>
+																			<span class="label label-outline-default">영업활동 4회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="box-lesson">
+															<p class="title">호감</p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC303" data-visit_result1_cd="VRC100"
+															data-msg="정보획득">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		10%
+																	</button></span></p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC303" data-visit_result1_cd="VRC101"
+															data-msg="현상파악">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		30%
+																	</button></span></p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC303" data-visit_result1_cd="VRC102"
+															data-msg="조건검토">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		50%
+																	</button></span></p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC303" data-visit_result1_cd="VRC103"
+															data-msg="제안/입찰">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-gray">
+																		70%
+																	</button></span></p>
+														</div>
+													</td>
+													<td>
+														<div class="box-lesson no-drag" data-visit_result3_cd="VRC303" data-visit_result1_cd="VRC104"
+															data-msg="낙찰/계약">
+															<p class="num"><span><button type="button" class="btn btn-sm btn-blue">
+																		100%
+																	</button></span></p>
+															<ul class="list-lesson-01" data-wp_no="207" data-act_no="189" data-act_visit_no="761"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/189" data-title="도곡대림아크로빌(490세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">도곡대림아크로빌(490세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-06-19</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">우리관리</span>
+																			<span class="label label-outline-default">영업활동 3회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+															<ul class="list-lesson-01" data-wp_no="229" data-act_no="217" data-act_visit_no="957"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" class="btn btn-modal-open"
+																		data-url="https://dwtm.info/ajax/ActivityDetail/ajuser/217" data-title="판교풍경채어바니티7단지(444세대)"
+																		data-width="1200px" data-height="" onclick="sendMessage(this)">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">판교풍경채어바니티7단지(444세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-06-16</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">대호관리</span>
+																			<span class="label label-outline-default">영업활동 5회</span>
+																		</div>
+																	</a>
+						
+																	<div class="more-menu">
+																		<button class="more-btn">⋯</button>
+																		<div class="more-dropdown" style="display: none;">
+																			<div class="top-buttons">
+																				<button class="status-btn">낙찰/계약</button>
+																				<button class="status-btn fail">실패</button>
+																			</div>
+						
+																			<div class="move-buttons-remote">
+																				<button class="move-btn">▲</button>
+																				<div class="middle-row">
+																					<button class="move-btn">◀</button>
+																					<button class="move-btn">▶</button>
+																				</div>
+																				<button class="move-btn">▼</button>
+																			</div>
+																		</div>
+																	</div>
+						
+																</li>
+															</ul>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="box-lesson">
+															<p class="title"><a href="javascript:;" class="btn-close ic-close-red mr-2">닫기</a>실패</p>
+														</div>
+													</td>
+													<td colspan="5" class="td_fail">
+														<div class="box-lesson" data-visit_result3_cd="VRC302" data-visit_result1_cd="VRC107" data-msg="수주실패">
+						
+															<ul class="list-lesson-01" data-wp_no="252" data-act_no="242" data-act_visit_no="987"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" onclick="go_srv_src('/biz/activity/managedetail/242')"
+																		class="btn btn-popup-open">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-red">위탁</span>
+																			<span class="title">힐스테이트초월역(1,097세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-08-01</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">서림주택관리</span>
+																			<span class="label label-outline-default">영업활동 3회</span>
+																		</div>
+																	</a>
+																</li>
+															</ul>
+															<ul class="list-lesson-01" data-wp_no="188" data-act_no="158" data-act_visit_no="540"
+																draggable="true">
+																<li>
+																	<a href="#popup-attend" onclick="go_srv_src('/biz/activity/managedetail/158')"
+																		class="btn btn-popup-open">
+																		<div class="title-container mt10">
+																			<span class="label label-sm label-orange">도급</span>
+																			<span class="title">아데라움아파트_테스트(2,000세대)</span>
+																		</div>
+																		<span class="desc">ACE 1본부 / 2025-06-11</span>
+																		<div class="cnt-warp pb10">
+																			<span class="label label-outline-blue">삼성전자</span>
+																			<span class="label label-outline-default">영업활동 8회</span>
+																		</div>
+																	</a>
+																</li>
+															</ul>
+						
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+						
+						
+						
+						
+						
+									</div>
+								</div>
+						
+							</div>
+						
+						</div>
+
+						<!-- paging -->
+						<div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+							<a href="#" class="btn first">처음으로</a>
+							<a href="#" class="btn prev">이전</a>
+							<a href="#" class="btn">1</a>
+							<a href="#" class="btn active" title="현재 페이지">2</a>
+							<a href="#" class="btn">3</a>
+							<a href="#" class="btn">4</a>
+							<a href="#" class="btn">5</a>
+							<a href="#" class="btn next">다음</a>
+							<a href="#" class="btn last">마지막으로</a>
+						</div>
+
+					</div>
+					<!-- // .calculate-wrap end -->
+
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

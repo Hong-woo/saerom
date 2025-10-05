@@ -1,0 +1,376 @@
+/* 스마트체크 등록 페이지 전용 스타일 */
+
+/* 폼 섹션 스타일 */
+.smartcheck-register-form {
+    background: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.form-section {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #495EF4;
+}
+
+/* 날짜 선택기 스타일 */
+.datepicker-set-01 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.datepicker-set-01 span {
+    font-size: 14px;
+    color: #6b7280;
+    min-width: 20px;
+}
+
+/* 사업장 선택 스타일 */
+.workplace-select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.workplace-select .input-01 {
+    flex: 1;
+}
+
+/* 파일 업로드 스타일 */
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-upload .file-input {
+    display: none;
+}
+
+.file-upload .file-name {
+    font-size: 14px;
+    color: #6b7280;
+    margin-left: 8px;
+}
+
+.file-guide {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+/* 보고 사항 스타일 */
+.report-type-select {
+    margin-bottom: 20px;
+}
+
+.survey-section,
+.response-section {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.form-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-controls .input-01 {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-controls .select-01 {
+    min-width: 80px;
+    max-width: 100px;
+    flex-shrink: 0;
+}
+
+/* 동적 항목 스타일 */
+.survey-items,
+.response-items {
+    margin-top: 15px;
+}
+
+.survey-item,
+.response-item {
+    margin-bottom: 10px;
+    padding: 15px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.survey-item .form-group,
+.response-item .form-group {
+    margin-bottom: 0;
+}
+
+.survey-item .form-controls,
+.response-item .form-controls {
+    align-items: flex-start;
+}
+
+.survey-item .form-controls .input-01,
+.response-item .form-controls .input-01 {
+    flex: 1;
+    min-width: 200px;
+}
+
+.survey-item .form-controls .select-01,
+.response-item .form-controls .select-01 {
+    min-width: 80px;
+    max-width: 100px;
+    flex-shrink: 0;
+}
+
+/* 하단 버튼 스타일 (컴포넌트 페이지와 동일) */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 30px 0;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 30px;
+}
+
+.form-actions .btn {
+    height: 40px !important;
+    line-height: 24px !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 120px;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+/* 버튼 색상 스타일 */
+.form-actions .btn.btn-white-01 {
+    background-color: #fff !important;
+    color: #374151 !important;
+    border: 1px solid #d1d5db !important;
+}
+
+.form-actions .btn.btn-white-01:hover {
+    background-color: #f9fafb !important;
+    border-color: #9ca3af !important;
+}
+
+.form-actions .btn.btn-blue-02 {
+    background-color: #007bff !important;
+    color: #fff !important;
+    border: 1px solid #007bff !important;
+}
+
+.form-actions .btn.btn-blue-02:hover {
+    background-color: #0056b3 !important;
+    border-color: #004085 !important;
+}
+
+/* 반응형 스타일 */
+@media screen and (max-width: 768px) {
+    .smartcheck-register-form {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .form-section {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .datepicker-set-01 {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    
+    .datepicker-set-01 .select-01 {
+        min-width: 80px;
+    }
+    
+    .workplace-select {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .form-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .form-controls .input-01 {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .form-controls .select-01 {
+        min-width: auto;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    
+    .form-actions .btn {
+        width: 100% !important;
+        height: 40px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .smartcheck-register-form {
+        padding: 15px;
+    }
+    
+    .section-title {
+        font-size: 16px;
+    }
+    
+    .datepicker-set-01 {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .datepicker-set-01 .select-01 {
+        width: 100%;
+    }
+    
+    .datepicker-set-01 span {
+        text-align: center;
+        padding: 8px 0;
+    }
+}
+
+/* 폼 요소 높이 통일 (컴포넌트 페이지와 동일) */
+.smartcheck-register-form .select-01,
+.smartcheck-register-form .input-01,
+.smartcheck-register-form .input-02 {
+    height: 40px !important;
+    line-height: 40px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    padding: 0 12px !important;
+    background-color: #fff !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+}
+
+.smartcheck-register-form .btn {
+    height: 40px !important;
+    line-height: 24px !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* 기존 폼 스타일 오버라이드 */
+.form-style-01 li {
+    margin-bottom: 20px;
+}
+
+.form-style-01 .form-title {
+    min-width: 120px;
+    padding-right: 20px;
+}
+
+.form-style-01 .form-con {
+    flex: 1;
+}
+
+.form-style-01 .required {
+    color: #ef4444;
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+/* 버튼 스타일 개선 */
+.btn-add-workplace,
+.btn-add-item,
+.btn-add-response {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-remove-item {
+    background-color: #ef4444;
+    color: #fff;
+    border: 1px solid #ef4444;
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.btn-remove-item:hover {
+    background-color: #dc2626;
+    border-color: #dc2626;
+}
+
+/* 입력 필드 포커스 스타일 */
+.input-01:focus,
+.select-01:focus {
+    border-color: #495EF4;
+    box-shadow: 0 0 0 3px rgba(73, 94, 244, 0.1);
+    outline: none;
+}
+
+/* 선택된 사업장 표시 */
+.workplace-selected {
+    background-color: #f0f9ff;
+    border-color: #495EF4;
+}
+
+.workplace-selected .input-01 {
+    background-color: #f0f9ff;
+    color: #495EF4;
+    font-weight: 500;
+}

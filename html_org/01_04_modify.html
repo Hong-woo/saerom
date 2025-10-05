@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보 수정 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu">메뉴</a></li>
+                <li><a href="#" class="btn class">클래스 관리</a></li>
+                <li><a href="#" class="btn home">Main</a></li>
+                <li><a href="#" class="btn schedule">스케쥴관리</a></li>
+                <li><a href="#" class="btn calculate">정산관리</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close">닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="#" class="btn home">Main</a></li>
+                    <li><a href="#" class="btn instructor btn-toggle">강사관리</a>
+                        <ul class="gnb-depth2" style="display:block;">
+                            <li><a href="#" class="btn">프로필 관리</a></li>
+                            <li><a href="#" class="btn">강사인증</a></li>
+                            <li><a href="#" class="btn">강사계약서</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn class btn-toggle">클래스 관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">클래스 관리</a></li>
+                            <li><a href="#" class="btn">스케쥴 관리</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn people">구성원 관리</a></li>
+                    <li><a href="#" class="btn calculate btn-toggle">정산관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">출금관리</a></li>
+                            <li><a href="#" class="btn">정산내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">공지사항</a></li>
+                            <li><a href="#" class="btn">1:1 문의</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn check">출석체크</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle language">
+                            <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                            <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                        </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">한국어</a></li>
+                                <li><a href="#" class="btn">English</a></li>
+                                <li><a href="#" class="btn">Japanese</a></li>
+                                <li><a href="#" class="btn">Arabic</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">개인정보 수정</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <!-- .modify-personal start // -->
+                <div class="modify-personal">
+                    <div class="box-white-01">
+                        <div class="profile-basic">
+                            <div class="img-profile-wrap">
+                                <div class="img-profile">
+                                    <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                                    <a href="#" class="btn btn-modify-01">프로필 사진 변경</a>
+                                </div>
+                            </div>
+                            <ul class="form-style-01">
+                                <li>
+                                    <div class="form-title"><label for="idid01">아이디</label></div>
+                                    <div class="form-con">
+                                        <input type="text" class="input-01 readonly" id="idid01" readonly value="KangChamchi">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title"><label for="idname01">이름</label></div>
+                                    <div class="form-con">
+                                        <input type="text" class="input-01 readonly" id="idname01" readonly value="강동원">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title">생년월일<p class="required">*<span class="blind">필수사항</span></p></div>
+                                    <div class="form-con">
+                                        <div class="datepicker-radio-set-01">
+                                            <div class="datepicker-01">
+                                                <input type="text" class="input-datepicker" id="idbirth01" placeholder="2023.00.00">
+                                                <label for="idbirth01">생년월일 날짜 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                                            </div>
+                                            <ul class="radio-set-01">
+                                                <li>
+                                                    <p class="radio-01">
+                                                        <input type="radio" id="idradio0101" name="nameradio01">
+                                                        <label for="idradio0101">남자</label>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p class="radio-01">
+                                                        <input type="radio" id="idradio0102" name="nameradio01">
+                                                        <label for="idradio0102">여자</label>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title"><label for="idphone01">휴대폰</label><p class="required">*<span class="blind">필수사항</span></p></div>
+                                    <div class="form-con">
+                                        <div class="input-btn-set-01">
+                                            <input type="text" class="input-01" id="idphone01" placeholder="휴대폰 번호를 입력해주세요">
+                                            <a href="#" class="btn btn-white-02">인증하기</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title"><label for="idphone02">전화번호</label></div>
+                                    <div class="form-con">
+                                        <input type="text" class="input-01" id="idphone02" placeholder="전화번호를 입력해주세요">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title"><label for="idemail01">이메일</label></div>
+                                    <div class="form-con">
+                                        <input type="text" class="input-01" id="idemail01" placeholder="이메일을 입력해주세요">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title">주소<p class="required">*<span class="blind">필수사항</span></p></div>
+                                    <div class="form-con">
+                                        <div class="input-address-01">
+                                            <a href="#" class="btn btn-white-02">주소검색</a>
+                                            <label for="idaddress01" class="blind">기본 주소</label>
+                                            <input type="text" class="input-01 address-01" id="idaddress01" placeholder="주소를 검색해주세요" readonly>
+                                            <label for="idaddress02" class="blind">상세 주소</label>
+                                            <input type="text" class="input-01 address-02" id="idaddress02" placeholder="상세주소를 입력해주세요">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title"><label for="idfile0101">범죄이력 회보서 첨부</label></div>
+                                    <div class="form-con">
+                                        <div class="file-02">
+                                            <div class="file-search">
+                                                <input type="file" id="idfile0101">
+                                                <label for="idfile0101">파일찾기</label>
+                                            </div>
+                                            <ul class="list-file-01">
+                                                <li>
+                                                    <a href="#" class="btn btn-filename">1급 생활스포츠 지도사 (배구)_자격증_증명파일.pdf</a>
+                                                    <a href="#" class="btn btn-delete">삭제</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="btn btn-filename">자격증_증명파일.pdf</a>
+                                                    <a href="#" class="btn btn-delete">삭제</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title">개인사업자 구분</div>
+                                    <div class="form-con">
+                                        <ul class="radio-set-01 radio-e4">
+                                            <li>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idradio0201" name="idradio02">
+                                                    <label for="idradio0201">개인</label>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idradio0202" name="idradio02">
+                                                    <label for="idradio0202">개인사업자</label>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idradio0203" name="idradio02">
+                                                    <label for="idradio0203">법인</label>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idradio0204" name="idradio02">
+                                                    <label for="idradio0204">비영리단체</label>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title"><label for="idnum01">사업자등록번호</label></div>
+                                    <div class="form-con">
+                                        <input type="text" class="input-01" id="idnum01" placeholder="사업자등록번호를 입력해주세요">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title"><label for="idcompany01">회사명</label></div>
+                                    <div class="form-con">
+                                        <input type="text" class="input-01" id="idcompany01" placeholder="회사명을 입력해주세요">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-title">정산 계좌 정보</div>
+                                    <div class="form-con">
+                                        <label for="idbank01" class="blind">정산 계좌 은행 선택</label>
+                                        <div class="input-bank-01">
+                                            <select id="idbank01" class="select-01">
+                                                <option value="">NH농협</option>
+                                            </select>
+                                            <input type="text" class="input-01" id="idphone01" placeholder="정산 계좌 번호를 입력해주세요">
+                                            <a href="#" class="btn btn-white-02">인증하기</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="btns-page-bottom">
+                        <div class="right"><a href="#" class="btn btn-blue-03">수정완료</a></div>
+                    </div>
+                </div>
+                <!-- // .modify-personal end -->
+
+            </div>
+        </div>
+
+        <!-- popup start // -->
+        <!-- #popup-days -->
+        <div class="popup-wrap popup-style-01" id="popup-days">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3 class="popup-title">지도 요일/시간</h3>
+                    <a href="#" class="btn btn-popup-close">닫기</a>
+                </div>
+                <div class="popup-body">
+                    <h4 class="title-p-01">지도 요일/시간</h4>
+                    <div class="check-set-01">
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays01">
+                            <label for="iddays01" class="btn-allcheck" data-target="iddays">매일</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays02" name="iddays">
+                            <label for="iddays02">월</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays03" name="iddays">
+                            <label for="iddays03">화</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays04" name="iddays">
+                            <label for="iddays04">수</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays05" name="iddays">
+                            <label for="iddays05">목</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays06" name="iddays">
+                            <label for="iddays06">금</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays07" name="iddays">
+                            <label for="iddays07">토</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays08" name="iddays">
+                            <label for="iddays08">일</label>
+                        </div>
+                    </div>
+                    <select class="select-01">
+                        <option value="">AM(12시~24시)</option>
+                        <option value="">PM(12시~24시)</option>
+                    </select>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-blueline-02 btn-popup-close">취소</a>
+                    <a href="#" class="btn btn-blue-02">적용</a>
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+    </div>
+</body>
+</html>

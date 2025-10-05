@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="sports-24px" opacity="0.5">
+    <g id="Bounding_Box">
+      <rect id="사각형_300" data-name="사각형 300" width="24" height="24" fill="none"/>
+    </g>
+    <g id="Master" transform="translate(1 6)">
+      <g id="그룹_465" data-name="그룹 465">
+        <g id="그룹_463" data-name="그룹 463">
+          <path id="패스_6404" data-name="패스 6404" d="M12.153,6a7.044,7.044,0,0,0-4.8,1.9,2.758,2.758,0,1,0-1.936,3.509,5.378,5.378,0,0,0-.11.858,6.6,6.6,0,1,0,13.123-.616,1.088,1.088,0,0,1,1.089-1.243H24V6ZM4.75,9.3a.55.55,0,1,1,.55-.55A.545.545,0,0,1,4.75,9.3Zm7.15,6.6a3.3,3.3,0,1,1,3.3-3.3A3.3,3.3,0,0,1,11.9,15.9Z" transform="translate(-2 -6)" fill="#fff"/>
+        </g>
+        <g id="그룹_464" data-name="그룹 464" transform="translate(7.875 4.6)">
+          <circle id="타원_341" data-name="타원 341" cx="2" cy="2" r="2" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

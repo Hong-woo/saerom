@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정산내역 | 정산관리 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu">메뉴</a></li>
+                <li><a href="#" class="btn class">클래스 관리</a></li>
+                <li><a href="#" class="btn home">Main</a></li>
+                <li><a href="#" class="btn schedule">스케쥴관리</a></li>
+                <li><a href="#" class="btn calculate active">정산관리</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close">닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="#" class="btn home">Main</a></li>
+                    <li><a href="#" class="btn instructor btn-toggle">강사관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">프로필 관리</a></li>
+                            <li><a href="#" class="btn">강사인증</a></li>
+                            <li><a href="#" class="btn">강사계약서</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn class btn-toggle">클래스 관리</a>
+                        <ul class="gnb-depth2" style="display:block;">
+                            <li><a href="#" class="btn">클래스 관리</a></li>
+                            <li><a href="#" class="btn">스케쥴 관리</a></li>
+                            <li><a href="#" class="btn">스포츠 활동 인증</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn people">구성원 관리</a></li>
+                    <li><a href="#" class="btn calculate btn-toggle active">정산관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">출금관리</a></li>
+                            <li><a href="#" class="btn active">정산내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">공지사항</a></li>
+                            <li><a href="#" class="btn">1:1 문의</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn check">출석체크</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle language">
+                            <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                            <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                        </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">한국어</a></li>
+                                <li><a href="#" class="btn">English</a></li>
+                                <li><a href="#" class="btn">Japanese</a></li>
+                                <li><a href="#" class="btn">Arabic</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">정산내역</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <!-- .calculate-wrap start // -->
+                <div class="calculate-wrap">
+                    <!-- .select-class -->
+                    <div class="select-class">
+                        <label for="selectclass01" class="blind">클래스 선택</label>
+                        <select id="selectclass01" class="select-01">
+                            <option value="">광명A헬스장 PT권</option>
+                        </select>
+                    </div>
+                    <div class="calculate-top">
+                        <ul>
+                            <li>
+                                <p class="title">이번 년 <br>총 정산 완료금액</p>
+                                <p class="text-01">￦20,220,000</p>
+                            </li>
+                            <li>
+                                <p class="title">이번 달 <br>판매 금액</p>
+                                <p class="text-01">￦3,220,000</p>
+                            </li>
+                            <li>
+                                <p class="title">이번 달 <br>정산 수수료</p>
+                                <p class="text-01">시설 50% <br>S등급 수수료 10%</p>
+                            </li>
+                            <li class="">
+                                <p class="title">이번 달 <br>정산 예정금액</p>
+                                <p class="text-01">￦1,251,000</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form>
+                        <ul class="form-style-02 calculate">
+                            <li class="w01">
+                                <div class="form-title word3">수료일</div>
+                                <div class="form-con">
+                                    <div class="datepicker-set-01">
+                                        <div class="datepicker-01">
+                                            <input type="text" class="input-datepicker" id="iddate05" placeholder="2023.00.00">
+                                            <label for="iddate05">수료일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                                        </div>
+                                        <span>~</span>
+                                        <div class="datepicker-01">
+                                            <input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+                                            <label for="iddate06">수료일 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                                        </div>
+                                        <p class="check-04">
+                                            <input type="checkbox" id="idmonth01">
+                                            <label for="idmonth01"><span>이번 달</span></label>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="w02">
+                                <div class="form-title word2">구분</div>
+                                <div class="form-con">
+                                    <div class="radio-set-03">
+                                        <p class="radio-02">
+                                            <input type="radio" name="completion01" id="idcompletion01" checked>
+                                            <label for="idcompletion01">전체</label>
+                                        </p>
+                                        <p class="radio-02">
+                                            <input type="radio" name="completion01" id="idcompletion02">
+                                            <label for="idcompletion02">정산예정</label>
+                                        </p>
+                                        <p class="radio-02">
+                                            <input type="radio" name="completion01" id="idcompletion03">
+                                            <label for="idcompletion03">정산완료</label>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="form-bottom-01">
+                            <a href="#" class="btn btn-blackline-02">초기화</a>
+                            <a href="#" class="btn btn-black-02">검색</a>
+                        </div>
+                    </form>
+    
+                    <!-- .board-top -->
+                    <div class="board-top">
+                        <div class="left">
+                            <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+                            <select id="idselect01" class="select-01">
+                                <option value="">10개</option>
+                            </select>
+                        </div>
+                        <div class="right">
+                            <a href="#popup-commission-01" class="btn btn-white-01 btn-popup-open">수수료 관리</a>
+                            <a href="#popup-commission-02" class="btn btn-white-01 btn-popup-open">수수료 변경요청</a>
+                            <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+                        </div>
+                        <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                    </div>
+                    <!-- table -->
+                    <div class="table-style-04">
+                        <table>
+                            <caption>정산 내역 테이블</caption>
+                            <colgroup>
+                                <col style="width:140px;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:100px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">정산일<a href="#" class="btn btn-sorting">정렬 바꾸기</a></th>
+                                    <th scope="col">내용</th>
+                                    <th scope="col">판매금액</th>
+                                    <th scope="col">공급가</th>
+                                    <th scope="col">부가세(S)</th>
+                                    <th scope="col">카드 수수료 0.5%</th>
+                                    <th scope="col">판매정산</th>
+                                    <th scope="col">부가세(B)</th>
+                                    <th scope="col">사업소득 3.3%</th>
+                                    <th scope="col">정산예정금액</th>
+                                    <th scope="col">구분</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">장동건(S) 수수료 지급</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01 green-01">정산예정</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01">정산완료</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01">정산완료</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01">정산완료</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01 green-01">정산예정</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01">정산완료</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01">정산완료</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01">정산완료</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01">정산완료</div></td>
+                                </tr>
+                                <tr>
+                                    <td>YYYY-MM-DD</td>
+                                    <td class="tlt">[주문번호 : 2022000000] 광명A헬스장 PT권 판매대금 정산</td>
+                                    <td>2,000,000</td>
+                                    <td>360,000</td>
+                                    <td>40,000</td>
+                                    <td>1,800</td>
+                                    <td>358,200</td>
+                                    <td>+</td>
+                                    <td>-</td>
+                                    <td></td>
+                                    <td><div class="box-round-01">정산완료</div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- paging -->
+                    <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+                        <a href="#" class="btn first">처음으로</a>
+                        <a href="#" class="btn prev">이전</a>
+                        <a href="#" class="btn">1</a>
+                        <a href="#" class="btn active" title="현재 페이지">2</a>
+                        <a href="#" class="btn">3</a>
+                        <a href="#" class="btn">4</a>
+                        <a href="#" class="btn">5</a>
+                        <a href="#" class="btn next">다음</a>
+                        <a href="#" class="btn last">마지막으로</a>
+                    </div>
+
+                </div>
+                <!-- // .calculate-wrap end -->
+
+                
+            </div>
+        </div>
+
+        <!-- popup start // -->
+        <!-- #popup-commission-02 -->
+        <div class="popup-wrap popup-alert-01" id="popup-commission-02">
+            <div class="popup-box">
+                <div class="popup-body">
+                    <p class="text-01">장동건 (S)에게 <br>수수료 변경 요청을 하겠습니까?</p>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-white-02 btn-popup-close">취소</a>
+                    <a href="#popup-commission-03" class="btn btn-blue-02 btn-popup-close btn-popup-open">요청</a>
+                </div>
+            </div>
+        </div>
+        <!-- #popup-commission-03 -->
+        <div class="popup-wrap popup-alert-01" id="popup-commission-03">
+            <div class="popup-box">
+                <div class="popup-body">
+                    <p class="text-01">수수료 변경 요청이 완료되었습니다.</p>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#popup-commission-04" class="btn btn-blue-02 btn-popup-close btn-popup-open">확인</a>
+                </div>
+            </div>
+        </div>
+        <!-- #popup-commission-04 -->
+        <div class="popup-wrap popup-alert-01" id="popup-commission-04">
+            <div class="popup-box">
+                <div class="popup-body">
+                    <p class="text-01">강동원 (A)에게 수수료 변경 요청이 왔습니다.<br>
+                        수수료 변경을 해주시겠습니까?</p>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-white-02 btn-popup-close">취소</a>
+                    <a href="#" class="btn btn-blue-02">승인</a>
+                </div>
+            </div>
+        </div>
+        <!-- #popup-commission-01 -->
+        <div class="popup-wrap popup-style-02" id="popup-commission-01">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3 class="popup-title">수수료 변경 관리</h3>
+                    <p class="text-sub">수수료를 변경하고자 할 경우 정산 확정일 (매달 말일) 전에 변경바랍니다.<br>
+                        당월 수수료 변경은 불가하며 변경하신 수수료는 다음 달 1일부터 적용됩니다.</p>
+                    <a href="#" class="btn btn-popup-close">닫기</a>
+                </div>
+                <div class="popup-body">
+                    <!-- .board-top -->
+                    <div class="board-top">
+                        <div class="left">
+                            <div class="radio-set-02">
+                                <p class="radio-01">
+                                    <input type="radio" id="idtype0101" name="idtype01" checked>
+                                    <label for="idtype0101">개별</label>
+                                </p>
+                                <p class="radio-01">
+                                    <input type="radio" id="idtype0102" name="idtype01">
+                                    <label for="idtype0102">그룹</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <p class="text-01">수수료일괄적용</p>
+                            <div class="radio-set-06">
+                                <p class="radio-01">
+                                    <input type="radio" id="idcomradio0001" name="idcomradio00">
+                                    <label for="idcomradio0001">%</label>
+                                </p>
+                                <p class="radio-01">
+                                    <input type="radio" id="idcomradio0002" name="idcomradio00">
+                                    <label for="idcomradio0002">₩</label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                    </div>
+                    <!-- table -->
+                    <div class="table-style-04">
+                        <table>
+                            <caption>정산 내역 테이블</caption>
+                            <colgroup>
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:200px;">
+                                <col style="width:140px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">강사이름</th>
+                                    <th scope="col">아이디</th>
+                                    <th scope="col">등급</th>
+                                    <th scope="col">멘토</th>
+                                    <th scope="col">구성원 등록일자</th>
+                                    <th scope="col">현재 수수료</th>
+                                    <th scope="col">익일 적용 수수료</th>
+                                    <th scope="col">세금</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>차범근</td>
+                                    <td>kangchanmchi</td>
+                                    <td>G</td>
+                                    <td>kangchamchi</td>
+                                    <td>2022.12.25</td>
+                                    <td>30%</td>
+                                    <td>
+                                        <div class="input-radio-set-01">
+                                            <input type="text" class="input-02">
+                                            <div class="radio-set-06">
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0101" name="idcomradio01" checked>
+                                                    <label for="idcomradio0101">%</label>
+                                                </p>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0102" name="idcomradio01">
+                                                    <label for="idcomradio0102">₩</label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <label for="idcomselect01" class="blind">세금 선택</label>
+                                        <select id="idcomselect01" class="select-01">
+                                            <option value="">선택</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>차범근</td>
+                                    <td>kangchanmchi</td>
+                                    <td>G</td>
+                                    <td>kangchamchi</td>
+                                    <td>2022.12.25</td>
+                                    <td>30%</td>
+                                    <td>
+                                        <div class="input-radio-set-01">
+                                            <input type="text" class="input-02">
+                                            <div class="radio-set-06">
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0201" name="idcomradio02" checked>
+                                                    <label for="idcomradio0201">%</label>
+                                                </p>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0202" name="idcomradio02">
+                                                    <label for="idcomradio0202">₩</label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <label for="idcomselect02" class="blind">세금 선택</label>
+                                        <select id="idcomselect02" class="select-01">
+                                            <option value="">선택</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>차범근</td>
+                                    <td>kangchanmchi</td>
+                                    <td>G</td>
+                                    <td>kangchamchi</td>
+                                    <td>2022.12.25</td>
+                                    <td>30%</td>
+                                    <td>
+                                        <div class="input-radio-set-01">
+                                            <input type="text" class="input-02">
+                                            <div class="radio-set-06">
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0301" name="idcomradio03" checked>
+                                                    <label for="idcomradio0301">%</label>
+                                                </p>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0302" name="idcomradio03">
+                                                    <label for="idcomradio0302">₩</label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <label for="idcomselect03" class="blind">세금 선택</label>
+                                        <select id="idcomselect03" class="select-01">
+                                            <option value="">선택</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>차범근</td>
+                                    <td>kangchanmchi</td>
+                                    <td>G</td>
+                                    <td>kangchamchi</td>
+                                    <td>2022.12.25</td>
+                                    <td>30%</td>
+                                    <td>
+                                        <div class="input-radio-set-01">
+                                            <input type="text" class="input-02">
+                                            <div class="radio-set-06">
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0401" name="idcomradio04" checked>
+                                                    <label for="idcomradio0401">%</label>
+                                                </p>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0402" name="idcomradio04">
+                                                    <label for="idcomradio0402">₩</label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <label for="idcomselect04" class="blind">세금 선택</label>
+                                        <select id="idcomselect04" class="select-01">
+                                            <option value="">선택</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>차범근</td>
+                                    <td>kangchanmchi</td>
+                                    <td>G</td>
+                                    <td>kangchamchi</td>
+                                    <td>2022.12.25</td>
+                                    <td>30%</td>
+                                    <td>
+                                        <div class="input-radio-set-01">
+                                            <input type="text" class="input-02">
+                                            <div class="radio-set-06">
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0501" name="idcomradio05" checked>
+                                                    <label for="idcomradio0501">%</label>
+                                                </p>
+                                                <p class="radio-01">
+                                                    <input type="radio" id="idcomradio0502" name="idcomradio05">
+                                                    <label for="idcomradio0502">₩</label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <label for="idcomselect05" class="blind">세금 선택</label>
+                                        <select id="idcomselect05" class="select-01">
+                                            <option value="">선택</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-guide">수익구조가 그룹일 경우 총 판매금액을 일정수수료로 나누는 방식 입니다. (총합은 100%를 넘을 수 없습니다.)</p>
+                    <!-- paging -->
+                    <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+                        <a href="#" class="btn first">처음으로</a>
+                        <a href="#" class="btn prev">이전</a>
+                        <a href="#" class="btn">1</a>
+                        <a href="#" class="btn active" title="현재 페이지">2</a>
+                        <a href="#" class="btn">3</a>
+                        <a href="#" class="btn">4</a>
+                        <a href="#" class="btn">5</a>
+                        <a href="#" class="btn next">다음</a>
+                        <a href="#" class="btn last">마지막으로</a>
+                    </div>
+
+                    <div class="btns-page-bottom">
+                        <div class="right">
+                            <a href="#" class="btn btn-blueline-03 btn-popup-close">취소</a>
+                            <a href="#" class="btn btn-blue-03">저장</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+    </div>
+</body>
+</html>

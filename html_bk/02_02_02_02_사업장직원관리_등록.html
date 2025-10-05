@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAEROM</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">					
+					<h2 class="blind">본문</h2>
+          <div class="contents-title">
+            <h3 class="title-page">사업장직원 등록</h3>
+            <a href="#none" class="btn btn-back">뒤로가기</a>
+            <div class="btns-right">
+              <a href="#none" class="btn btn-toggle">사업장직원 관리 메뉴 열고 닫기</a>
+              <div class="btns-box clearfix">
+                <a href="#none" class="btn btn-pc-white-01">미리보기</a>
+                <a href="#none" class="btn btn-pc-blue-01">사업장직원 저장</a>
+              </div>
+            </div>
+          </div>
+
+					<div class="flip-01">
+            <!-- 프로필관리 인트로 // 모바일에서 노출 -->
+            <div class="flip-mo-intro">
+              <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+              <p class="name"><strong>강동원</strong><span>3년 10개월</span></p>
+              <ul class="list-style-03">
+                <li>
+                  <p class="item-01">축구</p>
+                </li>
+                <li>
+                  <p class="item-01">미식축구</p>
+                </li>
+                <li>
+                  <p class="item-01">서울 강남구외 3</p>
+                </li>
+              </ul>
+              <ul class="list-btns-01">
+                <li><a href="#profile01" class="btn">기본정보</a></li>
+                <li><a href="#profile02" class="btn">장애여부</a></li>
+                <li><a href="#profile03" class="btn">부가정보</a></li>
+                <li><a href="#profile04" class="btn">기타첨부파일</a></li>
+              </ul>
+            </div>
+            <div class="flip-contents">
+              <!-- 프로필관리 스텝 // 모바일에서 노출 -->
+              <ol class="flip-step">
+                <li>
+                  <p class="num active">1<span class="blind">현재 진행중인 단계</span></p>
+                </li>
+                <li>
+                  <p class="num">2</p>
+                </li>
+                <li>
+                  <p class="num">3</p>
+                </li>
+                <li>
+                  <p class="num">4</p>
+                </li>
+                <li>
+                  <p class="num">5</p>
+                </li>
+              </ol>
+              <!-- 기본정보 -->
+              <div id="profile01" class="flip-con flip-first active">
+                <div class="flip-title" tabindex="0">
+                  <h4>기본정보</h4>
+                </div>
+                <div class="profile-basic">
+                  <div class="img-profile-wrap">
+                    <div class="img-profile">
+                      <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                      <a href="#none" class="btn btn-modify-01">프로필 사진 변경</a>
+                    </div>
+                  </div>
+                  <ul class="form-style-01">
+                    <li>
+                      <div class="form-title"><label for="idname01">이름</label>
+                        <p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <input type="text" class="input-01 readonly" id="idname01" readonly required value="강동원">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title">생년월일<p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="datepicker-radio-set-01">
+                          <div class="datepicker-01">
+                            <input type="text" class="input-datepicker" id="idbirth01" placeholder="2023.00.00">
+                            <label for="idbirth01">생년월일 날짜 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                          </div>
+                          <ul class="radio-set-01">
+                            <li>
+                              <p class="radio-01">
+                                <input type="radio" id="idradio0101" name="nameradio01">
+                                <label for="idradio0101">남자</label>
+                              </p>
+                            </li>
+                            <li>
+                              <p class="radio-01">
+                                <input type="radio" id="idradio0102" name="nameradio01">
+                                <label for="idradio0102">여자</label>
+                              </p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+										<li>
+                      <div class="form-title"><label for="idphone02-01">주민등록번호</label></div>
+                      <div class="form-con">
+                        <input type="text" class="input-01" id="idphone02-01" placeholder="주민등록번호를 입력해주세요">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="idphone01">휴대폰</label>
+                        <p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="input-btn-set-01">
+                          <input type="text" class="input-01" id="idphone01" placeholder="휴대폰 번호를 입력해주세요">
+                          <a href="#none" class="btn btn-white-02">인증하기</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="idphone02">전화번호</label></div>
+                      <div class="form-con">
+                        <input type="text" class="input-01" id="idphone02" placeholder="전화번호를 입력해주세요">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="idemail01">이메일</label></div>
+                      <div class="form-con">
+                        <input type="text" class="input-01" id="idemail01" placeholder="이메일을 입력해주세요">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title">주소<p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="input-address-01">
+                          <a href="#none" class="btn btn-white-02">주소검색</a>
+                          <label for="idaddress01" class="blind">기본 주소</label>
+                          <input type="text" class="input-01 address-01" id="idaddress01" placeholder="주소를 검색해주세요"
+                            readonly>
+                          <label for="idaddress02" class="blind">상세 주소</label>
+                          <input type="text" class="input-01 address-02" id="idaddress02" placeholder="상세주소를 입력해주세요">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- 장애여부 -->
+              <div id="profile02" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>장애여부</h4>
+                </div>
+                <div class="profile-sports">
+									<ul class="form-style-01 w2">
+										<li>
+											<div class="form-title">장애여부</div>
+											<div class="form-con">
+												<ul class="radio-set-01 radio-e4">
+													<li>
+														<p class="radio-01">
+															<input type="radio" id="idradio0201" name="radio02" checked>
+															<label for="idradio0201">미해당</label>
+														</p>
+													</li>
+													<li>
+														<p class="radio-01">
+															<input type="radio" id="idradio0202" name="radio02">
+															<label for="idradio0202">해당</label>
+														</p>
+													</li>
+												</ul>
+											</div>
+											<div class="form-title">등급</div>
+											<div class="form-con pr40">
+												<select id="select0101" class="select-01">
+													<option value="">선택</option>
+												</select>
+											</div>
+										</li>
+										<li>
+											<div class="form-title">유형</div>
+											<div class="form-con pr40">
+												<select id="select0102" class="select-01">
+													<option value="">선택</option>
+												</select>
+											</div>
+											<div class="form-title">발급처</div>
+											<div class="form-con pr40">
+												<select id="select0103" class="select-01">
+													<option value="">선택</option>
+												</select>
+											</div>
+										</li>
+										<li>
+											<div class="form-title">인정일</div>
+											<div class="form-con pr40">
+												<div class="datepicker-set-01">
+													<div class="datepicker-01">
+														<input type="text" class="input-datepicker hasDatepicker" id="date0101" placeholder="2023.00.00">
+														<label for="date0101">지도기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+													</div>
+												</div>
+											</div>
+											<div class="form-title">통장번호</div>
+											<div class="form-con pr40">
+												<input type="text" class="input-02" id="input0101" placeholder="통장번호를 입력해주세요">
+											</div>
+										</li>
+									</ul>
+									<ul class="form-style-01">
+										<li>
+											<div class="form-title">장애인증명서</div>
+											<div class="form-con pr40">
+												<div class="file-wrap">
+													<div class="file-01">
+														<div class="file-search">
+															<input type="file" id="idfile0101">
+															<label for="idfile0101">파일찾기</label>
+															<p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- mo -->
+														</div>
+														<div class="file-view">
+															<p class="file-name"><a href="#none" class="btn btn-text"></a></p>
+															<a href="#none" class="btn btn-white-02">삭제</a>
+														</div>
+													</div>
+													<p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- pc -->
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="form-title">통장사본</div>
+											<div class="form-con pr40">
+												<div class="file-wrap">
+													<div class="file-01">
+														<div class="file-search">
+															<input type="file" id="idfile0102">
+															<label for="idfile0102">파일찾기</label>
+															<p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- mo -->
+														</div>
+														<div class="file-view">
+															<p class="file-name"><a href="#none" class="btn btn-text"></a></p>
+															<a href="#none" class="btn btn-white-02">삭제</a>
+														</div>
+													</div>
+													<p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- pc -->
+												</div>
+											</div>
+										</li>
+									</ul>
+                </div>
+              </div>
+              <!-- 부가정보 -->
+              <div id="profile03" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>부가정보</h4>
+                </div>
+                <ul class="accordion-01">
+                  <!-- 근로계약서 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle active">근로계약서 현황</a>
+                    <div class="accordion-con active">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">용역구분</div>
+                          <div class="form-con">
+                            <select id="select0101" class="select-01 atw">
+															<option value="">선택</option>
+														</select>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title">사업장명</div>
+                          <div class="form-con">
+                            <div class="input-btn-set-01">
+															<input type="text" class="input-01" id="idname01" placeholder="사업장명을 입력해주세요">
+															<a href="#none" class="btn btn-white-02">검색</a>
+														</div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title">직책</div>
+                          <div class="form-con">
+                            <select id="select0101" class="select-01 atw">
+															<option value="">선택</option>
+														</select>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title">계약기간</div>
+                          <div class="form-con">
+														<div class="datepicker-set-01">
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker hasDatepicker" id="iddate0501" placeholder="2023.00.00">
+                                <label for="iddate0501">계약기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                              <span>~</span>
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker hasDatepicker" id="iddate0502" placeholder="2023.00.00">
+                                <label for="iddate0502">계약기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 근로계약서 현황 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 학력근로계약서 현황사항 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>근로계약서 현황 등록 정보</caption>
+                            <colgroup>
+                              <col style="width:auto;">
+                              <col style="width:10%;">
+                              <col style="width:20%;">
+                              <col style="width:15%;">
+                              <col style="width:195px;">
+                              <col style="width:195px;">
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">변호</th>
+                                <th scope="col">용역구분</th>
+                                <th scope="col">사업장명</th>
+                                <th scope="col">직책</th>
+                                <th scope="col">계약기간</th>
+                                <th scope="col">관리</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="6">학력사항을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>1</td>
+                                <td>용역구분</td>
+                                <td>수원사업장</td>
+                                <td>팀장</td>
+																<td>2023.01.01 ~ 2023.02.01 </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 근로계약서 현황 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">변호</span>
+                                <strong class="con">1</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">용역구분</span>
+                                <strong class="con">용역구분</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">사업장명</span>
+                                <strong class="con">수원사업장</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">직책</span>
+                                <strong class="con">팀장</strong>
+                              </p>
+															<p class="item w40">
+                                <span class="title">계약기간</span>
+                                <strong class="con">2023.01.01 ~ 2023.02.01</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 동의서 관리 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">동의서<p class="text-sub">동의서가 있는 경우<span>에만 입력해 주세요.</span>
+                      </p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">감시적 근로자 확인서</div>
+                          <div class="form-con">
+                            <div class="radio-set-02">
+															<p class="radio-01">
+																<input type="radio" id="idapp010101" name="idapp0101">
+																<label for="idapp010101">예</label>
+															</p>
+															<p class="radio-01">
+																<input type="radio" id="idapp010102" name="idapp0101">
+																<label for="idapp010102">아니오</label>
+															</p>
+														</div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title">서약서</div>
+                          <div class="form-con">
+                            <div class="radio-set-02">
+															<p class="radio-01">
+																<input type="radio" id="idapp010201" name="idapp0102">
+																<label for="idapp010201">예</label>
+															</p>
+															<p class="radio-01">
+																<input type="radio" id="idapp010202" name="idapp0102">
+																<label for="idapp010202">아니오</label>
+															</p>
+														</div>
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title">평가기준 서약서</div>
+                          <div class="form-con">
+                            <div class="radio-set-02">
+															<p class="radio-01">
+																<input type="radio" id="idapp010301" name="idapp0103">
+																<label for="idapp010301">예</label>
+															</p>
+															<p class="radio-01">
+																<input type="radio" id="idapp010302" name="idapp0103">
+																<label for="idapp010302">아니오</label>
+															</p>
+														</div>
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title">개인정보 수집 및<br> 이용동의서</div>
+                          <div class="form-con">
+                            <div class="radio-set-02">
+															<p class="radio-01">
+																<input type="radio" id="idapp010401" name="idapp0104">
+																<label for="idapp010401">예</label>
+															</p>
+															<p class="radio-01">
+																<input type="radio" id="idapp010402" name="idapp0104">
+																<label for="idapp010402">아니오</label>
+															</p>
+														</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <!-- 경비원 신임교육 이수증 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">경비원 신임교육 이수증<p class="text-sub">경비원 신임교육 이수증이 있는 경우<span>에만 입력해
+                          주세요.</span></p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">발급처</div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idinstructor02" placeholder="발급처를 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idinstructor01">첨부파일</label></div>
+                          <div class="form-con">
+														<div class="file-01">
+															<div class="file-search">
+																<input type="file" id="idfile0201">
+																<label for="idfile0201">파일찾기</label>
+																<p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- mo -->
+															</div>
+															<div class="file-view">
+																<p class="file-name"><a href="#none" class="btn btn-text"></a></p>
+																<a href="#none" class="btn btn-white-02">삭제</a>
+															</div>
+														</div>
+														<p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- pc -->
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idinstructor02">아수일</label></div>
+                          <div class="form-con">
+														<div class="datepicker-set-01">
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+                                <label for="iddate06">지도기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                            </div>
+                            
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title"><label for="idinstructor01">신임경비이수증 번호</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idinstructor01" placeholder="신임경비이수증 번호를 입력해주세요">
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <!-- 학력사항 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">학력사항<p class="text-sub">학력사항이 있는 경우<span>에만 입력해
+                          주세요.</span></p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+												<li>
+                          <div class="form-title"><label for="idtournament01">구분</label></div>
+                          <div class="form-con">
+                            <select id="select0201" class="select-01 atw">
+															<option value="">구분 선택</option>
+														</select>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title">기간</div>
+                          <div class="form-con">
+                            <div class="datepicker-set-01">
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate08" placeholder="2023.00.00">
+                                <label for="iddate08">대회기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                              <span>~</span>
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate09" placeholder="2023.00.00">
+                                <label for="iddate09">대회기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idtournament01">학교명</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idtournament01" placeholder="대회명을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idtournament02">졸업여부</label></div>
+                          <div class="form-con">
+                            <select id="select0201" class="select-01 atw">
+															<option value="">졸업여부 선택</option>
+														</select>
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title"><label for="idtournament02">주야간</label></div>
+                          <div class="form-con">
+                            <div class="radio-set-02">
+															<p class="radio-01">
+																<input type="radio" id="idapp050101" name="idapp0501">
+																<label for="idapp050101">주간</label>
+															</p>
+															<p class="radio-01">
+																<input type="radio" id="idapp050102" name="idapp0501">
+																<label for="idapp050102">야간</label>
+															</p>
+														</div>
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 학력사항 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 학력사항 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>학력사항 등록 정보</caption>
+                            <colgroup>
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">구분</th>
+                                <th scope="col">기간</th>
+                                <th scope="col">학교명</th>
+                                <th scope="col">전공</th>
+																<th scope="col">졸업여부</th>
+																<th scope="col">주/야간</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="7">학력사항을 추가해주세요</td>
+                              </tr>
+                              <tr>
+																<td>구분</td>
+                                <td>2023.12.24 ~ 2023.12.24</td>
+                                <td>학교명</td>
+                                <td>전공</td>
+																<td>졸업여부</td>
+																<td>주간</td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 주요 경기실적 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+															<p class="item w60">
+                                <span class="title">구분</span>
+                                <strong class="con">구분1</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">기간</span>
+                                <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">학교명</span>
+                                <strong class="con">학교명학교명</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">전공</span>
+                                <strong class="con">배구</strong>
+                              </p>
+															<p class="item w60">
+                                <span class="title">졸업여부</span>
+                                <strong class="con">중퇴</strong>
+                              </p>
+															<p class="item w60">
+                                <span class="title">주/야간</span>
+                                <strong class="con">주간</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 경력사항 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">경력사항<p class="text-sub">해당사항이 있는 경우<span>에만 입력해
+                          주세요.</span></p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">입사일</div>
+                          <div class="form-con">
+                            <div class="datepicker-01">
+                              <input type="text" class="input-datepicker" id="iddate10" placeholder="2023.00.00">
+                              <label for="iddate10">입사일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                            </div>
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title">퇴사일</div>
+                          <div class="form-con">
+                            <div class="datepicker-01">
+                              <input type="text" class="input-datepicker" id="iddate20" placeholder="2023.00.00">
+                              <label for="iddate20">퇴사일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="ideducation01">단지명</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation01" placeholder="단지명 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="ideducation02">세대수</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation02" placeholder="세대수 입력해주세요">
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title"><label for="ideducation03">직책</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation03" placeholder="직책 입력해주세요">
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title"><label for="ideducation04">담당본부장</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation04" placeholder="담당본부장 입력해주세요">
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title"><label for="ideducation05">재계약</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation05" placeholder="재계약 입력해주세요">
+                          </div>
+                        </li>
+												<li>
+                          <div class="form-title"><label for="ideducation06">퇴직사유</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation05" placeholder="퇴직사유 입력해주세요">
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 경력사항 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 경력사항 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>경력사항 등록 정보</caption>
+                            <colgroup>
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">입사일</th>
+                                <th scope="col">퇴사일</th>
+                                <th scope="col">단지명</th>
+                                <th scope="col">세대수</th>
+																<th scope="col">직책</th>
+                                <th scope="col">담당본부장</th>
+                                <th scope="col">재계약</th>
+                                <th scope="col">퇴직사유</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="9">경력사항을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24</td>
+                                <td>2023.12.24</td>
+                                <td>레미안2차</td>
+                                <td>111</td>
+																<td>팀장</td>
+																<td>홍길동</td>
+                                <td>계약</td>
+                                <td>이사</td>                                
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 경력사항 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">입사일</span>
+                                <strong class="con">2023.12.24</strong>
+                              </p>
+															<p class="item w60">
+                                <span class="title">퇴사일</span>
+                                <strong class="con">2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">단지명</span>
+                                <strong class="con">레미안2차</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">세대수</span>
+                                <strong class="con">1111</strong>
+                              </p>
+															<p class="item w60">
+                                <span class="title">직책</span>
+                                <strong class="con">팀장</strong>
+                              </p>
+															<p class="item w60">
+                                <span class="title">담당본부장</span>
+                                <strong class="con">홍길동</strong>
+                              </p>
+															<p class="item w60">
+                                <span class="title">재계약</span>
+                                <strong class="con">걔약</strong>
+                              </p>
+															<p class="item w60">
+                                <span class="title">퇴직사유</span>
+                                <strong class="con">이사</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 자격 및 교육이수 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">주요 자격증<p class="text-sub">자격증이 있는 경우<span>에만 입력해 주세요.</span>
+                      </p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">취득일자</div>
+                          <div class="form-con">
+                            <div class="datepicker-01">
+                              <input type="text" class="input-datepicker" id="iddate10" placeholder="2023.00.00">
+                              <label for="iddate10">취득일자 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="ideducation01">자격증명</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation01" placeholder="자격증명을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="ideducation02">발급기관</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation02" placeholder="발급기관을 입력해주세요">
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 주요 자격증 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 주요 자격증 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>주요 자격증 등록 정보</caption>
+                            <colgroup>
+                              <col style="width:auto;">
+                              <col style="width:15%;">
+                              <col style="width:15%;">
+                              <col style="width:195px;">
+                              <col style="width:195px;">
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">취득일자</th>
+                                <th scope="col">자격증 명</th>
+                                <th scope="col">발급기관</th>
+                                <th scope="col">공개여부</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="5">주요 자격증을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24</td>
+                                <td>건축기사</td>
+                                <td>국토교통부</td>
+                                <td>
+                                  <div class="radio-set-02">
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp1001" name="idapp10">
+                                      <label for="idapp1001">예</label>
+                                    </p>
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp1002" name="idapp10">
+                                      <label for="idapp1002">아니오</label>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 주요 자격증 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">취득일자</span>
+                                <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">자격증명</span>
+                                <strong class="con">건축기사</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">발급기관</span>
+                                <strong class="con">국토교통부</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- 경력증명파일 -->
+              <div id="profile04" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>경력증명파일</h4>
+                  <p class="text-sub">위조된 문서를 등록할 경우 법적 책임을 지게 될 수 있습니다.</p>
+                </div>
+                <div class="file-wrap">
+                  <div class="file-01">
+                    <div class="file-search">
+                      <input type="file" id="idfile0101">
+                      <label for="idfile0101">파일찾기</label>
+                      <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- mo -->
+                    </div>
+                    <div class="file-view">
+                      <p class="file-name"><a href="#none" class="btn btn-text"></a></p>
+                      <a href="#none" class="btn btn-white-02">삭제</a>
+                    </div>
+                  </div>
+                  <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- pc -->
+                </div>
+              </div>
+              <!-- 범죄이력 회보서 -->
+              <div id="profile05" class="flip-con flip-last">
+                <div class="flip-title clearfix">
+                  <h4>범죄이력 회보서</h4>
+                  <p class="text-sub">위조된 문서를 등록할 경우 법적 책임을 지게 될 수 있습니다.</p>
+                  <a href="#none" class="btn btn-white-02">저장된 정보 불러오기</a>
+                </div>
+                <div class="file-wrap">
+                  <div class="file-01">
+                    <div class="file-search">
+                      <input type="file" id="idfile0201">
+                      <label for="idfile0201">파일찾기</label>
+                      <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- mo -->
+                    </div>
+                    <div class="file-view">
+                      <p class="file-name"><a href="#none" class="btn btn-text">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다pdf,
+                          jpg, png, zip의 파일확장자만 업로드 가능합니다</a></p>
+                      <a href="#none" class="btn btn-white-02">삭제</a>
+                    </div>
+                  </div>
+                  <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- pc -->
+                </div>
+              </div>
+            </div>
+            <div class="flip-btns step-first">
+              <a href="#none" class="btn btn-blueline-03 btn-preview">미리보기</a>
+              <a href="#none" class="btn btn-blueline-03 btn-prev">이전</a>
+              <a href="#none" class="btn btn-blue-03 btn-next">다음</a>
+              <a href="#none" class="btn btn-blue-03 btn-save">사업장직원정보 저장</a>
+            </div>
+          </div>
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

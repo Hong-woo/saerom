@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스포츠 활동 인증 | 클래스 관리 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu">메뉴</a></li>
+                <li><a href="#" class="btn class active">클래스 관리</a></li>
+                <li><a href="#" class="btn home">Main</a></li>
+                <li><a href="#" class="btn schedule">스케쥴관리</a></li>
+                <li><a href="#" class="btn calculate">정산관리</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close">닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="#" class="btn home">Main</a></li>
+                    <li><a href="#" class="btn instructor btn-toggle">강사관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">프로필 관리</a></li>
+                            <li><a href="#" class="btn">강사인증</a></li>
+                            <li><a href="#" class="btn">강사계약서</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn class btn-toggle active">클래스 관리</a>
+                        <ul class="gnb-depth2" style="display:block;">
+                            <li><a href="#" class="btn">클래스 관리</a></li>
+                            <li><a href="#" class="btn">스케쥴 관리</a></li>
+                            <li><a href="#" class="btn active">스포츠 활동 인증</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn people">구성원 관리</a></li>
+                    <li><a href="#" class="btn calculate btn-toggle">정산관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">출금관리</a></li>
+                            <li><a href="#" class="btn">정산내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">공지사항</a></li>
+                            <li><a href="#" class="btn">1:1 문의</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn check">출석체크</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle language">
+                            <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                            <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                        </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">한국어</a></li>
+                                <li><a href="#" class="btn">English</a></li>
+                                <li><a href="#" class="btn">Japanese</a></li>
+                                <li><a href="#" class="btn">Arabic</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">스포츠 활동 인증</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <form>
+                    <ul class="form-style-02 sports">
+                        <li class="w01">
+                            <div class="form-title word3">수료일</div>
+                            <div class="form-con">
+                                <div class="datepicker-set-01">
+                                    <div class="datepicker-01">
+                                        <input type="text" class="input-datepicker" id="iddate05" placeholder="2023.00.00">
+                                        <label for="iddate05">수료일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                                    </div>
+                                    <span>~</span>
+                                    <div class="datepicker-01">
+                                        <input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+                                        <label for="iddate06">수료일 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="w03">
+                            <div class="form-title word3"><label for="idsearch02">수업명</label></div>
+                            <div class="form-con">
+                                <input type="text" class="input-02" id="idsearch02">
+                            </div>
+                        </li>
+                        <li class="w03">
+                            <div class="form-title word5"><label for="idsearch03">이름/아이디</label></div>
+                            <div class="form-con">
+                                <input type="text" class="input-02" id="idsearch03">
+                            </div>
+                        </li>
+                        <li class="w02">
+                            <div class="form-title word4">수료상태</div>
+                            <div class="form-con">
+                                <div class="radio-set-03">
+                                    <p class="radio-02">
+                                        <input type="radio" name="completion01" id="idcompletion01" checked>
+                                        <label for="idcompletion01">전체</label>
+                                    </p>
+                                    <p class="radio-02">
+                                        <input type="radio" name="completion01" id="idcompletion02">
+                                        <label for="idcompletion02">수료</label>
+                                    </p>
+                                    <p class="radio-02">
+                                        <input type="radio" name="completion01" id="idcompletion03">
+                                        <label for="idcompletion03">미수료</label>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="form-bottom-01">
+                        <a href="#" class="btn btn-blackline-02">초기화</a>
+                        <a href="#" class="btn btn-black-02">검색</a>
+                    </div>
+                </form>
+
+                <!-- .board-top -->
+                <div class="board-top">
+                    <div class="left">
+                        <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+                        <select id="idselect01" class="select-01">
+                            <option value="">10개</option>
+                        </select>
+                        <label for="idboardall" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+                        <div class="guide-board">
+                            <strong>24</strong>
+                            <span>개 선택 됨</span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <a href="#popup-change" class="btn btn-white-01 btn-popup-open">수료상태변경</a>
+                        <a href="#popup-alert-01" class="btn btn-white-01 btn-popup-open">수료증 발급</a>
+                        <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+                    </div>
+                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                </div>
+                <!-- table -->
+                <div class="table-style-02">
+                    <table>
+                        <caption>등록된 회원 목록</caption>
+                        <colgroup>
+                            <col style="width:80px;">
+                            <col style="width:160px;">
+                            <col style="width:100px;">
+                            <col style="width:auto;">
+                            <col style="width:140px;">
+                            <col style="width:160px;">
+                            <col style="width:120px;">
+                            <col style="width:150px;">
+                            <col style="width:120px;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboardall">
+                                        <label for="idboardall" class="btn-allcheck" data-target="boardcheck"><span class="blind">전체선택</span></label>
+                                    </p>
+                                </th>
+                                <th scope="col">수료일<a href="#" class="btn btn-sorting">정렬 바꾸기</a></th>
+                                <th scope="col">수업종목</th>
+                                <th scope="col">수업 이름</th>
+                                <th scope="col">회원 이름</th>
+                                <th scope="col">아이디</th>
+                                <th scope="col">잔여횟수/총횟수</th>
+                                <th scope="col">잔여일수</th>
+                                <th scope="col">수료상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard01">
+                                        <label for="idboard01"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01 blue-01">미수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard02">
+                                        <label for="idboard02"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard03">
+                                        <label for="idboard03"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard04">
+                                        <label for="idboard04"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard05">
+                                        <label for="idboard05"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard06">
+                                        <label for="idboard06"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard07">
+                                        <label for="idboard07"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard08">
+                                        <label for="idboard08"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard09">
+                                        <label for="idboard09"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="check-04">
+                                        <input type="checkbox" name="boardcheck" id="idboard10">
+                                        <label for="idboard10"><span class="blind">선택</span></label>
+                                    </p>
+                                </td>
+                                <td>YYYY-MM-DD</td>
+                                <td>PT</td>
+                                <td>광명A헬스장PT권</td>
+                                <td>
+                                    <a href="#" class="btn btn-text">김성현</a>
+                                </td>
+                                <td>Seonghyun01</td>
+                                <td>01/15</td>
+                                <td>81일</td>
+                                <td><span class="box-round-01">수료</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- paging -->
+                <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+                    <a href="#" class="btn first">처음으로</a>
+                    <a href="#" class="btn prev">이전</a>
+                    <a href="#" class="btn">1</a>
+                    <a href="#" class="btn active" title="현재 페이지">2</a>
+                    <a href="#" class="btn">3</a>
+                    <a href="#" class="btn">4</a>
+                    <a href="#" class="btn">5</a>
+                    <a href="#" class="btn next">다음</a>
+                    <a href="#" class="btn last">마지막으로</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- popup start // -->
+        <!-- #popup-alert-01 -->
+        <div class="popup-wrap popup-alert-01" id="popup-alert-01">
+            <div class="popup-box">
+                <div class="popup-body">
+                    <p class="text-01">미수료 상태에서는<br>수료증 발급을 할수 없습니다.</p>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-blue-02 btn-popup-close">확인</a>
+                </div>
+            </div>
+        </div>
+        <!-- #popup-change -->
+        <div class="popup-wrap popup-style-01" id="popup-change">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3 class="popup-title">수료상태 변경</h3>
+                    <p class="text-sub">수료상태를 임의로 변경하시겠습니까?</p>
+                    <a href="#" class="btn btn-popup-close">닫기</a>
+                </div>
+                <div class="popup-body">
+                    <div class="radio-set-04">
+                        <p class="radio-01">
+                            <input type="radio" id="idapp0301" name="idapp03" checked>
+                            <label for="idapp0301">수료</label>
+                        </p>
+                        <p class="radio-01">
+                            <input type="radio" id="idapp0302" name="idapp03">
+                            <label for="idapp0302">미수료</label>
+                        </p>
+                    </div>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-blueline-02 btn-popup-close">취소</a>
+                    <a href="#" class="btn btn-blue-02">변경</a>
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+    </div>
+</body>
+</html>

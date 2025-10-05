@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAEROM</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">					
+					<h2 class="blind">본문</h2>
+          <div class="contents-title">
+            <h3 class="title-page">경비원명부 상세/수정</h3>
+            <a href="#none" class="btn btn-back">뒤로가기</a>
+            <div class="btns-right">
+              <a href="#none" class="btn btn-toggle">사업장직원 관리 메뉴 열고 닫기</a>
+              <div class="btns-box clearfix">
+                <a href="#none" class="btn btn-pc-white-01">미리보기</a>
+                <a href="#none" class="btn btn-pc-blue-01">사업장직원 저장</a>
+              </div>
+            </div>
+          </div>
+
+					<div class="flip-01">
+            <!-- 프로필관리 인트로 // 모바일에서 노출 -->
+            <div class="flip-mo-intro">
+              <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+              <p class="name"><strong>홍길동</strong><span>3년 10개월</span></p>
+              <ul class="list-style-03">
+                <li>
+                  <p class="item-01">경비업무</p>
+                </li>
+                <li>
+                  <p class="item-01">한림3차</p>
+                </li>
+                <li>
+                  <p class="item-01">서울 강남구외 3</p>
+                </li>
+              </ul>
+              <ul class="list-btns-01">
+                <li><a href="#profile01" class="btn">기본정보</a></li>
+                <li><a href="#profile02" class="btn">상세정보</a></li>
+                <li><a href="#profile03" class="btn">부가정보</a></li>
+                <li><a href="#profile04" class="btn">기타첨부파일</a></li>
+              </ul>
+            </div>
+            <div class="flip-contents">
+              <!-- 프로필관리 스텝 // 모바일에서 노출 -->
+              <ol class="flip-step">
+                <li>
+                  <p class="num active">1<span class="blind">현재 진행중인 단계</span></p>
+                </li>
+                <li>
+                  <p class="num">2</p>
+                </li>
+                <li>
+                  <p class="num">3</p>
+                </li>
+                <li>
+                  <p class="num">4</p>
+                </li>
+                <li>
+                  <p class="num">5</p>
+                </li>
+              </ol>
+							<!-- 관리 -->
+							<div id="profile02" class="flip-con flip-first active">
+								<div class="flip-title" tabindex="0">
+                  <h4>관리정보</h4>
+                </div>
+								<div class="profile-sports">
+									<ul class="form-style-01 w2">
+										<li>
+											<div class="form-title">관리</div>
+											<div class="form-con">
+												<input type="text" class="input-01" id="idname01" required="" value="">
+											</div>
+											<div class="form-title">임용일자</div>
+											<div class="form-con pr40">
+												<input type="text" class="input-01 readonly" id="idname01" readonly="" required="" value="2011-01-01">
+											</div>
+										</li>
+										<li>
+											<div class="form-title">번호</div>
+											<div class="form-con">
+												<input type="text" class="input-01" id="idname01" required="" value="">
+											</div>
+											<div class="form-title">퇴직일자</div>
+											<div class="form-con pr40">
+												<input type="text" class="input-01 readonly" id="idname01" readonly="" required="" value="2011-01-01">
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+              <!-- 기본정보 -->
+              <div id="profile02" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>기본정보</h4>
+                </div>
+                <div class="profile-basic">
+                  <div class="img-profile-wrap">
+                    <div class="img-profile">
+                      <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                      <a href="#none" class="btn btn-modify-01">프로필 사진 변경</a>
+                    </div>
+                  </div>
+                  <ul class="form-style-01">
+                    <li>
+                      <div class="form-title"><label for="idname01">이름</label>
+                        <p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <input type="text" class="input-01 readonly" id="idname01" readonly required value="강동원">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title">생년월일<p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="datepicker-radio-set-01">
+                          <div class="datepicker-01">
+                            <input type="text" class="input-datepicker" id="idbirth01" placeholder="2023.00.00">
+                            <label for="idbirth01">생년월일 날짜 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                          </div>
+                          <ul class="radio-set-01">
+                            <li>
+                              <p class="radio-01">
+                                <input type="radio" id="idradio0101" name="nameradio01">
+                                <label for="idradio0101">남자</label>
+                              </p>
+                            </li>
+                            <li>
+                              <p class="radio-01">
+                                <input type="radio" id="idradio0102" name="nameradio01">
+                                <label for="idradio0102">여자</label>
+                              </p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+										<li>
+                      <div class="form-title"><label for="idphone02-01">주민등록번호</label></div>
+                      <div class="form-con">
+                        <input type="text" class="input-01" id="idphone02-01" placeholder="주민등록번호를 입력해주세요">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="idphone01">휴대폰</label>
+                        <p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="input-btn-set-01">
+                          <input type="text" class="input-01" id="idphone01" placeholder="휴대폰 번호를 입력해주세요">
+                          <a href="#none" class="btn btn-white-02">인증하기</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title">주소<p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="input-address-01">
+                          <a href="#none" class="btn btn-white-02">주소검색</a>
+                          <label for="idaddress01" class="blind">기본 주소</label>
+                          <input type="text" class="input-01 address-01" id="idaddress01" placeholder="주소를 검색해주세요"
+                            readonly>
+                          <label for="idaddress02" class="blind">상세 주소</label>
+                          <input type="text" class="input-01 address-02" id="idaddress02" placeholder="상세주소를 입력해주세요">
+                        </div>
+                      </div>
+                    </li>
+										<li>
+                      <div class="form-title">배치지<p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="input-address-01">
+                          <a href="#none" class="btn btn-white-02">주소검색</a>
+                          <label for="idaddress01" class="blind">기본 주소</label>
+                          <input type="text" class="input-01 address-01" id="idaddress01" placeholder="주소를 검색해주세요"
+                            readonly>
+                          <label for="idaddress02" class="blind">상세 주소</label>
+                          <input type="text" class="input-01 address-02" id="idaddress02" placeholder="상세주소를 입력해주세요">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- 상세정보 -->
+              <div id="profile03" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>병역사항</h4>
+                </div>
+                <div class="profile-sports">
+									<div class="add-table-wrap-01">
+										<!-- 병역사항 등록 정보 pc -->
+										<div class="table-style-01 pc-only">
+											<table>
+												<caption>병역사항</caption>
+												<colgroup>
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col">군별</th>
+														<th scope="col">병과</th>
+														<th scope="col">입대연월일</th>
+														<th scope="col">제대연월일</th>
+														<th scope="col">군번</th>
+														<th scope="col">계급</th>
+														<th scope="col">역종</th>
+														<th scope="col">체격등위</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><input type="text" class="input-01 w150" placeholder="군별 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="병과 입력해주세요"></td>
+														<td>
+															<div class="datepicker-01 w120">
+																<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																<button type="button" class="">날짜 선택 열기</button>
+																<label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+															</div>
+														</td>
+														<td>
+															<div class="datepicker-01 w120">
+																<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																<button type="button" class="">날짜 선택 열기</button>
+																<label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+															</div>
+														</td>
+														<td><input type="text" class="input-01 w150" placeholder="군번 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="계급 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="역종 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="체격등위 입력해주세요"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+                </div>
+								<div class="flip-title mt20" tabindex="0">
+                  <h4>신체상태</h4>
+                </div>
+                <div class="profile-sports">
+									<div class="add-table-wrap-01">
+										<!-- 학력근로계약서 현황사항 등록 정보 pc -->
+										<div class="table-style-01 pc-only">
+											<table>
+												<caption>신체상태</caption>
+												<colgroup>
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col">신장</th>
+														<th scope="col">체중</th>
+														<th scope="col">시력</th>
+														<th scope="col">혈액형</th>
+														<th scope="col">건강상태</th>
+														<th scope="col">외모특징</th>
+														<th scope="col">취미</th>
+														<th scope="col">특기</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><input type="text" class="input-01 w150" placeholder="신장 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="체중 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="시력 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="혈액형 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="건강상태 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="외모특징 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="취미 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="특기 입력해주세요"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+                </div>
+								<div class="flip-title mt20" tabindex="0">
+                  <h4>재산</h4>
+                </div>
+                <div class="profile-sports">
+									<div class="add-table-wrap-01">
+										<!-- 재산 현황사항 등록 정보 pc -->
+										<div class="table-style-01 pc-only">
+											<table>
+												<caption>신체상태</caption>
+												<colgroup>
+												</colgroup>
+												<thead>
+													<tr>
+														<th scope="col">동산</th>
+														<th scope="col">부동산</th>
+														<th scope="col">재산총액</th>
+														<th scope="col">가옥</th>
+														<th scope="col">부업</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td><input type="text" class="input-01 w150" placeholder="동산 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="부동산 입력해주세요"></td>
+														<td><input type="text" class="input-01 w150" placeholder="재산총액 입력해주세요"></td>
+														<td><input type="text" class="input-01" placeholder="가옥 입력해주세요"></td>
+														<td><input type="text" class="input-01" placeholder="부업 입력해주세요"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+                </div>
+              </div>
+              <!-- 부가정보 -->
+              <div id="profile04" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>부가정보</h4>
+                </div>
+                <ul class="accordion-01">
+                  <!-- 가족관계 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle active">가족관계</a>
+                    <div class="accordion-con active">
+											<ul class="form-style-01">
+                        <li>&nbsp;</li>
+												<li>&nbsp;</li>
+											</ul>
+                      <!-- 가족관계 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 가족관계 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>근로계약서 현황 등록 정보</caption>
+                            <colgroup>
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">관계</th>
+                                <th scope="col">성명</th>
+                                <th scope="col">주민등록번호</th>
+                                <th scope="col">학력</th>
+                                <th scope="col">직장</th>
+                                <th scope="col">관리</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><input type="text" class="input-01 atw" placeholder="관계 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="성명 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="주민등록번호 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="학력 입력해주세요"></td>
+																<td><input type="text" class="input-01 atw" placeholder="직장 입력해주세요"></td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                  </div>
+                                </td>
+                              </tr>
+															<tr>
+                                <td><input type="text" class="input-01 atw" placeholder="관계 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="성명 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="주민등록번호 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="학력 입력해주세요"></td>
+																<td><input type="text" class="input-01 atw" placeholder="직장 입력해주세요"></td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                  </div>
+                                </td>
+                              </tr>
+															<tr>
+                                <td><input type="text" class="input-01 atw" placeholder="관계 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="성명 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="주민등록번호 입력해주세요"></td>
+                                <td><input type="text" class="input-01 atw" placeholder="학력 입력해주세요"></td>
+																<td><input type="text" class="input-01 atw" placeholder="직장 입력해주세요"></td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 교우관계 관리 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">교우관계</a>
+                    <div class="accordion-con">
+											<ul class="form-style-01">
+                        <li>&nbsp;</li>
+												<li>&nbsp;</li>
+											</ul>
+                      <!-- 교우관계 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 교우관계 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>교우관계 현황 등록 정보</caption>
+                            <colgroup>
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">성명</th>
+                                <th scope="col">주소</th>
+                                <th scope="col">직원 및 직책</th>
+                                <th scope="col">관리</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><input type="text" class="input-01 w100p" placeholder="성명 입력해주세요"></td>
+                                <td><input type="text" class="input-01 w100p" placeholder="주소 입력해주세요"></td>
+																<td><input type="text" class="input-01 w100p" placeholder="직원 및 직책 입력해주세요"></td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 상벌 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">상벌</a>
+                    <div class="accordion-con">
+											<ul class="form-style-01">
+                        <li>&nbsp;</li>
+												<li>&nbsp;</li>
+											</ul>
+                      <!-- 상벌 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 상벌 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>상벌 등록 정보</caption>
+                            <colgroup>
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">연월일</th>
+                                <th scope="col">종류</th>
+                                <th scope="col">시행청</th>
+                                <th scope="col">관리</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+																	<div class="datepicker-01">
+																		<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																		<button type="button" class="">날짜 선택 열기</button>
+																		<label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																	</div>
+																</td>
+                                <td><input type="text" class="input-01 w100p" placeholder="주소 입력해주세요"></td>
+																<td><input type="text" class="input-01 w100p" placeholder="직원 및 직책 입력해주세요"></td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 경력사항 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">경력사항</a>
+                    <div class="accordion-con">
+											<ul class="form-style-01">
+                        <li>&nbsp;</li>
+												<li>&nbsp;</li>
+											</ul>
+                      <!-- 경력사항 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 경력사항 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>경력사항 등록 정보</caption>
+                            <colgroup>
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">기간</th>
+                                <th scope="col">근무장소</th>
+                                <th scope="col">직책(직위)</th>
+                                <th scope="col">관리</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+																	<div class="datepicker-01">
+																		<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																		<button type="button" class="">날짜 선택 열기</button>
+																		<label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																	</div>
+																</td>
+                                <td><input type="text" class="input-01 w100p" placeholder="근무장소 입력해주세요"></td>
+																<td><input type="text" class="input-01 w100p" placeholder="직책(직위) 입력해주세요"></td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 교육훈련 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">교육훈련</a>
+                    <div class="accordion-con">
+											<ul class="form-style-01">
+                        <li>&nbsp;</li>
+												<li>&nbsp;</li>
+											</ul>
+                      <!-- 교육훈련 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 교육훈련 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>교육훈련 등록 정보</caption>
+                            <colgroup>
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">기간</th>
+                                <th scope="col">근무장소</th>
+                                <th scope="col">직책(직위)</th>
+																<th scope="col">기간</th>
+                                <th scope="col">근무장소</th>
+                                <th scope="col">직책(직위)</th>
+                                <th scope="col">관리</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+																	<div class="datepicker-set-01">
+																		<div class="datepicker-01 w120">
+																			<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																			<button type="button" class="">날짜 선택 열기</button>
+																			<label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																		</div>
+																		<span>~</span>
+																		<div class="datepicker-01 w120">
+																			<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																			<button type="button" class="">날짜 선택 열기</button>
+																			<label for="iddate04" class="blind">희망 지도 기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																		</div>
+																</div>
+																</td>
+                                <td><input type="text" class="input-01 w100p" placeholder="근무장소 입력해주세요"></td>
+																<td>
+																	<div class="datepicker-set-01">
+																		<div class="datepicker-01 w120">
+																			<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																			<button type="button" class="">날짜 선택 열기</button>
+																			<label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																		</div>
+																		<span>~</span>
+																		<div class="datepicker-01 w120">
+																			<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																			<button type="button" class="">날짜 선택 열기</button>
+																			<label for="iddate04" class="blind">희망 지도 기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																		</div>
+																</div>
+																</td>
+																<td><input type="text" class="input-01 w100p" placeholder="직책(직위) 입력해주세요"></td>
+																<td>
+																	<div class="datepicker-set-01">
+																		<div class="datepicker-01 w120">
+																			<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																			<button type="button" class="">날짜 선택 열기</button>
+																			<label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																		</div>
+																		<span>~</span>
+																		<div class="datepicker-01 w120">
+																			<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																			<button type="button" class="">날짜 선택 열기</button>
+																			<label for="iddate04" class="blind">희망 지도 기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																		</div>
+																</div>
+																</td>
+																<td><input type="text" class="input-01 w100p" placeholder="직책(직위) 입력해주세요"></td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 신임교육 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">신임교육</a>
+                    <div class="accordion-con">
+											<ul class="form-style-01">
+                        <li>&nbsp;</li>
+												<li>&nbsp;</li>
+											</ul>
+                      <!-- 신임교육 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 신임교육 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>신임교육 등록 정보</caption>
+                            <colgroup>
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">이수번호</th>
+                                <th scope="col">이수일자</th>
+                                <th scope="col">면제사유</th>
+																<th scope="col">교육기관</th>
+                                <th scope="col">관리</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><input type="text" class="input-01 w100p" placeholder="이수번호 입력해주세요"></td>
+																<td>
+																	<div class="datepicker-01">
+																		<input type="text" class="input-datepicker-02  hasDatepicker" id="iddate03" readonly="" placeholder="2023.00"><button type="button" class="ui-datepicker-trigger"><img src="../images/ico_calendar.svg" alt="날짜 선택 열기" title="날짜 선택 열기"></button>
+																		<button type="button" class="">날짜 선택 열기</button>
+																		<label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+																	</div>
+																</td>
+																<td><input type="text" class="input-01 w100p" placeholder="면제사유 입력해주세요"></td>
+																<td><input type="text" class="input-01 w100p" placeholder="교육기관 입력해주세요"></td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- 경력증명파일 -->
+              <div id="profile05" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>경력증명파일</h4>
+                  <p class="text-sub">위조된 문서를 등록할 경우 법적 책임을 지게 될 수 있습니다.</p>
+                </div>
+                <div class="file-wrap">
+                  <div class="file-01">
+                    <div class="file-search">
+                      <input type="file" id="idfile0101">
+                      <label for="idfile0101">파일찾기</label>
+                      <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- mo -->
+                    </div>
+                    <div class="file-view">
+                      <p class="file-name"><a href="#none" class="btn btn-text"></a></p>
+                      <a href="#none" class="btn btn-white-02">삭제</a>
+                    </div>
+                  </div>
+                  <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- pc -->
+                </div>
+              </div>
+
+            </div>
+            <div class="flip-btns step-first">
+              <a href="#none" class="btn btn-blueline-03 btn-preview">미리보기</a>
+              <a href="#none" class="btn btn-blueline-03 btn-prev">이전</a>
+              <a href="#none" class="btn btn-blue-03 btn-next">다음</a>
+              <a href="#none" class="btn btn-blue-03 btn-save">저장</a>
+            </div>
+          </div>
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAEROM</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">근무상황표</h3>
+						<a href="#" class="btn btn-back">뒤로가기</a>
+					</div>
+
+					<div class="calculate-wrap">
+
+						<form>
+							<ul class="form-style-02 sports">
+								<li class="w03">
+									<div class="form-title">년도</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">2023</option>
+										</select>
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">검색구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">전체</option>
+										</select>										
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">사업장명</div>
+									<div class="form-con">
+										<p class="check-04">
+											<input type="text" class="input-02" id="idsearch02">
+										</p>
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title"></div>
+									<div class="form-con pt10">
+										<p class="check-04">
+											<input type="checkbox" id="idmonth01">
+											<label for="idmonth01"><span>종료사업장</span></label>
+										</p>
+									</div>
+								</li>
+							</ul>
+							<div class="form-bottom-01">
+								<a href="#" class="btn btn-blackline-02">초기화</a>
+								<a href="#" class="btn btn-black-02">검색</a>
+							</div>
+						</form>
+					</div>
+
+					<!-- .board-top -->
+					<div class="board-top">
+						<div class="left">
+							<label for="idselect01" class="blind">보여줄 갯수</label>
+							<select id="idselect01" class="select-01">
+								<option value="">10개</option>
+							</select>
+						</div>
+						<div class="right">
+							<a href="#" class="btn btn-excel">다운로드</a>
+						</div>
+						<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+					</div>
+					<!-- table -->
+					<div class="table-style-04 x-scroll">
+						
+						<table style="">
+							<caption>사업장직원현황</caption>
+							<colgroup>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">사업장명</th>
+									<th scope="col">해당연도</th>
+									<th scope="col">1월</th>
+									<th scope="col">2월</th>
+									<th scope="col">3월</th>
+									<th scope="col">4월</th>
+									<th scope="col">5월</th>
+									<th scope="col">6월</th>
+									<th scope="col">7월</th>
+									<th scope="col">8월</th>
+									<th scope="col">9월</th>
+									<th scope="col">10월</th>
+									<th scope="col">11월</th>
+									<th scope="col">12월</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+								<tr>
+									<td>100</td>
+									<td>포레나영등포</td>
+									<td>2021년</td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01 green-01">작성</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+									<td><a href="" class="box-round-01">완료</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- paging -->
+					<div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+						<a href="#" class="btn first">처음으로</a>
+						<a href="#" class="btn prev">이전</a>
+						<a href="#" class="btn">1</a>
+						<a href="#" class="btn active" title="현재 페이지">2</a>
+						<a href="#" class="btn">3</a>
+						<a href="#" class="btn">4</a>
+						<a href="#" class="btn">5</a>
+						<a href="#" class="btn next">다음</a>
+						<a href="#" class="btn last">마지막으로</a>
+					</div>
+
+				</div>
+			</div>
+			<blockquote>&nbsp;</blockquote>
+		</div>
+	</body>
+
+</html>

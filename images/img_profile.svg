@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="82" height="76" viewBox="0 0 82 76">
+  <g id="그룹_18195" data-name="그룹 18195" transform="translate(-448 -187)">
+    <path id="합치기_5" data-name="합치기 5" d="M2002,602h-40a4,4,0,0,1-4-4V579a4,4,0,0,1,4-4h40a4,4,0,0,1,4,4v5h30a4,4,0,0,1,4,4v10a4,4,0,0,1-4,4Z" transform="translate(-1510 -366)" fill="#e3bb5f"/>
+    <path id="빼기_7" data-name="빼기 7" d="M2014,630h-52a4,4,0,0,1-4-4V579a4,4,0,0,1,4-4h42l14,14v37A4,4,0,0,1,2014,630Z" transform="translate(-1499 -388)" fill="#fff"/>
+    <rect id="사각형_15119" data-name="사각형 15119" width="82" height="36" rx="4" transform="translate(448 227)" fill="#fdd06a"/>
+    <path id="패스_40966" data-name="패스 40966" d="M0,0,14,14H4a4,4,0,0,1-4-4Z" transform="translate(505 187)" fill="#e8e9ed"/>
+    <rect id="사각형_15116" data-name="사각형 15116" width="26" height="12" rx="1" transform="translate(456 236)" fill="#fff"/>
+    <path id="합치기_6" data-name="합치기 6" d="M1959.6,593a1.6,1.6,0,0,1-1.6-1.6,6.4,6.4,0,0,1,6.4-6.4h5.2a6.4,6.4,0,0,1,6.4,6.4,1.6,1.6,0,0,1-1.6,1.6Zm22.4-2a1,1,0,0,1-1-1v-2a1,1,0,0,1,1-1h20a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1Zm0-7a1,1,0,0,1-1-1v-2a1,1,0,0,1,1-1h10a1,1,0,0,1,1,1v2a1,1,0,0,1-1,1Zm-19.5-4.5a4.5,4.5,0,1,1,4.5,4.5A4.5,4.5,0,0,1,1962.5,579.5Z" transform="translate(-1491 -376)" fill="#959bbc"/>
+  </g>
+</svg>

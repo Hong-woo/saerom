@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAEROM</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">자료실</h3>
+						<a href="#" class="btn btn-back">뒤로가기</a>
+					</div>
+
+					<div class="calculate-wrap">
+
+						<form>
+							<ul class="form-style-02 sports">
+								<li class="w01">
+									<div class="form-title">등록일</div>
+									<div class="form-con">
+										<div class="datepicker-set-01">
+											<div class="datepicker-01">
+												<input type="text" class="input-datepicker" id="iddate05" placeholder="2023.00.00">
+												<label for="iddate05">등록일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+											</div>
+											<span>~</span>
+											<div class="datepicker-01">
+												<input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+												<label for="iddate06">등록일 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="w02">
+									<div class="form-title">기간선택</div>
+									<div class="form-con">
+										<ul class="radio-set-01">
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0101" name="nameradio01">
+													<label for="idradio0101">1개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0102" name="nameradio01">
+													<label for="idradio0102">3개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0103" name="nameradio01">
+													<label for="idradio0103">6개월</label>
+												</p>
+											</li>
+											<li>
+												<p class="radio-01">
+													<input type="radio" id="idradio0104" name="nameradio01">
+													<label for="idradio0104">1년</label>
+												</p>
+											</li>
+										</ul>
+									</div>
+								</li>								
+							</ul>
+							<ul class="form-style-02 sports">
+								<li class="w03">
+									<div class="form-title">구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">전체</option>
+										</select>
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">검색구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">전체</option>
+										</select>
+										
+									</div>
+								</li>
+								<li class="w01">
+									<div class="form-title">키워드</div>
+									<div class="form-con">
+										<input type="text" class="input-02" id="idsearch02">
+									</div>
+								</li>
+							</ul>
+							<div class="form-bottom-01">
+								<a href="#" class="btn btn-blackline-02">초기화</a>
+								<a href="#" class="btn btn-black-02">검색</a>
+							</div>
+						</form>
+					</div>
+
+					<div class="main-body">
+						<!-- 오늘의 분류별 최근 게시물 -->
+						<div class="today-schedule">
+							<div class="title-wrap-01">
+								<h3 class="title-style-01">분류별 최근 게시물</h3>
+								<a href="#" class="btn btn-more">더보기</a>
+							</div>
+							<div class="slide-schedule slider">
+								<div class="item">
+									<p class="time">양식</p>
+									<p class="name">공동주택관리법 개정 시행에 따른 경비관리 주의사항 안내1</p>
+									<p class="text-01">2023.10.01</p>
+									<div class="member">
+										<p class="num file"></p>
+										<p class="people">공동주택관리법 개정 시행에 71.hwp</p>
+									</div>
+								</div>
+								<div class="item">
+									<p class="time">서식</p>
+									<p class="name">공동주택관리법 개정 시행에 따른 경비관리 주의사항 안내1</p>
+									<p class="text-01">2023.10.01</p>
+									<div class="member">
+										<p class="num file"></p>
+										<p class="people">공동주택관리법 개정 시행에 71.hwp</p>
+									</div>
+								</div>
+								<div class="item">
+									<p class="time">규칙</p>
+									<p class="name">공동주택관리법 개정 시행에 따른 경비관리 주의사항 안내1</p>
+									<p class="text-01">2023.10.01</p>
+									<div class="member">
+										<p class="num file"></p>
+										<p class="people">공동주택관리법 개정 시행에 71.hwp</p>
+									</div>
+								</div>
+								<div class="item">
+									<p class="time">교육</p>
+									<p class="name">공동주택관리법 개정 시행에 따른 경비관리 주의사항 안내1</p>
+									<p class="text-01">2023.10.01</p>
+									<div class="member">
+										<p class="num file"></p>
+										<p class="people">공동주택관리법 개정 시행에 71.hwp</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- .board-top -->
+					<div class="board-top">
+						<div class="left">
+							<label for="idselect01" class="blind">보여줄 갯수</label>
+							<select id="idselect01" class="select-01">
+								<option value="">10개</option>
+							</select>
+							<a href="#" class="btn btn-blue-01">자료실 등록</a>
+						</div>
+						<div class="right">
+							<a href="#" class="btn btn-excel">엑셀 다운로드</a>
+						</div>
+						<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+					</div>
+					<!-- table -->
+					<div class="table-style-02">
+						<table>
+							<caption>등록된 회원 목록</caption>
+							<colgroup>
+								<col style="width:80px;">
+								<col style="width:100px;">
+								<col style="width:100px;">
+								<col style="width:auto;">
+								<col style="width:120px;">
+								<col style="width:180px;">
+								<col style="width:120px;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboardall">
+											<label for="idboardall" class="btn-allcheck" data-target="boardcheck"><span
+													class="blind">전체선택</span></label>
+										</p>
+									</th>
+									<th scope="col">번호</th>
+									<th scope="col">구분</th>
+									<th scope="col">제목</th>
+									<th scope="col">최종수정자</th>
+									<th scope="col">최종수정일시</th>
+									<th scope="col">조회수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="check-04">
+											<input type="checkbox" name="boardcheck" id="idboard01">
+											<label for="idboard01"><span class="blind">선택</span></label>
+										</p>
+									</td>
+									<td>11</td>
+									<td>교육</td>
+									<td class="tlt">
+										<a href="#" class="btn btn-text">공동주택관리법 개정 시행에 따른  경비관리 주의사항 안내1</a>									
+									</td>
+									<td>새롬</td>
+									<td>2021-11-11 11:11:11</td>
+									<td>100</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- paging -->
+					<div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+						<a href="#" class="btn first">처음으로</a>
+						<a href="#" class="btn prev">이전</a>
+						<a href="#" class="btn">1</a>
+						<a href="#" class="btn active" title="현재 페이지">2</a>
+						<a href="#" class="btn">3</a>
+						<a href="#" class="btn">4</a>
+						<a href="#" class="btn">5</a>
+						<a href="#" class="btn next">다음</a>
+						<a href="#" class="btn last">마지막으로</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

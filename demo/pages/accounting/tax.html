@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회계보고(부과)</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/add.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/lucide-icons.css">
+    <script src="../../../html_cms/js/jquery-1.11.3.js"></script>
+    <script src="../../../html_cms/js/jquery-ui.min.js"></script>
+    <script src="../../../html_cms/js/slick.js"></script>
+    <script src="../../../assets/js/lucide.js"></script>
+    <script src="../../../assets/js/lucide-utils.js"></script>
+    <script src="../../../js/common.js"></script>
+    <style>
+        /* GroundFit 헤더 구조 적용 */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 321px;
+            padding: 188px 24px 24px;
+            min-height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        #header h1 {
+            position: absolute;
+            top: 79px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        #header h1 img {
+            vertical-align: top;
+            width: 180px;
+            height: auto;
+        }
+        
+        #header .quick-nav {
+            display: none;
+        }
+        
+        #gnb {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .container {
+            margin-left: 321px;
+            position: relative;
+            width: calc(100% - 321px);
+            min-height: 100vh;
+            border-left: 1px solid #ccc;
+        }
+        
+        .contents-body {
+            padding: 20px;
+        }
+        
+        .btn-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .btn-back:hover {
+            color: #333;
+        }
+        
+        .btn-back i {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="../../index.html"><img src="../../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu"><i data-lucide="menu" class="quick-nav-icon"></i>메뉴</a></li>
+                <li><a href="#" class="btn approval"><i data-lucide="check-square" class="quick-nav-icon"></i>전자결제</a></li>
+                <li><a href="../../../../index.html" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
+                <li><a href="#" class="btn workplace"><i data-lucide="building-2" class="quick-nav-icon"></i>사업장관리</a></li>
+                <li><a href="#" class="btn hr"><i data-lucide="users" class="quick-nav-icon"></i>직원관리</a></li>
+                <li><a href="#" class="btn system"><i data-lucide="settings" class="quick-nav-icon"></i>시스템</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close"><i data-lucide="x" class="icon-close"></i>닫기</a>
+                <!-- GNB will be loaded dynamically by common.js -->
+                <!-- GNB는 JavaScript로 동적 로드됩니다 -->
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li>
+                            <a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">정보변경 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">회계보고(부과)</h3>
+                    <a href="javascript:history.back()" class="btn btn-back">
+                        <i data-lucide="arrow-left"></i>뒤로가기
+                    </a>
+                </div>
+
+                <!-- .calculate-wrap start // -->
+                <div class="calculate-wrap">
+                    <!-- .select-class -->
+                    
+                    <form>
+                        <ul class="form-style-02 sports">
+                            <li class="w03">
+                                <div class="form-title">구분</div>
+                                <div class="form-con">
+                                    <select id="categorySelect" class="select-01">
+                                        <option value="">전체</option>
+                                        <option value="tax">세금계산서</option>
+                                        <option value="receipt">현금영수증</option>
+                                        <option value="invoice">간이과세</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w03">
+                                <div class="form-title">검색구분</div>
+                                <div class="form-con">
+                                    <select id="searchType" class="select-01">
+                                        <option value="workplace">사업장</option>
+                                        <option value="company">업체명</option>
+                                        <option value="number">사업자번호</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w01">
+                                <div class="form-title">키워드</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-02" id="searchKeyword" placeholder="검색어를 입력하세요">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="form-bottom-01">
+                            <button type="button" class="btn btn-blackline-02" onclick="resetForm()">초기화</button>
+                            <button type="button" class="btn btn-black-02" onclick="searchTax()">검색</button>
+                        </div>
+                    </form>
+
+                    <!-- .board-top -->
+                    <div class="board-top">
+                        <div class="left">
+                            <label for="pageSize" class="blind">보여줄 상품 갯수</label>
+                            <select id="pageSize" class="select-01">
+                                <option value="10">10개</option>
+                                <option value="20">20개</option>
+                                <option value="50">50개</option>
+                                <option value="100">100개</option>
+                            </select>
+                            <label for="selectAll" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+                            <div class="guide-board">
+                                <strong id="selectedCount">0</strong>
+                                <span>개 선택 됨</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <a href="#taxRegisterModal" class="btn btn-white-01 btn-popup-open">부과 등록</a>
+                            <a href="#" class="btn btn-excel" onclick="exportToExcel()">엑셀 다운로드</a>
+                        </div>
+                        <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                    </div>
+                    
+                    <!-- table -->
+                    <div class="table-style-04 x-scroll">
+                        <table style="width:1600px;">
+                            <caption>회계보고(부과) 현황</caption>
+                            <colgroup>
+                                <col style="width:70px"><!-- 번호 -->
+                                <col style="width:120px"><!-- 본부 -->
+                                <col><!-- 사업장명 -->
+                                <col style="width:160px"><!-- 업체명 -->
+                                <col style="width:120px"><!-- 사업자번호 -->
+                                <col style="width:100px"><!-- 구분 -->
+                                <col style="width:120px"><!-- 금액 -->
+                                <col style="width:100px"><!-- 상태 -->
+                                <col style="width:120px"><!-- 등록일 -->
+                                <col style="width:120px"><!-- 처리일 -->
+                            </colgroup>
+                        
+                            <thead>
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">본부</th>
+                                    <th scope="col">사업장명</th>
+                                    <th scope="col">업체명</th>
+                                    <th scope="col">사업자번호</th>
+                                    <th scope="col">구분</th>
+                                    <th scope="col">금액</th>
+                                    <th scope="col">상태</th>
+                                    <th scope="col">등록일</th>
+                                    <th scope="col">처리일</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody id="taxTableBody">
+                                <!-- 사업장 1 -->
+                                <tr>
+                                    <td>1</td>
+                                    <td>ACE 1본부</td>
+                                    <td>경기광주역금호리첸시아</td>
+                                    <td>(주)삼성전자</td>
+                                    <td>123-45-67890</td>
+                                    <td><span class="box-round-01">세금계산서</span></td>
+                                    <td>1,500,000원</td>
+                                    <td><span class="box-round-01">완료</span></td>
+                                    <td>2025.01.15</td>
+                                    <td>2025.01.20</td>
+                                </tr>
+                        
+                                <!-- 사업장 2 -->
+                                <tr>
+                                    <td>2</td>
+                                    <td>ACE 1본부</td>
+                                    <td>쥬네브쎈월드</td>
+                                    <td>(주)LG전자</td>
+                                    <td>234-56-78901</td>
+                                    <td><span class="box-round-01 red-01">현금영수증</span></td>
+                                    <td>850,000원</td>
+                                    <td><span class="box-round-01 red-01">대기</span></td>
+                                    <td>2025.01.16</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <!-- 사업장 3 -->
+                                <tr>
+                                    <td>3</td>
+                                    <td>ACE 2본부</td>
+                                    <td>부산해운대아파트</td>
+                                    <td>(주)현대건설</td>
+                                    <td>345-67-89012</td>
+                                    <td><span class="box-round-01">간이과세</span></td>
+                                    <td>2,300,000원</td>
+                                    <td><span class="box-round-01">완료</span></td>
+                                    <td>2025.01.17</td>
+                                    <td>2025.01.18</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- paging -->
+                    <div class="paging-01">
+                        <a href="#" class="btn first">처음으로</a>
+                        <a href="#" class="btn prev">이전</a>
+                        <a href="#" class="btn">1</a>
+                        <a href="#" class="btn active" title="현재 페이지">2</a>
+                        <a href="#" class="btn">3</a>
+                        <a href="#" class="btn">4</a>
+                        <a href="#" class="btn">5</a>
+                        <a href="#" class="btn next">다음</a>
+                        <a href="#" class="btn last">마지막으로</a>
+                    </div>
+
+                </div>
+                <!-- // .calculate-wrap end -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 부과 등록 모달 -->
+    <div id="taxRegisterModal" class="popup-wrap" style="display: none;">
+        <div class="popup">
+            <div class="popup-header">
+                <h3>부과 등록</h3>
+                <button type="button" class="btn-close" onclick="closeModal('taxRegisterModal')">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="popup-body">
+                <form id="taxRegisterForm">
+                    <ul class="form-style-02">
+                        <li>
+                            <div class="form-title">사업장</div>
+                            <div class="form-con">
+                                <select id="workplaceSelect" class="select-01">
+                                    <option value="">사업장을 선택하세요</option>
+                                    <option value="1">경기광주역금호리첸시아</option>
+                                    <option value="2">쥬네브쎈월드</option>
+                                    <option value="3">부산해운대아파트</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-title">업체명</div>
+                            <div class="form-con">
+                                <input type="text" id="companyName" class="input-02" placeholder="업체명을 입력하세요">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-title">사업자번호</div>
+                            <div class="form-con">
+                                <input type="text" id="businessNumber" class="input-02" placeholder="000-00-00000">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-title">구분</div>
+                            <div class="form-con">
+                                <select id="taxType" class="select-01">
+                                    <option value="">구분을 선택하세요</option>
+                                    <option value="tax">세금계산서</option>
+                                    <option value="receipt">현금영수증</option>
+                                    <option value="invoice">간이과세</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-title">금액</div>
+                            <div class="form-con">
+                                <input type="number" id="amount" class="input-02" placeholder="금액을 입력하세요">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-title">비고</div>
+                            <div class="form-con">
+                                <textarea id="memo" class="textarea-01" placeholder="비고를 입력하세요"></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="popup-footer">
+                <button type="button" class="btn btn-white-01" onclick="closeModal('taxRegisterModal')">취소</button>
+                <button type="button" class="btn btn-black-02" onclick="registerTax()">등록</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // SAEROM Lucide 아이콘 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lucide 아이콘 초기화
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide Icons initialized successfully');
+            } else {
+                console.warn('Lucide library not found');
+            }
+            
+            // GNB 동적 로드
+            loadGNB();
+            
+            // 페이지 크기 변경 이벤트
+            const pageSizeSelect = document.getElementById('pageSize');
+            if (pageSizeSelect) {
+                pageSizeSelect.addEventListener('change', function() {
+                    const pageSize = this.value;
+                    console.log('페이지 크기 변경: ' + pageSize);
+                    // 실제 페이지 크기 변경 로직 구현
+                    loadTaxData(1, pageSize);
+                });
+            }
+            
+            // 전체 선택 이벤트
+            const selectAllBtn = document.querySelector('.btn-allcheck');
+            if (selectAllBtn) {
+                selectAllBtn.addEventListener('click', function() {
+                    const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+                    const isAllChecked = Array.from(checkboxes).every(cb => cb.checked);
+                    
+                    checkboxes.forEach(cb => {
+                        cb.checked = !isAllChecked;
+                    });
+                    
+                    updateSelectedCount();
+                    this.textContent = isAllChecked ? '전체 선택' : '전체 해제';
+                });
+            }
+            
+            // 테이블 행 클릭 이벤트
+            const tableRows = document.querySelectorAll('tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('click', function(e) {
+                    if (e.target.type !== 'checkbox') {
+                        const checkbox = this.querySelector('input[type="checkbox"]');
+                        if (checkbox) {
+                            checkbox.checked = !checkbox.checked;
+                            updateSelectedCount();
+                        }
+                    }
+                });
+            });
+            
+            // 초기 데이터 로드
+            loadTaxData();
+        });
+        
+        // GNB 토글 기능 초기화
+        function initGNBToggle() {
+            // 1레벨 메뉴 토글
+            const toggleButtons = document.querySelectorAll('.gnb-depth1 .btn-toggle');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 다른 활성 메뉴들 닫기
+                    document.querySelectorAll('.gnb-depth1 .btn-toggle.active').forEach(activeBtn => {
+                        if (activeBtn !== this) {
+                            activeBtn.classList.remove('active');
+                            const activeSubmenu = activeBtn.nextElementSibling;
+                            if (activeSubmenu) {
+                                activeSubmenu.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // 현재 메뉴 토글
+                    if (isActive) {
+                        this.classList.remove('active');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    } else {
+                        this.classList.add('active');
+                        if (submenu) {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+            
+            // 2레벨 메뉴 토글 (3레벨 서브메뉴용)
+            const toggleButtons2 = document.querySelectorAll('.gnb-depth2 .btn-toggle');
+            toggleButtons2.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 같은 2레벨 내의 다른 활성 메뉴들 닫기
+                    const parentLi = this.closest('li');
+                    parentLi.querySelectorAll('.gnb-depth2 .btn-toggle.active').forEach(activeBtn => {
+                        if (activeBtn !== this) {
+                            activeBtn.classList.remove('active');
+                            const activeSubmenu = activeBtn.nextElementSibling;
+                            if (activeSubmenu) {
+                                activeSubmenu.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // 현재 메뉴 토글
+                    if (isActive) {
+                        this.classList.remove('active');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    } else {
+                        this.classList.add('active');
+                        if (submenu) {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+            
+            // 회계업무 메뉴 자동 열기 (현재 페이지)
+            const accountingMenu = document.querySelector('.gnb-depth1 .btn.accounting');
+            if (accountingMenu) {
+                accountingMenu.classList.add('active');
+                const accountingSubmenu = accountingMenu.nextElementSibling;
+                if (accountingSubmenu) {
+                    accountingSubmenu.style.display = 'block';
+                }
+            }
+
+            // 회계보고 서브메뉴 자동 열기
+            const reportMenu = document.querySelector('.gnb-depth2 .btn-toggle');
+            if (reportMenu) {
+                reportMenu.classList.add('active');
+                const reportSubmenu = reportMenu.nextElementSibling;
+                if (reportSubmenu) {
+                    reportSubmenu.style.display = 'block';
+                }
+            }
+        }
+        
+        // 폼 초기화
+        function resetForm() {
+            document.getElementById('categorySelect').value = '';
+            document.getElementById('searchType').value = 'workplace';
+            document.getElementById('searchKeyword').value = '';
+        }
+        
+        // 부과 검색
+        function searchTax() {
+            const category = document.getElementById('categorySelect').value;
+            const searchType = document.getElementById('searchType').value;
+            const keyword = document.getElementById('searchKeyword').value;
+            
+            console.log('검색 조건:', { category, searchType, keyword });
+            
+            // 실제 검색 로직 구현
+            loadTaxData(1, 10, { category, searchType, keyword });
+        }
+        
+        // 부과 데이터 로드
+        function loadTaxData(page = 1, pageSize = 10, searchParams = {}) {
+            console.log('부과 데이터 로드:', { page, pageSize, searchParams });
+            
+            // 실제 AJAX 호출 구현
+            // fetch('/api/tax', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ page, pageSize, ...searchParams })
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     updateTaxTable(data);
+            // });
+        }
+        
+        // 테이블 업데이트
+        function updateTaxTable(data) {
+            const tbody = document.getElementById('taxTableBody');
+            // 테이블 내용 업데이트 로직
+        }
+        
+        // 선택된 항목 수 업데이트
+        function updateSelectedCount() {
+            const checkedBoxes = document.querySelectorAll('tbody input[type="checkbox"]:checked');
+            const countElement = document.getElementById('selectedCount');
+            if (countElement) {
+                countElement.textContent = checkedBoxes.length;
+            }
+        }
+        
+        // 엑셀 다운로드
+        function exportToExcel() {
+            console.log('엑셀 다운로드');
+            // 실제 엑셀 다운로드 로직 구현
+        }
+        
+        // 모달 닫기
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // 부과 등록
+        function registerTax() {
+            const form = document.getElementById('taxRegisterForm');
+            const formData = new FormData(form);
+            
+            console.log('부과 등록:', Object.fromEntries(formData));
+            
+            // 실제 등록 로직 구현
+            // fetch('/api/tax/register', {
+            //     method: 'POST',
+            //     body: formData
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success) {
+            //         alert('부과가 성공적으로 등록되었습니다.');
+            //         closeModal('taxRegisterModal');
+            //         loadTaxData();
+            //     }
+            // });
+            
+            // 임시 성공 처리
+            alert('부과가 성공적으로 등록되었습니다.');
+            closeModal('taxRegisterModal');
+        }
+        
+        // GNB 로드 함수
+        function loadGNB() {
+            console.log('GNB 로드 시작...');
+            const gnbElement = document.getElementById('gnb');
+            if (gnbElement && !gnbElement.hasAttribute('data-loaded')) {
+                const gnbHTML = `
+                    <ul class="gnb-depth1">
+                        <li><a href="../../../index.html" class="btn home"><i data-lucide="home" class="gnb-icon"></i>Main</a></li>
+                        <li><a href="#" class="btn email"><i data-lucide="mail" class="gnb-icon"></i>이메일</a></li>
+                        <li><a href="#" class="btn approval btn-toggle"><i data-lucide="check-square" class="gnb-icon"></i>전자결제</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="#" class="btn btn-toggle"><i data-lucide="folder-check" class="gnb-icon"></i>결제문서함</a>
+                                    <ul class="gnb-depth3">
+                                        <li><a href="#" class="btn">결제대기</a></li>
+                                        <li><a href="#" class="btn">결제완료</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" class="btn"><i data-lucide="users" class="gnb-icon"></i>결제라인관리</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn smartcheck btn-toggle"><i data-lucide="shield" class="gnb-icon"></i>스마트체크</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="/src/pages/smartcheck/index.html" class="btn"><i data-lucide="activity" class="gnb-icon"></i>스마트체크현황</a></li>
+                                <li><a href="/src/pages/workplace-smartcheck/index.html" class="btn"><i data-lucide="building-2" class="gnb-icon"></i>사업장 스마트체크현황</a></li>
+                                <li><a href="/src/pages/workplace-smartcheck-status/index.html" class="btn"><i data-lucide="bar-chart-3" class="gnb-icon"></i>사업장 스마트체크현황</a></li>
+                                <li><a href="/src/pages/monthly-report/index.html" class="btn"><i data-lucide="calendar-days" class="gnb-icon"></i>월간업무보고</a></li>
+                                <li><a href="#" class="btn inspection btn-toggle"><i data-lucide="clipboard-list" class="gnb-icon"></i>점검일지</a>
+                                    <ul class="gnb-depth3">
+                                        <li><a href="/src/pages/inspection-log/index.html" class="btn">회계/안전진단 점검일지</a></li>
+                                        <li><a href="/src/pages/inspection-log/general-inspection.html" class="btn">점검일지</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/src/pages/survey-report/index.html" class="btn"><i data-lucide="file-text" class="gnb-icon"></i>설문조사보고</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn accounting btn-toggle active"><i data-lucide="calculator" class="gnb-icon"></i>회계업무</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="/src/pages/financial-statements/index.html" class="btn"><i data-lucide="bar-chart-3" class="gnb-icon"></i>재무제표</a></li>
+                                <li><a href="#" class="btn btn-toggle"><i data-lucide="file-text" class="gnb-icon"></i>회계보고</a>
+                                    <ul class="gnb-depth3">
+                                        <li><a href="/src/pages/purchase/index.html" class="btn">매입</a></li>
+                                        <li><a href="/src/pages/accounting/tax/index.html" class="btn active">부과</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/src/pages/accounting/vat/index.html" class="btn"><i data-lucide="calculator" class="gnb-icon"></i>부가세산출</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="clock" class="gnb-icon"></i>사업장 근태현황</a></li>
+                                <li><a href="/src/pages/accounting/payroll/index.html" class="btn"><i data-lucide="receipt" class="gnb-icon"></i>사업장 급여명세서 확인</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn sales btn-toggle"><i data-lucide="trending-up" class="gnb-icon"></i>영업관리</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="#" class="btn"><i data-lucide="building-2" class="gnb-icon"></i>영업사업장</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="trending-up" class="gnb-icon"></i>영업수주현황</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="gavel" class="gnb-icon"></i>입찰현황관리</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn workplace btn-toggle"><i data-lucide="building-2" class="gnb-icon"></i>사업장관리</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="#" class="btn"><i data-lucide="building-2" class="gnb-icon"></i>사업장 관리</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="users" class="gnb-icon"></i>사업장 직원관리</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="calendar" class="gnb-icon"></i>사업장 일정관리</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn goods btn-toggle"><i data-lucide="package" class="gnb-icon"></i>물품관리</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="#" class="btn"><i data-lucide="package" class="gnb-icon"></i>물품 등록</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="clipboard-list" class="gnb-icon"></i>물품 목록</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="shopping-cart" class="gnb-icon"></i>물품 구매</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn hr btn-toggle"><i data-lucide="users" class="gnb-icon"></i>인사관리</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="#" class="btn"><i data-lucide="user-plus" class="gnb-icon"></i>직원 등록</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="users" class="gnb-icon"></i>직원 목록</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="calendar" class="gnb-icon"></i>근태 관리</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn site btn-toggle"><i data-lucide="map-pin" class="gnb-icon"></i>현장관리</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="#" class="btn"><i data-lucide="map-pin" class="gnb-icon"></i>현장 등록</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="clipboard-list" class="gnb-icon"></i>현장 목록</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="calendar" class="gnb-icon"></i>현장 일정</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn system btn-toggle"><i data-lucide="settings" class="gnb-icon"></i>시스템관리</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="#" class="btn"><i data-lucide="users" class="gnb-icon"></i>사용자 관리</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="shield" class="gnb-icon"></i>권한 관리</a></li>
+                                <li><a href="#" class="btn"><i data-lucide="settings" class="gnb-icon"></i>시스템 설정</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/src/pages/components/index.html" class="btn components"><i data-lucide="layers" class="gnb-icon"></i>컴포넌트</a></li>
+                    </ul>
+                `;
+                gnbElement.innerHTML = gnbHTML;
+                gnbElement.setAttribute('data-loaded', 'true');
+                gnbElement.className = 'gnb';
+
+                // Lucide 아이콘 초기화
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                    console.log('Lucide Icons initialized successfully');
+                } else {
+                    console.warn('Lucide library not found');
+                }
+            }
+        }
+
+        // GNB 토글 기능 초기화
+        initGNBToggle();
+    </script>
+</body>
+
+</html>

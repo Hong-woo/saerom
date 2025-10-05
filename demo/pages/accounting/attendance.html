@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>사업장 근태현황</title>
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+	<link rel="stylesheet" href="css/slick.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/add.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/lucide-icons.css">
+	<script src="../../../assets/js/lucide.js"></script>
+	<script src="../../../html_cms/js/jquery-1.11.3.js"></script>
+	<script src="../../../html_cms/js/jquery-ui.min.js"></script>
+	<script src="../../../html_cms/js/slick.js"></script>
+	<script src="../../../js/common.js"></script>
+	
+	<style>
+		/* GroundFit 헤더 구조 적용 */
+		#header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 321px;
+			padding: 188px 24px 24px;
+			min-height: 100vh;
+			overflow-y: auto;
+			z-index: 1000;
+		}
+		
+		#header h1 {
+			position: absolute;
+			top: 79px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		
+		#header h1 img {
+			vertical-align: top;
+			width: 180px;
+			height: auto;
+		}
+		
+		#header .quick-nav {
+			display: none;
+		}
+		
+		#gnb {
+			position: relative;
+			z-index: 1000;
+		}
+		
+		.container {
+			margin-left: 321px;
+			position: relative;
+			width: calc(100% - 321px);
+			min-height: 100vh;
+			border-left: 1px solid #ccc;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- .skip-nav -->
+	<div class="skip-nav">
+		<a href="#gnb" class="btn">본문 바로가기</a>
+		<a href="#contents" class="btn">주메뉴 바로가기</a>
+	</div>
+	<div class="wrap clearfix">
+		<!-- #header start // -->
+		<div id="header">
+			<h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+			<ul class="quick-nav">
+				<li><a href="#" class="btn">마이페이지</a></li>
+				<li><a href="#" class="btn">로그아웃</a></li>
+			</ul>
+			<nav id="gnb">
+				<!-- GNB will be loaded here -->
+			</nav>
+		</div>
+		<!-- // #header end -->
+		<div class="container">
+			<div class="contents-top clearfix">
+				<p class="title">Management System</p>
+				<div class="snb">
+					<ul class="snb-depth1 clearfix">
+						<li>
+							<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+							<ul class="snb-depth2">
+								<li><a href="#" class="btn">정보변경 정보</a></li>
+								<li><a href="#" class="btn">로그인 관리</a></li>
+								<li><a href="#" class="btn">로그아웃</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="contents" class="contents-body">
+				<h2 class="blind">본문</h2>
+				<div class="contents-title">
+					<h3 class="title-page">사업장 근태현황</h3>
+					<a href="#" class="btn btn-back">뒤로가기</a>
+				</div>
+
+				<!-- .calculate-wrap start // -->
+				<div class="calculate-wrap">
+					<!-- 검색 필터 -->
+					<form>
+						<ul class="form-style-02 sports">
+							<li class="w03">
+								<div class="form-title">구분</div>
+								<div class="form-con">
+									<select id="categorySelect" class="select-01">
+										<option value="">전체</option>
+										<option value="all">전체</option>
+										<option value="present">출근</option>
+										<option value="absent">결근</option>
+										<option value="late">지각</option>
+										<option value="early">조퇴</option>
+									</select>
+								</div>
+							</li>
+							<li class="w03">
+								<div class="form-title">검색구분</div>
+								<div class="form-con">
+									<select id="searchType" class="select-01">
+										<option value="workplace">사업장</option>
+										<option value="employee">직원명</option>
+										<option value="department">부서</option>
+									</select>
+								</div>
+							</li>
+							<li class="w01">
+								<div class="form-title">키워드</div>
+								<div class="form-con">
+									<input type="text" class="input-02" id="searchKeyword" placeholder="검색어를 입력하세요">
+								</div>
+							</li>
+						</ul>
+						<div class="form-bottom-01">
+							<button type="button" class="btn btn-blackline-02" onclick="resetForm()">초기화</button>
+							<button type="button" class="btn btn-black-02" onclick="searchAttendance()">검색</button>
+						</div>
+					</form>
+
+					<!-- 상단 요약 통계 -->
+					<div class="summary-total" style="display:flex;gap:8px;align-items:center;margin:8px 0 14px;">
+						<div
+							style="flex:0 0 180px;border:1px solid #eee;border-radius:6px;padding:10px 12px;display:flex;justify-content:space-between;">
+							<strong>총 직원</strong><span>45명</span>
+						</div>
+						<div
+							style="flex:0 0 180px;border:1px solid #eee;border-radius:6px;padding:10px 12px;display:flex;justify-content:space-between;">
+							<strong>출근</strong><span>42명</span>
+						</div>
+						<div
+							style="flex:0 0 180px;border:1px solid #eee;border-radius:6px;padding:10px 12px;display:flex;justify-content:space-between;">
+							<strong>결근</strong><span>2명</span>
+						</div>
+						<div
+							style="flex:0 0 180px;border:1px solid #eee;border-radius:6px;padding:10px 12px;display:flex;justify-content:space-between;">
+							<strong>지각</strong><span>1명</span>
+						</div>
+						<div style="flex:1 1 auto;"></div>
+					</div>
+
+					<!-- .board-top -->
+					<div class="board-top">
+						<div class="left">
+							<label for="pageSize" class="blind">보여줄 상품 갯수</label>
+							<select id="pageSize" class="select-01">
+								<option value="10">10개</option>
+								<option value="20">20개</option>
+								<option value="50">50개</option>
+								<option value="100">100개</option>
+							</select>
+							<label for="selectAll" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+							<div class="guide-board">
+								<strong id="selectedCount">0</strong>
+								<span>개 선택 됨</span>
+							</div>
+						</div>
+						<div class="right">
+							<a href="#attendanceRegisterModal" class="btn btn-white-01 btn-popup-open">근태 등록</a>
+							<a href="#" class="btn btn-excel" onclick="exportToExcel()">엑셀 다운로드</a>
+						</div>
+						<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+					</div>
+					
+					<!-- table -->
+					<div class="table-style-04 x-scroll">
+						<table style="width:1600px;">
+							<caption>사업장 근태현황</caption>
+							<colgroup>
+								<col style="width:70px"><!-- 번호 -->
+								<col style="width:120px"><!-- 사업장 -->
+								<col style="width:120px"><!-- 부서 -->
+								<col style="width:100px"><!-- 직원명 -->
+								<col style="width:120px"><!-- 출근시간 -->
+								<col style="width:120px"><!-- 퇴근시간 -->
+								<col style="width:100px"><!-- 근무시간 -->
+								<col style="width:100px"><!-- 상태 -->
+								<col style="width:140px"><!-- 비고 -->
+							</colgroup>
+						
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">사업장</th>
+									<th scope="col">부서</th>
+									<th scope="col">직원명</th>
+									<th scope="col">출근시간</th>
+									<th scope="col">퇴근시간</th>
+									<th scope="col">근무시간</th>
+									<th scope="col">상태</th>
+									<th scope="col">비고</th>
+								</tr>
+							</thead>
+						
+							<tbody id="attendanceTableBody">
+								<!-- 직원 1 -->
+								<tr>
+									<td>1</td>
+									<td>경기광주역금호리첸시아</td>
+									<td>경비팀</td>
+									<td>김영수</td>
+									<td>09:00</td>
+									<td>18:00</td>
+									<td>9시간</td>
+									<td><span class="box-round-01">정상</span></td>
+									<td>-</td>
+								</tr>
+						
+								<!-- 직원 2 -->
+								<tr>
+									<td>2</td>
+									<td>경기광주역금호리첸시아</td>
+									<td>미화팀</td>
+									<td>이미영</td>
+									<td>09:15</td>
+									<td>18:15</td>
+									<td>9시간</td>
+									<td><span class="box-round-01 red-01">지각</span></td>
+									<td>지각 15분</td>
+								</tr>
+
+								<!-- 직원 3 -->
+								<tr>
+									<td>3</td>
+									<td>쥬네브쎈월드</td>
+									<td>경비팀</td>
+									<td>박민수</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td><span class="box-round-01 red-01">결근</span></td>
+									<td>개인사유</td>
+								</tr>
+
+								<!-- 직원 4 -->
+								<tr>
+									<td>4</td>
+									<td>쥬네브쎈월드</td>
+									<td>미화팀</td>
+									<td>최지영</td>
+									<td>08:45</td>
+									<td>17:30</td>
+									<td>8시간 45분</td>
+									<td><span class="box-round-01">정상</span></td>
+									<td>-</td>
+								</tr>
+
+								<!-- 직원 5 -->
+								<tr>
+									<td>5</td>
+									<td>부산해운대아파트</td>
+									<td>경비팀</td>
+									<td>정현우</td>
+									<td>09:00</td>
+									<td>16:30</td>
+									<td>7시간 30분</td>
+									<td><span class="box-round-01 red-01">조퇴</span></td>
+									<td>조퇴 1시간 30분</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<!-- paging -->
+					<div class="paging-01">
+						<a href="#" class="btn first">처음으로</a>
+						<a href="#" class="btn prev">이전</a>
+						<a href="#" class="btn">1</a>
+						<a href="#" class="btn active" title="현재 페이지">2</a>
+						<a href="#" class="btn">3</a>
+						<a href="#" class="btn">4</a>
+						<a href="#" class="btn">5</a>
+						<a href="#" class="btn next">다음</a>
+						<a href="#" class="btn last">마지막으로</a>
+					</div>
+
+				</div>
+				<!-- // .calculate-wrap end -->
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			console.log('사업장 근태현황 페이지 로드 완료');
+		});
+
+
+
+		// 폼 초기화
+		function resetForm() {
+			document.getElementById('categorySelect').value = '';
+			document.getElementById('searchType').value = 'workplace';
+			document.getElementById('searchKeyword').value = '';
+		}
+
+		// 근태 검색
+		function searchAttendance() {
+			const category = document.getElementById('categorySelect').value;
+			const searchType = document.getElementById('searchType').value;
+			const keyword = document.getElementById('searchKeyword').value;
+			
+			console.log('검색 조건:', { category, searchType, keyword });
+			
+			// 실제 검색 로직 구현
+			loadAttendanceData(1, 10, { category, searchType, keyword });
+		}
+
+		// 근태 데이터 로드
+		function loadAttendanceData(page = 1, pageSize = 10, searchParams = {}) {
+			console.log('근태 데이터 로드:', { page, pageSize, searchParams });
+			
+			// 실제 AJAX 호출 구현
+			// fetch('/api/attendance', {
+			//     method: 'POST',
+			//     headers: { 'Content-Type': 'application/json' },
+			//     body: JSON.stringify({ page, pageSize, ...searchParams })
+			// })
+			// .then(response => response.json())
+			// .then(data => {
+			//     updateAttendanceTable(data);
+			// });
+		}
+
+		// 테이블 업데이트
+		function updateAttendanceTable(data) {
+			const tbody = document.getElementById('attendanceTableBody');
+			// 테이블 내용 업데이트 로직
+		}
+
+		// 선택된 항목 수 업데이트
+		function updateSelectedCount() {
+			const checkedBoxes = document.querySelectorAll('tbody input[type="checkbox"]:checked');
+			const countElement = document.getElementById('selectedCount');
+			if (countElement) {
+				countElement.textContent = checkedBoxes.length;
+			}
+		}
+
+		// 엑셀 다운로드
+		function exportToExcel() {
+			console.log('엑셀 다운로드');
+			// 실제 엑셀 다운로드 로직 구현
+		}
+	</script>
+</body>
+
+</html>

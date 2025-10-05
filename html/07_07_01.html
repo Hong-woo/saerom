@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직원승인관리</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/add.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+  </head>
+
+  <body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+      <a href="#gnb" class="btn">본문 바로가기</a>
+      <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+      <!-- #header start // -->
+      <div id="header">
+
+      </div>
+      <!-- // #header end -->
+      <div class="container">
+        <div class="contents-top clearfix">
+          <p class="title">Management System</p>
+          <div class="snb">
+            <ul class="snb-depth1 clearfix">
+              <li>
+                <a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                <ul class="snb-depth2">
+                  <li><a href="#" class="btn">정보변경 정보</a></li>
+                  <li><a href="#" class="btn">로그인 관리</a></li>
+                  <li><a href="#" class="btn">로그아웃</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="contents" class="contents-body">
+
+          <h2 class="blind">본문</h2>
+          <div class="contents-title">
+            <h3 class="title-page">직원승인관리(재직자)</h3>
+            <a href="#none" class="btn btn-back">뒤로가기</a>
+            <div class="btns-right">
+              <a href="#none" class="btn btn-toggle">프로필 관리 메뉴 열고 닫기</a>
+              <div class="btns-box clearfix">
+                <a href="#none" class="btn btn-pc-blue-01">목록</a>
+                <a href="#none" class="btn btn-pc-white-01">칼랜다</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="calculate-wrap">
+
+            <form>
+              <ul class="form-style-02 sports">
+                <li class="w03">
+                  <div class="form-title">구분</div>
+                  <div class="form-con">
+                    <select id="idsearch01" class="select-01">
+                      <option value="">전체</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="w03">
+                  <div class="form-title">검색구분</div>
+                  <div class="form-con">
+                    <select id="idsearch01" class="select-01">
+                      <option value="">사업장</option>
+                    </select>
+                  </div>
+                </li>
+                <li class="w01">
+                  <div class="form-title">키워드</div>
+                  <div class="form-con">
+                    <input type="text" class="input-02" id="idsearch02">
+                  </div>
+                </li>
+              </ul>
+              <div class="form-bottom-01">
+                <a href="#" class="btn btn-blackline-02">초기화</a>
+                <a href="#" class="btn btn-black-02">검색</a>
+              </div>
+            </form>
+          </div>
+
+          <!-- .board-top -->
+          <div class="board-top">
+            <div class="left">
+              <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+              <select id="idselect01" class="select-01">
+                <option value="">10개</option>
+              </select>
+              <a href="#popup-alert-01" class="btn btn-blue-01 btn-popup-open">등록</a>
+            </div>
+            <div class="right">
+              <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+            </div>
+            <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+          </div>
+          <!-- table -->
+          <div class="table-style-03">
+            <table>
+              <caption>직원 승인관리</caption>
+              <thead>
+                <tr>
+                  <th scope="col">번호</th>
+                  <th scope="col">이름</th>
+                  <th scope="col">본부</th>
+                  <th scope="col">사업장명</th>
+                  <th scope="col">직책</th>
+                  <th scope="col">생년월일</th>
+                  <th scope="col">입사일자</th>
+                  <th scope="col">개인정보 제공 및<br> 활용 동의서</th>
+                  <th scope="col">관리</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 서명 대기 상태 -->
+                <tr>
+                  <td>100</td>
+                  <td>김남경</td>
+                  <td>서울2본부</td>
+                  <td>공덕래미안5차상가</td>
+                  <td>경리주임</td>
+                  <td>1972-10</td>
+                  <td>2021-12-10</td>
+                  <td><span class="box-round-01 green-01">서명</span></td>
+                  <td><span class="box-round-01 gray-01">미승인</span></td>
+                </tr>
+            
+                <!-- 서명 완료 + 승인 대기 -->
+                <tr>
+                  <td>101</td>
+                  <td>김남경</td>
+                  <td>서울2본부</td>
+                  <td>공덕래미안5차상가</td>
+                  <td>경리주임</td>
+                  <td>1972-10</td>
+                  <td>2021-12-10</td>
+                  <td><span class="box-round-01 blue-01">서명완료</span></td>
+                  <td><span class="box-round-01 blue-01">승인</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <!-- paging -->
+          <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+            <a href="#" class="btn first">처음으로</a>
+            <a href="#" class="btn prev">이전</a>
+            <a href="#" class="btn">1</a>
+            <a href="#" class="btn active" title="현재 페이지">2</a>
+            <a href="#" class="btn">3</a>
+            <a href="#" class="btn">4</a>
+            <a href="#" class="btn">5</a>
+            <a href="#" class="btn next">다음</a>
+            <a href="#" class="btn last">마지막으로</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' data:;">
+    <title>점검일지 - SAEROM 용역관리시스템</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23495EF4'/><text x='16' y='22' font-family='Arial' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>S</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../../html_cms/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../../html_cms/css/slick.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../html_cms/css/style.css">
+    <link rel="stylesheet" href="../../../html_cms/css/add.css">
+    <link rel="stylesheet" href="../../../assets/css/lucide-icons.css">
+    <link rel="stylesheet" href="../../../css/common.css">
+    <link rel="stylesheet" href="inspection-log.css">
+    
+    <!-- 고정 사이드바 스타일 -->
+    <style>
+        #header {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 321px !important;
+            height: 100vh !important;
+            padding: 188px 24px 24px !important;
+            background-color: #fff !important;
+            border-right: 1px solid #e0e0e0 !important;
+            overflow-y: auto !important;
+            z-index: 1000 !important;
+        }
+        
+        #gnb {
+            position: relative !important;
+            z-index: 1000 !important;
+        }
+        
+        .container {
+            margin-left: 321px !important;
+            width: calc(100% - 321px) !important;
+            min-height: 100vh !important;
+            background-color: #f8f9fa !important;
+        }
+        
+        #header h1 img {
+            width: 180px !important;
+            height: auto !important;
+        }
+        
+        .quick-nav {
+            display: none !important;
+        }
+        
+        @media (max-width: 1600px) {
+            #header {
+                width: 280px !important;
+            }
+            .container {
+                margin-left: 280px !important;
+                width: calc(100% - 280px) !important;
+            }
+            #header h1 img {
+                width: 160px !important;
+            }
+        }
+        
+        @media (max-width: 1300px) {
+            #header {
+                width: 260px !important;
+            }
+            .container {
+                margin-left: 260px !important;
+                width: calc(100% - 260px) !important;
+            }
+            #header h1 img {
+                width: 140px !important;
+            }
+        }
+    </style>
+    
+    <!-- Lucide Icons -->
+    <script src="../../../assets/js/lucide.js"></script>
+    
+    <!-- JavaScript -->
+    <script src="../../../html_cms/js/jquery-1.11.3.js"></script>
+    <script src="../../../html_cms/js/jquery-ui.min.js"></script>
+    <script src="../../../html_cms/js/slick.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../assets/js/lucide-utils.js"></script>
+    <script>
+        // loadGNB 함수 정의 (js/common.js에서 복사)
+        function loadGNB() {
+            console.log('=== loadGNB 함수 시작 ===');
+            const gnbElement = document.getElementById('gnb');
+            console.log('GNB 요소 찾기:', gnbElement ? '성공' : '실패');
+            
+            if (gnbElement) {
+                console.log('GNB 요소 data-loaded 속성:', gnbElement.getAttribute('data-loaded'));
+                console.log('GNB 현재 innerHTML 길이:', gnbElement.innerHTML.length);
+            }
+            
+            if (gnbElement && !gnbElement.hasAttribute('data-loaded')) {
+                console.log('GNB HTML 직접 생성 시작...');
+                
+                // GroundFit 구조 기반으로 개선된 GNB HTML
+                const gnbHTML = `
+                    <ul class="gnb-depth1">
+                        <li><a href="../../../index.html" class="btn home"><i data-lucide="home" class="gnb-icon"></i>Main</a></li>
+                        <li><a href="#" class="btn email"><i data-lucide="mail" class="gnb-icon"></i>이메일</a></li>
+                        <li><a href="#" class="btn approval btn-toggle"><i data-lucide="check-square" class="gnb-icon"></i>전자결제</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="#" class="btn btn-toggle"><i data-lucide="folder-check" class="gnb-icon"></i>결제문서함</a>
+                                    <ul class="gnb-depth3">
+                                        <li><a href="#" class="btn">결제대기</a></li>
+                                        <li><a href="#" class="btn">결제완료</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" class="btn"><i data-lucide="users" class="gnb-icon"></i>결제라인관리</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn smartcheck btn-toggle"><i data-lucide="shield" class="gnb-icon"></i>스마트체크</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="../../../src/pages/smartcheck/index.html" class="btn"><i data-lucide="activity" class="gnb-icon"></i>스마트체크현황</a></li>
+                                <li><a href="../../../src/pages/workplace-smartcheck/index.html" class="btn"><i data-lucide="building-2" class="gnb-icon"></i>사업장 스마트체크현황</a></li>
+                                <li><a href="../../../src/pages/workplace-smartcheck-status/index.html" class="btn"><i data-lucide="bar-chart-3" class="gnb-icon"></i>사업장 스마트체크현황</a></li>
+                                <li><a href="../../../src/pages/monthly-report/index.html" class="btn"><i data-lucide="calendar-days" class="gnb-icon"></i>월간업무보고</a></li>
+                                <li><a href="#" class="btn inspection btn-toggle"><i data-lucide="clipboard-list" class="gnb-icon"></i>점검일지</a>
+                                    <ul class="gnb-depth3">
+                                        <li><a href="../../../src/pages/inspection-log/index.html" class="btn">회계/안전진단 점검일지</a></li>
+                                        <li><a href="../../../src/pages/inspection-log/general-inspection.html" class="btn active">점검일지</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="../../../src/pages/survey-report/index.html" class="btn"><i data-lucide="file-text" class="gnb-icon"></i>설문조사보고</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn accounting btn-toggle"><i data-lucide="calculator" class="gnb-icon"></i>회계업무</a>
+                            <ul class="gnb-depth2">
+                                <li><a href="../../../src/pages/financial-statements/index.html" class="btn"><i data-lucide="bar-chart-3" class="gnb-icon"></i>재무제표</a></li>
+                                <li><a href="#" class="btn btn-toggle"><i data-lucide="file-text" class="gnb-icon"></i>회계보고</a>
+                                    <ul class="gnb-depth3">
+                                        <li><a href="../../../src/pages/purchase/index.html" class="btn">매입</a></li>
+                                        <li><a href="../../../src/pages/accounting/tax/index.html" class="btn">부과</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="../../../src/pages/accounting/vat/index.html" class="btn"><i data-lucide="calculator" class="gnb-icon"></i>부가세산출</a></li>
+                                <li><a href="../../../src/pages/accounting/attendance/index.html" class="btn"><i data-lucide="clock" class="gnb-icon"></i>사업장 근태현황</a></li>
+                                <li><a href="../../../src/pages/accounting/payroll/index.html" class="btn"><i data-lucide="receipt" class="gnb-icon"></i>사업장 급여명세서 확인</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn sales"><i data-lucide="trending-up" class="gnb-icon"></i>영업관리</a></li>
+                        <li><a href="#" class="btn workplace"><i data-lucide="building" class="gnb-icon"></i>사업장관리</a></li>
+                        <li><a href="#" class="btn inventory"><i data-lucide="package" class="gnb-icon"></i>물품관리</a></li>
+                        <li><a href="#" class="btn hr"><i data-lucide="users" class="gnb-icon"></i>인사관리</a></li>
+                        <li><a href="#" class="btn site"><i data-lucide="map-pin" class="gnb-icon"></i>현장관리</a></li>
+                        <li><a href="#" class="btn system"><i data-lucide="settings" class="gnb-icon"></i>시스템관리</a></li>
+                        <li><a href="../../../src/pages/components/index.html" class="btn components"><i data-lucide="layers" class="gnb-icon"></i>컴포넌트</a></li>
+                    </ul>
+                `;
+                
+                gnbElement.innerHTML = gnbHTML;
+                gnbElement.setAttribute('data-loaded', 'true');
+                
+                // 3레벨 메뉴 숨기기
+                const $depth3Menus = $('#gnb .gnb-depth3');
+                $depth3Menus.hide();
+                $depth3Menus.css('display', 'none');
+                $depth3Menus.attr('style', 'display: none !important;');
+                
+                console.log('HTML 삽입 후 GNB innerHTML 길이:', gnbElement.innerHTML.length);
+                console.log('GNB HTML 삽입 완료, data-loaded 속성 설정됨');
+                
+                // Lucide 아이콘 재초기화
+                if (typeof lucide !== 'undefined') {
+                    console.log('Lucide 아이콘 재초기화 시작...');
+                    lucide.createIcons();
+                    console.log('Lucide 아이콘 재초기화 완료');
+                }
+                
+                // GNB 내부 요소 확인
+                console.log('GNB 내부 요소 확인:');
+                console.log('- 1레벨 메뉴 개수:', $('#gnb .gnb-depth1 > li').length);
+                console.log('- 토글 버튼 개수:', $('#gnb .btn-toggle').length);
+                console.log('- 2레벨 토글 버튼 개수:', $('#gnb .gnb-depth2 .btn-toggle').length);
+                console.log('- 점검일지 버튼 존재:', $('#gnb a:contains("점검일지")').length > 0);
+                console.log('- 점검일지 3레벨 메뉴 존재:', $('#gnb .gnb-depth3').length);
+                console.log('GNB가 동적으로 생성되었습니다.');
+            }
+            console.log('=== loadGNB 함수 종료 ===');
+        }
+
+        // SAEROM Lucide 아이콘 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lucide 아이콘 초기화
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide Icons initialized successfully');
+            } else {
+                console.warn('Lucide library not found');
+            }
+            
+            // GNB 토글 기능 초기화
+            initGNBToggle();
+            
+            // Datepicker 초기화
+            if (typeof $.fn.datepicker !== 'undefined') {
+                $('.input-datepicker').datepicker({
+                    dateFormat: 'yy.mm.dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: '2020:2030'
+                });
+            }
+            
+            // 점검일지 페이지 로드 시작
+            console.log('점검일지 페이지 로드 시작');
+            
+            // GNB 동적 로드
+            loadGNB();
+            
+            
+            // 검색 기능
+            $('.btn-black-02').on('click', function(e) {
+                e.preventDefault();
+                console.log('점검일지 검색 기능이 구현되었습니다.');
+                alert('검색 기능이 구현되었습니다.');
+            });
+            
+            // 초기화 기능
+            $('.btn-blackline-02').on('click', function(e) {
+                e.preventDefault();
+                $('form')[0].reset();
+                console.log('검색 조건이 초기화되었습니다.');
+            });
+            
+            // 엑셀 다운로드 기능
+            $('.btn-excel').on('click', function(e) {
+                e.preventDefault();
+                console.log('점검일지 데이터를 Excel로 다운로드합니다.');
+                alert('Excel 다운로드 기능이 구현되었습니다.');
+            });
+            
+            // 점검일지 등록 기능
+            $('.btn-white-01.btn-popup-open').on('click', function(e) {
+                e.preventDefault();
+                console.log('점검일지 등록 팝업이 열립니다.');
+                alert('점검일지 등록 팝업이 구현되었습니다.');
+            });
+            
+            // 상태별 버튼 클릭 이벤트
+            $('.box-round-01').on('click', function(e) {
+                e.preventDefault();
+                var status = $(this).text();
+                var month = $(this).closest('td').index() - 4; // 5번째 컬럼부터 월별 데이터
+                console.log(month + '월 ' + status + ' 버튼이 클릭되었습니다.');
+            });
+        });
+        
+        // GNB 토글 기능
+        function initGNBToggle() {
+            // 1레벨 메뉴 토글
+            $(document).on('click', '#gnb .gnb-depth1 > li > .btn-toggle', function(e) {
+                console.log('1레벨 메뉴 클릭됨:', $(this).text());
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 모든 1레벨 메뉴에서 active 클래스 제거
+                $('#gnb .gnb-depth1 > li > .btn').removeClass('active');
+                
+                // 다른 모든 서브메뉴 닫기
+                $('#gnb .gnb-depth2').hide();
+                
+                // 현재 메뉴 활성화 및 서브메뉴 토글
+                var $submenu = $(this).siblings('.gnb-depth2');
+                if ($submenu.is(':visible')) {
+                    $submenu.hide();
+                } else {
+                    $(this).addClass('active');
+                    $submenu.show();
+                }
+                
+                console.log('1레벨 메뉴 토글 완료');
+            });
+            
+            // 2레벨 메뉴 토글
+            $(document).on('click', '#gnb .gnb-depth2 > li > .btn-toggle', function(e) {
+                console.log('2레벨 메뉴 클릭됨:', $(this).text());
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 같은 2레벨 내의 다른 서브메뉴 닫기
+                $(this).parent().siblings().find('.gnb-depth3').hide();
+                $(this).parent().siblings().find('.btn-toggle').removeClass('active');
+                
+                // 현재 메뉴 활성화 및 서브메뉴 토글
+                var $submenu = $(this).siblings('.gnb-depth3');
+                if ($submenu.is(':visible')) {
+                    $submenu.hide();
+                    $(this).removeClass('active');
+                } else {
+                    $(this).addClass('active');
+                    $submenu.show();
+                }
+                
+                console.log('2레벨 메뉴 토글 완료');
+            });
+            
+            // 스마트체크 서브메뉴 자동 열기 및 점검일지 활성화
+            setTimeout(function() {
+                $('#gnb .btn.smartcheck').addClass('active');
+                $('#gnb .gnb-depth1 > li > .btn.smartcheck').siblings('.gnb-depth2').show();
+                $('#gnb .btn.inspection').addClass('active');
+                $('#gnb .gnb-depth2 > li > .btn.inspection').siblings('.gnb-depth3').show();
+                $('#gnb .btn[href*="general-inspection"]').addClass('active');
+                console.log('점검일지 메뉴 활성화 완료');
+            }, 100);
+        }
+
+        // GNB 토글 기능 초기화 함수
+        function initGNBToggle() {
+            // 1레벨 메뉴 토글
+            $(document).on('click', '#gnb .gnb-depth1 > li > .btn-toggle', function(e) {
+                console.log('1레벨 메뉴 클릭됨:', $(this).text());
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 다른 1레벨 메뉴의 서브메뉴 닫기 및 active 클래스 제거
+                $(this).parent().siblings().find('.gnb-depth2').hide();
+                $(this).parent().siblings().find('.btn-toggle').removeClass('active');
+                
+                // 현재 메뉴의 서브메뉴 토글
+                var $submenu = $(this).siblings('.gnb-depth2');
+                var isVisible = $submenu.is(':visible');
+                
+                if (isVisible) {
+                    $submenu.hide();
+                    $(this).removeClass('active');
+                } else {
+                    $(this).addClass('active');
+                    $submenu.show();
+                }
+                
+                console.log('1레벨 메뉴 토글 완료');
+            });
+
+            // 2레벨 메뉴 토글
+            $(document).on('click','#gnb .gnb-depth2 > li > .btn-toggle',function(e){
+                console.log('2레벨 메뉴 클릭됨:', $(this).text());
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 같은 2레벨 내의 다른 서브메뉴 닫기 및 active 클래스 제거
+                $(this).parent().siblings().find('.gnb-depth3').hide();
+                $(this).parent().siblings().find('.btn-toggle').removeClass('active');
+                
+                // 현재 메뉴의 서브메뉴 토글
+                var $submenu = $(this).siblings('.gnb-depth3');
+                var currentDisplay = $submenu.css('display');
+                var isHidden = currentDisplay === 'none';
+                
+                console.log('서브메뉴 현재 상태:', currentDisplay, '숨겨져 있는가:', isHidden);
+                
+                if (isHidden) {
+                    $(this).addClass('active');
+                    $submenu.show();
+                    console.log('서브메뉴 표시');
+                } else {
+                    $submenu.hide();
+                    $submenu.css('display', 'none');
+                    $submenu.attr('style', 'display: none !important;');
+                    $(this).removeClass('active');
+                    console.log('서브메뉴 숨김');
+                }
+                
+                console.log('2레벨 메뉴 토글 완료');
+            });
+
+            // 스마트체크 -> 점검일지 -> 점검일지 메뉴 자동 열기
+            setTimeout(function() {
+                // 스마트체크 메뉴 열기
+                $('#gnb .gnb-depth1 > li > .btn-toggle:contains("스마트체크")').click();
+                
+                setTimeout(function() {
+                    // 점검일지 메뉴 열기
+                    $('#gnb .gnb-depth2 > li > .btn-toggle:contains("점검일지")').click();
+                }, 100);
+            }, 500);
+        }
+    </script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu"><i data-lucide="menu" class="quick-nav-icon"></i>메뉴</a></li>
+                <li><a href="#" class="btn approval"><i data-lucide="check-square" class="quick-nav-icon"></i>전자결제</a></li>
+                <li><a href="../../../index.html" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
+                <li><a href="#" class="btn workplace"><i data-lucide="building-2" class="quick-nav-icon"></i>사업장관리</a></li>
+                <li><a href="#" class="btn hr"><i data-lucide="users" class="quick-nav-icon"></i>직원관리</a></li>
+                <li><a href="#" class="btn system"><i data-lucide="settings" class="quick-nav-icon"></i>시스템</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close"><i data-lucide="x" class="icon-close"></i>닫기</a>
+                <!-- GNB는 JavaScript로 동적 로드됩니다 -->
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">점검일지</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <!-- KPI Cards Section -->
+                <ul class="main-top-warp mt40">
+                    <li style="width: 100%;">
+                        <div class="main-top">
+                            <div class="info">
+                                <div class="text">
+                                    <p class="name">점검일지</p>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <p class="title today">전체 사업장</p>
+                                    <p class="num">302개</p>
+                                </li>
+                                <li>
+                                    <p class="title today">완료 건수</p>
+                                    <p class="num">45건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">미작성 건수</p>
+                                    <p class="num">257건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">완료율</p>
+                                    <p class="num">14.9%</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Search Filter Section -->
+                <div class="calculate-wrap">
+                    <form>
+                        <ul class="form-style-02 sports">
+                            <li class="w03">
+                                <div class="form-title">년도</div>
+                                <div class="form-con">
+                                    <select id="idsearch00" class="select-01">
+                                        <option value="">전체</option>
+                                        <option value="2025" selected>2025년</option>
+                                        <option value="2024">2024년</option>
+                                        <option value="2023">2023년</option>
+                                        <option value="2022">2022년</option>
+                                        <option value="2021">2021년</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w03">
+                                <div class="form-title">용역구분</div>
+                                <div class="form-con">
+                                    <select id="idsearch01" class="select-01">
+                                        <option value="">전체</option>
+                                        <option value="경비">경비</option>
+                                        <option value="미화">미화</option>
+                                        <option value="소독">소독</option>
+                                        <option value="조경">조경</option>
+                                        <option value="시설관리">시설관리</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w03">
+                                <div class="form-title">검색구분</div>
+                                <div class="form-con">
+                                    <select id="idsearch02" class="select-01">
+                                        <option value="">사업장</option>
+                                        <option value="사업장명">사업장명</option>
+                                        <option value="현장소장명">현장소장명</option>
+                                        <option value="본부">본부</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w01">
+                                <div class="form-title">키워드</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-02" id="idsearch03" placeholder="검색어를 입력하세요">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="form-bottom-01">
+                            <a href="#" class="btn btn-blackline-02">초기화</a>
+                            <a href="#" class="btn btn-black-02">검색</a>
+                        </div>
+                    </form>
+
+                    <!-- Board Top Section -->
+                    <div class="board-top">
+                        <div class="left">
+                            <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+                            <select id="idselect01" class="select-01">
+                                <option value="">10개</option>
+                                <option value="20">20개</option>
+                                <option value="50">50개</option>
+                                <option value="100">100개</option>
+                            </select>
+                        </div>
+                        <div class="right">
+                            <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+                        </div>
+                        <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                    </div>
+
+                    <!-- Inspection Log Table -->
+                    <div class="table-style-02 x-scroll">
+                        <table style="width: 2000px; min-width: 100%;">
+                            <caption>점검일지 현황</caption>
+                            <colgroup>
+                                <col style="width:70px"><!-- 번호 -->
+                                <col style="width:100px"><!-- 용역구분 -->
+                                <col style="width:150px"><!-- 업무구분/장소 -->
+                                <col style="width:120px"><!-- 본부 -->
+                                <col><!-- 사업장명 -->
+                                <col style="width:150px"><!-- 단지명 -->
+                                <col style="width:160px"><!-- 현장소장명 -->
+                                <col style="width:100px"><!-- 해당연도 -->
+                                <!-- 1~12월은 자동 가변 -->
+                            </colgroup>
+                        
+                            <thead>
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">용역구분</th>
+                                    <th scope="col">업무구분/장소</th>
+                                    <th scope="col">본부</th>
+                                    <th scope="col">사업장명</th>
+                                    <th scope="col">단지명</th>
+                                    <th scope="col">현장소장명</th>
+                                    <th scope="col">해당연도</th>
+                                    <th scope="col">1월</th>
+                                    <th scope="col">2월</th>
+                                    <th scope="col">3월</th>
+                                    <th scope="col">4월</th>
+                                    <th scope="col">5월</th>
+                                    <th scope="col">6월</th>
+                                    <th scope="col">7월</th>
+                                    <th scope="col">8월</th>
+                                    <th scope="col">9월</th>
+                                    <th scope="col">10월</th>
+                                    <th scope="col">11월</th>
+                                    <th scope="col">12월</th>
+                                </tr>
+                            
+                                <!-- 월별 점검현황 합계 행 -->
+                                <tr style="background:#F7F8FC;">
+                                    <th scope="row" colspan="8" style="text-align:left;padding-left:16px;">점검현황</th>
+                                    <th>8/302<br><span style="color:#e74c3c;">(2.6%)</span></th>
+                                    <th>3/302<br><span style="color:#e74c3c;">(1.0%)</span></th>
+                                    <th>2/302<br><span style="color:#e74c3c;">(0.7%)</span></th>
+                                    <th>12/302<br><span style="color:#e74c3c;">(4.0%)</span></th>
+                                    <th>5/302<br><span style="color:#e74c3c;">(1.7%)</span></th>
+                                    <th>15/302<br><span style="color:#e74c3c;">(5.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <!-- 사업장 1 -->
+                                <tr>
+                                    <td>7</td>
+                                    <td>경비</td>
+                                    <td>순찰</td>
+                                    <td>ACE 1본부</td>
+                                    <td>경기광주역금호리첸시아</td>
+                                    <td>금호리첸시아 아파트</td>
+                                    <td>김현장</td>
+                                    <td>2025년</td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=02" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=03" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=05" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=07" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=08" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=09" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=10" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=11" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=경기광주역금호리첸시아&complex=금호리첸시아 아파트&manager=김현장&serviceType=security&workType=patrol&year=2025&month=12" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                        
+                                <!-- 사업장 2 -->
+                                <tr>
+                                    <td>8</td>
+                                    <td>미화</td>
+                                    <td>지하주차장</td>
+                                    <td>ACE 1본부</td>
+                                    <td>쥬네브쎈월드</td>
+                                    <td>쥬네브쎈월드 오피스텔</td>
+                                    <td>이소장</td>
+                                    <td>2025년</td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=쥬네브쎈월드&complex=쥬네브쎈월드 오피스텔&manager=이소장&serviceType=cleaning&workType=basement-parking&year=2025&month=03" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=쥬네브쎈월드&complex=쥬네브쎈월드 오피스텔&manager=이소장&serviceType=cleaning&workType=basement-parking&year=2025&month=05" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=쥬네브쎈월드&complex=쥬네브쎈월드 오피스텔&manager=이소장&serviceType=cleaning&workType=basement-parking&year=2025&month=07" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=쥬네브쎈월드&complex=쥬네브쎈월드 오피스텔&manager=이소장&serviceType=cleaning&workType=basement-parking&year=2025&month=08" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=쥬네브쎈월드&complex=쥬네브쎈월드 오피스텔&manager=이소장&serviceType=cleaning&workType=basement-parking&year=2025&month=09" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=쥬네브쎈월드&complex=쥬네브쎈월드 오피스텔&manager=이소장&serviceType=cleaning&workType=basement-parking&year=2025&month=10" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 1본부&workplace=쥬네브쎈월드&complex=쥬네브쎈월드 오피스텔&manager=이소장&serviceType=cleaning&workType=basement-parking&year=2025&month=11" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                                
+                                <!-- 사업장 3 -->
+                                <tr>
+                                    <td>9</td>
+                                    <td>소독</td>
+                                    <td>정기소독</td>
+                                    <td>ACE 2본부</td>
+                                    <td>서울강남아이파크</td>
+                                    <td>아이파크 강남</td>
+                                    <td>박소장</td>
+                                    <td>2025년</td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 2본부&workplace=서울강남아이파크&complex=아이파크 강남&manager=박소장&serviceType=disinfection&workType=regular-disinfection&year=2025&month=02" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 2본부&workplace=서울강남아이파크&complex=아이파크 강남&manager=박소장&serviceType=disinfection&workType=regular-disinfection&year=2025&month=07" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 2본부&workplace=서울강남아이파크&complex=아이파크 강남&manager=박소장&serviceType=disinfection&workType=regular-disinfection&year=2025&month=08" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 2본부&workplace=서울강남아이파크&complex=아이파크 강남&manager=박소장&serviceType=disinfection&workType=regular-disinfection&year=2025&month=09" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 2본부&workplace=서울강남아이파크&complex=아이파크 강남&manager=박소장&serviceType=disinfection&workType=regular-disinfection&year=2025&month=10" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 2본부&workplace=서울강남아이파크&complex=아이파크 강남&manager=박소장&serviceType=disinfection&workType=regular-disinfection&year=2025&month=11" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                                
+                                <!-- 사업장 4 -->
+                                <tr>
+                                    <td>10</td>
+                                    <td>조경</td>
+                                    <td>수목관리</td>
+                                    <td>HQ 본부</td>
+                                    <td>부산해운대마린시티</td>
+                                    <td>마린시티 힐스테이트</td>
+                                    <td>최소장</td>
+                                    <td>2025년</td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=HQ 본부&workplace=부산해운대마린시티&complex=마린시티 힐스테이트&manager=최소장&serviceType=landscaping&workType=tree-management&year=2025&month=02" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=HQ 본부&workplace=부산해운대마린시티&complex=마린시티 힐스테이트&manager=최소장&serviceType=landscaping&workType=tree-management&year=2025&month=03" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=HQ 본부&workplace=부산해운대마린시티&complex=마린시티 힐스테이트&manager=최소장&serviceType=landscaping&workType=tree-management&year=2025&month=05" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=HQ 본부&workplace=부산해운대마린시티&complex=마린시티 힐스테이트&manager=최소장&serviceType=landscaping&workType=tree-management&year=2025&month=07" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=HQ 본부&workplace=부산해운대마린시티&complex=마린시티 힐스테이트&manager=최소장&serviceType=landscaping&workType=tree-management&year=2025&month=08" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=HQ 본부&workplace=부산해운대마린시티&complex=마린시티 힐스테이트&manager=최소장&serviceType=landscaping&workType=tree-management&year=2025&month=09" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=HQ 본부&workplace=부산해운대마린시티&complex=마린시티 힐스테이트&manager=최소장&serviceType=landscaping&workType=tree-management&year=2025&month=10" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=HQ 본부&workplace=부산해운대마린시티&complex=마린시티 힐스테이트&manager=최소장&serviceType=landscaping&workType=tree-management&year=2025&month=11" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                                
+                                <!-- 사업장 5 -->
+                                <tr>
+                                    <td>11</td>
+                                    <td>시설관리</td>
+                                    <td>전기/기계/소방 설비 점검</td>
+                                    <td>ACE 3본부</td>
+                                    <td>대구수성구대구은행</td>
+                                    <td>대구은행 본점</td>
+                                    <td>정소장</td>
+                                    <td>2025년</td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 3본부&workplace=대구수성구대구은행&complex=대구은행 본점&manager=정소장&serviceType=facility&workType=electrical-mechanical-fire&year=2025&month=03" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="#" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 3본부&workplace=대구수성구대구은행&complex=대구은행 본점&manager=정소장&serviceType=facility&workType=electrical-mechanical-fire&year=2025&month=07" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 3본부&workplace=대구수성구대구은행&complex=대구은행 본점&manager=정소장&serviceType=facility&workType=electrical-mechanical-fire&year=2025&month=08" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 3본부&workplace=대구수성구대구은행&complex=대구은행 본점&manager=정소장&serviceType=facility&workType=electrical-mechanical-fire&year=2025&month=09" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 3본부&workplace=대구수성구대구은행&complex=대구은행 본점&manager=정소장&serviceType=facility&workType=electrical-mechanical-fire&year=2025&month=10" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/inspection-log/general-inspection-register.html?department=ACE 3본부&workplace=대구수성구대구은행&complex=대구은행 본점&manager=정소장&serviceType=facility&workType=electrical-mechanical-fire&year=2025&month=11" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Paging Section -->
+                    <div class="paging-01">
+                        <a href="#" class="btn first">처음으로</a>
+                        <a href="#" class="btn prev">이전</a>
+                        <a href="#" class="btn">1</a>
+                        <a href="#" class="btn active" title="현재 페이지">2</a>
+                        <a href="#" class="btn">3</a>
+                        <a href="#" class="btn">4</a>
+                        <a href="#" class="btn">5</a>
+                        <a href="#" class="btn next">다음</a>
+                        <a href="#" class="btn last">마지막으로</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

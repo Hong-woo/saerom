@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAEROM 용역관리시스템 - 고객 보고용</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23495EF4'/><text x='16' y='22' font-family='Arial' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>S</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../assets/css/lucide-icons.css">
+    
+    <!-- Lucide Icons -->
+    <script src="../assets/js/lucide.js"></script>
+    
+    <!-- JavaScript -->
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../assets/js/lucide-utils.js"></script>
+    <script>
+        // SAEROM Lucide 아이콘 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide Icons initialized successfully');
+            } else {
+                console.warn('Lucide library not found');
+            }
+        });
+    </script>
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .demo-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #495EF4;
+            margin-bottom: 20px;
+        }
+        
+        .demo-subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .demo-description {
+            font-size: 16px;
+            color: #888;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .demo-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .demo-section {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .demo-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .demo-section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .demo-section-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #495EF4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+        }
+        
+        .demo-section-icon i {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .demo-section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+        
+        .demo-section-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .demo-page-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .demo-page-list li {
+            margin-bottom: 10px;
+        }
+        
+        .demo-page-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-page-link:hover {
+            background: #495EF4;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .demo-page-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .demo-page-name {
+            font-weight: 500;
+        }
+        
+        .demo-footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-title {
+                font-size: 36px;
+            }
+            
+            .demo-subtitle {
+                font-size: 18px;
+            }
+            
+            .demo-sections {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Header -->
+        <div class="demo-header">
+            <h1 class="demo-title">SAEROM 용역관리시스템</h1>
+            <p class="demo-subtitle">고객 보고용 페이지 목록</p>
+            <p class="demo-description">
+                SAEROM 용역관리시스템의 주요 기능들을 미리보기할 수 있는 페이지들입니다. 
+                각 페이지는 실제 시스템과 동일한 디자인과 기능을 제공합니다.
+            </p>
+        </div>
+        
+        <!-- Demo Sections -->
+        <div class="demo-sections">
+            <!-- SmartCheck Section -->
+            <div class="demo-section">
+                <div class="demo-section-header">
+                    <div class="demo-section-icon">
+                        <i data-lucide="shield"></i>
+                    </div>
+                    <h2 class="demo-section-title">스마트체크</h2>
+                </div>
+                <p class="demo-section-description">
+                    용역업체의 업무 현황을 체계적으로 관리하고 모니터링하는 시스템입니다.
+                </p>
+                <ul class="demo-page-list">
+                    <li>
+                        <a href="pages/smartcheck/index.html" class="demo-page-link">
+                            <i data-lucide="activity" class="demo-page-icon"></i>
+                            <span class="demo-page-name">스마트체크현황</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/smartcheck-register.html" class="demo-page-link">
+                            <i data-lucide="plus-circle" class="demo-page-icon"></i>
+                            <span class="demo-page-name">스마트체크 등록</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/workplace-smartcheck-status.html" class="demo-page-link">
+                            <i data-lucide="bar-chart-3" class="demo-page-icon"></i>
+                            <span class="demo-page-name">사업장 스마트체크현황보고</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/monthly-report.html" class="demo-page-link">
+                            <i data-lucide="calendar" class="demo-page-icon"></i>
+                            <span class="demo-page-name">월간업무보고</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/monthly-report-register.html" class="demo-page-link">
+                            <i data-lucide="file-plus" class="demo-page-icon"></i>
+                            <span class="demo-page-name">월간업무보고 등록</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/inspection-log.html" class="demo-page-link">
+                            <i data-lucide="clipboard-check" class="demo-page-icon"></i>
+                            <span class="demo-page-name">회계/안전진단 점검일지</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/inspection-log-register.html" class="demo-page-link">
+                            <i data-lucide="file-plus" class="demo-page-icon"></i>
+                            <span class="demo-page-name">회계/안전진단 점검일지 등록</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/general-inspection.html" class="demo-page-link">
+                            <i data-lucide="file-check" class="demo-page-icon"></i>
+                            <span class="demo-page-name">점검일지</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/general-inspection-register.html" class="demo-page-link">
+                            <i data-lucide="file-plus" class="demo-page-icon"></i>
+                            <span class="demo-page-name">점검일지 등록</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/survey-report.html" class="demo-page-link">
+                            <i data-lucide="file-text" class="demo-page-icon"></i>
+                            <span class="demo-page-name">설문조사보고</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/smartcheck/survey-report-register.html" class="demo-page-link">
+                            <i data-lucide="file-plus" class="demo-page-icon"></i>
+                            <span class="demo-page-name">설문조사보고 등록</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Accounting Section -->
+            <div class="demo-section">
+                <div class="demo-section-header">
+                    <div class="demo-section-icon">
+                        <i data-lucide="calculator"></i>
+                    </div>
+                    <h2 class="demo-section-title">회계업무</h2>
+                </div>
+                <p class="demo-section-description">
+                    재무제표, 근태관리, 급여명세서 등 회계 관련 업무를 관리하는 시스템입니다.
+                </p>
+                <ul class="demo-page-list">
+                    <li>
+                        <a href="pages/accounting/index.html" class="demo-page-link">
+                            <i data-lucide="bar-chart-3" class="demo-page-icon"></i>
+                            <span class="demo-page-name">재무제표</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/accounting/financial-statements-register.html" class="demo-page-link">
+                            <i data-lucide="file-plus" class="demo-page-icon"></i>
+                            <span class="demo-page-name">재무제표 등록</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/accounting/purchase.html" class="demo-page-link">
+                            <i data-lucide="shopping-cart" class="demo-page-icon"></i>
+                            <span class="demo-page-name">회계보고(매입)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/accounting/purchase-register.html" class="demo-page-link">
+                            <i data-lucide="file-plus" class="demo-page-icon"></i>
+                            <span class="demo-page-name">회계보고(매입) 등록</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/accounting/tax.html" class="demo-page-link">
+                            <i data-lucide="file-text" class="demo-page-icon"></i>
+                            <span class="demo-page-name">회계보고(부과)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/accounting/tax-register.html" class="demo-page-link">
+                            <i data-lucide="file-plus" class="demo-page-icon"></i>
+                            <span class="demo-page-name">회계보고(부과) 등록</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/accounting/attendance.html" class="demo-page-link">
+                            <i data-lucide="clock" class="demo-page-icon"></i>
+                            <span class="demo-page-name">사업장 근태현황</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/accounting/payroll.html" class="demo-page-link">
+                            <i data-lucide="receipt" class="demo-page-icon"></i>
+                            <span class="demo-page-name">사업장 급여명세서 확인</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/accounting/vat.html" class="demo-page-link">
+                            <i data-lucide="calculator" class="demo-page-icon"></i>
+                            <span class="demo-page-name">부가세산출</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Components Section -->
+            <div class="demo-section">
+                <div class="demo-section-header">
+                    <div class="demo-section-icon">
+                        <i data-lucide="layers"></i>
+                    </div>
+                    <h2 class="demo-section-title">컴포넌트</h2>
+                </div>
+                <p class="demo-section-description">
+                    시스템에서 사용되는 재사용 가능한 UI 컴포넌트들을 확인할 수 있습니다.
+                </p>
+                <ul class="demo-page-list">
+                    <li>
+                        <a href="pages/04_components/index.html" class="demo-page-link">
+                            <i data-lucide="grid" class="demo-page-icon"></i>
+                            <span class="demo-page-name">UI 컴포넌트</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="demo-footer">
+            <p>&copy; 2025 SAEROM 용역관리시스템. 모든 권리 보유.</p>
+        </div>
+    </div>
+</body>
+</html>

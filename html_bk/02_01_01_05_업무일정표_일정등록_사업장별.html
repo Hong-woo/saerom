@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAEROM</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body onload="$('#popup-new-schedule').show();">
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">스케쥴 관리</h3>
+						<a href="#" class="btn btn-back">뒤로가기</a>
+					</div>
+				
+					<div class="schedule-wrap day">
+						<h4 class="blind">일간 시간표</h4>
+						<!-- 사업장 선택 -->
+						<div class="select-class">
+							<label for="selectclass01" class="blind">사업장 선택</label>
+							<select id="selectclass01" class="select-01">
+								<option value="">서울1사업장</option>
+							</select>
+						</div>
+						<!-- 스케쥴 유형 선택 -->
+						<div class="schedule-head clearfix">
+							<a href="#popup-new-schedule" class="btn btn-blue-01 btn-popup-open">신규스케쥴 등록</a>
+							<a href="#" class="btn btn-excel">엑셀 다운로드</a>
+							<ul class="btns-select schedule-turm">
+								<li><a href="#" class="btn active">일간</a></li>
+								<li><a href="#" class="btn">주간</a></li>
+								<li><a href="#" class="btn">월간</a></li>
+							</ul>
+							<div class="schedule-time">
+								<p class="num">2023.06.04</p>
+								<a href="#" class="btn btn-prev">이전</a>
+								<a href="#" class="btn btn-next">다음</a>
+							</div>
+						</div>
+				
+						<div class="schedule-time-month">
+							<div class="table-schedule-01">
+								<table>
+									<colgroup>
+										<col style="width:6%">
+										<col style="width:94%">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">00:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">02:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">02:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">03:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">04:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">05:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">06:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">07:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">08:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">09:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">10:00</th>
+											<td class="another">
+												<div class="box-lesson">
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">22:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">22:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">22:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">22:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row" class="time">11:00</th>
+											<td>
+												<div class="box-lesson">
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">12:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">13:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">14:00</th>
+											<td>
+												<div class="box-lesson">
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#" class="btn">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#" class="btn">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">15:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">16:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">17:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">18:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">19:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">20:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">21:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">22:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">23:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">24:00</th>
+											<td>
+												<div class="box-lesson"></div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				
+				
+				</div>
+			</div>
+
+			<!-- popup start // -->
+			<!-- popup-new-schedule --><!-- 231117 추가 -->
+      <div class="popup-wrap popup-style-02" id="popup-new-schedule">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">업무일정표 등록</h3>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <div class="schedule-wrap add">
+							<div class="schedule-head clearfix">
+								<ul class="btns-select schedule-type">
+									<li><a href="#" class="btn active">사업장별 등록</a></li>
+									<li><a href="#" class="btn">일자별 등록</a></li>
+								</ul>
+							</div>
+            </div>
+
+						<div class="calculate-wrap">
+							<form>
+								<ul class="form-style-02 sports clearfix">
+									<li class="w02">
+										<div class="form-title">년도</div>
+										<div class="form-con">
+											<select id="idsearch01" class="select-01">
+												<option value="">전체</option>
+											</select>
+										</div>
+									</li>
+									<li class="w02">
+										<div class="form-title">구분</div>
+										<div class="form-con">
+											<select id="idsearch01" class="select-01">
+												<option value="">전체</option>
+											</select>											
+										</div>
+									</li>
+									<li class="w02">
+										<div class="form-title">사업장</div>
+										<div class="form-con">
+											<input type="text" class="input-02" id="idsearch02">
+										</div>
+									</li>
+									<li class="w02">
+										<div class="right">
+											<a href="#" class="btn btn-blackline-02">초기화</a>
+											<a href="#" class="btn btn-black-02">검색</a>
+										</div>
+									</li>
+								</ul>
+							</form>
+						</div>
+
+						<!-- .board-top -->
+						<div class="board-top mt10">
+							<div class="left">
+								<a href="#" class="btn btn-excel">엑셀 다운로드</a>
+							</div>
+							<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+						</div>
+
+						<div class="table-style-04 schedule">
+              
+             	<table>
+              <caption>출금 관리 테이블</caption>
+              <colgroup>
+                <col style="width:80px;">
+                <col style="width:auto;">
+                <col style="width:auto;">
+                <col style="width:auto;">
+                <col style="width:auto;">
+                <col style="width:auto;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">번호</th>
+                  <th scope="col">용역구분</th>
+                  <th scope="col">사업장명</th>
+                  <th colspan="3" scope="col">일정 등록</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="6">100100</td>
+                  <td rowspan="6">미화미화</td>
+                  <td rowspan="5">한보미도맨션1</td>
+                  <td rowspan="5">계단청소<span>(5회/년)</span></td>
+                  <td>1회</td>
+                  <td>
+                    <div class="form-con">
+                      <div class="datepicker-set-01">
+                        <select name="idsearch" class="select-02 atw" id="idsearch">
+                          <option value="">날짜</option>
+                        </select>
+                        <select name="idsearch" class="select-02 atw ml10" id="idsearch">
+                          <option value="">2회</option>
+                        </select>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate01" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                        <span>~</span>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate02" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2회</td>
+                  <td>
+                    <div class="form-con">
+                      <div class="datepicker-set-01">
+                        <select name="idsearch" class="select-02 atw" id="idsearch">
+                          <option value="">날짜</option>
+                        </select>
+                        <select name="idsearch" class="select-02 atw ml10" id="idsearch">
+                          <option value="">2회</option>
+                        </select>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate01" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                        <span>~</span>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate02" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3회</td>
+                  <td>
+                    <div class="form-con">
+                      <div class="datepicker-set-01">
+                        <select name="idsearch" class="select-02 atw" id="idsearch">
+                          <option value="">날짜</option>
+                        </select>
+                        <select name="idsearch" class="select-02 atw ml10" id="idsearch">
+                          <option value="">2회</option>
+                        </select>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate01" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                        <span>~</span>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate02" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>4회</td>
+                  <td>
+                    <div class="form-con">
+                      <div class="datepicker-set-01">
+                        <select name="idsearch" class="select-02 atw" id="idsearch">
+                          <option value="">날짜</option>
+                        </select>
+                        <select name="idsearch" class="select-02 atw ml10" id="idsearch">
+                          <option value="">2회</option>
+                        </select>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate01" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                        <span>~</span>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate02" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5회</td>
+                  <td>
+                    <div class="form-con">
+                      <div class="datepicker-set-01">
+                        <select name="idsearch" class="select-02 atw" id="idsearch">
+                          <option value="">날짜</option>
+                        </select>
+                        <select name="idsearch" class="select-02 atw ml10" id="idsearch">
+                          <option value="">2회</option>
+                        </select>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate01" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                        <span>~</span>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate02" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>한보미도맨션1</td>
+                  <td>지하주차장<span>(1회/년)</span></td>
+                  <td>1회</td>
+                  <td>
+                    <div class="form-con">
+                      <div class="datepicker-set-01">
+                        <select name="idsearch" class="select-02 atw" id="idsearch">
+                          <option value="">날짜</option>
+                        </select>
+                        <select name="idsearch" class="select-02 atw ml10" id="idsearch">
+                          <option value="">2회</option>
+                        </select>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate01" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                        <span>~</span>
+                        <div class="datepicker-01">
+                          <input type="text" class="input-datepicker hasDatepicker" id="iddate02" placeholder="2023.00.00">
+													<label for="iddate05">기안일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            	</table>
+              
+            </div>
+
+						<div class="btns-page-bottom">
+              <div class="right">
+                <a href="#" class="btn btn-blueline-03 btn-popup-close">취소</a>
+                <a href="#" class="btn btn-blue-03">저장</a>
+              </div>
+            </div>
+					</div>					
+        </div>
+      </div>
+      <!-- // popup end -->
+
+		</div>
+	</body>
+
+</html>

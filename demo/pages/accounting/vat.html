@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>부가세산출내역</title>
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+	<link rel="stylesheet" href="css/slick.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/add.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/global.css">
+	<link rel="stylesheet" href="css/lucide-icons.css">
+	<script src="../../../assets/js/lucide.js"></script>
+	<script src="../../../html_cms/js/jquery-1.11.3.js"></script>
+	<script src="../../../html_cms/js/jquery-ui.min.js"></script>
+	<script src="../../../html_cms/js/slick.js"></script>
+	<script src="../../../js/common.js"></script>
+	
+	<style>
+		/* GroundFit 헤더 구조 적용 */
+		#header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 321px;
+			padding: 188px 24px 24px;
+			min-height: 100vh;
+			overflow-y: auto;
+			z-index: 1000;
+		}
+		
+		#header h1 {
+			position: absolute;
+			top: 79px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		
+		#header h1 img {
+			vertical-align: top;
+			width: 180px;
+			height: auto;
+		}
+		
+		#header .quick-nav {
+			display: none;
+		}
+		
+		#gnb {
+			position: relative;
+			z-index: 1000;
+		}
+		
+		.container {
+			margin-left: 321px;
+			position: relative;
+			width: calc(100% - 321px);
+			min-height: 100vh;
+			border-left: 1px solid #ccc;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- .skip-nav -->
+	<div class="skip-nav">
+		<a href="#gnb" class="btn">본문 바로가기</a>
+		<a href="#contents" class="btn">주메뉴 바로가기</a>
+	</div>
+	<div class="wrap clearfix">
+		<!-- #header start // -->
+		<div id="header">
+			<h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+			<ul class="quick-nav">
+				<li><a href="#" class="btn">마이페이지</a></li>
+				<li><a href="#" class="btn">로그아웃</a></li>
+			</ul>
+			<nav id="gnb">
+				<!-- GNB will be loaded here -->
+			</nav>
+		</div>
+		<!-- // #header end -->
+		<div class="container">
+			<div class="contents-top clearfix">
+				<p class="title">Management System</p>
+				<div class="snb">
+					<ul class="snb-depth1 clearfix">
+						<li>
+							<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+							<ul class="snb-depth2">
+								<li><a href="#" class="btn">정보변경 정보</a></li>
+								<li><a href="#" class="btn">로그인 관리</a></li>
+								<li><a href="#" class="btn">로그아웃</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="contents" class="contents-body">
+				<h2 class="blind">본문</h2>
+				<div class="contents-title">
+					<h3 class="title-page">부가세산출내역</h3>
+					<a href="#" class="btn btn-back">뒤로가기</a>
+				</div>
+
+				<!-- .calculate-wrap start // -->
+				<div class="calculate-wrap">
+					<!-- .select-class -->
+					
+					<form>
+						<ul class="form-style-02 sports">
+							<li class="w03">
+								<div class="form-title">구분</div>
+								<div class="form-con">
+									<select id="idsearch01" class="select-01">
+										<option value="">전체</option>
+									</select>
+								</div>
+							</li>
+							<li class="w03">
+								<div class="form-title">검색구분</div>
+								<div class="form-con">
+									<select id="idsearch02" class="select-01">
+										<option value="">사업장</option>
+									</select>
+								</div>
+							</li>
+							<li class="w01">
+								<div class="form-title">키워드</div>
+								<div class="form-con">
+									<input type="text" class="input-02" id="idsearch03">
+								</div>
+							</li>
+						</ul>
+						<div class="form-bottom-01">
+							<a href="#" class="btn btn-blackline-02">초기화</a>
+							<a href="#" class="btn btn-black-02">검색</a>
+						</div>
+					</form>
+
+					<!-- 상단 요약 합계 -->
+					<div class="summary-total" style="display:flex;gap:8px;align-items:center;margin:8px 0 14px;">
+						<div
+							style="flex:0 0 180px;border:1px solid #eee;border-radius:6px;padding:10px 12px;display:flex;justify-content:space-between;">
+							<strong>공급가 합계</strong><span>0 원</span>
+						</div>
+						<div
+							style="flex:0 0 180px;border:1px solid #eee;border-radius:6px;padding:10px 12px;display:flex;justify-content:space-between;">
+							<strong>부가세 합계</strong><span>0 원</span>
+						</div>
+						<div
+							style="flex:0 0 180px;border:1px solid #eee;border-radius:6px;padding:10px 12px;display:flex;justify-content:space-between;">
+							<strong>총합계</strong><span>0 원</span>
+						</div>
+						<div style="flex:1 1 auto;"></div>
+						<!-- 우측 숫자 표시가 필요하면 여기에 넣으세요 -->
+					</div>
+					
+					<!-- .board-top -->
+					<div class="board-top" style="margin-bottom:8px;">
+						<div class="left">
+							<a href="#" class="btn btn-excel">다운로드</a>
+						</div>
+						<div class="right">
+							<a href="#" class="btn btn-white-01">인쇄</a>
+						</div>
+						<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+					</div>
+					
+					<!-- table -->
+					<div class="table-style-03">
+						<table>
+							<caption>부가세산출내역</caption>
+							<colgroup>
+								<col style="width:80px"><!-- 번호 -->
+								<col style="width:120px"><!-- 본부 -->
+								<col><!-- 사업장명 -->
+								<col style="width:180px"><!-- 현장소장명 -->
+								<col style="width:140px"><!-- 부과월 -->
+								<col style="width:120px"><!-- 공급가액 -->
+								<col style="width:100px"><!-- 세액 -->
+								<col style="width:120px"><!-- 합계 -->
+								<col style="width:140px"><!-- 보고일 -->
+								<col style="width:120px"><!-- 상태 -->
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">번호</th>
+									<th scope="col">본부</th>
+									<th scope="col">사업장명</th>
+									<th scope="col">현장소장명</th>
+									<th scope="col">부과월</th>
+									<th scope="col">공급가액</th>
+									<th scope="col">세액</th>
+									<th scope="col">합계</th>
+									<th scope="col">보고일</th>
+									<th scope="col">상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- 행 예시 1 -->
+								<tr>
+									<td>18</td>
+									<td>ACE 9본부</td>
+									<td>논산아이파크</td>
+									<td>홍길동 소장</td>
+									<td>2025년 09월</td>
+									<td>0원</td>
+									<td>0원</td>
+									<td>0원</td>
+									<td>&nbsp;</td>
+									<td><span class="box-round-01 red-01">미작성</span></td>
+								</tr>
+								<!-- 행 예시 2 -->
+								<tr>
+									<td>17</td>
+									<td>ACE 9본부</td>
+									<td>논산아이파크상가</td>
+									<td>김소장</td>
+									<td>2025년 09월</td>
+									<td>0원</td>
+									<td>0원</td>
+									<td>0원</td>
+									<td>&nbsp;</td>
+									<td><span class="box-round-01 red-01">미작성</span></td>
+								</tr>
+								<!-- 행 예시 3 -->
+								<tr>
+									<td>16</td>
+									<td>ACE 9본부</td>
+									<td>남악오룡시티프라디움</td>
+									<td>이소장</td>
+									<td>2025년 09월</td>
+									<td>0원</td>
+									<td>0원</td>
+									<td>0원</td>
+									<td>&nbsp;</td>
+									<td><span class="box-round-01 red-01">미작성</span></td>
+								</tr>
+								<!-- 행 예시 4 -->
+								<tr>
+									<td>15</td>
+									<td>ACE 8본부</td>
+									<td>대전둔산동아파트</td>
+									<td>박소장</td>
+									<td>2025년 09월</td>
+									<td>1,500,000원</td>
+									<td>150,000원</td>
+									<td>1,650,000원</td>
+									<td>2025-09-30</td>
+									<td><span class="box-round-01">완료</span></td>
+								</tr>
+								<!-- 행 예시 5 -->
+								<tr>
+									<td>14</td>
+									<td>ACE 8본부</td>
+									<td>청주신도시아파트</td>
+									<td>최소장</td>
+									<td>2025년 09월</td>
+									<td>2,300,000원</td>
+									<td>230,000원</td>
+									<td>2,530,000원</td>
+									<td>2025-09-29</td>
+									<td><span class="box-round-01">완료</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+
+					<!-- paging -->
+					<div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+						<a href="#" class="btn first">처음으로</a>
+						<a href="#" class="btn prev">이전</a>
+						<a href="#" class="btn">1</a>
+						<a href="#" class="btn active" title="현재 페이지">2</a>
+						<a href="#" class="btn">3</a>
+						<a href="#" class="btn">4</a>
+						<a href="#" class="btn">5</a>
+						<a href="#" class="btn next">다음</a>
+						<a href="#" class="btn last">마지막으로</a>
+					</div>
+
+				</div>
+				<!-- // .calculate-wrap end -->
+
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			// GNB 로드
+			loadGNB();
+			
+			// GNB 토글 기능 초기화
+			initGNBToggle();
+		});
+
+		function loadGNB() {
+			console.log('GNB 로드 시작...');
+			const gnbElement = document.getElementById('gnb');
+			if (gnbElement && !gnbElement.hasAttribute('data-loaded')) {
+				// include/header.gnb.html과 동일한 구조 사용
+				const gnbHTML = `
+					<ul class="gnb-depth1">
+						<li><a href="../../../index.html" class="btn home"><i data-lucide="home" class="gnb-icon"></i>Main</a></li>
+						<li><a href="#" class="btn email"><i data-lucide="mail" class="gnb-icon"></i>이메일</a></li>
+						<li><a href="#" class="btn approval btn-toggle"><i data-lucide="check-square" class="gnb-icon"></i>전자결제</a>
+							<ul class="gnb-depth2">
+								<li><a href="#" class="btn btn-toggle"><i data-lucide="folder-check" class="gnb-icon"></i>결제문서함</a>
+									<ul class="gnb-depth3">
+										<li><a href="#" class="btn">결제대기</a></li>
+										<li><a href="#" class="btn">결제완료</a></li>
+									</ul>
+								</li>
+								<li><a href="#" class="btn"><i data-lucide="users" class="gnb-icon"></i>결제라인관리</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="btn smartcheck btn-toggle"><i data-lucide="shield" class="gnb-icon"></i>스마트체크</a>
+							<ul class="gnb-depth2">
+								<li><a href="/src/pages/smartcheck/index.html" class="btn"><i data-lucide="activity" class="gnb-icon"></i>스마트체크현황</a></li>
+								<li><a href="/src/pages/workplace-smartcheck/index.html" class="btn"><i data-lucide="building-2" class="gnb-icon"></i>사업장 스마트체크현황</a></li>
+								<li><a href="/src/pages/workplace-smartcheck-status/index.html" class="btn"><i data-lucide="bar-chart-3" class="gnb-icon"></i>사업장 스마트체크현황</a></li>
+								<li><a href="/src/pages/monthly-report/index.html" class="btn"><i data-lucide="calendar-days" class="gnb-icon"></i>월간업무보고</a></li>
+								<li><a href="#" class="btn inspection btn-toggle"><i data-lucide="clipboard-list" class="gnb-icon"></i>점검일지</a>
+									<ul class="gnb-depth3">
+										<li><a href="/src/pages/inspection-log/index.html" class="btn">회계/안전진단 점검일지</a></li>
+										<li><a href="/src/pages/inspection-log/general-inspection.html" class="btn">점검일지</a></li>
+									</ul>
+								</li>
+								<li><a href="/src/pages/survey-report/index.html" class="btn"><i data-lucide="file-text" class="gnb-icon"></i>설문조사보고</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="btn accounting btn-toggle active"><i data-lucide="calculator" class="gnb-icon"></i>회계업무</a>
+							<ul class="gnb-depth2">
+								<li><a href="/src/pages/financial-statements/index.html" class="btn"><i data-lucide="bar-chart-3" class="gnb-icon"></i>재무제표</a></li>
+								<li><a href="#" class="btn btn-toggle"><i data-lucide="file-text" class="gnb-icon"></i>회계보고</a>
+									<ul class="gnb-depth3">
+										<li><a href="/src/pages/purchase/index.html" class="btn">매입</a></li>
+										<li><a href="/src/pages/accounting/tax/index.html" class="btn">부과</a></li>
+									</ul>
+								</li>
+								<li><a href="/src/pages/accounting/vat/index.html" class="btn active"><i data-lucide="calculator" class="gnb-icon"></i>부가세산출</a></li>
+								<li><a href="#" class="btn"><i data-lucide="clock" class="gnb-icon"></i>사업장 근태현황</a></li>
+								<li><a href="/src/pages/accounting/payroll/index.html" class="btn"><i data-lucide="receipt" class="gnb-icon"></i>사업장 급여명세서 확인</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="btn sales btn-toggle"><i data-lucide="trending-up" class="gnb-icon"></i>영업관리</a>
+							<ul class="gnb-depth2">
+								<li><a href="#" class="btn"><i data-lucide="building-2" class="gnb-icon"></i>영업사업장</a></li>
+								<li><a href="#" class="btn"><i data-lucide="trending-up" class="gnb-icon"></i>영업수주현황</a></li>
+								<li><a href="#" class="btn"><i data-lucide="gavel" class="gnb-icon"></i>입찰현황관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="refresh-cw" class="gnb-icon"></i>재계약 영업관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="repeat" class="gnb-icon"></i>재도전 사업장</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="btn workplace btn-toggle"><i data-lucide="building-2" class="gnb-icon"></i>사업장관리</a>
+							<ul class="gnb-depth2">
+								<li><a href="#" class="btn"><i data-lucide="building-2" class="gnb-icon"></i>관리사업장</a></li>
+								<li><a href="#" class="btn"><i data-lucide="file-text" class="gnb-icon"></i>계약관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="bar-chart-3" class="gnb-icon"></i>사업장 일반현황</a></li>
+								<li><a href="#" class="btn"><i data-lucide="wrench" class="gnb-icon"></i>시설물관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="package" class="gnb-icon"></i>비품관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="file-plus" class="gnb-icon"></i>부속용역계약관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="message-circle" class="gnb-icon"></i>민원관리</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="btn hr btn-toggle"><i data-lucide="package" class="gnb-icon"></i>물품관리</a>
+							<ul class="gnb-depth2">
+								<li><a href="#" class="btn"><i data-lucide="package" class="gnb-icon"></i>물품관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="search" class="gnb-icon"></i>물품검색</a></li>
+								<li><a href="#" class="btn"><i data-lucide="check-circle" class="gnb-icon"></i>장비점검</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="btn hr btn-toggle"><i data-lucide="users" class="gnb-icon"></i>인사관리</a>
+							<ul class="gnb-depth2">
+								<li><a href="#" class="btn"><i data-lucide="user" class="gnb-icon"></i>본사직원관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="users" class="gnb-icon"></i>사업장 직원관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="user-check" class="gnb-icon"></i>직원승인관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="award" class="gnb-icon"></i>임명장관리</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="btn field btn-toggle"><i data-lucide="map-pin" class="gnb-icon"></i>현장관리</a>
+							<ul class="gnb-depth2">
+								<li><a href="#" class="btn"><i data-lucide="shield" class="gnb-icon"></i>경비활동</a></li>
+								<li><a href="#" class="btn"><i data-lucide="sparkles" class="gnb-icon"></i>미화활동</a></li>
+								<li><a href="#" class="btn"><i data-lucide="leaf" class="gnb-icon"></i>소독/조경</a></li>
+							</ul>
+						</li>
+						<li><a href="#" class="btn system btn-toggle"><i data-lucide="settings" class="gnb-icon"></i>시스템관리</a>
+							<ul class="gnb-depth2">
+								<li><a href="#" class="btn"><i data-lucide="shield-check" class="gnb-icon"></i>권한관리</a></li>
+								<li><a href="#" class="btn"><i data-lucide="file-text" class="gnb-icon"></i>로그이력</a></li>
+								<li><a href="#" class="btn"><i data-lucide="monitor" class="gnb-icon"></i>팝업관리</a></li>
+							</ul>
+						</li>
+						<li><a href="/src/pages/components/index.html" class="btn"><i data-lucide="layers" class="gnb-icon"></i>컴포넌트</a></li>
+					</ul>
+				`;
+				gnbElement.innerHTML = gnbHTML;
+				gnbElement.setAttribute('data-loaded', 'true');
+				gnbElement.className = 'gnb';
+
+				// Lucide 아이콘 초기화 - 약간의 지연 후 실행
+				setTimeout(function() {
+					if (typeof lucide !== 'undefined') {
+						lucide.createIcons();
+						console.log('Lucide Icons initialized successfully');
+					} else {
+						console.warn('Lucide library not found');
+					}
+				}, 100);
+			}
+		}
+
+		function initGNBToggle() {
+			// 회계업무 메뉴 자동 열기 (현재 페이지)
+			const accountingMenu = document.querySelector('.gnb-depth1 .btn.accounting');
+			if (accountingMenu) {
+				accountingMenu.classList.add('active');
+				const accountingSubmenu = accountingMenu.nextElementSibling;
+				if (accountingSubmenu) {
+					accountingSubmenu.style.display = 'block';
+				}
+			}
+
+			// 부가세산출은 회계보고 서브메뉴에 속하지 않으므로 자동 열기 제거
+
+			// 1레벨 토글 버튼 이벤트
+			const toggleButtons = document.querySelectorAll('.gnb-depth1 .btn-toggle');
+			toggleButtons.forEach(button => {
+				button.addEventListener('click', function(e) {
+					e.preventDefault();
+					
+					const submenu = this.nextElementSibling;
+					const isActive = this.classList.contains('active');
+					
+					// 다른 1레벨 메뉴들 닫기
+					toggleButtons.forEach(otherButton => {
+						if (otherButton !== this) {
+							otherButton.classList.remove('active');
+							const otherSubmenu = otherButton.nextElementSibling;
+							if (otherSubmenu) {
+								otherSubmenu.style.display = 'none';
+							}
+						}
+					});
+					
+					// 현재 메뉴 토글
+					if (isActive) {
+						this.classList.remove('active');
+						if (submenu) {
+							submenu.style.display = 'none';
+						}
+					} else {
+						this.classList.add('active');
+						if (submenu) {
+							submenu.style.display = 'block';
+						}
+					}
+				});
+			});
+
+			// 2레벨 토글 버튼 이벤트 (3레벨 서브메뉴용)
+			const toggleButtons2 = document.querySelectorAll('.gnb-depth2 .btn-toggle');
+			toggleButtons2.forEach(button => {
+				button.addEventListener('click', function(e) {
+					e.preventDefault();
+					
+					const submenu = this.nextElementSibling;
+					const isActive = this.classList.contains('active');
+					
+					// 같은 2레벨 내의 다른 토글 버튼들 닫기
+					const parentLi = this.closest('li');
+					const parentSubmenu = parentLi.parentElement;
+					parentSubmenu.querySelectorAll('.btn-toggle').forEach(otherButton => {
+						if (otherButton !== this) {
+							otherButton.classList.remove('active');
+							const otherSubmenu = otherButton.nextElementSibling;
+							if (otherSubmenu) {
+								otherSubmenu.style.display = 'none';
+							}
+						}
+					});
+					
+					// 현재 메뉴 토글
+					if (isActive) {
+						this.classList.remove('active');
+						if (submenu) {
+							submenu.style.display = 'none';
+						}
+					} else {
+						this.classList.add('active');
+						if (submenu) {
+							submenu.style.display = 'block';
+						}
+					}
+				});
+			});
+		}
+	</script>
+</body>
+
+</html>

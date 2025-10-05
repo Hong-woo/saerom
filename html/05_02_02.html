@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>계약 정보 등록/수정</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<!-- <script src="../js/jquery-ui.min.js"></script> -->
+		<script src="../js/jquery-ui.js"></script>
+		<script src="../js/jquery.mtz.monthpicker.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li><a href="#none" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#none" class="btn">관리자 정보</a></li>
+									<li><a href="#none" class="btn">로그인 관리</a></li>
+									<li><a href="#none" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">계약 정보 등록/수정</h3>
+						<a href="#none" class="btn btn-back">뒤로가기</a>
+					</div>
+
+					<div class="modify-personal flip-01">
+						<div class="box-white-01 ">
+							<div class="flip-title" tabindex="0">
+								<h4>계약 내용</h4>
+							</div>
+							<div class="profile-basic add">
+								
+								<ul class="form-style-01">
+									<li class="form-3col">
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">사업장명</label>
+											</div>
+											<div class="form-con">
+												<input type="text" class="input-01 readonly w100p" id="idphonex01" value="고촌행정타운 한양수자인(24.01.01.신규)" readonly>
+											</div>
+										</div>
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">본사담당자</label>
+											</div>
+											<div class="form-con">
+												<input type="text" class="input-01 readonly w100p" id="idphonex01" value=" 홍길동" readonly>
+											</div>
+										</div>
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">용역구분</label>
+											</div>
+											<div class="form-con">
+												<input type="text" class="input-01 readonly" id="idphonex01" value="경비" readonly>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-title"><label for="idphonex01">계약구분</label>
+										</div>
+										<div class="form-con">
+											<ul class="radio-set-01 radio-e4">
+												<li>
+													<p class="radio-01">
+														<input type="radio" id="idradio0101" name="idradio01" checked>
+														<label for="idradio0101">재계약</label>
+													</p>
+												</li>
+												<li>
+													<p class="radio-01">
+														<input type="radio" id="idradio0102" name="idradio01">
+														<label for="idradio0102">변경</label>
+													</p>
+												</li>
+												<li>
+													<p class="radio-01">
+														<input type="radio" id="idradio0103" name="idradio01">
+														<label for="idradio0103">계약연장</label>
+													</p>
+												</li>
+												<li>
+													<p class="radio-01">
+														<input type="radio" id="idradio0104" name="idradio01">
+														<label for="idradio0104">계약종료</label>
+													</p>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li class="form-3col">
+										<div class="form-split">
+											<div class="form-title">계약일<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="datepicker-01">
+													<input type="text" class="input-datepicker hasDatepicker" id="xddate0101" placeholder="2025.00.00">
+													<label for="xddate0101">계약일</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-split">
+											<div class="form-title">계약종료일<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="datepicker-01">
+													<input type="text" class="input-datepicker hasDatepicker" id="xddate0102" placeholder="2025.00.00">
+													<label for="xddate0102">계약종료일</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-split">
+											<div class="form-title">계약서<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="file-wrap">
+													<div class="file-01">
+														<div class="file-search">
+															<input type="file" id="idfile0101">
+															<label for="idfile0101">파일찾기</label>
+														</div>
+														<div class="file-view">
+															<p class="file-name"><a href="#none" class="btn btn-text"></a></p>
+															<a href="#none" class="btn btn-white-02">삭제</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-title">기타파일</div>
+										<div class="form-con">
+											<div class="file-wrap">
+												<div class="file-01">
+													<div class="file-search">
+														<input type="file" id="idfile0301">
+														<label for="idfile0301">파일찾기</label>
+													</div>
+													<div class="file-view">
+														<p class="file-name"><a href="#none" class="btn btn-text"></a></p>
+														<a href="#none" class="btn btn-white-02">삭제</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="form-2col">
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">월간 용역비</label>
+												<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="input-num-set-01">
+													<input type="text" class="input-01" id="col01"><span>원</span>
+													<p class="check-04 mt16">
+														<input type="checkbox" id="wCheck0101">
+														<label for="wCheck0101" class="btn"><span>VAT 포함</span></label>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">일반관리비</label>
+												<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="input-num-set-01">
+													<input type="text" class="input-01" id="col02"><span>원</span>
+													<p class="check-04 mt16">
+														<input type="checkbox" id="wCheck0102">
+														<label for="wCheck0102" class="btn"><span>VAT 포함</span></label>
+													</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="form-2col">
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">소모품비</label>
+												<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="input-num-set-01">
+													<input type="text" class="input-01" id="col03"><span>원</span>
+													<p class="check-04 mt16">
+														<input type="checkbox" id="wCheck0201">
+														<label for="wCheck0201" class="btn"><span>VAT 포함</span></label>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">복리후생비</label>
+												<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="input-num-set-01">
+													<input type="text" class="input-01" id="col02"><span>원</span>
+													<p class="check-04 mt16">
+														<input type="checkbox" id="wCheck0202">
+														<label for="wCheck0202" class="btn"><span>VAT 포함</span></label>
+													</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="form-2col">
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">청소용품비</label>
+												<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="input-num-set-01">
+													<input type="text" class="input-01" id="col03"><span>원</span>
+													<p class="check-04 mt16">
+														<input type="checkbox" id="wCheck0301">
+														<label for="wCheck0301" class="btn"><span>VAT 포함</span></label>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">대청소비</label>
+												<p class="required">*<span class="blind">필수사항</span></p>
+											</div>
+											<div class="form-con">
+												<div class="input-num-set-01">
+													<input type="text" class="input-01" id="col02"><span>원</span>
+													<p class="check-04 mt16">
+														<input type="checkbox" id="wCheck0302">
+														<label for="wCheck0302" class="btn"><span>VAT 포함</span></label>
+													</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-title"><label for="idphonex01">기업이윤</label>
+											<p class="required">*<span class="blind">필수사항</span></p>
+										</div>
+										<div class="form-con">
+											<div class="input-num-set-01">
+												<input type="text" class="input-01" id="col03"><span>원</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="form-title"><label for="idphonex01">메모</label>
+										</div>
+										<div class="form-con">
+											<textarea id="idregist03" class="textarea-01" placeholder="메모를 입력해주세요."></textarea>
+										</div>
+									</li>
+									<li class="form-2col">
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">최종수정자</label>
+											</div>
+											<div class="form-con">
+												<input type="text" class="input-01 readonly" id="idphonex01" value="홍길동" readonly>
+											</div>
+										</div>
+										<div class="form-split">
+											<div class="form-title"><label for="idphonex01">최종수정일시</label>
+											</div>
+											<div class="form-con">
+												<input type="text" class="input-01 readonly" id="idphonex01" value="2025-01-01 11:00:00" readonly>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+
+							</div>
+						</div>
+					
+						<div class="btns-page-bottom">
+							<div class="right">
+								<a href="#" class="btn btn-white-03">취소</a>
+								<a href="#" class="btn btn-blue-03">저장</a>
+							</div>
+						</div>
+
+						<div class="box-white-01 mt40">
+							<div class="title-wrap-01">
+								<h3 class="title-style-01">계약서 내역</h3>
+								<p class="text-sub">계약 이력 확인</p>
+							</div>
+							<div class="table-style-01 pc-only">
+								<table>
+									<caption>학력사항 등록 정보</caption>
+									<colgroup>
+										
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">번호</th>
+											<th scope="col">용역구분</th>
+											<th scope="col">계약구분</th>
+											<th scope="col">계약일</th>
+											<th scope="col">계약종료일</th>
+											<th scope="col">계약서</th>
+											<th scope="col">최종수정자</th>
+											<th scope="col">최종수정일시</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>100</td>
+											<td><span class="box-round-01 green-01">경비</span></td>
+											<td><span class="box-round-01 blue-01">변경</span></td>
+											<td>2022-01-01</td>
+											<td>2022-12-31</td>
+											<td>
+												<div class="file-02">
+													<ul class="list-file-01">
+														<li>
+															<a href="#" class="btn btn-filename">계약이행증권파일.pdf</a>
+															<a href="#" class="btn btn-delete">삭제</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+											<td>홍길동</td>
+											<td>2025-01-01 11:11:11</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

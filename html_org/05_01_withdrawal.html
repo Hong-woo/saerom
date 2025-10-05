@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>출금관리 | 정산관리 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu">메뉴</a></li>
+                <li><a href="#" class="btn class">클래스 관리</a></li>
+                <li><a href="#" class="btn home">Main</a></li>
+                <li><a href="#" class="btn schedule">스케쥴관리</a></li>
+                <li><a href="#" class="btn calculate active">정산관리</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close">닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="#" class="btn home">Main</a></li>
+                    <li><a href="#" class="btn instructor btn-toggle">강사관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">프로필 관리</a></li>
+                            <li><a href="#" class="btn">강사인증</a></li>
+                            <li><a href="#" class="btn">강사계약서</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn class btn-toggle">클래스 관리</a>
+                        <ul class="gnb-depth2" style="display:block;">
+                            <li><a href="#" class="btn">클래스 관리</a></li>
+                            <li><a href="#" class="btn">스케쥴 관리</a></li>
+                            <li><a href="#" class="btn">스포츠 활동 인증</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn people">구성원 관리</a></li>
+                    <li><a href="#" class="btn calculate btn-toggle active">정산관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn active">출금관리</a></li>
+                            <li><a href="#" class="btn">정산내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">공지사항</a></li>
+                            <li><a href="#" class="btn">1:1 문의</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn check">출석체크</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle language">
+                            <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                            <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                        </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">한국어</a></li>
+                                <li><a href="#" class="btn">English</a></li>
+                                <li><a href="#" class="btn">Japanese</a></li>
+                                <li><a href="#" class="btn">Arabic</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">출금관리</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <!-- .calculate-wrap start // -->
+                <div class="calculate-wrap">
+                    <div class="calculate-top">
+                        <!-- .select-class -->
+                        <div class="select-class">
+                            <label for="selectclass01" class="blind">클래스 선택</label>
+                            <select id="selectclass01" class="select-01">
+                                <option value="">광명A헬스장 PT권</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <form>
+                        <ul class="form-style-02 calculate">
+                            <li>
+                                <div class="form-title word4">처리현황</div>
+                                <div class="form-con">
+                                    <div class="radio-set-03">
+                                        <p class="radio-02">
+                                            <input type="radio" name="completion01" id="idcompletion01" checked>
+                                            <label for="idcompletion01">전체</label>
+                                        </p>
+                                        <p class="radio-02">
+                                            <input type="radio" name="completion01" id="idcompletion02">
+                                            <label for="idcompletion02">출금완료</label>
+                                        </p>
+                                        <p class="radio-02">
+                                            <input type="radio" name="completion01" id="idcompletion03">
+                                            <label for="idcompletion03">출금예정</label>
+                                        </p>
+                                        <p class="radio-02">
+                                            <input type="radio" name="completion01" id="idcompletion04">
+                                            <label for="idcompletion04">신청중</label>
+                                        </p>
+                                        <p class="radio-02">
+                                            <input type="radio" name="completion01" id="idcompletion05">
+                                            <label for="idcompletion05">반려</label>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="form-bottom-01">
+                            <a href="#" class="btn btn-blackline-02">초기화</a>
+                            <a href="#" class="btn btn-black-02">검색</a>
+                        </div>
+                    </form>
+    
+                    <!-- .board-top -->
+                    <div class="board-top">
+                        <div class="left">
+                            <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+                            <select id="idselect01" class="select-01">
+                                <option value="">10개</option>
+                            </select>
+                            <a href="#popup-withdrawal-01" class="btn btn-blue-01 btn-popup-open">출금신청</a>
+                        </div>
+                        <div class="right">
+                            <a href="#" class="btn btn-white-01">정산계좌 변경</a>
+                            <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+                        </div>
+                        <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                    </div>
+                    <!-- table -->
+                    <div class="table-style-04">
+                        <table>
+                            <caption>출금 관리 테이블</caption>
+                            <colgroup>
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                                <col style="width:auto;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">내용</th>
+                                    <th scope="col">정산금액</th>
+                                    <th scope="col">신청일</th>
+                                    <th scope="col">처리현황</th>
+                                    <th scope="col">출금계좌</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01 green-01">출금예정</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>2023.04. 정산금액</td>
+                                    <td>2,250,000</td>
+                                    <td>2023.02.28</td>
+                                    <td><p class="box-round-01">출금완료</p></td>
+                                    <td>NH농협 012-34-56789</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- paging -->
+                    <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+                        <a href="#" class="btn first">처음으로</a>
+                        <a href="#" class="btn prev">이전</a>
+                        <a href="#" class="btn">1</a>
+                        <a href="#" class="btn active" title="현재 페이지">2</a>
+                        <a href="#" class="btn">3</a>
+                        <a href="#" class="btn">4</a>
+                        <a href="#" class="btn">5</a>
+                        <a href="#" class="btn next">다음</a>
+                        <a href="#" class="btn last">마지막으로</a>
+                    </div>
+
+                </div>
+                <!-- // .calculate-wrap end -->
+
+                
+            </div>
+        </div>
+
+        <!-- popup start // -->
+        <!-- #popup-commission-01 -->
+        <div class="popup-wrap popup-style-02" id="popup-withdrawal-01">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3 class="popup-title">출금신청</h3>
+                    <a href="#" class="btn btn-popup-close">닫기</a>
+                </div>
+                <div class="popup-body">
+                    <form>
+                        <div class="table-style-03">
+                            <table>
+                                <caption>출금신청 정보</caption>
+                                <colgroup>
+                                    <col style="width:20%;">
+                                    <col style="width:auto;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">보유금액</th>
+                                        <td>₩8,950,000</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">출금가능금액</th>
+                                        <td>
+                                            <p><strong class="text-blue">₩8,950,000</strong></p>
+                                            <p class="text-guide">정산일로 부터 3일이 경과한 금액만 출금신청이 가능합니다</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="idnum01">신청금액</label></th>
+                                        <td>
+                                            <p class="text-guide"> 10,000원 부터 출금신청 하실 수 있습니다.<br>
+                                                신청 시 보유금액이 차감되며, 반려 시 차감된 금액은 재지급 됩니다.<br>
+                                                출금 처리는 영업일 기준 7일 이내 처리됩니다.
+                                            </p>
+                                            <p class="input-unit-03">
+                                                <input type="text" class="input-02" id="idnum01" value="0">
+                                                <span class="unit">년</span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">출금계좌</th>
+                                        <td>
+                                            <div class="account-01">
+                                                <p class="text-01">NH농협 012-34-56789</p>
+                                                <p class="text-02">신청 전 출금 계좌 정보를 반드시 확인해주세요.</p>
+                                                <a href="#" class="btn btn-white-01">정산계좌 변경</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><label for="idpass01">비밀번호</label></th>
+                                        <td>
+                                            <input type="password" class="input-02" id="idpass01">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                    <div class="btns-page-bottom">
+                        <div class="right">
+                            <a href="#" class="btn btn-blueline-03 btn-popup-close">취소</a>
+                            <a href="#" class="btn btn-blue-03">신청</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+    </div>
+</body>
+</html>

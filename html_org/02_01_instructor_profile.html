@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 관리 | 강사 관리 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <!-- <script src="../js/jquery-ui.min.js"></script> -->
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/jquery.mtz.monthpicker.js"></script>
+    <script src="../js/common.js"></script>
+  </head>
+
+  <body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+      <a href="#gnb" class="btn">본문 바로가기</a>
+      <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+      <!-- #header start // -->
+      <div id="header">
+        <h1><a href="#none"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+        <ul class="quick-nav">
+          <li><a href="#none" class="btn menu">메뉴</a></li>
+          <li><a href="#none" class="btn class">클래스 관리</a></li>
+          <li><a href="#none" class="btn home">Main</a></li>
+          <li><a href="#none" class="btn schedule">스케쥴관리</a></li>
+          <li><a href="#none" class="btn calculate">정산관리</a></li>
+        </ul>
+        <div id="gnb">
+          <h2 class="blind">주메뉴</h2>
+          <a href="#none" class="btn btn-gnb-close">닫기</a>
+          <ul class="gnb-depth1">
+            <li><a href="#none" class="btn home">Main</a></li>
+            <li><a href="#none" class="btn instructor btn-toggle active">강사관리</a>
+              <ul class="gnb-depth2" style="display:block;">
+                <li><a href="#none" class="btn active">프로필 관리</a></li>
+                <li><a href="#none" class="btn">강사인증</a></li>
+                <li><a href="#none" class="btn">강사계약서</a></li>
+              </ul>
+            </li>
+            <li><a href="#none" class="btn class btn-toggle">클래스 관리</a>
+              <ul class="gnb-depth2">
+                <li><a href="#none" class="btn">클래스 관리</a></li>
+                <li><a href="#none" class="btn">스케쥴 관리</a></li>
+              </ul>
+            </li>
+            <li><a href="#none" class="btn people">구성원 관리</a></li>
+            <li><a href="#none" class="btn calculate btn-toggle">정산관리</a>
+              <ul class="gnb-depth2">
+                <li><a href="#none" class="btn">출금관리</a></li>
+                <li><a href="#none" class="btn">정산내역</a></li>
+              </ul>
+            </li>
+            <li><a href="#none" class="btn customer btn-toggle">고객센터</a>
+              <ul class="gnb-depth2">
+                <li><a href="#none" class="btn">공지사항</a></li>
+                <li><a href="#none" class="btn">1:1 문의</a></li>
+              </ul>
+            </li>
+            <li><a href="#none" class="btn check">출석체크</a></li>
+          </ul>
+          <span class="gnb-back" tabindex="0"></span>
+        </div>
+      </div>
+      <!-- // #header end -->
+      <div class="container">
+        <div class="contents-top clearfix">
+          <p class="title">Management System</p>
+          <div class="snb">
+            <ul class="snb-depth1 clearfix">
+              <li><a href="#none" class="btn btn-toggle language">
+                  <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                  <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                </a>
+                <ul class="snb-depth2">
+                  <li><a href="#none" class="btn">한국어</a></li>
+                  <li><a href="#none" class="btn">English</a></li>
+                  <li><a href="#none" class="btn">Japanese</a></li>
+                  <li><a href="#none" class="btn">Arabic</a></li>
+                </ul>
+              </li>
+              <li><a href="#none" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                <ul class="snb-depth2">
+                  <li><a href="#none" class="btn">관리자 정보</a></li>
+                  <li><a href="#none" class="btn">로그인 관리</a></li>
+                  <li><a href="#none" class="btn">로그아웃</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="contents" class="contents-body">
+          <h2 class="blind">본문</h2>
+          <div class="contents-title">
+            <h3 class="title-page">프로필 관리</h3>
+            <a href="#none" class="btn btn-back">뒤로가기</a>
+            <div class="btns-right">
+              <a href="#none" class="btn btn-toggle">프로필 관리 메뉴 열고 닫기</a>
+              <div class="btns-box clearfix">
+                <a href="#none" class="btn btn-pc-white-01">미리보기</a>
+                <a href="#none" class="btn btn-pc-blue-01">프로필 저장</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-01">
+            <!-- 프로필관리 인트로 // 모바일에서 노출 -->
+            <div class="flip-mo-intro">
+              <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+              <p class="name"><strong>강동원</strong><span>3년 10개월</span></p>
+              <ul class="list-style-03">
+                <li>
+                  <p class="item-01">축구</p>
+                </li>
+                <li>
+                  <p class="item-01">미식축구</p>
+                </li>
+                <li>
+                  <p class="item-01">서울 강남구외 3</p>
+                </li>
+              </ul>
+              <ul class="list-btns-01">
+                <li><a href="#profile01" class="btn">기본정보</a></li>
+                <li><a href="#profile02" class="btn">스포츠 전문가 기본정보</a></li>
+                <li><a href="#profile03" class="btn">강사 경력 관리</a></li>
+                <li><a href="#profile04" class="btn">경력증명파일</a></li>
+                <li><a href="#profile05" class="btn">범죄이력 회보서 첨부</a></li>
+              </ul>
+            </div>
+            <div class="flip-contents">
+              <!-- 프로필관리 스텝 // 모바일에서 노출 -->
+              <ol class="flip-step">
+                <li>
+                  <p class="num active">1<span class="blind">현재 진행중인 단계</span></p>
+                </li>
+                <li>
+                  <p class="num">2</p>
+                </li>
+                <li>
+                  <p class="num">3</p>
+                </li>
+                <li>
+                  <p class="num">4</p>
+                </li>
+                <li>
+                  <p class="num">5</p>
+                </li>
+              </ol>
+              <!-- 기본정보 -->
+              <div id="profile01" class="flip-con flip-first active">
+                <div class="flip-title" tabindex="0">
+                  <h4>기본정보</h4>
+                </div>
+                <div class="profile-basic">
+                  <div class="img-profile-wrap">
+                    <div class="img-profile">
+                      <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                      <a href="#none" class="btn btn-modify-01">프로필 사진 변경</a>
+                    </div>
+                  </div>
+                  <ul class="form-style-01">
+                    <li>
+                      <div class="form-title"><label for="idname01">이름</label>
+                        <p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <input type="text" class="input-01 readonly" id="idname01" readonly required value="강동원">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title">생년월일<p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="datepicker-radio-set-01">
+                          <div class="datepicker-01">
+                            <input type="text" class="input-datepicker" id="idbirth01" placeholder="2023.00.00">
+                            <label for="idbirth01">생년월일 날짜 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                          </div>
+                          <ul class="radio-set-01">
+                            <li>
+                              <p class="radio-01">
+                                <input type="radio" id="idradio0101" name="nameradio01">
+                                <label for="idradio0101">남자</label>
+                              </p>
+                            </li>
+                            <li>
+                              <p class="radio-01">
+                                <input type="radio" id="idradio0102" name="nameradio01">
+                                <label for="idradio0102">여자</label>
+                              </p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="idphone01">휴대폰</label>
+                        <p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="input-btn-set-01">
+                          <input type="text" class="input-01" id="idphone01" placeholder="휴대폰 번호를 입력해주세요">
+                          <a href="#none" class="btn btn-white-02">인증하기</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="idphone02">전화번호</label></div>
+                      <div class="form-con">
+                        <input type="text" class="input-01" id="idphone02" placeholder="전화번호를 입력해주세요">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="idemail01">이메일</label></div>
+                      <div class="form-con">
+                        <input type="text" class="input-01" id="idemail01" placeholder="이메일을 입력해주세요">
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title">주소<p class="required">*<span class="blind">필수사항</span></p>
+                      </div>
+                      <div class="form-con">
+                        <div class="input-address-01">
+                          <a href="#none" class="btn btn-white-02">주소검색</a>
+                          <label for="idaddress01" class="blind">기본 주소</label>
+                          <input type="text" class="input-01 address-01" id="idaddress01" placeholder="주소를 검색해주세요"
+                            readonly>
+                          <label for="idaddress02" class="blind">상세 주소</label>
+                          <input type="text" class="input-01 address-02" id="idaddress02" placeholder="상세주소를 입력해주세요">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- 스포츠 전문가 기본정보 -->
+              <div id="profile02" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>스포츠 전문가 기본정보</h4>
+                </div>
+                <div class="profile-sports">
+                  <ul class="form-style-01">
+                    <li>
+                      <div class="form-title">지도경력</div>
+                      <div class="form-con">
+                        <div class="input-career-01">
+                          <p class="input-unit-01">
+                            <label for="idcareer01" class="blind">지도경력 연차</label>
+                            <input type="text" class="input-01" id="idcareer01" value="0">
+                            <span class="unit">년</span>
+                          </p>
+                          <p class="input-unit-02">
+                            <label for="idcareer02" class="blind">지도경력 개월</label>
+                            <input type="text" class="input-01" id="idcareer02" value="0">
+                            <span class="unit">개월</span>
+                          </p>
+                          <p class="check-01">
+                            <input type="checkbox" id="idcareer03">
+                            <label for="idcareer03">해당없음</label>
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="">지도 가능한 종목</label></div>
+                      <div class="form-con">
+                        <ul class="list-style-01">
+                          <li><a href="#popup-sportcate" class="btn btn-white-02 w104 btn-popup-open">선택하기</a></li>
+                          <!-- 231004 수정 -->
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">축구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">미식축구</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="">활동가능 지역</label></div>
+                      <div class="form-con"><!-- 231004 수정 -->
+                        <ul class="list-style-01">
+                          <li><a href="#popup-area" class="btn btn-white-02 w104 btn-popup-open">선택하기</a></li>
+                          <li>
+                            <p class="item-01">서울 00구</p>
+                          </li>
+                          <li>
+                            <p class="item-01">인천 00구</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="">희망 지도 기간</label></div>
+                      <div class="form-con">
+                        <div class="datepicker-set-01">
+                          <div class="datepicker-01">
+                            <input type="text" class="input-datepicker-02" id="iddate01" placeholder="2023.00.00"
+                              readonly>
+                            <label for="iddate01" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날 짜를
+                              직접 입력해주세요.</label>
+                          </div>
+                          <span>~</span>
+                          <div class="datepicker-01">
+                            <input type="text" class="input-datepicker-02" id="iddate02" placeholder="2023.00.00"
+                              readonly>
+                            <label for="iddate02" class="blind">희망 지도 기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                              입력해주세요.</label>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="form-title"><label for="">지도 요일/시간</label></div>
+                      <div class="form-con">
+                        <ul class="list-style-01 pc-only">
+                          <li><a href="#popup-days" class="btn btn-white-02 w104 btn-popup-open">선택하기</a></li>
+                          <li>
+                            <p class="item-02">월요일 PM (12시~24시)<a class="btn btn-delete-01">삭제</a></p>
+                          </li>
+                          <li>
+                            <p class="item-02">화요일 PM (12시~24시)<a class="btn btn-delete-01">삭제</a></p>
+                          </li>
+                          <li>
+                            <p class="item-02">화요일 PM (12시~24시)<a class="btn btn-delete-01">삭제</a></p>
+                          </li>
+                          <li>
+                            <p class="item-02">화요일 PM (12시~24시)<a class="btn btn-delete-01">삭제</a></p>
+                          </li>
+                          <li>
+                            <p class="item-02">화요일 PM (12시~24시)<a class="btn btn-delete-01">삭제</a></p>
+                          </li>
+                          <li>
+                            <p class="item-02">화요일 PM (12시~24시)<a class="btn btn-delete-01">삭제</a></p>
+                          </li>
+                        </ul>
+                        <div class="check-set-01 mo-only">
+                          <div class="check-03">
+                            <input type="checkbox" id="iddays0201">
+                            <label for="iddays0201" class="btn-allcheck" data-target="iddays02">매일</label>
+                          </div>
+                          <div class="check-03">
+                            <input type="checkbox" id="iddays0202" name="iddays02">
+                            <label for="iddays0202">월</label>
+                          </div>
+                          <div class="check-03">
+                            <input type="checkbox" id="iddays0203" name="iddays02">
+                            <label for="iddays0203">화</label>
+                          </div>
+                          <div class="check-03">
+                            <input type="checkbox" id="iddays0204" name="iddays02">
+                            <label for="iddays0204">수</label>
+                          </div>
+                          <div class="check-03">
+                            <input type="checkbox" id="iddays0205" name="iddays02">
+                            <label for="iddays0205">목</label>
+                          </div>
+                          <div class="check-03">
+                            <input type="checkbox" id="iddays0206" name="iddays02">
+                            <label for="iddays0206">금</label>
+                          </div>
+                          <div class="check-03">
+                            <input type="checkbox" id="iddays0207" name="iddays02">
+                            <label for="iddays0207">토</label>
+                          </div>
+                          <div class="check-03">
+                            <input type="checkbox" id="iddays0208" name="iddays02">
+                            <label for="iddays0208">일</label>
+                          </div>
+                        </div>
+                        <select class="select-01 mo-only">
+                          <option value="">AM(12시~24시)</option>
+                          <option value="">PM(12시~24시)</option>
+                        </select>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- 강사 경력 관리 -->
+              <div id="profile03" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>강사 경력 관리</h4>
+                </div>
+                <ul class="accordion-01">
+                  <!-- 학력사항 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle active">학력사항</a>
+                    <div class="accordion-con active">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">학력</div>
+                          <div class="form-con">
+                            <ul class="radio-set-01 radio-e4">
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0101" name="idschool01">
+                                  <label for="idschool0101">초등학교</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0102" name="idschool01">
+                                  <label for="idschool0102">중학교</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0103" name="idschool01">
+                                  <label for="idschool0103">고등학교</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0104" name="idschool01">
+                                  <label for="idschool0104">대학교</label>
+                                </p>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title">대학구분</div>
+                          <div class="form-con">
+                            <ul class="radio-set-01 radio-e4 radio-university">
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0201" name="idschool02">
+                                  <label for="idschool0201">대학교<br>(2,3년)</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0202" name="idschool02">
+                                  <label for="idschool0202">대학교<br>(4년)</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0203" name="idschool02">
+                                  <label for="idschool0203">대학원<br>(석사)</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0204" name="idschool02">
+                                  <label for="idschool0204">대학원<br>(박사)</label>
+                                </p>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idschool03">학교명</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idschool03" placeholder="학교명을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idschool04">학과명(전공)</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idschool04" placeholder="학과명(전공)을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title">재학기간</div>
+                          <div class="form-con">
+                            <div class="datepicker-set-01">
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker-03" id="iddate03" readonly
+                                  placeholder="2023.00">
+                                <button type="button" class="">날짜 선택 열기</button>
+                                <label for="iddate03" class="blind">희망 지도 기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로
+                                  날짜를 직접 입력해주세요.</label>
+                              </div>
+                              <span>~</span>
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker-03" id="iddate04" readonly
+                                  placeholder="2023.00">
+                                <button type="button" class="">날짜 선택 열기</button>
+                                <label for="iddate04" class="blind">희망 지도 기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로
+                                  날짜를 직접 입력해주세요.</label>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title">졸업여부</div>
+                          <div class="form-con">
+                            <ul class="radio-set-01 radio-e4">
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0501" name="idschool05">
+                                  <label for="idschool0501">졸업</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0502" name="idschool05">
+                                  <label for="idschool0502">재학중</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0503" name="idschool05">
+                                  <label for="idschool0503">휴학중</label>
+                                </p>
+                              </li>
+                              <li>
+                                <p class="radio-01">
+                                  <input type="radio" id="idschool0504" name="idschool05">
+                                  <label for="idschool0504">중퇴</label>
+                                </p>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 학력사항 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 학력사항 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>학력사항 등록 정보</caption>
+                            <colgroup>
+                              <col style="width:auto;">
+                              <col style="width:10%;">
+                              <col style="width:20%;">
+                              <col style="width:15%;">
+                              <col style="width:195px;">
+                              <col style="width:195px;">
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">재학기간</th>
+                                <th scope="col">졸업여부</th>
+                                <th scope="col">학교명</th>
+                                <th scope="col">학과명(전공)</th>
+                                <th scope="col">공개여부</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="6">학력사항을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24 ~ 2023.12.24</td>
+                                <td>졸업</td>
+                                <td>수원삼일공고</td>
+                                <td>전자</td>
+                                <td>
+                                  <div class="radio-set-02">
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0101" name="idapp01">
+                                      <label for="idapp0101">예</label>
+                                    </p>
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0102" name="idapp01">
+                                      <label for="idapp0102">아니오</label>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24 ~ 2023.12.24</td>
+                                <td>졸업</td>
+                                <td>숭실대학교 (대학교 4년)</td>
+                                <td>생활체육학과</td>
+                                <td>
+                                  <div class="radio-set-02">
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0201" name="idapp02">
+                                      <label for="idapp0201">예</label>
+                                    </p>
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0202" name="idapp02">
+                                      <label for="idapp0202">아니오</label>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 학력사항 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">재학기간</span>
+                                <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">졸업여부</span>
+                                <strong class="con">졸업</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">학교명</span>
+                                <strong class="con">수원삼일공고</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">학과명(전공)</span>
+                                <strong class="con">전자</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                              <p class="check-02">
+                                <input type="checkbox" id="idapp04">
+                                <label for="idapp04">공개여부</label>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 선수경력 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">선수경력<p class="text-sub">선수경력이 있는 경우<span>에만 입력해 주세요.</span>
+                      </p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">선수기간</div>
+                          <div class="form-con">
+                            <div class="datepicker-set-01">
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate05" placeholder="2023.00.00">
+                                <label for="iddate05">선수기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                              <span>~</span>
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+                                <label for="iddate06">선수기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idathlete01">소속(풀네임)</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idathlete01" placeholder="소속을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idathlete02">포지션</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idathlete02" placeholder="포지션을 입력해주세요">
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 선수경력 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 선수경력 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>선수경력 등록 정보</caption>
+                            <colgroup>
+                              <col style="width:auto;">
+                              <col style="width:15%;">
+                              <col style="width:15%;">
+                              <col style="width:195px;">
+                              <col style="width:195px;">
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">선수기간</th>
+                                <th scope="col">소속</th>
+                                <th scope="col">포지션</th>
+                                <th scope="col">공개여부</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="5">선수경력을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24 ~ 2023.12.24</td>
+                                <td>OO대학교 배구단</td>
+                                <td>센터</td>
+                                <td>
+                                  <div class="radio-set-02">
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0301" name="idapp03">
+                                      <label for="idapp0301">예</label>
+                                    </p>
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0302" name="idapp03">
+                                      <label for="idapp0302">아니오</label>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 선수기간 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">선수기간</span>
+                                <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">소속</span>
+                                <strong class="con">OO대학교 배구단</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">포지션</span>
+                                <strong class="con">센터</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                              <p class="check-02">
+                                <input type="checkbox" id="idapp05">
+                                <label for="idapp05">공개여부</label>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 주요 지도경력 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">주요 지도경력<p class="text-sub">지도경력이 있는 경우<span>에만 입력해
+                          주세요.</span></p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">지도기간</div>
+                          <div class="form-con">
+                            <div class="datepicker-set-01">
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+                                <label for="iddate06">지도기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                              <span>~</span>
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate07" placeholder="2023.00.00">
+                                <label for="iddate07">지도기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idinstructor01">소속(풀네임)</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idinstructor01" placeholder="소속을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idinstructor02">지도종목</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idinstructor02" placeholder="지도종목을 입력해주세요">
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 주요 지도경력 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 주요 지도경력 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>주요 지도경력 등록 정보</caption>
+                            <colgroup>
+                              <col style="width:auto;">
+                              <col style="width:15%;">
+                              <col style="width:15%;">
+                              <col style="width:195px;">
+                              <col style="width:195px;">
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">지도기간</th>
+                                <th scope="col">소속</th>
+                                <th scope="col">지도종목</th>
+                                <th scope="col">공개여부</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="5">주요 지도경력을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24 ~ 2023.12.24</td>
+                                <td>OO대학교 배구단</td>
+                                <td>배구</td>
+                                <td>
+                                  <div class="radio-set-02">
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0401" name="idapp04">
+                                      <label for="idapp0401">예</label>
+                                    </p>
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0402" name="idapp04">
+                                      <label for="idapp0402">아니오</label>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 주요 지도경력 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">지도기간</span>
+                                <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">소속</span>
+                                <strong class="con">OO대학교 배구단</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">지도 종목</span>
+                                <strong class="con">배구</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                              <p class="check-02">
+                                <input type="checkbox" id="idapp08">
+                                <label for="idapp08">공개여부</label>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 주요 경기실적 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">주요 경기실적<p class="text-sub">경기실적이 있는 경우<span>에만 입력해
+                          주세요.</span></p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">대회기간</div>
+                          <div class="form-con">
+                            <div class="datepicker-set-01">
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate08" placeholder="2023.00.00">
+                                <label for="iddate08">대회기간 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                              <span>~</span>
+                              <div class="datepicker-01">
+                                <input type="text" class="input-datepicker" id="iddate09" placeholder="2023.00.00">
+                                <label for="iddate09">대회기간 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접
+                                  입력해주세요.</label>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idtournament01">대회명</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idtournament01" placeholder="대회명을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="idtournament02">수상내용</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="idtournament02" placeholder="수상내용을 입력해주세요">
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 주요 경기실적 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 주요 경기실적 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>주요 지도경력 등록 정보</caption>
+                            <colgroup>
+                              <col style="width:auto;">
+                              <col style="width:15%;">
+                              <col style="width:15%;">
+                              <col style="width:195px;">
+                              <col style="width:195px;">
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">대회기간</th>
+                                <th scope="col">대회명</th>
+                                <th scope="col">수상내용</th>
+                                <th scope="col">공개여부</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="5">주요 경기실적을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24 ~ 2023.12.24</td>
+                                <td>제00회 전국체육대회</td>
+                                <td>3위</td>
+                                <td>
+                                  <div class="radio-set-02">
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0501" name="idapp05">
+                                      <label for="idapp0501">예</label>
+                                    </p>
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0502" name="idapp05">
+                                      <label for="idapp0502">아니오</label>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 주요 경기실적 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">지도기간</span>
+                                <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">소속</span>
+                                <strong class="con">OO대학교 배구단</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">지도 종목</span>
+                                <strong class="con">배구</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                              <p class="check-02">
+                                <input type="checkbox" id="idapp06">
+                                <label for="idapp06">공개여부</label>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 교육이수 사항 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">교육이수 사항<p class="text-sub">해당사항이 있는 경우<span>에만 입력해
+                          주세요.</span></p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">이수일자</div>
+                          <div class="form-con">
+                            <div class="datepicker-01">
+                              <input type="text" class="input-datepicker" id="iddate10" placeholder="2023.00.00">
+                              <label for="iddate10">이수일자 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="ideducation01">교육명</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation01" placeholder="교육명을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="ideducation02">주관</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation02" placeholder="주관을 입력해주세요">
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 교육이수 사항 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 교육이수 사항 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>교육이수 사항 등록 정보</caption>
+                            <colgroup>
+                              <col style="width:auto;">
+                              <col style="width:15%;">
+                              <col style="width:15%;">
+                              <col style="width:195px;">
+                              <col style="width:195px;">
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">이수일자</th>
+                                <th scope="col">교육명</th>
+                                <th scope="col">주관</th>
+                                <th scope="col">공개여부</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="5">교육이수 사항을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24</td>
+                                <td>불가리안백 교육수료</td>
+                                <td>수플레스 코리아</td>
+                                <td>
+                                  <div class="radio-set-02">
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0801" name="idapp08">
+                                      <label for="idapp0801">예</label>
+                                    </p>
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp0802" name="idapp08">
+                                      <label for="idapp0802">아니오</label>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 교육이수 사항 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">지도기간</span>
+                                <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">소속</span>
+                                <strong class="con">OO대학교 배구단</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">지도 종목</span>
+                                <strong class="con">배구</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                              <p class="check-02">
+                                <input type="checkbox" id="idapp09">
+                                <label for="idapp09">공개여부</label>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- 주요 자격증 -->
+                  <li>
+                    <a href="#none" class="btn btn-toggle">주요 자격증<p class="text-sub">자격증이 있는 경우<span>에만 입력해 주세요.</span>
+                      </p></a>
+                    <div class="accordion-con">
+                      <ul class="form-style-01">
+                        <li>
+                          <div class="form-title">취득일자</div>
+                          <div class="form-con">
+                            <div class="datepicker-01">
+                              <input type="text" class="input-datepicker" id="iddate10" placeholder="2023.00.00">
+                              <label for="iddate10">취득일자 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="ideducation01">자격증명</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation01" placeholder="자격증명을 입력해주세요">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-title"><label for="ideducation02">발급기관</label></div>
+                          <div class="form-con">
+                            <input type="text" class="input-01" id="ideducation02" placeholder="발급기관을 입력해주세요">
+                          </div>
+                        </li>
+                      </ul>
+                      <!-- 주요 자격증 등록 정보 -->
+                      <div class="add-table-wrap-01">
+                        <a href="#none" class="btn btn-add-01">추가</a>
+                        <!-- 주요 자격증 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                          <table>
+                            <caption>주요 자격증 등록 정보</caption>
+                            <colgroup>
+                              <col style="width:auto;">
+                              <col style="width:15%;">
+                              <col style="width:15%;">
+                              <col style="width:195px;">
+                              <col style="width:195px;">
+                            </colgroup>
+                            <thead>
+                              <tr>
+                                <th scope="col">취득일자</th>
+                                <th scope="col">자격증 명</th>
+                                <th scope="col">발급기관</th>
+                                <th scope="col">공개여부</th>
+                                <th scope="col">비고</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td colspan="5">주요 자격증을 추가해주세요</td>
+                              </tr>
+                              <tr>
+                                <td>2023.12.24</td>
+                                <td>1급 생활스포츠 지도사(배구)</td>
+                                <td>체육지도사 연수원</td>
+                                <td>
+                                  <div class="radio-set-02">
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp1001" name="idapp10">
+                                      <label for="idapp1001">예</label>
+                                    </p>
+                                    <p class="radio-01">
+                                      <input type="radio" id="idapp1002" name="idapp10">
+                                      <label for="idapp1002">아니오</label>
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="btns-table-01">
+                                    <a href="#none" class="btn btn-pc-white-01">삭제</a>
+                                    <a href="#none" class="btn btn-pc-white-01">수정</a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- 주요 자격증 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                          <li>
+                            <div class="box-item">
+                              <p class="item w60">
+                                <span class="title">취득일자</span>
+                                <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                              </p>
+                              <p class="item w40">
+                                <span class="title">자격증명</span>
+                                <strong class="con">OO대학교 배구단</strong>
+                              </p>
+                              <p class="item w60">
+                                <span class="title">발급기관</span>
+                                <strong class="con">배구</strong>
+                              </p>
+                            </div>
+                            <div class="box-bottom">
+                              <a href="#none" class="btn btn-modify-02">삭제</a>
+                              <a href="#none" class="btn btn-delete-02">수정</a>
+                              <p class="check-02">
+                                <input type="checkbox" id="idapp11">
+                                <label for="idapp11">공개여부</label>
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- 경력증명파일 -->
+              <div id="profile04" class="flip-con flip-ing">
+                <div class="flip-title" tabindex="0">
+                  <h4>경력증명파일</h4>
+                  <p class="text-sub">위조된 문서를 등록할 경우 법적 책임을 지게 될 수 있습니다.</p>
+                </div>
+                <div class="file-wrap">
+                  <div class="file-01">
+                    <div class="file-search">
+                      <input type="file" id="idfile0101">
+                      <label for="idfile0101">파일찾기</label>
+                      <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- mo -->
+                    </div>
+                    <div class="file-view">
+                      <p class="file-name"><a href="#none" class="btn btn-text"></a></p>
+                      <a href="#none" class="btn btn-white-02">삭제</a>
+                    </div>
+                  </div>
+                  <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- pc -->
+                </div>
+              </div>
+              <!-- 범죄이력 회보서 -->
+              <div id="profile05" class="flip-con flip-last">
+                <div class="flip-title clearfix">
+                  <h4>범죄이력 회보서</h4>
+                  <p class="text-sub">위조된 문서를 등록할 경우 법적 책임을 지게 될 수 있습니다.</p>
+                  <a href="#none" class="btn btn-white-02">저장된 정보 불러오기</a>
+                </div>
+                <div class="file-wrap">
+                  <div class="file-01">
+                    <div class="file-search">
+                      <input type="file" id="idfile0201">
+                      <label for="idfile0201">파일찾기</label>
+                      <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- mo -->
+                    </div>
+                    <div class="file-view">
+                      <p class="file-name"><a href="#none" class="btn btn-text">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다pdf,
+                          jpg, png, zip의 파일확장자만 업로드 가능합니다</a></p>
+                      <a href="#none" class="btn btn-white-02">삭제</a>
+                    </div>
+                  </div>
+                  <p class="text-guide">pdf, jpg, png, zip의 파일확장자만 업로드 가능합니다.</p><!-- pc -->
+                </div>
+              </div>
+            </div>
+            <div class="flip-btns step-first">
+              <a href="#none" class="btn btn-blueline-03 btn-preview">미리보기</a>
+              <a href="#none" class="btn btn-blueline-03 btn-prev">이전</a>
+              <a href="#none" class="btn btn-blue-03 btn-next">다음</a>
+              <a href="#none" class="btn btn-blue-03 btn-save">프로필 저장</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- popup start // -->
+      <div class="popup-wrap popup-style-01" id="popup-days">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">지도 요일/시간</h3>
+            <a href="#none" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <h4 class="title-p-01">지도 요일/시간</h4>
+            <div class="check-set-01">
+              <div class="check-03">
+                <input type="checkbox" id="iddays01">
+                <label for="iddays01" class="btn-allcheck" data-target="iddays">매일</label>
+              </div>
+              <div class="check-03">
+                <input type="checkbox" id="iddays02" name="iddays">
+                <label for="iddays02">월</label>
+              </div>
+              <div class="check-03">
+                <input type="checkbox" id="iddays03" name="iddays">
+                <label for="iddays03">화</label>
+              </div>
+              <div class="check-03">
+                <input type="checkbox" id="iddays04" name="iddays">
+                <label for="iddays04">수</label>
+              </div>
+              <div class="check-03">
+                <input type="checkbox" id="iddays05" name="iddays">
+                <label for="iddays05">목</label>
+              </div>
+              <div class="check-03">
+                <input type="checkbox" id="iddays06" name="iddays">
+                <label for="iddays06">금</label>
+              </div>
+              <div class="check-03">
+                <input type="checkbox" id="iddays07" name="iddays">
+                <label for="iddays07">토</label>
+              </div>
+              <div class="check-03">
+                <input type="checkbox" id="iddays08" name="iddays">
+                <label for="iddays08">일</label>
+              </div>
+            </div>
+            <select class="select-01">
+              <option value="">AM(12시~24시)</option>
+              <option value="">PM(12시~24시)</option>
+            </select>
+          </div>
+          <div class="popup-foot flex-end">
+            <a href="#none" class="btn btn-blueline-02 btn-popup-close">취소</a>
+            <a href="#none" class="btn btn-blue-02">적용</a>
+          </div>
+        </div>
+      </div>
+      <!-- #popup-sportcate --><!-- 231004 추가 -->
+      <div class="popup-wrap popup-style-04" id="popup-sportcate">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">지도 가능 종목 선택</h3>
+            <p class="text-sub">아래 카테고리를 눌러 지도가능한 종목을 선택해주세요. </p>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <div class="tab-style-01 tab-wrap">
+              <ul class="tab-head">
+                <li><a href="#tabSports01" class="btn active">생활체육</a></li>
+                <li><a href="#tabSports02" class="btn">단체스포츠</a></li>
+                <li><a href="#tabSports03" class="btn">구기스포츠</a></li>
+                <li><a href="#tabSports04" class="btn">육상스포츠</a></li>
+                <li><a href="#tabSports05" class="btn">체조</a></li>
+                <li><a href="#tabSports06" class="btn">타깃스포츠</a></li>
+                <li><a href="#tabSports07" class="btn">격투기스포츠</a></li>
+                <li><a href="#tabSports08" class="btn">수상스포츠</a></li>
+                <li><a href="#tabSports09" class="btn">동계스포츠</a></li>
+                <li><a href="#tabSports10" class="btn">야외스포츠</a></li>
+                <li><a href="#tabSports11" class="btn">동물스포츠</a></li>
+                <li><a href="#tabSports12" class="btn">댄스스포츠</a></li>
+                <li><a href="#tabSports13" class="btn">모터스포츠</a></li>
+                <li><a href="#tabSports14" class="btn">마인드스포츠</a></li>
+                <li><a href="#tabSports15" class="btn">장애인스포츠</a></li>
+                <li><a href="#tabSports16" class="btn">기타스포츠</a></li>
+              </ul>
+              <div class="tab-contents scroll-custom-01">
+                <div class="tab-con active" id="tabSports01">
+                  <h4 class="tab-title blind" tabindex="0">생활체육</h4>
+                  <div class="check-set-02">
+                    <p class="check-05">
+                      <input type="checkbox" id="idsport0101">
+                      <label for="idsport0101">축구</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idsport0102">
+                      <label for="idsport0102">농구</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idsport0103">
+                      <label for="idsport0103">야그</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idsport0104">
+                      <label for="idsport0104">배구</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idsport0105">
+                      <label for="idsport0105">럭비</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idsport0106">
+                      <label for="idsport0106">미식축구</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idsport0107">
+                      <label for="idsport0107">소프트볼</label>
+                    </p>
+                  </div>
+                </div>
+                <div class="tab-con" id="tabSports02">
+                  <h4 class="tab-title blind" tabindex="0">단체스포츠</h4>
+                  2
+                </div>
+                <div class="tab-con" id="tabSports03">
+                  <h4 class="tab-title blind" tabindex="0">구기스포츠</h4>
+                  3
+                </div>
+                <div class="tab-con" id="tabSports04">
+                  <h4 class="tab-title blind" tabindex="0">육상스포츠</h4>
+                  4
+                </div>
+                <div class="tab-con" id="tabSports05">
+                  <h4 class="tab-title blind" tabindex="0">체조</h4>
+                  5
+                </div>
+                <div class="tab-con" id="tabSports06">
+                  <h4 class="tab-title blind" tabindex="0">타깃스포츠</h4>
+                  6
+                </div>
+                <div class="tab-con" id="tabSports07">
+                  <h4 class="tab-title blind" tabindex="0">격투기스포츠</h4>
+                  7
+                </div>
+                <div class="tab-con" id="tabSports08">
+                  <h4 class="tab-title blind" tabindex="0">수상스포츠</h4>
+                  8
+                </div>
+                <div class="tab-con" id="tabSports09">
+                  <h4 class="tab-title blind" tabindex="0">동계스포츠</h4>
+                  9
+                </div>
+                <div class="tab-con" id="tabSports10">
+                  <h4 class="tab-title blind" tabindex="0">야외스포츠</h4>
+                  10
+                </div>
+                <div class="tab-con" id="tabSports11">
+                  <h4 class="tab-title blind" tabindex="0">동물스포츠</h4>
+                  11
+                </div>
+                <div class="tab-con" id="tabSports12">
+                  <h4 class="tab-title blind" tabindex="0">댄스스포츠</h4>
+                  12
+                </div>
+                <div class="tab-con" id="tabSports13">
+                  <h4 class="tab-title blind" tabindex="0">모터스포츠</h4>
+                  13
+                </div>
+                <div class="tab-con" id="tabSports14">
+                  <h4 class="tab-title blind" tabindex="0">마인드스포츠</h4>
+                  14
+                </div>
+                <div class="tab-con" id="tabSports15">
+                  <h4 class="tab-title blind" tabindex="0">장애인스포츠</h4>
+                  15
+                </div>
+                <div class="tab-con" id="tabSports16">
+                  <h4 class="tab-title blind" tabindex="0">기타스포츠</h4>
+                  <p class="input-btn-set-02">
+                    <label for="idsportetc" class="blind">검색어 직접입력</label>
+                    <input type="text" id="idsportsetc" placeholder="직접입력">
+                    <input type="submit" value="검색" class="btn">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="popup-bottom">
+            <ul class="list-style-01 scroll-custom-01">
+              <li>
+                <p class="item-04">야구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">미식축구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">야구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">축구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">배구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">럭비<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+            </ul>
+            <div class="btns-page-bottom">
+              <div class="right">
+                <a href="#" class="btn btn-blue-03">선택완료</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- #popup-area --><!-- 231004 추가 -->
+      <div class="popup-wrap popup-style-04" id="popup-area">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">활동가능 지역</h3>
+            <p class="text-sub">활동가능한 지역을 선택해주세요</p>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <div class="tab-style-02 tab-wrap">
+              <ul class="tab-head scroll-custom-01">
+                <li><a href="#tabArea01" class="btn active">서울</a></li>
+                <li><a href="#tabArea02" class="btn">경기</a></li>
+                <li><a href="#tabArea03" class="btn">광주</a></li>
+                <li><a href="#tabArea04" class="btn">대구</a></li>
+                <li><a href="#tabArea05" class="btn">대전</a></li>
+                <li><a href="#tabArea06" class="btn">부산</a></li>
+                <li><a href="#tabArea07" class="btn">울산</a></li>
+                <li><a href="#tabArea08" class="btn">인천</a></li>
+                <li><a href="#tabArea09" class="btn">강원</a></li>
+                <li><a href="#tabArea10" class="btn">경남</a></li>
+                <li><a href="#tabArea11" class="btn">경북</a></li>
+                <li><a href="#tabArea12" class="btn">전남</a></li>
+                <li><a href="#tabArea13" class="btn">전북</a></li>
+                <li><a href="#tabArea14" class="btn">충남</a></li>
+                <li><a href="#tabArea15" class="btn">제주</a></li>
+                <li><a href="#tabArea16" class="btn">전국</a></li>
+              </ul>
+              <div class="tab-contents scroll-custom-01">
+                <div class="tab-con active" id="tabArea01">
+                  <h4 class="tab-title blind" tabindex="0">서울</h4>
+                  <div class="check-set-02">
+                    <p class="check-05">
+                      <input type="checkbox" id="idarea0101">
+                      <label for="idarea0101">서울1</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idarea0102">
+                      <label for="idarea0102">서울2</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idarea0103">
+                      <label for="idarea0103">서울3</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idarea0104">
+                      <label for="idarea0104">서울4</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idarea0105">
+                      <label for="idarea0105">서울5</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idarea0106">
+                      <label for="idarea0106">서울6</label>
+                    </p>
+                    <p class="check-05">
+                      <input type="checkbox" id="idarea0107">
+                      <label for="idarea0107">서울7</label>
+                    </p>
+                  </div>
+                </div>
+                <div class="tab-con" id="tabArea02">
+                  <h4 class="tab-title blind" tabindex="0">경기</h4>
+                  2
+                </div>
+                <div class="tab-con" id="tabArea03">
+                  <h4 class="tab-title blind" tabindex="0">광주</h4>
+                  3
+                </div>
+                <div class="tab-con" id="tabArea04">
+                  <h4 class="tab-title blind" tabindex="0">대구</h4>
+                  4
+                </div>
+                <div class="tab-con" id="tabArea05">
+                  <h4 class="tab-title blind" tabindex="0">대전</h4>
+                  5
+                </div>
+                <div class="tab-con" id="tabArea06">
+                  <h4 class="tab-title blind" tabindex="0">부산</h4>
+                  6
+                </div>
+                <div class="tab-con" id="tabArea07">
+                  <h4 class="tab-title blind" tabindex="0">울산</h4>
+                  7
+                </div>
+                <div class="tab-con" id="tabArea08">
+                  <h4 class="tab-title blind" tabindex="0">인천</h4>
+                  8
+                </div>
+                <div class="tab-con" id="tabArea09">
+                  <h4 class="tab-title blind" tabindex="0">강원</h4>
+                  9
+                </div>
+                <div class="tab-con" id="tabArea10">
+                  <h4 class="tab-title blind" tabindex="0">경남</h4>
+                  10
+                </div>
+                <div class="tab-con" id="tabArea11">
+                  <h4 class="tab-title blind" tabindex="0">경북</h4>
+                  11
+                </div>
+                <div class="tab-con" id="tabArea12">
+                  <h4 class="tab-title blind" tabindex="0">전남</h4>
+                  12
+                </div>
+                <div class="tab-con" id="tabArea13">
+                  <h4 class="tab-title blind" tabindex="0">전북</h4>
+                  13
+                </div>
+                <div class="tab-con" id="tabArea14">
+                  <h4 class="tab-title blind" tabindex="0">충남</h4>
+                  14
+                </div>
+                <div class="tab-con" id="tabArea15">
+                  <h4 class="tab-title blind" tabindex="0">제주</h4>
+                  15
+                </div>
+                <div class="tab-con" id="tabArea16">
+                  <h4 class="tab-title blind" tabindex="0">전국</h4>
+                  16
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="popup-bottom">
+            <ul class="list-style-01 scroll-custom-01">
+              <li>
+                <p class="item-04">야구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">미식축구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">야구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">축구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">배구<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+              <li>
+                <p class="item-04">럭비<a href="#" class="btn btn-delete-01">삭제</a></p>
+              </li>
+            </ul>
+            <div class="btns-page-bottom">
+              <div class="right">
+                <a href="#" class="btn btn-blue-03">선택완료</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- // popup end -->
+    </div>
+  </body>
+
+</html>

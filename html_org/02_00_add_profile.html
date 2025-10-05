@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 관리 | 강사 관리 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu">메뉴</a></li>
+                <li><a href="#" class="btn class">클래스 관리</a></li>
+                <li><a href="#" class="btn home">Main</a></li>
+                <li><a href="#" class="btn schedule">스케쥴관리</a></li>
+                <li><a href="#" class="btn calculate">정산관리</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close">닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="#" class="btn home">Main</a></li>
+                    <li><a href="#" class="btn instructor btn-toggle active">강사관리</a>
+                        <ul class="gnb-depth2" style="display:block;">
+                            <li><a href="#" class="btn active">프로필 관리</a></li>
+                            <li><a href="#" class="btn">강사인증</a></li>
+                            <li><a href="#" class="btn">강사계약서</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn class btn-toggle">클래스 관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">클래스 관리</a></li>
+                            <li><a href="#" class="btn">스케쥴 관리</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn people">구성원 관리</a></li>
+                    <li><a href="#" class="btn calculate btn-toggle">정산관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">출금관리</a></li>
+                            <li><a href="#" class="btn">정산내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">공지사항</a></li>
+                            <li><a href="#" class="btn">1:1 문의</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn check">출석체크</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle language">
+                            <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                            <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                        </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">한국어</a></li>
+                                <li><a href="#" class="btn">English</a></li>
+                                <li><a href="#" class="btn">Japanese</a></li>
+                                <li><a href="#" class="btn">Arabic</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">프로필 관리</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <div class="add-profile">
+                    <p class="text-01">프로필을 등록해주세요</p>
+                    <p class="text-02">강사님의 경력을 상세하게 입력해주세요. 등록 후 강사님의 이력서로 관리 할 수 있습니다.<br>이력서 등록 시 발급받은 범죄경력회보서를 첨부해주시기 바랍니다.</p>
+                    <a href="#" class="btn btn-blue-03">프로필 등록</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- popup start // -->
+        <div class="popup-wrap popup-style-01" id="popup-days">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3 class="popup-title">지도 요일/시간</h3>
+                    <a href="#" class="btn btn-popup-close">닫기</a>
+                </div>
+                <div class="popup-body">
+                    <h4 class="title-p-01">지도 요일/시간</h4>
+                    <div class="check-set-01">
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays01">
+                            <label for="iddays01" class="btn-allcheck" data-target="iddays">매일</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays02" name="iddays">
+                            <label for="iddays02">월</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays03" name="iddays">
+                            <label for="iddays03">화</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays04" name="iddays">
+                            <label for="iddays04">수</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays05" name="iddays">
+                            <label for="iddays05">목</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays06" name="iddays">
+                            <label for="iddays06">금</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays07" name="iddays">
+                            <label for="iddays07">토</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays08" name="iddays">
+                            <label for="iddays08">일</label>
+                        </div>
+                    </div>
+                    <select class="select-01">
+                        <option value="">AM(12시~24시)</option>
+                        <option value="">PM(12시~24시)</option>
+                    </select>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-blueline-02 btn-popup-close">취소</a>
+                    <a href="#" class="btn btn-blue-02">적용</a>
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+    </div>
+</body>
+</html>

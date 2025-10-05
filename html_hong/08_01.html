@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>새롬 통합관리 · 경비활동 (현장별 필터 완성본)</title>
+<style>
+  :root{
+    --bg:#f7f9fc; --card:#fff; --ink:#0b1324; --muted:#6b7280; --line:#e5e7eb;
+    --brand:#2563eb; --ok:#16a34a; --warn:#f59e0b; --danger:#ef4444; --info:#0ea5e9; --r:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Malgun Gothic,Helvetica,Arial}
+  header{padding:18px 20px;font-weight:700}
+  .wrap{max-width:1380px;margin:0 auto;padding:0 16px 32px;display:grid;gap:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .btn{padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer}
+  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .btn.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+  .btn.warn{background:var(--warn);color:#fff;border-color:var(--warn)}
+  .kpibox{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:12px}
+  .kpi{padding:14px;border-left:4px solid var(--danger)}
+  .kpi.warn{border-color:var(--warn)} .kpi.info{border-color:var(--info)} .kpi.ok{border-color:var(--ok)}
+  .filters{padding:12px}
+  .f{display:flex;flex-direction:column;gap:6px}
+  .f label{font-size:12px;color:var(--muted)}
+  .f input,.f select{padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;min-width:160px}
+  .workgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;padding:12px}
+  .workcard{border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;transition:.15s;display:grid;gap:8px}
+  .workcard:hover{box-shadow:0 4px 14px rgba(37,99,235,.15);transform:translateY(-1px);border-color:#c7d2fe}
+  .workcard.active{outline:2px solid var(--brand);background:#f5f9ff}
+  .workcard h5{margin:0 0 2px 0}
+  .workcard .meta{font-size:12px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:0 12px;background:#fff;border-radius:var(--r) var(--r) 0 0}
+  .tab{padding:12px 14px;border-radius:10px 10px 0 0;border:1px solid var(--line);border-bottom:none;background:#fff;cursor:pointer;font-weight:700}
+  .tab.active{background:#eef4ff;border-color:#c7d7fe}
+  .subtabs{display:flex;gap:6px;flex-wrap:wrap;padding:12px;border-bottom:1px solid var(--line);background:#fff}
+  .subtab{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-size:13px}
+  .subtab.active{background:#e8f0ff;border-color:#c7d7fe}
+  .panel{display:none} .panel.active{display:block}
+  .section{padding:0 12px 12px;background:#fff;border-radius:0 0 var(--r) var(--r)}
+  .stickybar{display:flex;align-items:center;justify-content:space-between;padding:12px;border-top:1px solid var(--line)}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:13.5px}
+  th{background:#fafbff} tr:hover td{background:#fafafa}
+  .chip{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid var(--line);font-size:12px}
+  .chip.ok{background:#eaf7ee;border-color:#b7e2c3;color:#14532d}
+  .chip.warn{background:#fff7e6;border-color:#ffe3b3;color:#7a4b00}
+  .chip.bad{background:#feecec;border-color:#ffc9c9;color:#7f1d1d}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#eef6ff;border:1px solid #cfe3ff;color:#0b4a8f}
+  .toolbar{display:flex;gap:8px;justify-content:space-between;padding:10px 12px;border-top:1px dashed var(--line);background:#fff;border-radius:0 0 var(--r) var(--r)}
+  .muted{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>현장관리 ▶ <span style="color:var(--brand)">경비활동</span></header>
+
+<div class="wrap">
+
+  <!-- 상단 KPI -->
+  <section class="card">
+    <div class="kpibox">
+      <div class="kpi"><small class="muted">금일 이상</small><h3 id="kpi-abnormal">-</h3></div>
+      <div class="kpi warn"><small class="muted">미조치</small><h3 id="kpi-pending">-</h3></div>
+      <div class="kpi info"><small class="muted">태그 미수행</small><h3 id="kpi-tagmiss">-</h3></div>
+      <div class="kpi ok"><small class="muted">완료</small><h3 id="kpi-done">-</h3></div>
+    </div>
+  </section>
+
+  <!-- 현장 목록 카드 -->
+  <section class="card">
+    <div class="stickybar">
+      <h4 style="margin:0">현장 목록</h4>
+      <div class="muted">선택된 현장: <b id="currentSite">-</b></div>
+    </div>
+    <div class="workgrid" id="workgrid"></div>
+  </section>
+
+  <!-- 본문 (탭) -->
+  <section class="card">
+    <div class="tabs" id="L1">
+      <div class="tab active" data-tab="issuance">발급관리</div>
+      <div class="tab" data-tab="patrol">순찰관리</div>
+      <div class="tab" data-tab="dispatch">출동관리</div>
+      <div class="tab" data-tab="etc">기타관리</div>
+      <div class="tab" data-tab="safety">안전관리</div>
+    </div>
+
+    <!-- 발급 -->
+    <section class="panel active" id="issuance">
+      <div class="subtabs" id="L2-issuance">
+        <div class="subtab active" data-sub="parking">주차위반서 발급</div>
+        <div class="subtab" data-sub="visitor">방문증 발급</div>
+      </div>
+
+      <div class="section panel active" id="parking">
+        <div class="stickybar">
+          <h4>주차위반서 발급 현황</h4>
+          <div class="row"><button class="btn ok">신규 발급</button><button class="btn">QR 출력</button><button class="btn">엑셀 다운로드</button></div>
+        </div>
+        <table>
+          <thead><tr><th>발급일시</th><th>차량번호</th><th>사업장</th><th>위치</th><th>유형</th><th>상태</th><th>발급자</th></tr></thead>
+          <tbody id="tbody-parking"></tbody>
+        </table>
+      </div>
+
+      <div class="section panel" id="visitor">
+        <div class="stickybar">
+          <h4>방문증 발급 현황</h4>
+          <div class="row"><button class="btn ok">방문증 발급</button><button class="btn">대량 발급</button><button class="btn">엑셀 다운로드</button></div>
+        </div>
+        <table>
+          <thead><tr><th>발급일시</th><th>방문자</th><th>연락처</th><th>방문지</th><th>목적</th><th>QR상태</th><th>출입기록</th></tr></thead>
+          <tbody id="tbody-visitor"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 순찰 -->
+    <section class="panel" id="patrol">
+      <div class="subtabs" id="L2-patrol">
+        <div class="subtab active" data-sub="patrol-tag">순찰태그관리</div>
+        <div class="subtab" data-sub="patrol-log">순찰일지</div>
+      </div>
+
+      <div class="section panel active" id="patrol-tag">
+        <div class="stickybar"><h4>순찰태그 관리</h4><div class="row"><button class="btn ok">태그 등록</button></div></div>
+        <table>
+          <thead><tr><th>태그ID</th><th>구역명</th><th>위치</th><th>상태</th><th>마지막점검</th><th>점검자</th></tr></thead>
+          <tbody id="tbody-patroltag"></tbody>
+        </table>
+      </div>
+
+      <div class="section panel" id="patrol-log">
+        <div class="stickybar"><h4>순찰일지</h4><div class="row"><button class="btn ok">일지 등록</button></div></div>
+        <table>
+          <thead><tr><th>순찰일자</th><th>코스</th><th>담당자</th><th>스캔수/목표</th><th>유형</th><th>결재상태</th></tr></thead>
+          <tbody id="tbody-patrollog"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 출동관리 -->
+    <section class="panel" id="dispatch">
+      <div class="subtabs" id="L2-dispatch">
+        <div class="subtab active" data-sub="noise">층간소음</div>
+        <div class="subtab" data-sub="fire">화재감지기</div>
+      </div>
+
+      <div class="section panel active" id="noise">
+        <div class="stickybar"><h4>층간소음 접수/조치</h4></div>
+        <table>
+          <thead><tr><th>접수일시</th><th>신고세대</th><th>가해세대</th><th>심각도</th><th>상태</th><th>담당자</th></tr></thead>
+          <tbody id="tbody-noise"></tbody>
+        </table>
+      </div>
+
+      <div class="section panel" id="fire">
+        <div class="stickybar"><h4>화재감지기 신호</h4></div>
+        <table>
+          <thead><tr><th>발생일시</th><th>감지기 위치</th><th>신호등급</th><th>조치상태</th><th>출동자</th></tr></thead>
+          <tbody id="tbody-fire"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 기타관리 -->
+    <section class="panel" id="etc">
+      <div class="subtabs" id="L2-etc">
+        <div class="subtab active" data-sub="lost">분실물</div>
+      </div>
+      <div class="section panel active" id="lost">
+        <div class="stickybar"><h4>분실물 신고/조치</h4></div>
+        <table>
+          <thead><tr><th>접수일</th><th>분실품목</th><th>발견위치</th><th>보관상태</th><th>신고자</th><th>인계상태</th></tr></thead>
+        <tbody id="tbody-lost"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 안전관리 -->
+    <section class="panel" id="safety">
+      <div class="subtabs" id="L2-safety">
+        <div class="subtab active" data-sub="daily-list">일일안전평가 목록</div>
+      </div>
+      <div class="section panel active" id="daily-list">
+        <div class="stickybar"><h4>일일안전평가</h4><div class="row"><button class="btn primary">평가 등록</button></div></div>
+        <table>
+          <thead><tr><th>평가일자</th><th>점검구역</th><th>위험점수</th><th>조치필요</th><th>담당자</th></tr></thead>
+          <tbody id="tbody-safety"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div class="muted">선택된 현장 데이터만 표시됩니다.</div>
+      <div class="row"><button class="btn">엑셀 다운로드</button><button class="btn ok">일괄 완료</button></div>
+    </div>
+  </section>
+</div>
+
+<script>
+/** -----------------------------
+ * 더미 데이터(DB)
+ * 현장별 데이터 구조는 실제 API 응답과 유사한 키로 설계
+ * ----------------------------- */
+const DB = {
+  sites: [
+    { id:'S001', name:'마곡수명산파크2', addr:'서울 강서구 마곡동', manager:'김경비', phone:'010-1234-5678', oncall:5, status:'운영중' },
+    { id:'S002', name:'풍무자이1',       addr:'경기 김포시 풍무동', manager:'정보안', phone:'010-5678-9012', oncall:3, status:'운영중' },
+    { id:'S003', name:'고양삼송LH10',    addr:'경기 고양시 삼송동', manager:'윤경비', phone:'010-8901-2345', oncall:2, status:'운영중' },
+    { id:'S004', name:'용인수지래미안',  addr:'경기 용인시 수지구', manager:'신경비', phone:'010-1111-2222', oncall:2, status:'운영중' },
+  ],
+  issuance: {
+    parking: [
+      { site:'S001', dt:'2025-09-19 14:30', car:'12가 3456', loc:'지상 B구역', type:'소방구역 주차', status:'통지완료', user:'최일규' },
+      { site:'S002', dt:'2025-09-19 11:15', car:'34나 9876', loc:'P2-15',      type:'장기주차(7일초과)', status:'완료', user:'박세조' },
+      { site:'S003', dt:'2025-09-18 16:45', car:'56다 2222', loc:'정문 앞',    type:'불법정차', status:'이의신청', user:'김영길' },
+      { site:'S004', dt:'2025-09-18 09:20', car:'78라 1111', loc:'지하 1층',   type:'소방구역 주차', status:'통지완료', user:'신경비' },
+    ],
+    visitor: [
+      { site:'S001', dt:'2025-09-19 14:00', name:'홍길동', tel:'010-1111-2222', dest:'301동 1203호', purpose:'가전설치', qr:'유효', pass:'미출입' },
+      { site:'S002', dt:'2025-09-19 10:30', name:'김미정', tel:'010-3333-4444', dest:'상가 2층',     purpose:'납품',     qr:'만료', pass:'출입완료' },
+      { site:'S003', dt:'2025-09-18 16:15', name:'이순신', tel:'010-5555-6666', dest:'201동 1501호', purpose:'방문',     qr:'유효', pass:'출입완료' },
+    ]
+  },
+  patrol: {
+    tags: [
+      { site:'S001', id:'TAG-A101', area:'동측계단', where:'2F 계단참', state:'정상', last:'2025-09-19 06:30', user:'구자웅' },
+      { site:'S002', id:'TAG-B207', area:'지하주차장 P2', where:'-2F 중앙통로', state:'정상', last:'2025-09-19 02:15', user:'이경묵' },
+      { site:'S003', id:'TAG-C303', area:'옥상 출입구', where:'RF 계단실', state:'점검필요', last:'2025-09-17 22:45', user:'박세조' },
+    ],
+    logs: [
+      { site:'S001', date:'2025-09-19', course:'A코스-주차장', who:'구자웅', scan:'12/12', type:'정상', appr:'승인' },
+      { site:'S002', date:'2025-09-19', course:'B코스-공용부', who:'이경묵', scan:'9/11',  type:'태그 2개 누락', appr:'검토중' },
+    ]
+  },
+  dispatch: {
+    noise: [
+      { site:'S001', dt:'2025-09-19 22:30', from:'304-1201', to:'304-1101', level:'매우높음', status:'출동중', user:'장양호' },
+      { site:'S002', dt:'2025-09-19 20:15', from:'101-1502', to:'101-1402', level:'높음',     status:'접수',   user:'박세조' },
+    ],
+    fire: [
+      { site:'S001', dt:'2025-09-19 03:41', where:'P2-소화전 F-22', grade:'화재', state:'현장확인완료', users:'구자웅, 이경묵' },
+      { site:'S003', dt:'2025-09-18 15:20', where:'동측계단 F-05',  grade:'연기감지', state:'조치완료', users:'박세조' },
+    ]
+  },
+  etc: {
+    lost: [
+      { site:'S001', date:'2025-09-19', item:'지갑(검정색)', place:'엘리베이터 홀', keep:'보관중', reporter:'익명', handover:'미인계' },
+      { site:'S001', date:'2025-09-18', item:'휴대폰(아이폰)', place:'주차장 B구역', keep:'인계완료', reporter:'홍길동', handover:'본인인계' },
+      { site:'S003', date:'2025-09-17', item:'키(자동차열쇠)', place:'관리사무소', keep:'보관중', reporter:'관리소', handover:'미인계' },
+    ]
+  },
+  safety: {
+    daily: [
+      { site:'S001', date:'2025-09-19', zone:'전기실', score:72, need:'필요', who:'이경묵' },
+      { site:'S002', date:'2025-09-19', zone:'승강기', score:30, need:'불필요', who:'구자웅' },
+    ]
+  }
+};
+
+/** 상태 배지 */
+const chip = (kind, text)=>`<span class="chip ${kind}">${text}</span>`;
+
+/** -----------------------------
+ * 렌더러
+ * ----------------------------- */
+let currentSite = null;
+
+function renderWorkgrid(){
+  const grid = document.getElementById('workgrid');
+  grid.innerHTML = DB.sites.map(s=>`
+    <div class="workcard" data-id="${s.id}" onclick="selectSite('${s.id}')">
+      <h5>${s.name}</h5>
+      <div class="meta"><span>${s.addr}</span></div>
+      <div class="meta"><span>담당: ${s.manager} (${s.phone})</span></div>
+      <div class="meta"><span>오늘 이상: <b style="color:var(--danger)">${s.oncall}건</b></span> · <span>${s.status}</span></div>
+    </div>
+  `).join('');
+}
+
+function selectSite(siteId){
+  currentSite = siteId;
+  document.getElementById('currentSite').textContent =
+    DB.sites.find(s=>s.id===siteId)?.name || '-';
+
+  // 카드 액티브 표시
+  document.querySelectorAll('.workcard').forEach(c=>{
+    c.classList.toggle('active', c.dataset.id===siteId);
+  });
+
+  // 테이블 렌더
+  renderTables();
+
+  // KPI 샘플(현장별 합산)
+  const p = DB.issuance.parking.filter(x=>x.site===siteId).length;
+  const v = DB.issuance.visitor.filter(x=>x.site===siteId).length;
+  const n = DB.dispatch.noise.filter(x=>x.site===siteId).length;
+  const f = DB.dispatch.fire.filter(x=>x.site===siteId).length;
+  document.getElementById('kpi-abnormal').textContent = p+n+f;
+  document.getElementById('kpi-pending').textContent = n;           // 예시: 미조치=소음건수
+  document.getElementById('kpi-tagmiss').textContent =
+    DB.patrol.logs.filter(x=>x.site===siteId && /태그/.test(x.type)).length;
+  document.getElementById('kpi-done').textContent =
+    DB.issuance.parking.filter(x=>x.site===siteId && x.status==='완료').length;
+}
+
+function renderTables(){
+  const s = currentSite;
+
+  // 발급-주차
+  document.getElementById('tbody-parking').innerHTML =
+    DB.issuance.parking.filter(x=>x.site===s).map(x=>`
+      <tr>
+        <td>${x.dt}</td><td>${x.car}</td>
+        <td>${siteName(s)}</td><td>${x.loc}</td>
+        <td><span class="badge">${x.type}</span></td>
+        <td>${
+          x.status==='완료' ? chip('ok','완료')
+          : x.status==='통지완료' ? chip('warn','통지완료')
+          : chip('bad',x.status)
+        }</td>
+        <td>${x.user}</td>
+      </tr>
+    `).join('') || emptyRow(7);
+
+  // 발급-방문증
+  document.getElementById('tbody-visitor').innerHTML =
+    DB.issuance.visitor.filter(x=>x.site===s).map(x=>`
+      <tr>
+        <td>${x.dt}</td><td>${x.name}</td><td>${x.tel}</td>
+        <td>${x.dest}</td><td>${x.purpose}</td>
+        <td>${x.qr==='유효'?chip('ok','유효'):chip('','만료')}</td>
+        <td>${x.pass}</td>
+      </tr>`).join('') || emptyRow(7);
+
+  // 순찰-태그
+  document.getElementById('tbody-patroltag').innerHTML =
+    DB.patrol.tags.filter(x=>x.site===s).map(x=>`
+      <tr>
+        <td>${x.id}</td><td>${x.area}</td><td>${x.where}</td>
+        <td>${x.state==='정상'?chip('ok','정상'):chip('warn','점검필요')}</td>
+        <td>${x.last}</td><td>${x.user}</td>
+      </tr>`).join('') || emptyRow(6);
+
+  // 순찰-일지
+  document.getElementById('tbody-patrollog').innerHTML =
+    DB.patrol.logs.filter(x=>x.site===s).map(x=>`
+      <tr>
+        <td>${x.date}</td><td>${x.course}</td><td>${x.who}</td>
+        <td>${x.scan}</td><td><span class="badge">${x.type}</span></td>
+        <td>${x.appr==='승인'?chip('ok','승인'):chip('warn','검토중')}</td>
+      </tr>`).join('') || emptyRow(6);
+
+  // 출동-층간소음
+  document.getElementById('tbody-noise').innerHTML =
+    DB.dispatch.noise.filter(x=>x.site===s).map(x=>`
+      <tr>
+        <td>${x.dt}</td><td>${x.from}</td><td>${x.to}</td>
+        <td>${x.level==='매우높음'?chip('bad','매우높음'):chip('warn','높음')}</td>
+        <td>${x.status}</td><td>${x.user}</td>
+      </tr>`).join('') || emptyRow(6);
+
+  // 출동-화재감지기
+  document.getElementById('tbody-fire').innerHTML =
+    DB.dispatch.fire.filter(x=>x.site===s).map(x=>`
+      <tr>
+        <td>${x.dt}</td><td>${x.where}</td>
+        <td>${x.grade==='화재'?chip('bad','화재'):chip('warn','연기감지')}</td>
+        <td>${x.state}</td><td>${x.users}</td>
+      </tr>`).join('') || emptyRow(5);
+
+  // 기타-분실물
+  document.getElementById('tbody-lost').innerHTML =
+    DB.etc.lost.filter(x=>x.site===s).map(x=>`
+      <tr>
+        <td>${x.date}</td><td>${x.item}</td><td>${x.place}</td>
+        <td>${x.keep}</td><td>${x.reporter}</td><td>${x.handover}</td>
+      </tr>`).join('') || emptyRow(6);
+
+  // 안전-일일
+  document.getElementById('tbody-safety').innerHTML =
+    DB.safety.daily.filter(x=>x.site===s).map(x=>`
+      <tr>
+        <td>${x.date}</td><td>${x.zone}</td>
+        <td>${x.score>=61?chip('warn',x.score+'점'):chip('ok',x.score+'점')}</td>
+        <td>${x.need==='필요'?chip('warn','필요'):chip('ok','불필요')}</td>
+        <td>${x.who}</td>
+      </tr>`).join('') || emptyRow(5);
+}
+
+function emptyRow(cols){
+  return `<tr><td colspan="${cols}" class="muted" style="text-align:center">해당 현장 데이터가 없습니다.</td></tr>`;
+}
+function siteName(id){ return DB.sites.find(s=>s.id===id)?.name ?? ''; }
+
+/** 탭/서브탭 바인딩 */
+function bindTabs(){
+  // L1
+  document.querySelectorAll('#L1 .tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('#L1 .tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('section.card > .panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById(tab.dataset.tab).classList.add('active');
+      // 해당 패널의 첫 서브탭도 선택
+      const firstSub = document.querySelector(`#${tab.dataset.tab} .subtabs .subtab`);
+      if(firstSub) firstSub.click();
+    });
+  });
+  // L2 (모든 섹션 공통 위임)
+  document.querySelectorAll('.subtabs').forEach(st=>{
+    st.addEventListener('click', e=>{
+      const sub = e.target.closest('.subtab'); if(!sub) return;
+      st.querySelectorAll('.subtab').forEach(x=>x.classList.remove('active'));
+      sub.classList.add('active');
+      const panel = st.parentElement;
+      panel.querySelectorAll('.section.panel').forEach(p=>p.classList.remove('active'));
+      panel.querySelector('#'+sub.dataset.sub).classList.add('active');
+    });
+  });
+}
+
+/** 초기화 */
+renderWorkgrid();
+bindTabs();
+// 기본 현장 선택(첫 카드)
+selectSite(DB.sites[0].id);
+</script>
+</body>
+</html>

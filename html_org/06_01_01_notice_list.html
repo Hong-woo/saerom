@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 | 고객센터 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+  </head>
+
+  <body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+      <a href="#gnb" class="btn">본문 바로가기</a>
+      <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+      <!-- #header start // -->
+      <div id="header">
+        <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+        <ul class="quick-nav">
+          <li><a href="#" class="btn menu">메뉴</a></li>
+          <li><a href="#" class="btn class active">클래스 관리</a></li>
+          <li><a href="#" class="btn home">Main</a></li>
+          <li><a href="#" class="btn schedule">스케쥴관리</a></li>
+          <li><a href="#" class="btn calculate">정산관리</a></li>
+        </ul>
+        <div id="gnb">
+          <h2 class="blind">주메뉴</h2>
+          <a href="#" class="btn btn-gnb-close">닫기</a>
+          <ul class="gnb-depth1">
+            <li><a href="#" class="btn home">Main</a></li>
+            <li><a href="#" class="btn instructor btn-toggle">강사관리</a>
+              <ul class="gnb-depth2">
+                <li><a href="#" class="btn">프로필 관리</a></li>
+                <li><a href="#" class="btn">강사인증</a></li>
+                <li><a href="#" class="btn">강사계약서</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="btn class btn-toggle">클래스 관리</a>
+              <ul class="gnb-depth2">
+                <li><a href="#" class="btn">클래스 관리</a></li>
+                <li><a href="#" class="btn">스케쥴 관리</a></li>
+                <li><a href="#" class="btn">스포츠 활동 인증</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="btn people">구성원 관리</a></li>
+            <li><a href="#" class="btn calculate btn-toggle">정산관리</a>
+              <ul class="gnb-depth2">
+                <li><a href="#" class="btn">출금관리</a></li>
+                <li><a href="#" class="btn">정산내역</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="btn customer btn-toggle active">고객센터</a>
+              <ul class="gnb-depth2" style="display:block;">
+                <li><a href="#" class="btn active">공지사항</a></li>
+                <li><a href="#" class="btn">1:1 문의</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="btn check">출석체크</a></li>
+          </ul>
+          <span class="gnb-back" tabindex="0"></span>
+        </div>
+      </div>
+      <!-- // #header end -->
+      <div class="container">
+        <div class="contents-top clearfix">
+          <p class="title">Management System</p>
+          <div class="snb">
+            <ul class="snb-depth1 clearfix">
+              <li><a href="#" class="btn btn-toggle language">
+                  <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                  <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                </a>
+                <ul class="snb-depth2">
+                  <li><a href="#" class="btn">한국어</a></li>
+                  <li><a href="#" class="btn">English</a></li>
+                  <li><a href="#" class="btn">Japanese</a></li>
+                  <li><a href="#" class="btn">Arabic</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                <ul class="snb-depth2">
+                  <li><a href="#" class="btn">관리자 정보</a></li>
+                  <li><a href="#" class="btn">로그인 관리</a></li>
+                  <li><a href="#" class="btn">로그아웃</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="contents" class="contents-body">
+          <h2 class="blind">본문</h2>
+          <div class="contents-title">
+            <h3 class="title-page">공지사항</h3>
+            <a href="#" class="btn btn-back">뒤로가기</a>
+          </div>
+
+          <form>
+            <ul class="form-style-02 notice">
+              <li class="w01">
+                <div class="form-title word3">작성일</div>
+                <div class="form-con">
+                  <div class="datepicker-set-01">
+                    <div class="datepicker-01">
+                      <input type="text" class="input-datepicker" id="iddate05" placeholder="2023.00.00">
+                      <label for="iddate05">작성일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                    </div>
+                    <span>~</span>
+                    <div class="datepicker-01">
+                      <input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+                      <label for="iddate06">작성일 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="w02">
+                <div class="form-title word3"><label for="idsearch02">검색어</label></div>
+                <div class="form-con">
+                  <input type="text" class="input-02" id="idsearch02" placeholder="검색어를 입력하세요">
+                </div>
+              </li>
+            </ul>
+            <div class="form-bottom-01">
+              <a href="#" class="btn btn-blackline-02">초기화</a>
+              <a href="#" class="btn btn-black-02">검색</a>
+            </div>
+          </form>
+
+          <!-- .board-top -->
+          <div class="board-top">
+            <div class="left">
+              <label for="idselect01" class="blind">보여줄 게시물 갯수</label>
+              <select id="idselect01" class="select-01">
+                <option value="">10개</option>
+              </select>
+            </div>
+          </div>
+          <!-- table -->
+          <div class="table-style-02 table-board">
+            <table>
+              <caption>공지사항 목록</caption>
+              <colgroup>
+                <col style="width:140px;">
+                <col style="width:auto;">
+                <col style="width:140px;">
+                <col style="width:150px;">
+                <col style="width:150px;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col" class="pc-only">번호</th>
+                  <th scope="col">내용</th>
+                  <th scope="col" class="pc-only">작성자</th>
+                  <th scope="col">작성일</th>
+                  <th scope="col" class="pc-only">조회수</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="pc-only">10</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">9</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">8</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">7</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">6</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">5</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">4</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">3</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">2</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+                <tr>
+                  <td class="pc-only">1</td>
+                  <td class="tlt mo-first">
+                    <a href="#" class="btn">강사인증 메뉴가 곧 업데이트 될 예정입니다.</a>
+                  </td>
+                  <td class="pc-only">데이터쿡</td>
+                  <td class="mo-last">2023.12.23</td>
+                  <td class="pc-only">1,200</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- paging -->
+          <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+            <a href="#" class="btn first">처음으로</a>
+            <a href="#" class="btn prev">이전</a>
+            <a href="#" class="btn">1</a>
+            <a href="#" class="btn active" title="현재 페이지">2</a>
+            <a href="#" class="btn">3</a>
+            <a href="#" class="btn">4</a>
+            <a href="#" class="btn">5</a>
+            <a href="#" class="btn next">다음</a>
+            <a href="#" class="btn last">마지막으로</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+
+</html>

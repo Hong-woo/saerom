@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>월간 일정현황 | 스케쥴 관리 | 클래스 관리 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+  </head>
+
+  <body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+      <a href="#gnb" class="btn">본문 바로가기</a>
+      <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+      <!-- #header start // -->
+      <div id="header">
+        <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+        <ul class="quick-nav">
+          <li><a href="#" class="btn menu">메뉴</a></li>
+          <li><a href="#" class="btn class">클래스 관리</a></li>
+          <li><a href="#" class="btn home">Main</a></li>
+          <li><a href="#" class="btn schedule active">스케쥴관리</a></li>
+          <li><a href="#" class="btn calculate">정산관리</a></li>
+        </ul>
+        <div id="gnb">
+          <h2 class="blind">주메뉴</h2>
+          <a href="#" class="btn btn-gnb-close">닫기</a>
+          <ul class="gnb-depth1">
+            <li><a href="#" class="btn home">Main</a></li>
+            <li><a href="#" class="btn instructor btn-toggle">강사관리</a>
+              <ul class="gnb-depth2">
+                <li><a href="#" class="btn">프로필 관리</a></li>
+                <li><a href="#" class="btn">강사인증</a></li>
+                <li><a href="#" class="btn">강사계약서</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="btn class btn-toggle active">클래스 관리</a>
+              <ul class="gnb-depth2" style="display:block;">
+                <li><a href="#" class="btn">클래스 관리</a></li>
+                <li><a href="#" class="btn active">스케쥴 관리</a></li>
+                <li><a href="#" class="btn">스포츠 활동 인증</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="btn people">구성원 관리</a></li>
+            <li><a href="#" class="btn calculate btn-toggle">정산관리</a>
+              <ul class="gnb-depth2">
+                <li><a href="#" class="btn">출금관리</a></li>
+                <li><a href="#" class="btn">정산내역</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+              <ul class="gnb-depth2">
+                <li><a href="#" class="btn">공지사항</a></li>
+                <li><a href="#" class="btn">1:1 문의</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="btn check">출석체크</a></li>
+          </ul>
+          <span class="gnb-back" tabindex="0"></span>
+        </div>
+      </div>
+      <!-- // #header end -->
+      <div class="container">
+        <div class="contents-top clearfix">
+          <p class="title">Management System</p>
+          <div class="snb">
+            <ul class="snb-depth1 clearfix">
+              <li><a href="#" class="btn btn-toggle language">
+                  <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                  <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                </a>
+                <ul class="snb-depth2">
+                  <li><a href="#" class="btn">한국어</a></li>
+                  <li><a href="#" class="btn">English</a></li>
+                  <li><a href="#" class="btn">Japanese</a></li>
+                  <li><a href="#" class="btn">Arabic</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                <ul class="snb-depth2">
+                  <li><a href="#" class="btn">관리자 정보</a></li>
+                  <li><a href="#" class="btn">로그인 관리</a></li>
+                  <li><a href="#" class="btn">로그아웃</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="contents" class="contents-body">
+          <h2 class="blind">본문</h2>
+          <div class="contents-title">
+            <h3 class="title-page">스케쥴 관리</h3>
+            <a href="#" class="btn btn-back">뒤로가기</a>
+          </div>
+
+          <div class="schedule-wrap month">
+            <h4 class="blind">주간 시간표</h4>
+            <!-- 클래스 선택 -->
+            <div class="select-class">
+              <label for="selectclass01" class="blind">클래스 선택</label>
+              <select id="selectclass01" class="select-01">
+                <option value="">광명A헬스장 PT권</option>
+              </select>
+            </div>
+            <!-- 스케쥴 유형 선택 -->
+            <div class="schedule-head clearfix">
+              <ul class="btns-select schedule-type">
+                <li><a href="#" class="btn">시간표</a></li>
+                <li><a href="#" class="btn active">일정현황</a></li>
+              </ul>
+              <ul class="btns-select schedule-turm">
+                <li><a href="#" class="btn">일간</a></li>
+                <li><a href="#" class="btn">주간</a></li>
+                <li><a href="#" class="btn active">월간</a></li>
+              </ul>
+              <div class="schedule-time">
+                <p class="num">2023.06</p>
+                <a href="#" class="btn btn-prev">이전</a>
+                <a href="#" class="btn btn-next">다음</a>
+              </div>
+            </div>
+
+            <form>
+              <ul class="form-style-02 schedule">
+                <li class="w04 first">
+                  <div class="form-title word5"><label for="idsearch01">이름/아이디</label></div>
+                  <div class="form-con">
+                    <input type="text" class="input-01" id="idsearch01">
+                  </div>
+                </li>
+                <li class="w04">
+                  <div class="form-title word2">상태</div>
+                  <div class="form-con">
+                    <div class="radio-set-03">
+                      <p class="radio-02">
+                        <input type="radio" name="completion02" id="idcompletion04" checked>
+                        <label for="idcompletion04">전체</label>
+                      </p>
+                      <p class="radio-02">
+                        <input type="radio" name="completion02" id="idcompletion05">
+                        <label for="idcompletion05">출석</label>
+                      </p>
+                      <p class="radio-02">
+                        <input type="radio" name="completion02" id="idcompletion06">
+                        <label for="idcompletion06">결석</label>
+                      </p>
+                      <p class="radio-02">
+                        <input type="radio" name="completion02" id="idcompletion07">
+                        <label for="idcompletion07">예약취소</label>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li class="w04 first">
+                  <div class="form-title word5"><label for="idsearch01">잔여횟수</label></div>
+                  <div class="form-con">
+                    <div class="input-unitset-01">
+                      <p class="input-unit-03">
+                        <input type="text" class="input-02" id="idnum01" value="0">
+                        <span class="unit">회</span>
+                      </p>
+                      <span>~</span>
+                      <p class="input-unit-03">
+                        <input type="text" class="input-02" id="idnum01" value="0">
+                        <span class="unit">회</span>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="form-bottom-01">
+                <a href="#" class="btn btn-blackline-02">초기화</a>
+                <a href="#" class="btn btn-black-02">검색</a>
+              </div>
+            </form>
+
+            <!-- .board-top -->
+            <div class="board-top">
+              <div class="left">
+                <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+                <select id="idselect01" class="select-01">
+                  <option value="">10개</option>
+                </select>
+                <label for="idboardall" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+                <div class="guide-board">
+                  <strong>24</strong>
+                  <span>개 선택 됨</span>
+                </div>
+              </div>
+              <div class="right">
+                <a href="#popup-new-schedule" class="btn btn-white-01 btn-popup-open">신규스케쥴 등록</a>
+                <a href="#popup-attend-all" class="btn btn-white-01 btn-popup-open">일괄출석</a>
+                <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+              </div>
+              <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+            </div>
+            <!-- table -->
+            <div class="table-style-02">
+              <table>
+                <caption>일정현황</caption>
+                <colgroup>
+                  <col style="width:80px;">
+                  <col style="width:auto;">
+                  <col style="width:auto;">
+                  <col style="width:auto;">
+                  <col style="width:auto;">
+                  <col style="width:auto;">
+                  <col style="width:auto;">
+                  <col style="width:auto;">
+                  <col style="width:auto;">
+                  <col style="width:auto;">
+
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboardall">
+                        <label for="idboardall" class="btn-allcheck" data-target="boardcheck"><span
+                            class="blind">전체선택</span></label>
+                      </p>
+                    </th>
+                    <th scope="col">수업예약일시<a href="#" class="btn btn-sorting">정렬 바꾸기</a></th>
+                    <th scope="col">수업종목</th>
+                    <th scope="col">수업 이름</th>
+                    <th scope="col">강사 이름</th>
+                    <th scope="col">회원 이름</th>
+                    <th scope="col">아이디</th>
+                    <th scope="col">상태</th>
+                    <th scope="col">잔여횟수/총횟수</th>
+                    <th scope="col">잔여일수</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard01">
+                        <label for="idboard01"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 orange-01">예약취소</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard02">
+                        <label for="idboard02"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01">미선택</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard03">
+                        <label for="idboard03"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 green-01">출석</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard04">
+                        <label for="idboard04"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 red-01">결석</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard05">
+                        <label for="idboard05"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 green-01">출석</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard06">
+                        <label for="idboard06"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 green-01">출석</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard07">
+                        <label for="idboard07"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 green-01">출석</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard08">
+                        <label for="idboard08"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 green-01">출석</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard09">
+                        <label for="idboard09"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 green-01">출석</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="check-04">
+                        <input type="checkbox" name="boardcheck" id="idboard10">
+                        <label for="idboard10"><span class="blind">선택</span></label>
+                      </p>
+                    </td>
+                    <td>YYYY-MM-DD</td>
+                    <td>PT</td>
+                    <td>광명A헬스장PT권</td>
+                    <td>강동원</td>
+                    <td>
+                      <a href="#popup-memberinfo" class="btn btn-text btn-popup-open">김성현</a>
+                    </td>
+                    <td>Seonghyun01</td>
+                    <td>
+                      <p class="reservation">
+                        <span class="box-round-01 green-01">출석</span>
+                        <a href="#popup-attend-change" class="btn btn-white-01 btn-popup-open">변경</a>
+                      </p>
+                    </td>
+                    <td>01/15</td>
+                    <td>81일</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- paging -->
+            <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+              <a href="#" class="btn first">처음으로</a>
+              <a href="#" class="btn prev">이전</a>
+              <a href="#" class="btn">1</a>
+              <a href="#" class="btn active" title="현재 페이지">2</a>
+              <a href="#" class="btn">3</a>
+              <a href="#" class="btn">4</a>
+              <a href="#" class="btn">5</a>
+              <a href="#" class="btn next">다음</a>
+              <a href="#" class="btn last">마지막으로</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- popup start // -->
+      <!-- #popup-alert-01 -->
+      <!-- <div class="popup-wrap popup-alert-01" id="popup-alert-01">
+            <div class="popup-box">
+                <div class="popup-body">
+                    <p class="text-01">미수료 상태에서는<br>수료증 발급을 할수 없습니다.</p>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-blue-02 btn-popup-close">확인</a>
+                </div>
+            </div>
+        </div> -->
+      <!-- #popup-attend-change -->
+      <div class="popup-wrap popup-style-01" id="popup-attend-change">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">출석상태 변경</h3>
+            <p class="text-sub">2023.05.01 (월) 10:00 ~ 10:50</p>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <p class="text-01">[홍성현] 회원님의 출석상태를 변경합니다.</p>
+            <ul class="radio-set-01 radio-e3">
+              <li>
+                <p class="radio-01">
+                  <input type="radio" id="idclass0101" name="idclass01">
+                  <label for="idclass0101">출석</label>
+                </p>
+              </li>
+              <li>
+                <p class="radio-01">
+                  <input type="radio" id="idclass0102" name="idclass01">
+                  <label for="idclass0102">결석</label>
+                </p>
+              </li>
+              <li>
+                <p class="radio-01">
+                  <input type="radio" id="idclass0103" name="idclass01">
+                  <label for="idclass0103">예약취소</label>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="popup-foot flex-end">
+            <a href="#" class="btn btn-blueline-02 btn-popup-close">삭제</a>
+            <a href="#" class="btn btn-blue-02">저장</a>
+          </div>
+        </div>
+      </div>
+      <!-- popup-attend-all -->
+      <div class="popup-wrap popup-style-01" id="popup-attend-all">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">일괄 출석상태 변경</h3>
+            <p class="text-sub">2023.05.01 (월) 10:00 ~ 10:50</p>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <p class="text-01">회원님의 출석상태를 변경합니다.</p>
+            <ul class="radio-set-01 radio-e3">
+              <li>
+                <p class="radio-01">
+                  <input type="radio" id="idclass0101" name="idclass01">
+                  <label for="idclass0101">출석</label>
+                </p>
+              </li>
+              <li>
+                <p class="radio-01">
+                  <input type="radio" id="idclass0102" name="idclass01">
+                  <label for="idclass0102">결석</label>
+                </p>
+              </li>
+              <li>
+                <p class="radio-01">
+                  <input type="radio" id="idclass0103" name="idclass01">
+                  <label for="idclass0103">예약취소</label>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="popup-foot flex-end">
+            <a href="#" class="btn btn-blueline-02 btn-popup-close">삭제</a>
+            <a href="#" class="btn btn-blue-02">저장</a>
+          </div>
+        </div>
+      </div>
+      <!-- popup-memberinfo -->
+      <div class="popup-wrap popup-style-02" id="popup-memberinfo">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">회원정보</h3>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <div class="memberinfo-01">
+              <div class="img-profile">
+                <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+              </div>
+              <div class="list-info-01">
+                <div class="info-top">
+                  <p class="name">강동원</p>
+                  <span class="gender">남</span>
+                  <span class="id">Seonghyun02</span>
+                </div>
+                <ul>
+                  <li>
+                    <p class="title">생년월일</p>
+                    <p class="con">1981.09.10</p>
+                  </li>
+                  <li>
+                    <p class="title">휴대폰</p>
+                    <p class="con">010-1234-5678</p>
+                  </li>
+                  <li>
+                    <p class="title">이용중인 상품</p>
+                    <p class="con">광명A헬스장 PT권</p>
+                  </li>
+                  <li>
+                    <p class="title">담당 강사</p>
+                    <p class="con">손흥민</p>
+                  </li>
+                  <li>
+                    <p class="title">잔여 횟수</p>
+                    <p class="con">10회 / 15회</p>
+                  </li>
+                  <li>
+                    <p class="box-round-02">연장 결제요청</p>
+                  </li>
+                  <li>
+                    <p class="title">잔여 횟수</p>
+                    <p class="con"><span class="text-red">3회</span> / 15회</p>
+                  </li>
+                  <li><a href="#" class="btn btn-blueline-02">연장 결제요청</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="memberinfo-02">
+              <div class="list-attend">
+                <p class="title">출석 기록<span>최근30일</span></p>
+                <ul class="scroll-custom-01">
+                  <li class="attend">
+                    <span class="state">출석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="absent">
+                    <span class="state">결석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="attend">
+                    <span class="state">출석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="absent">
+                    <span class="state">결석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="attend">
+                    <span class="state">출석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="absent">
+                    <span class="state">결석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="attend">
+                    <span class="state">출석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="absent">
+                    <span class="state">결석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="attend">
+                    <span class="state">출석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                  <li class="absent">
+                    <span class="state">결석</span>
+                    <span class="date">2023.04.26 (수) 23:07</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-reservation">
+                <p class="title">수업 예약</p>
+                <a href="#popup-reservation" class="btn btn-add-02 btn-popup-open">추가</a>
+                <ul class="scroll-custom-01">
+                  <li>
+                    <span class="date">2023.05.08 (월) 22:00</span>
+                    <a href="#" class="btn btn-modify-03">수정</a>
+                  </li>
+                  <li>
+                    <span class="date">2023.05.08 (월) 22:00</span>
+                    <a href="#" class="btn btn-modify-03">수정</a>
+                  </li>
+                  <li>
+                    <span class="date">2023.05.08 (월) 22:00</span>
+                    <a href="#" class="btn btn-modify-03">수정</a>
+                  </li>
+                  <li>
+                    <span class="date">2023.05.08 (월) 22:00</span>
+                    <a href="#" class="btn btn-modify-03">수정</a>
+                  </li>
+                  <li>
+                    <span class="date">2023.05.08 (월) 22:00</span>
+                    <a href="#" class="btn btn-modify-03">수정</a>
+                  </li>
+                  <li>
+                    <span class="date">2023.05.08 (월) 22:00</span>
+                    <a href="#" class="btn btn-modify-03">수정</a>
+                  </li>
+                  <li>
+                    <span class="date">2023.05.08 (월) 22:00</span>
+                    <a href="#" class="btn btn-modify-03">수정</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-memo">
+                <p class="title">회원 메모</p>
+                <a href="#popup-memo" class="btn btn-add-02 btn-popup-open">추가</a>
+                <ul class="scroll-custom-01">
+                  <li>
+                    <p class="con">이미선(MISUN33)님 소개</p>
+                    <p class="date">23/04/12 20:41:11</p>
+                    <a href="#" class="btn btn-delete-04">삭제</a>
+                  </li>
+                  <li>
+                    <p class="con">어깨 탈골 위험 있음 어깨 탈골 위험 있음 어깨 탈골 위험 있음 어깨 탈골 위험 있음 </p>
+                    <p class="date">23/04/12 20:41:11</p>
+                    <a href="#" class="btn btn-delete-04">삭제</a>
+                  </li>
+                  <li>
+                    <p class="con">어깨 탈골 위험 있음 어깨 탈골 위험 있음 어깨 탈골 위험 있음 어깨 탈골 위험 있음 </p>
+                    <p class="date">23/04/12 20:41:11</p>
+                    <a href="#" class="btn btn-delete-04">삭제</a>
+                  </li>
+                  <li>
+                    <p class="con">어깨 탈골 위험 있음 어깨 탈골 위험 있음 어깨 탈골 위험 있음 어깨 탈골 위험 있음 </p>
+                    <p class="date">23/04/12 20:41:11</p>
+                    <a href="#" class="btn btn-delete-04">삭제</a>
+                  </li>
+                  <li>
+                    <p class="con">어깨 탈골 위험 있음 어깨 탈골 위험 있음 어깨 탈골 위험 있음 어깨 탈골 위험 있음 </p>
+                    <p class="date">23/04/12 20:41:11</p>
+                    <a href="#" class="btn btn-delete-04">삭제</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- popup-reservation -->
+      <div class="popup-wrap popup-style-01" id="popup-reservation">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">수업 예약</h3>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <ul class="paying-info-02">
+              <li class="w01">
+                <p class="title">날짜</p>
+                <div class="datepicker-01">
+                  <input type="text" class="input-datepicker" id="idday01" placeholder="2023.00.00">
+                  <label for="idday01">생년월일 날짜 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                </div>
+              </li>
+              <li class="w01">
+                <p class="title"><label for="idtime"></label>시간</p>
+                <select id="idtime" class="select-01">
+                  <option value="">00:00</option>
+                  <option value="">01:00</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+          <div class="popup-foot flex-end">
+            <a href="#" class="btn btn-blueline-02 btn-popup-close">취소</a>
+            <a href="#" class="btn btn-blue-02">등록하기</a>
+          </div>
+        </div>
+      </div>
+      <!-- popup-memo -->
+      <div class="popup-wrap popup-style-01" id="popup-memo">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">회원 메모</h3>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <label for="idtextarea01" class="blind">회원 메모</label>
+            <textarea id="idtextarea01" cols="30" rows="10" class="textarea-01"></textarea>
+          </div>
+          <div class="popup-foot flex-end">
+            <a href="#" class="btn btn-blueline-02 btn-popup-close">취소</a>
+            <a href="#" class="btn btn-blue-02">등록하기</a>
+          </div>
+        </div>
+      </div>
+      <!-- popup-new-schedule --><!-- 231117 추가 -->
+      <div class="popup-wrap popup-style-02" id="popup-new-schedule">
+        <div class="popup-box">
+          <div class="popup-head">
+            <h3 class="popup-title">신규 스케쥴 등록</h3>
+            <a href="#" class="btn btn-popup-close">닫기</a>
+          </div>
+          <div class="popup-body">
+            <div class="new-schedule-wrap">
+              <div class="left">
+                <!-- 검색 -->
+                <p class="text-02">사용자 검색</p>
+                <div class="input-search-member">
+                  <label for="idsearch01" class="blind">아이디, 이름, 연락처로 검색해주세요</label>
+                  <input type="text" class="input-search" id="idsearch01" placeholder="아이디, 이름, 연락처로 검색해주세요">
+                  <ul class="list-instructor">
+                    <li>
+                      <div class="img-profile">
+                        <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                      </div>
+                      <div class="text-wrap">
+                        <div class="info-01">
+                          <p class="name">손<strong>흥민</strong></p>
+                          <p class="id">s<strong>on_</strong>7</p>
+                        </div>
+                        <div class="info-02">010-****-56<strong>78</strong></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="img-profile">
+                        <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                      </div>
+                      <div class="text-wrap">
+                        <div class="info-01">
+                          <p class="name">손<strong>흥민</strong></p>
+                          <p class="id">s<strong>on_</strong>7</p>
+                        </div>
+                        <div class="info-02">010-****-56<strong>78</strong></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="img-profile">
+                        <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                      </div>
+                      <div class="text-wrap">
+                        <div class="info-01">
+                          <p class="name">손<strong>흥민</strong></p>
+                          <p class="id">s<strong>on_</strong>7</p>
+                        </div>
+                        <div class="info-02">010-****-56<strong>78</strong></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="img-profile">
+                        <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                      </div>
+                      <div class="text-wrap">
+                        <div class="info-01">
+                          <p class="name">손<strong>흥민</strong></p>
+                          <p class="id">s<strong>on_</strong>7</p>
+                        </div>
+                        <div class="info-02">010-****-56<strong>78</strong></div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="img-profile">
+                        <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                      </div>
+                      <div class="text-wrap">
+                        <div class="info-01">
+                          <p class="name">손<strong>흥민</strong></p>
+                          <p class="id">s<strong>on_</strong>7</p>
+                        </div>
+                        <div class="info-02">010-****-56<strong>78</strong></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <!-- 아이디 -->
+                <p class="text-02"><label for="idnew02">아이디</label></p>
+                <input type="text" class="input-01" id="idnew02" laceholder="아이디 검색을 통해 입력해주세요"
+                  title="아이디 검색을 통해 입력해주세요" readonly>
+                <!-- 시작일 선택 -->
+                <p class="text-02">시작일 선택</p>
+                <div class="datepicker-01">
+                  <input type="text" class="input-datepicker" id="idday01" placeholder="2023.00.00">
+                  <label for="idday01">시작일 날짜 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                </div>
+                <!-- 횟수 -->
+                <p class="text-02"><label for="idnew03">횟수</label></p>
+                <input type="text" class="input-01" id="idnew03" laceholder="횟수를 입력해주세요" title="횟수를 입력해주세요" readonly>
+                <!-- 지도 요일 -->
+                <p class="text-02">지도 요일</p>
+                <h4 class="title-p-01"></h4>
+                <div class="check-set-01">
+                  <div class="check-03">
+                    <input type="checkbox" id="iddays01">
+                    <label for="iddays01" class="btn-allcheck" data-target="iddays">매일</label>
+                  </div>
+                  <div class="check-03">
+                    <input type="checkbox" id="iddays02" name="iddays">
+                    <label for="iddays02">월</label>
+                  </div>
+                  <div class="check-03">
+                    <input type="checkbox" id="iddays03" name="iddays">
+                    <label for="iddays03">화</label>
+                  </div>
+                  <div class="check-03">
+                    <input type="checkbox" id="iddays04" name="iddays">
+                    <label for="iddays04">수</label>
+                  </div>
+                  <div class="check-03">
+                    <input type="checkbox" id="iddays05" name="iddays">
+                    <label for="iddays05">목</label>
+                  </div>
+                  <div class="check-03">
+                    <input type="checkbox" id="iddays06" name="iddays">
+                    <label for="iddays06">금</label>
+                  </div>
+                  <div class="check-03">
+                    <input type="checkbox" id="iddays07" name="iddays">
+                    <label for="iddays07">토</label>
+                  </div>
+                  <div class="check-03">
+                    <input type="checkbox" id="iddays08" name="iddays">
+                    <label for="iddays08">일</label>
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <p class="text-02">스케줄 현황</p>
+                <div class="schedule-wrap week">
+                  <h4 class="blind">주간 시간표</h4>
+                  <!-- 스케쥴 유형 선택 -->
+                  <div class="table-schedule-01">
+                    <div class="schedule-time">
+                      <p class="num">2023.06.04 ~ 2023.06.10</p>
+                      <a href="#" class="btn btn-prev">이전</a>
+                      <a href="#" class="btn btn-next">다음</a>
+                    </div>
+                    <table>
+                      <colgroup>
+                        <col style="width:auto">
+                        <col style="width:13.4%">
+                        <col style="width:13.4%">
+                        <col style="width:13.4%">
+                        <col style="width:13.4%">
+                        <col style="width:13.4%">
+                        <col style="width:13.4%">
+                        <col style="width:13.4%">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th scope="col" class="holiday">
+                            <p class="day">일</p>
+                          </th>
+                          <th scope="col">
+                            <p class="day">월</p>
+                          </th>
+                          <th scope="col">
+                            <p class="day">화</p>
+                          </th>
+                          <th scope="col">
+                            <p class="day">수</p>
+                          </th>
+                          <th scope="col">
+                            <p class="day">목</p>
+                          </th>
+                          <th scope="col">
+                            <p class="day">금</p>
+                          </th>
+                          <th scope="col" class="another">
+                            <p class="day">토</p>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">00:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">02:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">02:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">03:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">04:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">05:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">06:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">07:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">08:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">09:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">10:00</th>
+                          <td class="another">
+                            <div class="box-lesson">
+                              <ul class="list-lesson-01">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">22:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                              </ul>
+                              <a href="#" class="btn btn-toggle">외 5건</a>
+                              <ul class="list-lesson-01 list-lesson-toggle">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">22:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                          <td class="another">
+                            <div class="box-lesson">
+                              <ul class="list-lesson-01">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                          <td class="another">
+                            <div class="box-lesson">
+                              <ul class="list-lesson-01">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                          <td class="another">
+                            <div class="box-lesson">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="box-lesson">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="box-lesson">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="box-lesson">
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row" class="time">11:00</th>
+                          <td class="holiday">
+                            <div class="box-lesson">
+                              <ul class="list-lesson-01">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="box-lesson">
+                              <ul class="list-lesson-01">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                          <td class="holiday">
+                            <div class="box-lesson">
+                              <ul class="list-lesson-01">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="box-lesson">
+                            </div>
+                          </td>
+                          <td class="today">
+                            <div class="box-lesson">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="box-lesson">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="box-lesson">
+                              <ul class="list-lesson-01">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">9/10</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">22/55</span>
+                                  </a>
+                                </li>
+                              </ul>
+                              <a href="#" class="btn btn-toggle">외 2건</a>
+                              <ul class="list-lesson-01 list-lesson-toggle">
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#popup-attend" class="btn btn-popup-open">
+                                    <span class="time">10:00</span>
+                                    <span class="title">강동원강사님의 수업 1/1</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">12:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">13:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">14:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">15:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">16:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">17:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">18:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">19:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">20:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">21:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">22:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">23:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">24:00</th>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                          <td>
+                            <div class="box-lesson"></div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="btns-page-bottom">
+              <div class="right">
+                <a href="#" class="btn btn-blueline-03 btn-popup-close">취소</a>
+                <a href="#" class="btn btn-blue-03">스케줄 등록</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- // popup end -->
+
+    </div>
+  </body>
+
+</html>

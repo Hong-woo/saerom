@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>월간 시간표 | 스케쥴 관리 | 클래스 관리 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu">메뉴</a></li>
+                <li><a href="#" class="btn class">클래스 관리</a></li>
+                <li><a href="#" class="btn home">Main</a></li>
+                <li><a href="#" class="btn schedule active">스케쥴관리</a></li>
+                <li><a href="#" class="btn calculate">정산관리</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close">닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="#" class="btn home">Main</a></li>
+                    <li><a href="#" class="btn instructor btn-toggle">강사관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">프로필 관리</a></li>
+                            <li><a href="#" class="btn">강사인증</a></li>
+                            <li><a href="#" class="btn">강사계약서</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn class btn-toggle active">클래스 관리</a>
+                        <ul class="gnb-depth2" style="display:block;">
+                            <li><a href="#" class="btn">클래스 관리</a></li>
+                            <li><a href="#" class="btn active">스케쥴 관리</a></li>
+                            <li><a href="#" class="btn">스포츠 활동 인증</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn people">구성원 관리</a></li>
+                    <li><a href="#" class="btn calculate btn-toggle">정산관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">출금관리</a></li>
+                            <li><a href="#" class="btn">정산내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">공지사항</a></li>
+                            <li><a href="#" class="btn">1:1 문의</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn check">출석체크</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle language">
+                            <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                            <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                        </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">한국어</a></li>
+                                <li><a href="#" class="btn">English</a></li>
+                                <li><a href="#" class="btn">Japanese</a></li>
+                                <li><a href="#" class="btn">Arabic</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">스케쥴 관리</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <div class="schedule-wrap month">
+                    <h4 class="blind">월간 시간표</h4>
+                    <!-- 클래스 선택 -->
+                    <div class="select-class">
+                        <label for="selectclass01" class="blind">클래스 선택</label>
+                        <select id="selectclass01" class="select-01">
+                            <option value="">광명A헬스장 PT권</option>
+                        </select>
+                    </div>
+                    <!-- 스케쥴 유형 선택 -->
+                    <div class="schedule-head clearfix">
+                        <ul class="btns-select schedule-type">
+                            <li><a href="#" class="btn active">시간표</a></li>
+                            <li><a href="#" class="btn">일정현황</a></li>
+                        </ul>
+                        <ul class="btns-select schedule-turm">
+                            <li><a href="#" class="btn">일간</a></li>
+                            <li><a href="#" class="btn">주간</a></li>
+                            <li><a href="#" class="btn active">월간</a></li>
+                        </ul>
+                        <div class="schedule-time">
+                            <p class="num">2023.06</p>
+                            <a href="#" class="btn btn-prev">이전</a>
+                            <a href="#" class="btn btn-next">다음</a>
+                        </div>
+                    </div>
+
+                    <div class="schedule-time-month">
+                        <div class="table-schedule-01">
+                            <table>
+                                <colgroup>
+                                    <col style="width:14.28%">
+                                    <col style="width:14.28%">
+                                    <col style="width:14.28%">
+                                    <col style="width:14.28%">
+                                    <col style="width:14.28%">
+                                    <col style="width:14.28%">
+                                    <col style="width:14.28%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">일요일</th>
+                                        <th scope="col">월요일</th>
+                                        <th scope="col">화요일</th>
+                                        <th scope="col">수요일</th>
+                                        <th scope="col">목요일</th>
+                                        <th scope="col">금요일</th>
+                                        <th scope="col">토요일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="another">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>28</span></p>
+                                                <ul class="list-lesson-01">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">22:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <a href="#" class="btn btn-toggle">외 5건</a>
+                                                <ul class="list-lesson-01 list-lesson-toggle">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">22:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="another">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>29</span></p>
+                                                <ul class="list-lesson-01">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="another">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>30</span></p>
+                                                <ul class="list-lesson-01">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="another">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>31</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>1</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>2</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>3</span></p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="holiday">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>4</span></p>
+                                                <ul class="list-lesson-01">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>5</span></p>
+                                                <ul class="list-lesson-01">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="holiday">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>6</span></p>
+                                                <ul class="list-lesson-01">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>7</span></p>
+                                            </div>
+                                        </td>
+                                        <td class="today">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>8</span><span class="blind">오늘</span></p><!-- 오늘 날짜에 <span class="blind">오늘</span> 추가 -->
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>9</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>10</span></p>
+                                                <ul class="list-lesson-01">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 9/10</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 22/55</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <a href="#" class="btn btn-toggle">외 2건</a>
+                                                <ul class="list-lesson-01 list-lesson-toggle">
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#popup-attend" class="btn btn-popup-open">
+                                                            <span class="time">10:00</span>
+                                                            <span class="title">강동원강사님의 수업 1/1</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="holiday">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>11</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>12</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>13</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>14</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>15</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>16</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>17</span></p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="holiday">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>18</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>19</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>20</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>21</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>22</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>23</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>24</span></p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="holiday">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>25</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>26</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>27</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>28</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>29</span></p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="box-lesson">
+                                                <p class="num"><span>30</span></p>
+                                            </div>
+                                        </td>
+                                        <td class="another">
+                                            <div class="box-lesson">
+                                                <p class="num"><span>1</span></p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <!-- popup start // -->
+        <!-- #popup-attend -->
+        <div class="popup-wrap popup-style-01" id="popup-attend">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3 class="popup-title">강동원 강사님의 수업</h3>
+                    <p class="text-sub">2023.05.01 (월)   10:00 ~ 10:50</p>
+                    <a href="#" class="btn btn-popup-close">닫기</a>
+                </div>
+                <div class="popup-body">
+                    <p class="text-01">예약한 수강생 (2/4)</p>
+                    <p class="text-02">이미선</p>
+                    <ul class="radio-set-01 radio-e3">
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0101" name="idclass01">
+                                <label for="idclass0101">출석</label>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0102" name="idclass01">
+                                <label for="idclass0102">결석</label>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0103" name="idclass01">
+                                <label for="idclass0103">예약취소</label>
+                            </p>
+                        </li>
+                    </ul>
+                    <p class="text-02">김현아</p>
+                    <ul class="radio-set-01 radio-e3">
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0201" name="idclass02">
+                                <label for="idclass0201">출석</label>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0202" name="idclass02">
+                                <label for="idclass0202">결석</label>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0203" name="idclass02">
+                                <label for="idclass0203">예약취소</label>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-blueline-02 btn-popup-close">삭제</a>
+                    <a href="#" class="btn btn-blue-02">저장</a>
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+    </div>
+</body>
+</html>

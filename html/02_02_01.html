@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>스마트체크 현황</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">스마트체크 현황</h3>
+						<a href="#" class="btn btn-back">뒤로가기</a>
+					</div>
+
+					<!-- .calculate-wrap start // -->
+					<div class="calculate-wrap">
+						<!-- .select-class -->
+						
+						<form>
+							<ul class="form-style-02 sports">
+								<li class="w03">
+									<div class="form-title">구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">전체</option>
+										</select>
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">검색구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">사업장</option>
+										</select>
+									</div>
+								</li>
+								<li class="w01">
+									<div class="form-title">키워드</div>
+									<div class="form-con">
+										<input type="text" class="input-02" id="idsearch02">
+									</div>
+								</li>
+							</ul>
+							<div class="form-bottom-01">
+								<a href="#" class="btn btn-blackline-02">초기화</a>
+								<a href="#" class="btn btn-black-02">검색</a>
+							</div>
+						</form>
+
+            <!-- .board-top -->
+						<div class="board-top">
+							<div class="left">
+								<label for="idselect01" class="blind">보여줄 상품 갯수</label>
+								<select id="idselect01" class="select-01">
+									<option value="">10개</option>
+								</select>
+								<label for="idboardall" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+								<div class="guide-board">
+									<strong>24</strong>
+									<span>개 선택 됨</span>
+								</div>
+							</div>
+							<div class="right">
+								<a href="#popup-alert-01" class="btn btn-white-01 btn-popup-open">스마트체크 등록</a>
+								<a href="#" class="btn btn-excel">엑셀 다운로드</a>
+							</div>
+							<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+						</div>
+						<!-- table -->
+						<div class="table-style-02 x-scroll">
+							<table style="width: 2000px;">
+								<caption>스마트체크 현황(본사)</caption>
+								<thead>
+									<tr>
+										<th scope="col">번호</th>
+										<th scope="col">본부</th>
+										<th scope="col">1월</th>
+										<th scope="col">2월</th>
+										<th scope="col">3월</th>
+										<th scope="col">4월</th>
+										<th scope="col">5월</th>
+										<th scope="col">6월</th>
+										<th scope="col">7월</th>
+										<th scope="col">8월</th>
+										<th scope="col">9월</th>
+										<th scope="col">10월</th>
+										<th scope="col">11월</th>
+										<th scope="col">12월</th>
+										<th scope="col">연간응답건수</th>
+										<th scope="col">연간미응답비율</th>
+										<th scope="col">비고</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>10</td>
+										<td>ACE 1본부</td>
+										<td>0/28</td>
+										<td>0/14</td>
+										<td>미해당</td>
+										<td>0/6</td>
+										<td>0/60</td>
+										<td>0/27</td>
+										<td>0/13</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>0</td>
+										<td>100.00%</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td>ACE 2본부</td>
+										<td>0/20</td>
+										<td>0/10</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>0/42</td>
+										<td>0/7</td>
+										<td>0/7</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>미해당</td>
+										<td>0</td>
+										<td>100.00%</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+
+						<!-- paging -->
+						<div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+							<a href="#" class="btn first">처음으로</a>
+							<a href="#" class="btn prev">이전</a>
+							<a href="#" class="btn">1</a>
+							<a href="#" class="btn active" title="현재 페이지">2</a>
+							<a href="#" class="btn">3</a>
+							<a href="#" class="btn">4</a>
+							<a href="#" class="btn">5</a>
+							<a href="#" class="btn next">다음</a>
+							<a href="#" class="btn last">마지막으로</a>
+						</div>
+
+					</div>
+					<!-- // .calculate-wrap end -->
+
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

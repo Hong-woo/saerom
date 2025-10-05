@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAEROM</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">업무일정표</h3>
+						<a href="#" class="btn btn-back">뒤로가기</a>
+					</div>
+
+					<div class="schedule-wrap month">
+						<h4 class="blind">월간 일정</h4>
+						<!-- 클래스 선택 -->
+						<div class="select-class">
+							<label for="selectclass01" class="blind">사업장 선택</label>
+							<select id="selectclass01" class="select-01">
+								<option value="">서울1사업장</option>
+							</select>
+						</div>
+						<!-- 스케쥴 유형 선택 -->
+						<div class="schedule-head clearfix">
+							<ul class="btns-select schedule-type">
+								<li><a href="#" class="btn active">시간표</a></li>
+								<li><a href="#" class="btn">일정현황</a></li>
+							</ul>
+							<ul class="btns-select schedule-turm">
+								<li><a href="#" class="btn">일간</a></li>
+								<li><a href="#" class="btn">주간</a></li>
+								<li><a href="#" class="btn active">월간</a></li>
+							</ul>
+							<div class="schedule-time">
+								<p class="num">2023.06</p>
+								<a href="#" class="btn btn-prev">이전</a>
+								<a href="#" class="btn btn-next">다음</a>
+							</div>
+						</div>
+
+						<div class="schedule-time-month">
+							<div class="table-schedule-01">
+								<table>
+									<colgroup>
+										<col style="width:14.28%">
+										<col style="width:14.28%">
+										<col style="width:14.28%">
+										<col style="width:14.28%">
+										<col style="width:14.28%">
+										<col style="width:14.28%">
+										<col style="width:14.28%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">일요일</th>
+											<th scope="col">월요일</th>
+											<th scope="col">화요일</th>
+											<th scope="col">수요일</th>
+											<th scope="col">목요일</th>
+											<th scope="col">금요일</th>
+											<th scope="col">토요일</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="another">
+												<div class="box-lesson">
+													<p class="num"><span>28</span></p>
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_계단청소 10/119</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">22:00</span>
+																<span class="title">소독_실내 113/130</span>
+															</a>
+														</li>
+													</ul>
+													<a href="#" class="btn btn-toggle">외 5건</a>
+													<ul class="list-lesson-01 list-lesson-toggle">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_계단청소 10/119</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title"> 소독_실내 113/130</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">소독_실내 113/130</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">소독_실내 113/130</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">22:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+											<td class="another">
+												<div class="box-lesson">
+													<p class="num"><span>29</span></p>
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+											<td class="another">
+												<div class="box-lesson">
+													<p class="num"><span>30</span></p>
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+											<td class="another">
+												<div class="box-lesson">
+													<p class="num"><span>31</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>1</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>2</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>3</span></p>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="holiday">
+												<div class="box-lesson">
+													<p class="num"><span>4</span></p>
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>5</span></p>
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+											<td class="holiday">
+												<div class="box-lesson">
+													<p class="num"><span>6</span></p>
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>7</span></p>
+												</div>
+											</td>
+											<td class="today">
+												<div class="box-lesson">
+													<p class="num"><span>8</span><span class="blind">오늘</span></p>
+													<!-- 오늘 날짜에 <span class="blind">오늘</span> 추가 -->
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>9</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>10</span></p>
+													<ul class="list-lesson-01">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/20</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 22/55</span>
+															</a>
+														</li>
+													</ul>
+													<a href="#" class="btn btn-toggle">외 2건</a>
+													<ul class="list-lesson-01 list-lesson-toggle">
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+														<li>
+															<a href="#popup-attend" class="btn btn-popup-open">
+																<span class="time">10:00</span>
+																<span class="title">청소_지하주차장 1/1</span>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="holiday">
+												<div class="box-lesson">
+													<p class="num"><span>11</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>12</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>13</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>14</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>15</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>16</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>17</span></p>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="holiday">
+												<div class="box-lesson">
+													<p class="num"><span>18</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>19</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>20</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>21</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>22</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>23</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>24</span></p>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="holiday">
+												<div class="box-lesson">
+													<p class="num"><span>25</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>26</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>27</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>28</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>29</span></p>
+												</div>
+											</td>
+											<td>
+												<div class="box-lesson">
+													<p class="num"><span>30</span></p>
+												</div>
+											</td>
+											<td class="another">
+												<div class="box-lesson">
+													<p class="num"><span>1</span></p>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

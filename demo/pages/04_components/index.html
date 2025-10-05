@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' data:;">
+    <title>Components - SAEROM 용역관리시스템</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23495EF4'/><text x='16' y='22' font-family='Arial' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>S</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../../html_cms/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../../html_cms/css/slick.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../../../html_cms/css/add.css">
+    <link rel="stylesheet" href="../../../assets/css/lucide-icons.css">
+    <link rel="stylesheet" href="components.css">
+    
+    <style>
+        /* GroundFit 헤더 구조 적용 */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 321px;
+            padding: 188px 24px 24px;
+            min-height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        #header h1 {
+            position: absolute;
+            top: 79px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        #header h1 img {
+            vertical-align: top;
+            width: 180px;
+            height: auto;
+        }
+        
+        #header .quick-nav {
+            display: none;
+        }
+        
+        #gnb {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .container {
+            margin-left: 321px;
+            position: relative;
+            width: calc(100% - 321px);
+            min-height: 100vh;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+    
+    <!-- Lucide Icons -->
+    <script src="../../../assets/js/lucide.js"></script>
+    
+    <!-- JavaScript -->
+    <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../html_cms/js/jquery-ui.min.js"></script>
+    <script src="../../../js/slick.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../assets/js/lucide-utils.js"></script>
+    <script>
+        // SAEROM Lucide 아이콘 초기화
+        $(document).ready(function() {
+            // GNB 동적 로드
+            if (typeof loadGNB === 'function') {
+                loadGNB();
+            }
+            
+            // Lucide 아이콘 초기화
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            // GNB 토글 기능 초기화
+            initGNBToggle();
+            
+            // Tab functionality for components demo
+            $('.tab-link').on('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all tabs and panes
+                $('.tab-link').removeClass('active');
+                $('.tab-pane').removeClass('active');
+                
+                // Add active class to clicked tab
+                $(this).addClass('active');
+                
+                // Show corresponding tab pane
+                var targetTab = $(this).data('tab');
+                $('#tab-' + targetTab).addClass('active');
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu"><i data-lucide="menu" class="quick-nav-icon"></i>메뉴</a></li>
+                <li><a href="#" class="btn approval"><i data-lucide="check-square" class="quick-nav-icon"></i>전자결제</a></li>
+                <li><a href="../../../index.html" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
+                <li><a href="#" class="btn workplace"><i data-lucide="building-2" class="quick-nav-icon"></i>사업장관리</a></li>
+                <li><a href="#" class="btn hr"><i data-lucide="users" class="quick-nav-icon"></i>직원관리</a></li>
+                <li><a href="#" class="btn system"><i data-lucide="settings" class="quick-nav-icon"></i>시스템</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close"><i data-lucide="x" class="icon-close"></i>닫기</a>
+                <!-- GNB will be loaded dynamically by common.js -->
+                <!-- GNB는 JavaScript로 동적 로드됩니다 -->
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Components</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3>SAEROM Components</h3>
+                    <p class="text-sub">공통 컴포넌트 라이브러리</p>
+                </div>
+
+                <!-- Buttons Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Buttons</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="button-group">
+                            <button class="btn btn-blue-02">Primary Button</button>
+                            <button class="btn btn-blueline-02">Secondary Button</button>
+                            <button class="btn btn-more">More Button</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Cards</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-header">
+                                    <i data-lucide="user" class="card-icon"></i>
+                                    <h5>사용자 카드</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">사용자 정보를 표시하는 카드 컴포넌트입니다.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-blue-02">자세히 보기</button>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-header">
+                                    <i data-lucide="building-2" class="card-icon"></i>
+                                    <h5>사업장 카드</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">사업장 정보를 표시하는 카드 컴포넌트입니다.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-blueline-02">수정</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Filter Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Search Filter</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="calculate-wrap">
+                            <form>
+                                <ul class="form-style-02 sports">
+                                    <li class="w01">
+                                        <div class="form-title">기간선택</div>
+                                        <div class="form-con">
+                                            <div class="datepicker-set-01">
+                                                <div class="datepicker-01">
+                                                    <input type="text" class="input-datepicker" id="iddate05" placeholder="2023.00.00">
+                                                </div>
+                                                <span>~</span>
+                                                <div class="datepicker-01">
+                                                    <input type="text" class="input-datepicker" id="iddate06" placeholder="2023.00.00">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="w02">
+                                        <div class="form-title">기간선택</div>
+                                        <div class="form-con">
+                                            <ul class="radio-set-01">
+                                                <li>
+                                                    <p class="radio-01">
+                                                        <input type="radio" id="idradio0101" name="nameradio01">
+                                                        <label for="idradio0101">1개월</label>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p class="radio-01">
+                                                        <input type="radio" id="idradio0102" name="nameradio01">
+                                                        <label for="idradio0102">3개월</label>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p class="radio-01">
+                                                        <input type="radio" id="idradio0103" name="nameradio01">
+                                                        <label for="idradio0103">6개월</label>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p class="radio-01">
+                                                        <input type="radio" id="idradio0104" name="nameradio01">
+                                                        <label for="idradio0104">1년</label>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="form-style-02 sports">
+                                    <li class="w03">
+                                        <div class="form-title">본부</div>
+                                        <div class="form-con">
+                                            <select id="idsearch01" class="select-01">
+                                                <option value="">본부 전체</option>
+                                                <option value="1본부">1본부</option>
+                                                <option value="2본부">2본부</option>
+                                                <option value="HQ">HQ</option>
+                                                <option value="3본부">3본부</option>
+                                                <option value="4본부">4본부</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li class="w03">
+                                        <div class="form-title">구분</div>
+                                        <div class="form-con">
+                                            <select id="idsearch02" class="select-01">
+                                                <option value="">유형전체</option>
+                                            </select>
+                            </div>
+                                    </li>
+                                    <li class="w03">
+                                        <div class="form-title">검색구분</div>
+                                        <div class="form-con">
+                                            <select id="idsearch03" class="select-01">
+                                                <option value="">전체</option>
+                                            </select>
+                            </div>
+                                    </li>
+                                    <li class="w01">
+                                        <div class="form-title">키워드</div>
+                                        <div class="form-con">
+                                            <input type="text" class="input-02" id="idsearch04">
+                            </div>
+                                    </li>
+                                </ul>
+                                <div class="form-bottom-01">
+                                    <a href="#" class="btn btn-blackline-02">초기화</a>
+                                    <a href="#" class="btn btn-black-02">검색</a>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SmartCheck Table Section -->
+                <div class="component-section">
+                    <h4 class="component-title">SmartCheck Table</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="board-top">
+                            <div class="left">
+                                <label for="idselect01" class="blind">보여줄 목록 갯수</label>
+                                <select id="idselect01" class="select-01">
+                                    <option value="">10개</option>
+                                </select>
+                                <a href="#" class="btn btn-excel">다운로드</a>
+                                <a href="#" class="btn btn-red-01">삭제</a>
+                            </div>
+                            <div class="right">
+                                <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                            </div>
+                            <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                        </div>
+                        
+                        <div class="table-style-02">
+                            <table>
+                                <caption>기획/행정 스마트체크 현황</caption>
+                                <colgroup>
+                                    <col style="width: 40px;">
+                                    <col style="width: 60px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
+                                    <col style="width: 100px;">
+                                    <col style="width: 200px;">
+                                    <col style="width: 100px;">
+                                    <col style="width: 100px;">
+                                    <col style="width: 100px;">
+                                    <col style="width: 100px;">
+                                    <col style="width: 200px;">
+                                    <col style="width: 200px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <p class="check-04">
+                                                <input type="checkbox" name="boardcheck" id="idboardall">
+                                                <label for="idboardall" class="btn-allcheck" data-target="boardcheck">
+                                                    <span class="blind">전체선택</span>
+                                                </label>
+                                            </p>
+                                        </th>
+                                        <th scope="col">번호</th>
+                                        <th scope="col">년</th>
+                                        <th scope="col">월</th>
+                                        <th scope="col">본부</th>
+                                        <th scope="col">제목</th>
+                                        <th scope="col">시작일</th>
+                                        <th scope="col">마감일</th>
+                                        <th scope="col">응답</th>
+                                        <th scope="col">미응답</th>
+                                        <th scope="col">알림</th>
+                                        <th scope="col">관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p class="check-04">
+                                                <input type="checkbox" name="boardcheck" id="idboard01">
+                                                <label for="idboard01"><span class="blind">선택</span></label>
+                                            </p>
+                                        </td>
+                                        <td>1</td>
+                                        <td>2025</td>
+                                        <td>07</td>
+                                        <td>1본부</td>
+                                        <td>본부별 업무보고</td>
+                                        <td>07-01</td>
+                                        <td>07-05</td>
+                                        <td>25</td>
+                                        <td>3</td>
+                                        <td>
+                                            <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                            <a href="#" class="box-round-01">알림 재발송</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="box-round-01 green-01">메모</a>
+                                            <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="check-04">
+                                                <input type="checkbox" name="boardcheck" id="idboard02">
+                                                <label for="idboard02"><span class="blind">선택</span></label>
+                                            </p>
+                                        </td>
+                                        <td>2</td>
+                                        <td>2025</td>
+                                        <td>07</td>
+                                        <td>2본부</td>
+                                        <td>인사발령 보고</td>
+                                        <td>07-02</td>
+                                        <td>07-06</td>
+                                        <td>18</td>
+                                        <td>2</td>
+                                        <td>
+                                            <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                            <a href="#" class="box-round-01">알림 재발송</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="box-round-01 green-01">메모</a>
+                                            <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="check-04">
+                                                <input type="checkbox" name="boardcheck" id="idboard03">
+                                                <label for="idboard03"><span class="blind">선택</span></label>
+                                            </p>
+                                        </td>
+                                        <td>3</td>
+                                        <td>2025</td>
+                                        <td>07</td>
+                                        <td>HQ</td>
+                                        <td>본사 교육계획</td>
+                                        <td>07-01</td>
+                                        <td>07-07</td>
+                                        <td>30</td>
+                                        <td>5</td>
+                                        <td>
+                                            <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                            <a href="#" class="box-round-01">알림 재발송</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="box-round-01 green-01">메모</a>
+                                            <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="paging-01">
+                            <a href="#" class="btn first">처음으로</a>
+                            <a href="#" class="btn prev">이전</a>
+                            <a href="#" class="btn active" title="현재 페이지">1</a>
+                            <a href="#" class="btn">2</a>
+                            <a href="#" class="btn">3</a>
+                            <a href="#" class="btn">4</a>
+                            <a href="#" class="btn">5</a>
+                            <a href="#" class="btn next">다음</a>
+                            <a href="#" class="btn last">마지막으로</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Alerts</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="alert alert-success">
+                            <i data-lucide="check-circle" class="alert-icon"></i>
+                            <span>성공적으로 처리되었습니다.</span>
+                        </div>
+                        <div class="alert alert-warning">
+                            <i data-lucide="alert-triangle" class="alert-icon"></i>
+                            <span>주의가 필요한 상황입니다.</span>
+                        </div>
+                        <div class="alert alert-error">
+                            <i data-lucide="x-circle" class="alert-icon"></i>
+                            <span>오류가 발생했습니다.</span>
+                        </div>
+                        <div class="alert alert-info">
+                            <i data-lucide="info" class="alert-icon"></i>
+                            <span>참고하실 정보입니다.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Badges</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="badge-group">
+                            <span class="badge badge-primary">Primary</span>
+                            <span class="badge badge-secondary">Secondary</span>
+                            <span class="badge badge-success">Success</span>
+                            <span class="badge badge-warning">Warning</span>
+                            <span class="badge badge-error">Error</span>
+                            <span class="badge badge-info">Info</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Progress</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="progress-container">
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 75%"></div>
+                            </div>
+                            <p class="progress-text">진행률: 75%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modals Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Modals</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <button class="btn btn-blue-02" onclick="openModal()">모달 열기</button>
+                    </div>
+                </div>
+
+                <!-- KPI Cards Section -->
+                <div class="component-section">
+                    <h4 class="component-title">KPI Cards</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="kpi-cards">
+                            <div class="kpi-card">
+                                <div class="kpi-icon">
+                                    <i data-lucide="file-text"></i>
+                                </div>
+                                <div class="kpi-content">
+                                    <h4>전체 건수</h4>
+                                    <span class="kpi-number">128</span>
+                                </div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon completed">
+                                    <i data-lucide="check-circle"></i>
+                                </div>
+                                <div class="kpi-content">
+                                    <h4>완료 건수</h4>
+                                    <span class="kpi-number">92</span>
+                                </div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon pending">
+                                    <i data-lucide="clock"></i>
+                                </div>
+                                <div class="kpi-content">
+                                    <h4>미완료 건수</h4>
+                                    <span class="kpi-number">24</span>
+                                </div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon warning">
+                                    <i data-lucide="alert-triangle"></i>
+                                </div>
+                                <div class="kpi-content">
+                                    <h4>지연 건수</h4>
+                                    <span class="kpi-number">12</span>
+                                </div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon today">
+                                    <i data-lucide="calendar"></i>
+                                </div>
+                                <div class="kpi-content">
+                                    <h4>금일 건수</h4>
+                                    <span class="kpi-number">18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Top Cards Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Main Top Cards</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <ul class="main-top-warp mt40">
+                            <li>
+                                <div class="main-top">
+                                    <div class="info">
+                                        <div class="text">
+                                            <p class="name">스마트체크</p>
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <p class="title">전체 건수</p>
+                                            <p class="num">128건</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">완료 건수</p>
+                                            <p class="num">92건</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">미완료 건수</p>
+                                            <p class="num">24건</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">지연 건수</p>
+                                            <p class="num">12건</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="n2">
+                                <div class="main-top n2">
+                                    <div class="info">
+                                        <div class="text">
+                                            <p class="name">일일현황</p>
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <p class="title">금일 건수</p>
+                                            <p class="num">18건</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">완료율</p>
+                                            <p class="num">72%</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">지연율</p>
+                                            <p class="num">9%</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">평균 처리시간</p>
+                                            <p class="num">2.3일</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tab Menu Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Tab Menu</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="tab-menu">
+                            <ul class="tab-list">
+                                <li><a href="#tab-planning" class="tab-link active" data-tab="planning">기획/행정</a></li>
+                                <li><a href="#tab-accounting" class="tab-link" data-tab="accounting">회계</a></li>
+                                <li><a href="#tab-sales" class="tab-link" data-tab="sales">영업</a></li>
+                                <li><a href="#tab-security" class="tab-link" data-tab="security">경비활동</a></li>
+                                <li><a href="#tab-cleaning" class="tab-link" data-tab="cleaning">미화활동</a></li>
+                                <li><a href="#tab-disinfection" class="tab-link" data-tab="disinfection">소독</a></li>
+                                <li><a href="#tab-landscaping" class="tab-link" data-tab="landscaping">조경</a></li>
+                                <li><a href="#tab-facility" class="tab-link" data-tab="facility">시설관리</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tab-contents">
+                            <!-- Planning/Administration Tab -->
+                            <div id="tab-planning" class="tab-pane active">
+                                <div class="board-top">
+                                    <div class="left">
+                                        <label for="idselect01" class="blind">보여줄 목록 갯수</label>
+                                        <select id="idselect01" class="select-01">
+                                            <option value="">10개</option>
+                                        </select>
+                                        <a href="#" class="btn btn-excel">다운로드</a>
+                                        <a href="#" class="btn btn-red-01">삭제</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                                    </div>
+                                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                                </div>
+                                
+                                <div class="table-style-02">
+                                    <table>
+                                        <caption>기획/행정 스마트체크 현황</caption>
+                                        <colgroup>
+                                            <col style="width: 40px;">
+                                            <col style="width: 60px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 200px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-planning" id="idboardall-planning">
+                                                        <label for="idboardall-planning" class="btn-allcheck" data-target="boardcheck-planning">
+                                                            <span class="blind">전체선택</span>
+                                                        </label>
+                                                    </p>
+                                                </th>
+                                                <th scope="col">번호</th>
+                                                <th scope="col">년</th>
+                                                <th scope="col">월</th>
+                                                <th scope="col">본부</th>
+                                                <th scope="col">제목</th>
+                                                <th scope="col">시작일</th>
+                                                <th scope="col">마감일</th>
+                                                <th scope="col">응답</th>
+                                                <th scope="col">미응답</th>
+                                                <th scope="col">알림</th>
+                                                <th scope="col">관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-planning" id="idboard-planning01">
+                                                        <label for="idboard-planning01"><span class="blind">선택</span></label>
+                                                    </p>
+                                                </td>
+                                                <td>1</td>
+                                                <td>2025</td>
+                                                <td>07</td>
+                                                <td>1본부</td>
+                                                <td>본부별 업무보고</td>
+                                                <td>07-01</td>
+                                                <td>07-05</td>
+                                                <td>25</td>
+                                                <td>3</td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                                    <a href="#" class="box-round-01">알림 재발송</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 green-01">메모</a>
+                                                    <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                                
+                                <div class="paging-01">
+                                    <a href="#" class="btn first">처음으로</a>
+                                    <a href="#" class="btn prev">이전</a>
+                                    <a href="#" class="btn active" title="현재 페이지">1</a>
+                                    <a href="#" class="btn">2</a>
+                                    <a href="#" class="btn">3</a>
+                                    <a href="#" class="btn">4</a>
+                                    <a href="#" class="btn">5</a>
+                                    <a href="#" class="btn next">다음</a>
+                                    <a href="#" class="btn last">마지막으로</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Accounting Tab -->
+                            <div id="tab-accounting" class="tab-pane">
+                                <div class="board-top">
+                                    <div class="left">
+                                        <label for="idselect02" class="blind">보여줄 목록 갯수</label>
+                                        <select id="idselect02" class="select-01">
+                                            <option value="">10개</option>
+                                        </select>
+                                        <a href="#" class="btn btn-excel">다운로드</a>
+                                        <a href="#" class="btn btn-red-01">삭제</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                                    </div>
+                                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                                </div>
+                                
+                                <div class="table-style-02">
+                                    <table>
+                                        <caption>회계 스마트체크 현황</caption>
+                                        <colgroup>
+                                            <col style="width: 40px;">
+                                            <col style="width: 60px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 200px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-accounting" id="idboardall-accounting">
+                                                        <label for="idboardall-accounting" class="btn-allcheck" data-target="boardcheck-accounting">
+                                                            <span class="blind">전체선택</span>
+                                                        </label>
+                                                    </p>
+                                                </th>
+                                                <th scope="col">번호</th>
+                                                <th scope="col">년</th>
+                                                <th scope="col">월</th>
+                                                <th scope="col">본부</th>
+                                                <th scope="col">제목</th>
+                                                <th scope="col">시작일</th>
+                                                <th scope="col">마감일</th>
+                                                <th scope="col">응답</th>
+                                                <th scope="col">미응답</th>
+                                                <th scope="col">알림</th>
+                                                <th scope="col">관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-accounting" id="idboard-accounting01">
+                                                        <label for="idboard-accounting01"><span class="blind">선택</span></label>
+                                                    </p>
+                                                </td>
+                                                <td>1</td>
+                                                <td>2025</td>
+                                                <td>07</td>
+                                                <td>1본부</td>
+                                                <td>부가세 산출내역</td>
+                                                <td>07-03</td>
+                                                <td>07-07</td>
+                                                <td>10</td>
+                                                <td>2</td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                                    <a href="#" class="box-round-01">알림 재발송</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 green-01">메모</a>
+                                                    <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="paging-01">
+                                    <a href="#" class="btn first">처음으로</a>
+                                    <a href="#" class="btn prev">이전</a>
+                                    <a href="#" class="btn active" title="현재 페이지">1</a>
+                                    <a href="#" class="btn">2</a>
+                                    <a href="#" class="btn">3</a>
+                                    <a href="#" class="btn">4</a>
+                                    <a href="#" class="btn">5</a>
+                                    <a href="#" class="btn next">다음</a>
+                                    <a href="#" class="btn last">마지막으로</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Sales Tab -->
+                            <div id="tab-sales" class="tab-pane">
+                                <div class="board-top">
+                                    <div class="left">
+                                        <label for="idselect03" class="blind">보여줄 목록 갯수</label>
+                                        <select id="idselect03" class="select-01">
+                                            <option value="">10개</option>
+                                        </select>
+                                        <a href="#" class="btn btn-excel">다운로드</a>
+                                        <a href="#" class="btn btn-red-01">삭제</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                                    </div>
+                                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                                </div>
+                                
+                                <div class="table-style-02">
+                                    <table>
+                                        <caption>영업 스마트체크 현황</caption>
+                                        <colgroup>
+                                            <col style="width: 40px;">
+                                            <col style="width: 60px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 200px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-sales" id="idboardall-sales">
+                                                        <label for="idboardall-sales" class="btn-allcheck" data-target="boardcheck-sales">
+                                                            <span class="blind">전체선택</span>
+                                                        </label>
+                                                    </p>
+                                                </th>
+                                                <th scope="col">번호</th>
+                                                <th scope="col">년</th>
+                                                <th scope="col">월</th>
+                                                <th scope="col">본부</th>
+                                                <th scope="col">제목</th>
+                                                <th scope="col">시작일</th>
+                                                <th scope="col">마감일</th>
+                                                <th scope="col">응답</th>
+                                                <th scope="col">미응답</th>
+                                                <th scope="col">알림</th>
+                                                <th scope="col">관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-sales" id="idboard-sales01">
+                                                        <label for="idboard-sales01"><span class="blind">선택</span></label>
+                                                    </p>
+                                                </td>
+                                                <td>1</td>
+                                                <td>2025</td>
+                                                <td>07</td>
+                                                <td>HQ</td>
+                                                <td>영업 실적 보고</td>
+                                                <td>06-01</td>
+                                                <td>06-30</td>
+                                                <td>20</td>
+                                                <td>0</td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                                    <a href="#" class="box-round-01">알림 재발송</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 green-01">메모</a>
+                                                    <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="paging-01">
+                                    <a href="#" class="btn first">처음으로</a>
+                                    <a href="#" class="btn prev">이전</a>
+                                    <a href="#" class="btn active" title="현재 페이지">1</a>
+                                    <a href="#" class="btn">2</a>
+                                    <a href="#" class="btn">3</a>
+                                    <a href="#" class="btn">4</a>
+                                    <a href="#" class="btn">5</a>
+                                    <a href="#" class="btn next">다음</a>
+                                    <a href="#" class="btn last">마지막으로</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Security Tab -->
+                            <div id="tab-security" class="tab-pane">
+                                <div class="board-top">
+                                    <div class="left">
+                                        <label for="idselect04" class="blind">보여줄 목록 갯수</label>
+                                        <select id="idselect04" class="select-01">
+                                            <option value="">10개</option>
+                                        </select>
+                                        <a href="#" class="btn btn-excel">다운로드</a>
+                                        <a href="#" class="btn btn-red-01">삭제</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                                    </div>
+                                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                                </div>
+                                
+                                <div class="table-style-02">
+                                    <table>
+                                        <caption>경비활동 스마트체크 현황</caption>
+                                        <colgroup>
+                                            <col style="width: 40px;">
+                                            <col style="width: 60px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 200px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-security" id="idboardall-security">
+                                                        <label for="idboardall-security" class="btn-allcheck" data-target="boardcheck-security">
+                                                            <span class="blind">전체선택</span>
+                                                        </label>
+                                                    </p>
+                                                </th>
+                                                <th scope="col">번호</th>
+                                                <th scope="col">년</th>
+                                                <th scope="col">월</th>
+                                                <th scope="col">단지명</th>
+                                                <th scope="col">항목</th>
+                                                <th scope="col">금일</th>
+                                                <th scope="col">월간 누계</th>
+                                                <th scope="col">연간 누계</th>
+                                                <th scope="col">증빙자료</th>
+                                                <th scope="col">알림</th>
+                                                <th scope="col">관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-security" id="idboard-security01">
+                                                        <label for="idboard-security01"><span class="blind">선택</span></label>
+                                                    </p>
+                                                </td>
+                                                <td>1</td>
+                                                <td>2025</td>
+                                                <td>07</td>
+                                                <td>A단지</td>
+                                                <td>방문증 발급</td>
+                                                <td>2</td>
+                                                <td>40</td>
+                                                <td>210</td>
+                                                <td>첨부</td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                                    <a href="#" class="box-round-01">알림 재발송</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 green-01">메모</a>
+                                                    <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="paging-01">
+                                    <a href="#" class="btn first">처음으로</a>
+                                    <a href="#" class="btn prev">이전</a>
+                                    <a href="#" class="btn active" title="현재 페이지">1</a>
+                                    <a href="#" class="btn">2</a>
+                                    <a href="#" class="btn">3</a>
+                                    <a href="#" class="btn">4</a>
+                                    <a href="#" class="btn">5</a>
+                                    <a href="#" class="btn next">다음</a>
+                                    <a href="#" class="btn last">마지막으로</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Cleaning Tab -->
+                            <div id="tab-cleaning" class="tab-pane">
+                                <div class="board-top">
+                                    <div class="left">
+                                        <label for="idselect05" class="blind">보여줄 목록 갯수</label>
+                                        <select id="idselect05" class="select-01">
+                                            <option value="">10개</option>
+                                        </select>
+                                        <a href="#" class="btn btn-excel">다운로드</a>
+                                        <a href="#" class="btn btn-red-01">삭제</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                                    </div>
+                                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                                </div>
+                                
+                                <div class="table-style-02">
+                                    <table>
+                                        <caption>미화활동 스마트체크 현황</caption>
+                                        <colgroup>
+                                            <col style="width: 40px;">
+                                            <col style="width: 60px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 200px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-cleaning" id="idboardall-cleaning">
+                                                        <label for="idboardall-cleaning" class="btn-allcheck" data-target="boardcheck-cleaning">
+                                                            <span class="blind">전체선택</span>
+                                                        </label>
+                                                    </p>
+                                                </th>
+                                                <th scope="col">번호</th>
+                                                <th scope="col">년</th>
+                                                <th scope="col">월</th>
+                                                <th scope="col">단지명</th>
+                                                <th scope="col">일정</th>
+                                                <th scope="col">지하주차장</th>
+                                                <th scope="col">공동현관</th>
+                                                <th scope="col">계단</th>
+                                                <th scope="col">기타</th>
+                                                <th scope="col">알림</th>
+                                                <th scope="col">관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-cleaning" id="idboard-cleaning01">
+                                                        <label for="idboard-cleaning01"><span class="blind">선택</span></label>
+                                                    </p>
+                                                </td>
+                                                <td>1</td>
+                                                <td>2025</td>
+                                                <td>07</td>
+                                                <td>A단지</td>
+                                                <td>07-05</td>
+                                                <td>전/중/후 사진</td>
+                                                <td>전/중/후 사진</td>
+                                                <td>전/중/후 사진</td>
+                                                <td>-</td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                                    <a href="#" class="box-round-01">알림 재발송</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 green-01">메모</a>
+                                                    <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="paging-01">
+                                    <a href="#" class="btn first">처음으로</a>
+                                    <a href="#" class="btn prev">이전</a>
+                                    <a href="#" class="btn active" title="현재 페이지">1</a>
+                                    <a href="#" class="btn">2</a>
+                                    <a href="#" class="btn">3</a>
+                                    <a href="#" class="btn">4</a>
+                                    <a href="#" class="btn">5</a>
+                                    <a href="#" class="btn next">다음</a>
+                                    <a href="#" class="btn last">마지막으로</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Disinfection Tab -->
+                            <div id="tab-disinfection" class="tab-pane">
+                                <div class="board-top">
+                                    <div class="left">
+                                        <label for="idselect06" class="blind">보여줄 목록 갯수</label>
+                                        <select id="idselect06" class="select-01">
+                                            <option value="">10개</option>
+                                        </select>
+                                        <a href="#" class="btn btn-excel">다운로드</a>
+                                        <a href="#" class="btn btn-red-01">삭제</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                                    </div>
+                                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                                </div>
+                                
+                                <div class="table-style-02">
+                                    <table>
+                                        <caption>소독 스마트체크 현황</caption>
+                                        <colgroup>
+                                            <col style="width: 40px;">
+                                            <col style="width: 60px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 150px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 200px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-disinfection" id="idboardall-disinfection">
+                                                        <label for="idboardall-disinfection" class="btn-allcheck" data-target="boardcheck-disinfection">
+                                                            <span class="blind">전체선택</span>
+                                                        </label>
+                                                    </p>
+                                                </th>
+                                                <th scope="col">번호</th>
+                                                <th scope="col">년</th>
+                                                <th scope="col">월</th>
+                                                <th scope="col">단지명</th>
+                                                <th scope="col">일정</th>
+                                                <th scope="col">소독 구역</th>
+                                                <th scope="col">작업 전 사진</th>
+                                                <th scope="col">작업 후 사진</th>
+                                                <th scope="col">소독필증</th>
+                                                <th scope="col">특이사항</th>
+                                                <th scope="col">알림</th>
+                                                <th scope="col">관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-disinfection" id="idboard-disinfection01">
+                                                        <label for="idboard-disinfection01"><span class="blind">선택</span></label>
+                                                    </p>
+                                                </td>
+                                                <td>1</td>
+                                                <td>2025</td>
+                                                <td>07</td>
+                                                <td>A단지</td>
+                                                <td>07-03</td>
+                                                <td>지하주차장</td>
+                                                <td>첨부</td>
+                                                <td>첨부</td>
+                                                <td>PDF</td>
+                                                <td>완료</td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                                    <a href="#" class="box-round-01">알림 재발송</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 green-01">메모</a>
+                                                    <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="paging-01">
+                                    <a href="#" class="btn first">처음으로</a>
+                                    <a href="#" class="btn prev">이전</a>
+                                    <a href="#" class="btn active" title="현재 페이지">1</a>
+                                    <a href="#" class="btn">2</a>
+                                    <a href="#" class="btn">3</a>
+                                    <a href="#" class="btn">4</a>
+                                    <a href="#" class="btn">5</a>
+                                    <a href="#" class="btn next">다음</a>
+                                    <a href="#" class="btn last">마지막으로</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Landscaping Tab -->
+                            <div id="tab-landscaping" class="tab-pane">
+                                <div class="board-top">
+                                    <div class="left">
+                                        <label for="idselect07" class="blind">보여줄 목록 갯수</label>
+                                        <select id="idselect07" class="select-01">
+                                            <option value="">10개</option>
+                                        </select>
+                                        <a href="#" class="btn btn-excel">다운로드</a>
+                                        <a href="#" class="btn btn-red-01">삭제</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                                    </div>
+                                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                                </div>
+                                
+                                <div class="table-style-02">
+                                    <table>
+                                        <caption>조경 스마트체크 현황</caption>
+                                        <colgroup>
+                                            <col style="width: 40px;">
+                                            <col style="width: 60px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 150px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 200px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-landscaping" id="idboardall-landscaping">
+                                                        <label for="idboardall-landscaping" class="btn-allcheck" data-target="boardcheck-landscaping">
+                                                            <span class="blind">전체선택</span>
+                                                        </label>
+                                                    </p>
+                                                </th>
+                                                <th scope="col">번호</th>
+                                                <th scope="col">년</th>
+                                                <th scope="col">월</th>
+                                                <th scope="col">단지명</th>
+                                                <th scope="col">일정</th>
+                                                <th scope="col">작업 구역</th>
+                                                <th scope="col">작업 전 사진</th>
+                                                <th scope="col">작업 후 사진</th>
+                                                <th scope="col">특이사항</th>
+                                                <th scope="col">알림</th>
+                                                <th scope="col">관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-landscaping" id="idboard-landscaping01">
+                                                        <label for="idboard-landscaping01"><span class="blind">선택</span></label>
+                                                    </p>
+                                                </td>
+                                                <td>1</td>
+                                                <td>2025</td>
+                                                <td>07</td>
+                                                <td>A단지</td>
+                                                <td>07-05</td>
+                                                <td>잔디</td>
+                                                <td>첨부</td>
+                                                <td>첨부</td>
+                                                <td>제초 작업 완료</td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                                    <a href="#" class="box-round-01">알림 재발송</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 green-01">메모</a>
+                                                    <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="paging-01">
+                                    <a href="#" class="btn first">처음으로</a>
+                                    <a href="#" class="btn prev">이전</a>
+                                    <a href="#" class="btn active" title="현재 페이지">1</a>
+                                    <a href="#" class="btn">2</a>
+                                    <a href="#" class="btn">3</a>
+                                    <a href="#" class="btn">4</a>
+                                    <a href="#" class="btn">5</a>
+                                    <a href="#" class="btn next">다음</a>
+                                    <a href="#" class="btn last">마지막으로</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Facility Tab -->
+                            <div id="tab-facility" class="tab-pane">
+                                <div class="board-top">
+                                    <div class="left">
+                                        <label for="idselect08" class="blind">보여줄 목록 갯수</label>
+                                        <select id="idselect08" class="select-01">
+                                            <option value="">10개</option>
+                                        </select>
+                                        <a href="#" class="btn btn-excel">다운로드</a>
+                                        <a href="#" class="btn btn-red-01">삭제</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="../smartcheck-register/index.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                                    </div>
+                                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                                </div>
+                                
+                                <div class="table-style-02">
+                                    <table>
+                                        <caption>시설관리 스마트체크 현황</caption>
+                                        <colgroup>
+                                            <col style="width: 40px;">
+                                            <col style="width: 60px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 80px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 150px;">
+                                            <col style="width: 200px;">
+                                            <col style="width: 200px;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-facility" id="idboardall-facility">
+                                                        <label for="idboardall-facility" class="btn-allcheck" data-target="boardcheck-facility">
+                                                            <span class="blind">전체선택</span>
+                                                        </label>
+                                                    </p>
+                                                </th>
+                                                <th scope="col">번호</th>
+                                                <th scope="col">년</th>
+                                                <th scope="col">월</th>
+                                                <th scope="col">단지명</th>
+                                                <th scope="col">일정</th>
+                                                <th scope="col">점검 항목</th>
+                                                <th scope="col">점검 결과</th>
+                                                <th scope="col">사진</th>
+                                                <th scope="col">비고</th>
+                                                <th scope="col">알림</th>
+                                                <th scope="col">관리</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="check-04">
+                                                        <input type="checkbox" name="boardcheck-facility" id="idboard-facility01">
+                                                        <label for="idboard-facility01"><span class="blind">선택</span></label>
+                                                    </p>
+                                                </td>
+                                                <td>1</td>
+                                                <td>2025</td>
+                                                <td>07</td>
+                                                <td>A단지</td>
+                                                <td>07-02</td>
+                                                <td>전기</td>
+                                                <td>이상 없음</td>
+                                                <td>첨부</td>
+                                                <td>-</td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                                                    <a href="#" class="box-round-01">알림 재발송</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="box-round-01 green-01">메모</a>
+                                                    <a href="#" class="box-round-01 orange-01">복사하기</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="paging-01">
+                                    <a href="#" class="btn first">처음으로</a>
+                                    <a href="#" class="btn prev">이전</a>
+                                    <a href="#" class="btn active" title="현재 페이지">1</a>
+                                    <a href="#" class="btn">2</a>
+                                    <a href="#" class="btn">3</a>
+                                    <a href="#" class="btn">4</a>
+                                    <a href="#" class="btn">5</a>
+                                    <a href="#" class="btn next">다음</a>
+                                    <a href="#" class="btn last">마지막으로</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Buttons Section -->
+                <div class="component-section">
+                    <h4 class="component-title">Small Buttons</h4>
+                    <hr class="component-divider">
+                    <div class="component-showcase">
+                        <div class="button-group">
+                            <a href="#" class="box-round-01 blue-01">알림 발송</a>
+                            <a href="#" class="box-round-01">알림 재발송</a>
+                            <a href="#" class="box-round-01 green-01">메모</a>
+                            <a href="#" class="box-round-01 orange-01">복사하기</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Component -->
+    <div class="modal" id="exampleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>모달 제목</h5>
+                <button class="modal-close" onclick="closeModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>모달 내용이 여기에 표시됩니다.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-blueline-02" onclick="closeModal()">취소</button>
+                <button class="btn btn-blue-02">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('exampleModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('exampleModal').style.display = 'none';
+        }
+        
+        // GNB 토글 기능 초기화
+        function initGNBToggle() {
+            // 1레벨 메뉴 토글
+            const toggleButtons = document.querySelectorAll('.gnb-depth1 .btn-toggle');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 다른 활성 메뉴들 닫기
+                    document.querySelectorAll('.gnb-depth1 .btn-toggle.active').forEach(activeBtn => {
+                        if (activeBtn !== this) {
+                            activeBtn.classList.remove('active');
+                            const activeSubmenu = activeBtn.nextElementSibling;
+                            if (activeSubmenu) {
+                                activeSubmenu.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // 현재 메뉴 토글
+                    if (isActive) {
+                        this.classList.remove('active');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    } else {
+                        this.classList.add('active');
+                        if (submenu) {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+            
+            // 2레벨 메뉴 토글 (3레벨 서브메뉴용)
+            const toggleButtons2 = document.querySelectorAll('.gnb-depth2 .btn-toggle');
+            toggleButtons2.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 같은 2레벨 내의 다른 활성 메뉴들 닫기
+                    const parentLi = this.closest('li');
+                    parentLi.querySelectorAll('.gnb-depth2 .btn-toggle.active').forEach(activeBtn => {
+                        if (activeBtn !== this) {
+                            activeBtn.classList.remove('active');
+                            const activeSubmenu = activeBtn.nextElementSibling;
+                            if (activeSubmenu) {
+                                activeSubmenu.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // 현재 메뉴 토글
+                    if (isActive) {
+                        this.classList.remove('active');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    } else {
+                        this.classList.add('active');
+                        if (submenu) {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

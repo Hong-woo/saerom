@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 관리 | 강사 관리 | GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu">메뉴</a></li>
+                <li><a href="#" class="btn class">클래스 관리</a></li>
+                <li><a href="#" class="btn home">Main</a></li>
+                <li><a href="#" class="btn schedule">스케쥴관리</a></li>
+                <li><a href="#" class="btn calculate">정산관리</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close">닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="#" class="btn home">Main</a></li>
+                    <li><a href="#" class="btn instructor btn-toggle active">강사관리</a>
+                        <ul class="gnb-depth2" style="display:block;">
+                            <li><a href="#" class="btn active">프로필 관리</a></li>
+                            <li><a href="#" class="btn">강사인증</a></li>
+                            <li><a href="#" class="btn">강사계약서</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn class btn-toggle">클래스 관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">클래스 관리</a></li>
+                            <li><a href="#" class="btn">스케쥴 관리</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn people">구성원 관리</a></li>
+                    <li><a href="#" class="btn calculate btn-toggle">정산관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">출금관리</a></li>
+                            <li><a href="#" class="btn">정산내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">공지사항</a></li>
+                            <li><a href="#" class="btn">1:1 문의</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn check">출석체크</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle language">
+                            <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                            <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                        </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">한국어</a></li>
+                                <li><a href="#" class="btn">English</a></li>
+                                <li><a href="#" class="btn">Japanese</a></li>
+                                <li><a href="#" class="btn">Arabic</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">프로필 관리</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                    <div class="btns-right">
+                        <a href="#" class="btn btn-toggle">프로필 관리 메뉴 열고 닫기</a>
+                        <div class="btns-box clearfix">
+                            <a href="#" class="btn btn-pc-white-01">PDF 다운로드</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-view">
+                    <div class="box-white-01">
+                        <!-- profile-basic -->
+                        <div class="profile-basic">
+                            <div class="img-profile-wrap">
+                                <div class="img-profile">
+                                    <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                                </div>
+                            </div>
+                            <div class="list-info-01">
+                                <div class="info-top">
+                                    <p class="name">강동원</p>
+                                    <span class="gender">남</span>
+                                    <span class="id">Seonghyun02</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <p class="title">생년월일</p>
+                                        <p class="con">1981.09.10</p>
+                                    </li>
+                                    <li>
+                                        <p class="title">휴대폰</p>
+                                        <p class="con">010-1234-5678</p>
+                                    </li>
+                                    <li>
+                                        <p class="title">전화전호</p>
+                                        <p class="con">02-5678-0000</p>
+                                    </li>
+                                    <li>
+                                        <p class="title">이메일</p>
+                                        <p class="con">chamchi@naver.com</p>
+                                    </li>
+                                    <li class="w66">
+                                        <p class="title">주소</p>
+                                        <p class="con">(04034) 서울특별시 마포구 서교동 378-10, 304호</p>
+                                    </li>
+                                </ul>
+                                <div class="box-blue-01">
+                                    <ul>
+                                        <li>
+                                            <p class="title">학력사항</p>
+                                            <p class="con">대학교(4년) 졸업</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">선수경력</p>
+                                            <p class="con">4년 1개월</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">지도경력</p>
+                                            <p class="con">2년 2개월</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">지도 가능 종목</p>
+                                            <p class="con">축구</p>
+                                        </li>
+                                        <li>
+                                            <p class="title">활동가능지역</p>
+                                            <p class="con long"><span>서울전체, 경기전체,<br>
+                                                제주 서귀포시</span></p>
+                                        </li>
+                                        <li class="horizontal">
+                                            <p class="title">희망 지도 시간</p>
+                                            <p class="con">YYYY-MM-DD ~ YYYY-MM-DD 매주 월요일 (전일 0시~24시), 매주 수요일 (전일 0시~24시), 매주 금요일 (전일 0시~24시)</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 학력사항 -->
+                        <div class="title-wrap-01">
+                            <h3 class="title-style-01">학력사항</h3>
+                            <p class="text-sub">대학교 4년 졸업</p>
+                        </div>
+                        <!-- 학력사항 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                            <table>
+                                <caption>학력사항 등록 정보</caption>
+                                <colgroup>
+                                    <col style="width:auto;">
+                                    <col style="width:25%;">
+                                    <col style="width:25%;">
+                                    <col style="width:25%;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">재학기간</th>
+                                        <th scope="col">졸업여부</th>
+                                        <th scope="col">학교명</th>
+                                        <th scope="col">학과명(전공)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4">학력사항을 추가해주세요</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2023.12.24 ~ 2023.12.24</td>
+                                        <td>졸업</td>
+                                        <td>수원삼일공고</td>
+                                        <td>전자</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2023.12.24 ~ 2023.12.24</td>
+                                        <td>졸업</td>
+                                        <td>숭실대학교 (대학교 4년)</td>
+                                        <td>생활체육학과</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 학력사항 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                            <li>
+                                <div class="box-item">
+                                    <p class="item w60">
+                                        <span class="title">재학기간</span>
+                                        <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                                    </p>
+                                    <p class="item w40">
+                                        <span class="title">졸업여부</span>
+                                        <strong class="con">졸업</strong>
+                                    </p>
+                                    <p class="item w60">
+                                        <span class="title">학교명</span>
+                                        <strong class="con">수원삼일공고</strong>
+                                    </p>
+                                    <p class="item w40">
+                                        <span class="title">학과명(전공)</span>
+                                        <strong class="con">전자</strong>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="box-item">
+                                    <p class="item w60">
+                                        <span class="title">재학기간</span>
+                                        <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                                    </p>
+                                    <p class="item w40">
+                                        <span class="title">졸업여부</span>
+                                        <strong class="con">졸업</strong>
+                                    </p>
+                                    <p class="item w60">
+                                        <span class="title">학교명</span>
+                                        <strong class="con">수원삼일공고</strong>
+                                    </p>
+                                    <p class="item w40">
+                                        <span class="title">학과명(전공)</span>
+                                        <strong class="con">전자</strong>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 선수경력 -->
+                        <div class="title-wrap-01">
+                            <h3 class="title-style-01">선수경력</h3>
+                            <p class="text-sub">총 4년 1개월</p>
+                        </div>
+                        <!-- 선수경력 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                            <table>
+                                <caption>선수경력 등록 정보</caption>
+                                <colgroup>
+                                    <col style="width:auto;">
+                                    <col style="width:33%;">
+                                    <col style="width:33%;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">선수기간</th>
+                                        <th scope="col">소속</th>
+                                        <th scope="col">포지션</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">선수경력을 추가해주세요</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2023.12.24 ~ 2023.12.24</td>
+                                        <td>OO대학교 배구단</td>
+                                        <td>센터</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2023.12.24 ~ 2023.12.24</td>
+                                        <td>OO대학교 배구단</td>
+                                        <td>센터</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 선수기간 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                            <li>
+                                <div class="box-item">
+                                    <p class="item w60">
+                                        <span class="title">선수기간</span>
+                                        <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                                    </p>
+                                    <p class="item w40">
+                                        <span class="title">소속</span>
+                                        <strong class="con">OO대학교 배구단</strong>
+                                    </p>
+                                    <p class="item w60">
+                                        <span class="title">포지션</span>
+                                        <strong class="con">센터</strong>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="box-item">
+                                    <p class="item w60">
+                                        <span class="title">선수기간</span>
+                                        <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                                    </p>
+                                    <p class="item w40">
+                                        <span class="title">소속</span>
+                                        <strong class="con">OO대학교 배구단</strong>
+                                    </p>
+                                    <p class="item w60">
+                                        <span class="title">포지션</span>
+                                        <strong class="con">센터</strong>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 주요 지도경력 -->
+                        <div class="title-wrap-01">
+                            <h3 class="title-style-01">주요 지도경력</h3>
+                            <p class="text-sub">총 4년 1개월</p>
+                        </div>
+                        <!-- 주요 지도경력 등록 정보 pc -->
+                        <div class="table-style-01 pc-only">
+                            <table>
+                                <caption>주요 지도경력 등록 정보</caption>
+                                <colgroup>
+                                    <col style="width:auto;">
+                                    <col style="width:33%;">
+                                    <col style="width:33%;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">지도기간</th>
+                                        <th scope="col">소속</th>
+                                        <th scope="col">지도종목</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">주요 지도경력을 추가해주세요</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2023.12.24 ~ 2023.12.24</td>
+                                        <td>OO대학교 배구단</td>
+                                        <td>배구</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2023.12.24 ~ 2023.12.24</td>
+                                        <td>OO대학교 배구단</td>
+                                        <td>배구</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 주요 지도경력 등록 정보 mo -->
+                        <ul class="list-style-02 mo-only">
+                            <li>
+                                <div class="box-item">
+                                    <p class="item w60">
+                                        <span class="title">지도기간</span>
+                                        <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                                    </p>
+                                    <p class="item w40">
+                                        <span class="title">소속</span>
+                                        <strong class="con">OO대학교 배구단</strong>
+                                    </p>
+                                    <p class="item w60">
+                                        <span class="title">지도 종목</span>
+                                        <strong class="con">배구</strong>
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="box-item">
+                                    <p class="item w60">
+                                        <span class="title">지도기간</span>
+                                        <strong class="con">2023.12.24 ~ 2023.12.24</strong>
+                                    </p>
+                                    <p class="item w40">
+                                        <span class="title">소속</span>
+                                        <strong class="con">OO대학교 배구단</strong>
+                                    </p>
+                                    <p class="item w60">
+                                        <span class="title">지도 종목</span>
+                                        <strong class="con">배구</strong>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 경력증명파일 -->
+                        <div class="title-wrap-01">
+                            <h3 class="title-style-01">경력증명파일</h3>
+                        </div>
+                        <ul class="list-download-01">
+                            <li><a href="#" class="btn btn-download-01">1급 생활스포츠 지도사 (배구)_자격증_증명파일.pdf</a></li>
+                            <li><a href="#" class="btn btn-download-01">1급 생활스포츠 지도사지도사 (배구)_자격증_증명파일.pdf</a></li>
+                            <li><a href="#" class="btn btn-download-01">1급 생활스포츠 지도사지도사지도사 (배구)_자격증_증명파일.pdf</a></li>
+                            <li><a href="#" class="btn btn-blueline-04">전체 다운로드</a></li>
+                        </ul>
+                        <!-- 범죄이력 회보서 첨부 -->
+                        <div class="title-wrap-01">
+                            <h3 class="title-style-01">범죄이력 회보서 첨부</h3>
+                        </div>
+                        <ul class="list-download-01">
+                            <li><a href="#" class="btn btn-download-01">2023_강동원_범죄이력회보서.,pdf</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="btns-page-bottom">
+                        <div class="left"><a href="#popup-alert-application" class="btn btn-blueline-03 btn-popup-open">강사 인증 신청</a></div>
+                        <div class="right"><a href="#" class="btn btn-blue-03">수정하기</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- popup start // -->
+        <div class="popup-wrap popup-style-01" id="popup-days">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3 class="popup-title">지도 요일/시간</h3>
+                    <a href="#" class="btn btn-popup-close">닫기</a>
+                </div>
+                <div class="popup-body">
+                    <h4 class="title-p-01">지도 요일/시간</h4>
+                    <div class="check-set-01">
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays01">
+                            <label for="iddays01" class="btn-allcheck" data-target="iddays">매일</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays02" name="iddays">
+                            <label for="iddays02">월</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays03" name="iddays">
+                            <label for="iddays03">화</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays04" name="iddays">
+                            <label for="iddays04">수</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays05" name="iddays">
+                            <label for="iddays05">목</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays06" name="iddays">
+                            <label for="iddays06">금</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays07" name="iddays">
+                            <label for="iddays07">토</label>
+                        </div>
+                        <div class="check-03">
+                            <input type="checkbox" id="iddays08" name="iddays">
+                            <label for="iddays08">일</label>
+                        </div>
+                    </div>
+                    <select class="select-01">
+                        <option value="">AM(12시~24시)</option>
+                        <option value="">PM(12시~24시)</option>
+                    </select>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-blueline-02 btn-popup-close">취소</a>
+                    <a href="#" class="btn btn-blue-02">적용</a>
+                </div>
+            </div>
+        </div>
+        <!-- #popup-alert-application -->
+        <div class="popup-wrap popup-alert-01" id="popup-alert-application">
+            <div class="popup-box">
+                <div class="popup-body">
+                    <p class="text-01">등록하신 프로필 정보로 <br>강사인증을 신청하시겠습니가?</p>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-white-02 btn-popup-close">취소</a>
+                    <a href="#popup-alert-application-02" class="btn btn-blue-02 btn-popup-close btn-popup-open">확인</a>
+                </div>
+            </div>
+        </div>
+        <!-- #popup-alert-application-02 -->
+        <div class="popup-wrap popup-alert-01" id="popup-alert-application-02">
+            <div class="popup-box">
+                <div class="popup-body">
+                    <p class="text-01">신청되었습니다</p>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#popup-alert-cancel-03" class="btn btn-blue-02 btn-popup-close btn-popup-open">확인</a>
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+    </div>
+</body>
+</html>

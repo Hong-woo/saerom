@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' data:;">
+    <title>사업장 스마트체크현황 - SAEROM 용역관리시스템</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23495EF4'/><text x='16' y='22' font-family='Arial' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>S</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/add.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/lucide-icons.css">
+    <link rel="stylesheet" href="css/workplace-smartcheck-status.css">
+    
+    <!-- Lucide Icons -->
+    <script src="../../../assets/js/lucide.js"></script>
+    
+    <!-- JavaScript -->
+    <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../html_cms/js/jquery-ui.min.js"></script>
+    <script src="../../../js/slick.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../assets/js/lucide-utils.js"></script>
+    <script>
+        // SAEROM Lucide 아이콘 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lucide 아이콘 초기화
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide Icons initialized successfully');
+            } else {
+                console.warn('Lucide library not found');
+            }
+            
+            // Datepicker 초기화
+            if (typeof $.fn.datepicker !== 'undefined') {
+                $('.input-datepicker').datepicker({
+                    dateFormat: 'yy.mm.dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: '2020:2030'
+                });
+            }
+            
+            // 사업장 스마트체크현황 페이지 로드 시작
+            console.log('사업장 스마트체크현황 페이지 로드 시작');
+            
+            // 체크박스 관련 기능 제거됨
+            
+            // 검색 기능
+            $('.btn-black-02').on('click', function(e) {
+                e.preventDefault();
+                console.log('사업장 스마트체크현황 검색 기능이 구현되었습니다.');
+                alert('검색 기능이 구현되었습니다.');
+            });
+            
+            // 초기화 기능
+            $('.btn-blackline-02').on('click', function(e) {
+                e.preventDefault();
+                $('form')[0].reset();
+                // 체크박스 관련 코드 제거됨
+                console.log('검색 조건이 초기화되었습니다.');
+            });
+            
+            // 엑셀 다운로드 기능
+            $('.btn-excel').on('click', function(e) {
+                e.preventDefault();
+                console.log('사업장 스마트체크현황 데이터를 Excel로 다운로드합니다.');
+                alert('Excel 다운로드 기능이 구현되었습니다.');
+            });
+            
+            // 스마트체크 등록 기능
+            $('.btn-white-01.btn-popup-open').on('click', function(e) {
+                e.preventDefault();
+                console.log('사업장 스마트체크 등록 팝업이 열립니다.');
+                alert('스마트체크 등록 팝업이 구현되었습니다.');
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu"><i data-lucide="menu" class="quick-nav-icon"></i>메뉴</a></li>
+                <li><a href="#" class="btn approval"><i data-lucide="check-square" class="quick-nav-icon"></i>전자결제</a></li>
+                <li><a href="../../../index.html" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
+                <li><a href="#" class="btn workplace"><i data-lucide="building-2" class="quick-nav-icon"></i>사업장관리</a></li>
+                <li><a href="#" class="btn hr"><i data-lucide="users" class="quick-nav-icon"></i>직원관리</a></li>
+                <li><a href="#" class="btn system"><i data-lucide="settings" class="quick-nav-icon"></i>시스템</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close"><i data-lucide="x" class="icon-close"></i>닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="../../index.html" class="btn home">Main</a></li>
+                    <li><a href="#" class="btn smartcheck btn-toggle">스마트체크</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="index.html" class="btn">스마트체크현황</a></li>
+                            <li><a href="workplace-smartcheck-status.html" class="btn active">사업장 스마트체크현황보고</a></li>
+                            <li><a href="monthly-report.html" class="btn">월간업무보고</a></li>
+                            <li><a href="inspection-log.html" class="btn">회계/안전진단 점검일지</a></li>
+                            <li><a href="general-inspection.html" class="btn">점검일지</a></li>
+                            <li><a href="survey-report.html" class="btn">설문조사보고</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn accounting btn-toggle">회계업무</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="../accounting/index.html" class="btn">재무제표</a></li>
+                            <li><a href="../accounting/attendance.html" class="btn">사업장 근태현황</a></li>
+                            <li><a href="../accounting/payroll.html" class="btn">사업장 급여명세서 확인</a></li>
+                            <li><a href="../accounting/vat.html" class="btn">부가세산출</a></li>
+                            <li><a href="../accounting/tax.html" class="btn">부과</a></li>
+                            <li><a href="../accounting/purchase.html" class="btn">매입</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../04_components/index.html" class="btn components">컴포넌트</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">사업장 스마트체크현황</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <!-- KPI Cards Section -->
+                <ul class="main-top-warp mt40">
+                    <li style="width: 100%;">
+                        <div class="main-top">
+                            <div class="info">
+                                <div class="text">
+                                    <p class="name">사업장 스마트체크현황</p>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <p class="title today">전체 사업장</p>
+                                    <p class="num">5개</p>
+                                </li>
+                                <li>
+                                    <p class="title today">완료 건수</p>
+                                    <p class="num">3건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">미해당 건수</p>
+                                    <p class="num">2건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">완료율</p>
+                                    <p class="num">60.0%</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Search Filter Section -->
+                <div class="calculate-wrap">
+                    <form>
+                        <ul class="form-style-02 sports">
+                            <li class="w03">
+                                <div class="form-title">연도</div>
+                                <div class="form-con">
+                                    <select id="idsearch01" class="select-01">
+                                        <option value="">연도 전체</option>
+                                        <option value="2025">2025년</option>
+                                        <option value="2024">2024년</option>
+                                        <option value="2023">2023년</option>
+                                        <option value="2022">2022년</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w03">
+                                <div class="form-title">본부</div>
+                                <div class="form-con">
+                                    <select id="idsearch02" class="select-01">
+                                        <option value="">본부 전체</option>
+                                        <option value="ACE 1본부">ACE 1본부</option>
+                                        <option value="ACE 2본부">ACE 2본부</option>
+                                        <option value="HQ 본부">HQ 본부</option>
+                                        <option value="ACE 3본부">ACE 3본부</option>
+                                        <option value="ACE 4본부">ACE 4본부</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w03">
+                                <div class="form-title">사업장</div>
+                                <div class="form-con">
+                                    <select id="idsearch03" class="select-01">
+                                        <option value="">사업장 전체</option>
+                                        <option value="경기광주역금호리첸시아">경기광주역금호리첸시아</option>
+                                        <option value="쥬네브쎈월드">쥬네브쎈월드</option>
+                                        <option value="서울강남타워">서울강남타워</option>
+                                        <option value="부산해운대오션뷰">부산해운대오션뷰</option>
+                                        <option value="대구동성로역사">대구동성로역사</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w01">
+                                <div class="form-title">키워드</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-02" id="idsearch04" placeholder="사업장명 또는 본부명 검색">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="form-bottom-01">
+                            <a href="#" class="btn btn-blackline-02">초기화</a>
+                            <a href="#" class="btn btn-black-02">검색</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Board Top Section -->
+                <div class="board-top">
+                    <div class="left">
+                        <label for="idselect01" class="blind">보여줄 목록 갯수</label>
+                        <select id="idselect01" class="select-01">
+                            <option value="">10개</option>
+                        </select>
+                        <a href="#" class="btn btn-excel">다운로드</a>
+                    </div>
+                    <div class="right">
+                        <!-- 스마트체크 등록 버튼 제거됨 -->
+                    </div>
+                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                </div>
+
+                <!-- Monthly Status Table - Updated 2024-12-19 -->
+                    <div class="table-style-02 x-scroll">
+                        <table>
+                            <caption>사업장 스마트체크 현황(월별)</caption>
+                            <colgroup>
+                                <col style="width: 60px;">
+                                <col style="width: 120px;">
+                                <col style="width: 200px;">
+                                <col style="width: 100px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 80px;">
+                                <col style="width: 120px;">
+                                <col style="width: 120px;">
+                                <col style="width: 100px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">본부</th>
+                                    <th scope="col">사업장명</th>
+                                    <th scope="col">해당연도</th>
+                                    <th scope="col">1월</th>
+                                    <th scope="col">2월</th>
+                                    <th scope="col">3월</th>
+                                    <th scope="col">4월</th>
+                                    <th scope="col">5월</th>
+                                    <th scope="col">6월</th>
+                                    <th scope="col">7월</th>
+                                    <th scope="col">8월</th>
+                                    <th scope="col">9월</th>
+                                    <th scope="col">10월</th>
+                                    <th scope="col">11월</th>
+                                    <th scope="col">12월</th>
+                                    <th scope="col">연간응답갯수</th>
+                                    <th scope="col">연간미응답비율</th>
+                                    <th scope="col">비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>ACE 1본부</td>
+                                    <td>경기광주역금호리첸시아</td>
+                                    <td>2025년</td>
+                                    <td>0/28</td>
+                                    <td>0/14</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>0/6</td>
+                                    <td>0/60</td>
+                                    <td>0/27</td>
+                                    <td>0/13</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>0건</td>
+                                    <td>0.0%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>ACE 2본부</td>
+                                    <td>쥬네브쎈월드</td>
+                                    <td>2025년</td>
+                                    <td>0/20</td>
+                                    <td>0/10</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>0/42</td>
+                                    <td>0/7</td>
+                                    <td>0/7</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>0건</td>
+                                    <td>0.0%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>HQ 본부</td>
+                                    <td>서울강남타워</td>
+                                    <td>2025년</td>
+                                    <td>0/60</td>
+                                    <td>0/30</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>0/22</td>
+                                    <td>0/175</td>
+                                    <td>0/15</td>
+                                    <td>0/15</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>0건</td>
+                                    <td>0.0%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>ACE 3본부</td>
+                                    <td>부산해운대오션뷰</td>
+                                    <td>2025년</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>0/1</td>
+                                    <td>0/1</td>
+                                    <td>0/5</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>0건</td>
+                                    <td>0.0%</td>
+                                    <td>정상</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>ACE 4본부</td>
+                                    <td>대구동성로역사</td>
+                                    <td>2025년</td>
+                                    <td>0/24</td>
+                                    <td>0/12</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>1/54</td>
+                                    <td>0/12</td>
+                                    <td>0/12</td>
+                                    <td>0/17</td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td><a href="#" class="box-round-01">미해당</a></td>
+                                    <td>1건</td>
+                                    <td>1.8%</td>
+                                    <td>정상</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Paging Section -->
+                    <div class="paging-01">
+                        <a href="#" class="btn first">처음으로</a>
+                        <a href="#" class="btn prev">이전</a>
+                        <a href="#" class="btn">1</a>
+                        <a href="#" class="btn active" title="현재 페이지">2</a>
+                        <a href="#" class="btn">3</a>
+                        <a href="#" class="btn">4</a>
+                        <a href="#" class="btn">5</a>
+                        <a href="#" class="btn next">다음</a>
+                        <a href="#" class="btn last">마지막으로</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        // 페이지 로드 시 초기화
+        $(document).ready(function() {
+            console.log('사업장 스마트체크현황 페이지 로드 완료');
+        });
+    </script>
+</body>
+</html>

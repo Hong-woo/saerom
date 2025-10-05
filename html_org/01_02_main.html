@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroundFit</title>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="#"><img src="../images/logo.svg" alt="Ground Fit"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu">메뉴</a></li>
+                <li><a href="#" class="btn class">클래스 관리</a></li>
+                <li><a href="#" class="btn home active">Main</a></li>
+                <li><a href="#" class="btn schedule">스케쥴관리</a></li>
+                <li><a href="#" class="btn calculate">정산관리</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close">닫기</a>
+                <ul class="gnb-depth1">
+                    <li><a href="#" class="btn home active">Main</a></li>
+                    <li><a href="#" class="btn instructor btn-toggle">강사관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">프로필 관리</a></li>
+                            <li><a href="#" class="btn">강사인증</a></li>
+                            <li><a href="#" class="btn">강사계약서</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn class btn-toggle">클래스 관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">클래스 관리</a></li>
+                            <li><a href="#" class="btn">스케쥴 관리</a></li>
+                            <li><a href="#" class="btn">스포츠 활동 인증</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn people">구성원 관리</a></li>
+                    <li><a href="#" class="btn calculate btn-toggle">정산관리</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">출금관리</a></li>
+                            <li><a href="#" class="btn">정산내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn customer btn-toggle">고객센터</a>
+                        <ul class="gnb-depth2">
+                            <li><a href="#" class="btn">공지사항</a></li>
+                            <li><a href="#" class="btn">1:1 문의</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="btn check">출석체크</a></li>
+                </ul>
+                <span class="gnb-back" tabindex="0"></span>
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle language">
+                            <span class="blind">언어 선택 메뉴 열고 닫기. 현재 선택된 언어 :</span>
+                            <span class="text-change">한국어</span><!-- 선택된 언어 표시 영역-->
+                        </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">한국어</a></li>
+                                <li><a href="#" class="btn">English</a></li>
+                                <li><a href="#" class="btn">Japanese</a></li>
+                                <li><a href="#" class="btn">Arabic</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title main-title">
+                    <h3 class="title-page"><img src="../images/logo.svg" alt="Ground Fit"></h3>
+                </div>
+
+                <!-- .main-wrap start // -->
+                <div class="main-wrap">
+                    <!-- .main-top -->
+                    <div class="main-top">
+                        <div class="info">
+                            <p class="img-profile">
+                                <img src="../images/img_sample.jpg" alt="">
+                            </p>
+                            <div class="text">
+                                <p class="name">강동원님</p>
+                                <p class="id">Seonghyun22</p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>
+                                <p class="title class">클래스 등록수</p>
+                                <p class="num">30</p>
+                            </li>
+                            <li>
+                                <p class="title new">신규 수강생</p>
+                                <p class="num">30</p>
+                            </li>
+                            <li>
+                                <p class="title all">전체 수강생</p>
+                                <p class="num">300</p>
+                            </li>
+                            <li>
+                                <p class="title today">오늘 수업인원</p>
+                                <p class="num">30</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="text-date">2023.05.24 (수)</p>
+
+                    <!-- .main-body -->
+                    <div class="main-body">
+                        <!-- 오늘의 스케쥴 -->
+                        <div class="today-schedule">
+                            <div class="title-wrap-01">
+                                <h3 class="title-style-01">오늘의 스케쥴</h3>
+                                <a href="#" class="btn btn-more">더보기</a>
+                            </div>
+                            <div class="slide-schedule slider">
+                                <div class="item">
+                                    <p class="time">10:00 ~ 10:50</p>
+                                    <p class="name">철산 필라테스 1:5레슨 철산 필라테스 1:5레슨</p>
+                                    <p class="text-01">손흥민강사님의 수업</p>
+                                    <div class="member">
+                                        <p class="num">1/5명</p>
+                                        <p class="people">김수정, 이성현, 박진우, 김은영, 이동욱</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <p class="time">10:00 ~ 10:50</p>
+                                    <p class="name">철산 필라테스 1:5레슨</p>
+                                    <p class="text-01">손흥민강사님의 수업</p>
+                                    <div class="member">
+                                        <p class="num">1/5명</p>
+                                        <p class="people">김수정, 이성현, 박진우, 김은영, 이동욱</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <p class="time">10:00 ~ 10:50</p>
+                                    <p class="name">철산 필라테스 1:5레슨</p>
+                                    <p class="text-01">손흥민강사님의 수업</p>
+                                    <div class="member">
+                                        <p class="num">1/5명</p>
+                                        <p class="people">김수정, 이성현, 박진우, 김은영, 이동욱, 김수정, 이성현, 박진우, 김은영, 이동욱</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <p class="time">10:00 ~ 10:50</p>
+                                    <p class="name">철산 필라테스 1:5레슨</p>
+                                    <p class="text-01">손흥민강사님의 수업</p>
+                                    <div class="member">
+                                        <p class="num">1/5명</p>
+                                        <p class="people">김수정, 이성현, 박진우, 김은영, 이동욱</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 나의 클래스 랭킹 -->
+                        <div class="class-ranking">
+                            <div class="title-wrap-01">
+                                <h3 class="title-style-01">나의 클래스 랭킹</h3>
+                                <a href="#" class="btn btn-more">더보기</a>
+                            </div>
+                            <ul>
+                                <li>
+                                    <p class="num">1</p>
+                                    <div class="con">
+                                        <p class="name">광명A헬스장 골프 횟수제 - 10회권</p>
+                                        <p class="rate up">25<span class="blind">상승</span></p>
+                                    </div>
+                                    <p class="cate">생활체육</p>
+                                </li>
+                                <li>
+                                    <p class="num">2</p>
+                                    <div class="con">
+                                        <p class="name">광명A헬스장 골프 횟수제 - 10회권</p>
+                                        <p class="rate down">25<span class="blind">하락</span></p>
+                                    </div>
+                                    <p class="cate">생활체육</p>
+                                </li>
+                                <li>
+                                    <p class="num">3</p>
+                                    <div class="con">
+                                        <p class="name">광명A헬스장 골프 횟수제 - 10회권</p>
+                                        <p class="rate up">25<span class="blind">상승</span></p>
+                                    </div>
+                                    <p class="cate">생활체육</p>
+                                </li>
+                                <li>
+                                    <p class="num">4</p>
+                                    <div class="con">
+                                        <p class="name">광명A헬스장 골프 횟수제 광명A헬스장 골프 횟수제 광명A헬스장 골프 횟수제 광명A헬스장 골프 횟수제 - 10회권</p>
+                                        <p class="rate down">25<span class="blind">하락</span></p>
+                                    </div>
+                                    <p class="cate">생활체육</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 신규수강생 -->
+                        <div class="new-student">
+                            <div class="title-wrap-01">
+                                <h3 class="title-style-01">신규수강생</h3>
+                                <a href="#" class="btn btn-more">더보기</a>
+                            </div>
+                            <ul class="list-student">
+                                <li>
+                                    <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                                    <p class="name">김성현</p>
+                                    <p class="instructor">강동원 강사</p>
+                                    <p class="class">광명A헬스장 PT권</p>
+                                    <p class="call">010-****-4321</p>
+                                </li>
+                                <li>
+                                    <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                                    <p class="name">김성현</p>
+                                    <p class="instructor">강동원 강사</p>
+                                    <p class="class">광명A헬스장 PT권</p>
+                                    <p class="call">010-****-4321</p>
+                                </li>
+                                <li>
+                                    <p class="img"><img src="../images/img_sample.jpg" alt=""></p>
+                                    <p class="name">김성현</p>
+                                    <p class="instructor">강동원 강사</p>
+                                    <p class="class">광명A헬스장 PT권</p>
+                                    <p class="call">010-****-4321</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- // .main-wrap end -->
+
+            </div>
+        </div>
+
+        <!-- popup start // -->
+        <!-- #popup-attend -->
+        <div class="popup-wrap popup-style-01" id="popup-attend">
+            <div class="popup-box">
+                <div class="popup-head">
+                    <h3 class="popup-title">강동원 강사님의 수업</h3>
+                    <p class="text-sub">2023.05.01 (월)   10:00 ~ 10:50</p>
+                    <a href="#" class="btn btn-popup-close">닫기</a>
+                </div>
+                <div class="popup-body">
+                    <p class="text-01">예약한 수강생 (2/4)</p>
+                    <p class="text-02">이미선</p>
+                    <ul class="radio-set-01 radio-e3">
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0101" name="idclass01">
+                                <label for="idclass0101">출석</label>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0102" name="idclass01">
+                                <label for="idclass0102">결석</label>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0103" name="idclass01">
+                                <label for="idclass0103">예약취소</label>
+                            </p>
+                        </li>
+                    </ul>
+                    <p class="text-02">김현아</p>
+                    <ul class="radio-set-01 radio-e3">
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0201" name="idclass02">
+                                <label for="idclass0201">출석</label>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0202" name="idclass02">
+                                <label for="idclass0202">결석</label>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="radio-01">
+                                <input type="radio" id="idclass0203" name="idclass02">
+                                <label for="idclass0203">예약취소</label>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popup-foot flex-end">
+                    <a href="#" class="btn btn-blueline-02 btn-popup-close">삭제</a>
+                    <a href="#" class="btn btn-blue-02">저장</a>
+                </div>
+            </div>
+        </div>
+        <!-- // popup end -->
+    </div>
+</body>
+</html>

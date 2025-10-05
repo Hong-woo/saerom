@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>점검일지 등록 - SAEROM</title>
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/lucide-icons.css">
+    <link rel="stylesheet" href="css/general-inspection.css">
+    
+    <style>
+        /* GroundFit 헤더 구조 적용 */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 321px;
+            padding: 188px 24px 24px;
+            min-height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        #header h1 {
+            position: absolute;
+            top: 79px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        #header h1 img {
+            vertical-align: top;
+            width: 180px;
+            height: auto;
+        }
+        
+        #header .quick-nav {
+            display: none;
+        }
+        
+        #gnb {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .container {
+            margin-left: 321px;
+            position: relative;
+            width: calc(100% - 321px);
+            min-height: 100vh;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+    
+    <!-- JavaScript Files -->
+    <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../js/slick.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../assets/js/lucide.js"></script>
+    <script src="../../../assets/js/lucide-utils.js"></script>
+    
+    <script>
+        // SAEROM Lucide 아이콘 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded - Starting initialization');
+            
+            // GNB 로드 먼저 실행
+            if (typeof loadGNB === 'function') {
+                console.log('Loading GNB...');
+                loadGNB();
+            } else {
+                console.error('loadGNB function not found');
+            }
+            
+            // Lucide 아이콘 초기화
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide Icons initialized successfully');
+            } else {
+                console.warn('Lucide library not found');
+            }
+            
+            // Datepicker 초기화
+            if (typeof $.fn.datepicker !== 'undefined') {
+                $('.input-datepicker').datepicker({
+                    dateFormat: 'yy.mm.dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: '2020:2030'
+                });
+            }
+            
+            // readonly 필드 클릭 이벤트 비활성화
+            $('input[readonly]').on('click focus', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+            
+            // 사업장 검색 버튼 클릭 이벤트
+            $('.btn-workplace-search').on('click', function(e) {
+                e.preventDefault();
+                alert('사업장 검색 기능을 구현해주세요.');
+            });
+            
+            // 직원 검색 버튼 클릭 이벤트
+            $('.btn-employee-search').on('click', function(e) {
+                e.preventDefault();
+                alert('직원 검색 기능을 구현해주세요.');
+            });
+            
+            // 파일 선택 버튼 클릭 이벤트
+            $('.btn-file-select').on('click', function(e) {
+                e.preventDefault();
+                $('#file-input').click();
+            });
+            
+            // 파일 선택 변경 이벤트
+            $('#file-input').on('change', function() {
+                const files = this.files;
+                if (files.length > 0) {
+                    $('.file-info').text(`${files.length}개 파일 선택됨`);
+                } else {
+                    $('.file-info').text('선택된 파일 없음');
+                }
+            });
+            
+            // 취소 버튼 클릭 이벤트
+            $('.btn-cancel').on('click', function(e) {
+                e.preventDefault();
+                if (confirm('작성 중인 내용이 사라집니다. 정말 취소하시겠습니까?')) {
+                    window.history.back();
+                }
+            });
+            
+            // URL 파라미터에서 데이터 가져와서 자동 입력
+            function loadDataFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                
+                // URL 파라미터에서 데이터 추출
+                const department = urlParams.get('department') || '';
+                const workplace = urlParams.get('workplace') || '';
+                const complex = urlParams.get('complex') || '';
+                const manager = urlParams.get('manager') || '';
+                const serviceType = urlParams.get('serviceType') || '';
+                const workType = urlParams.get('workType') || '';
+                const year = urlParams.get('year') || '2025';
+                const month = urlParams.get('month') || '';
+                
+                // 자동으로 입력 필드에 값 설정
+                if (department) $('#department').val(department);
+                if (workplace) $('#workplace').val(workplace);
+                if (complex) $('#complex').val(complex);
+                if (manager) $('#manager').val(manager);
+                if (serviceType) $('#service-type').val(serviceType);
+                if (workType) $('#work-type').val(workType);
+                if (year) $('#year').val(year + '년');
+                if (month) $('#month').val(month + '월');
+                
+                console.log('자동 입력된 데이터:', {
+                    department, workplace, complex, manager, 
+                    serviceType, workType, year, month
+                });
+            }
+            
+            // 페이지 로드 시 URL 파라미터에서 데이터 로드
+            loadDataFromURL();
+            
+            // 닫힘 버튼 클릭 이벤트
+            $('.btn-close').on('click', function(e) {
+                e.preventDefault();
+                if (confirm('작성 중인 내용이 사라집니다. 정말 닫으시겠습니까?')) {
+                    window.history.back();
+                }
+            });
+            
+            // 저장 버튼 클릭 이벤트
+            $('.btn-save').on('click', function(e) {
+                e.preventDefault();
+                
+                // 필수 필드 검증
+                const requiredFields = [
+                    { selector: 'input[name="workplace"]', message: '사업장을 입력해주세요.' },
+                    { selector: 'input[name="manager"]', message: '소장명을 입력해주세요.' },
+                    { selector: 'input[name="inspection_date"]', message: '점검일자를 입력해주세요.' },
+                    { selector: 'input[name="inspector"]', message: '점검자를 선택해주세요.' }
+                ];
+                
+                let isValid = true;
+                requiredFields.forEach(field => {
+                    if (!$(field.selector).val().trim()) {
+                        alert(field.message);
+                        $(field.selector).focus();
+                        isValid = false;
+                        return false;
+                    }
+                });
+                
+                if (isValid) {
+                    alert('점검일지가 저장되었습니다.');
+                    // 실제 저장 로직 구현
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu"><i data-lucide="menu" class="quick-nav-icon"></i>메뉴</a></li>
+                <li><a href="#" class="btn approval"><i data-lucide="check-square" class="quick-nav-icon"></i>전자결제</a></li>
+                <li><a href="#" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
+                <li><a href="#" class="btn workplace"><i data-lucide="building-2" class="quick-nav-icon"></i>사업장관리</a></li>
+                <li><a href="#" class="btn hr"><i data-lucide="users" class="quick-nav-icon"></i>직원관리</a></li>
+                <li><a href="#" class="btn system"><i data-lucide="settings" class="quick-nav-icon"></i>시스템</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close"><i data-lucide="x" class="icon-close"></i>닫기</a>
+                <!-- GNB는 JavaScript로 동적 로드됩니다 -->
+            </div>
+        </div>
+        <!-- // #header end -->
+        
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li>
+                            <a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">정보변경 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                
+                <div class="contents-title">
+                <h3 class="title-page">점검일지 등록</h3>
+                <div class="title-buttons">
+                    <a href="general-inspection.html" class="btn btn-back">뒤로가기</a>
+                    <button type="button" class="btn btn-close">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <form class="inspection-form">
+                <!-- 사업장/소장명 섹션 -->
+                <div class="form-section">
+                    <h4 class="section-title">사업장/소장명</h4>
+                    <div class="form-row-inline">
+                        <div class="form-group-inline">
+                            <label for="department">본부</label>
+                            <input type="text" id="department" name="department" class="input-02" placeholder="본부명" readonly>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="workplace">사업장</label>
+                            <div class="input-search-member">
+                                <input type="text" id="workplace" name="workplace" class="input-search" placeholder="사업장명을 입력하세요" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="complex">단지명</label>
+                            <input type="text" id="complex" name="complex" class="input-02" placeholder="단지명을 입력하세요" readonly>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="manager">소장명</label>
+                            <input type="text" id="manager" name="manager" class="input-02" placeholder="소장명을 입력하세요" readonly>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 용역구분/업무구분 섹션 -->
+                <div class="form-section">
+                    <h4 class="section-title">용역구분/업무구분</h4>
+                    <div class="form-row-inline">
+                        <div class="form-group-inline">
+                            <label for="service-type">용역구분</label>
+                            <select id="service-type" name="service-type" class="select-01">
+                                <option value="">용역구분을 선택하세요</option>
+                                <option value="security">경비</option>
+                                <option value="cleaning">미화</option>
+                                <option value="disinfection">소독</option>
+                                <option value="landscaping">조경</option>
+                                <option value="facility">시설관리</option>
+                            </select>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="work-type">업무구분/장소</label>
+                            <select id="work-type" name="work-type" class="select-01">
+                                <option value="">업무구분/장소를 선택하세요</option>
+                                <option value="patrol">순찰</option>
+                                <option value="access-control">출입통제</option>
+                                <option value="visitor-pass">방문증 발급</option>
+                                <option value="parking-management">주차관리</option>
+                                <option value="noise-report">층간소음 접수</option>
+                                <option value="fire-receiver">화재수신기 접수</option>
+                                <option value="elderly-report">노약자 신고</option>
+                                <option value="moving-management">이사화물 관리</option>
+                                <option value="lost-item">분실물 신고</option>
+                                <option value="notice-attachment">게시물 부착/제거</option>
+                                <option value="daily-cleaning">일상청소</option>
+                                <option value="deep-cleaning">대청소</option>
+                                <option value="lobby">로비</option>
+                                <option value="basement-parking">지하주차장</option>
+                                <option value="stairway-corridor">계단/복도</option>
+                                <option value="elevator">엘리베이터</option>
+                                <option value="external-landscaping">외부조경</option>
+                                <option value="cleaning-supplies">청소·소모품 관리</option>
+                                <option value="regular-disinfection">정기소독</option>
+                                <option value="pest-control">방역작업</option>
+                                <option value="disinfection-cert">소독필증 관리</option>
+                                <option value="tree-management">수목관리</option>
+                                <option value="weeding">제초작업</option>
+                                <option value="seasonal-planting">계절별 식재</option>
+                                <option value="external-greenery">외부 녹지 관리</option>
+                                <option value="electrical-mechanical-fire">전기/기계/소방 설비 점검</option>
+                                <option value="safety-diagnosis">안전진단</option>
+                                <option value="repair-maintenance">수리보수</option>
+                            </select>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="year">해당연도</label>
+                            <input type="text" id="year" name="year" class="input-02" placeholder="해당연도" readonly>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="month">월</label>
+                            <input type="text" id="month" name="month" class="input-02" placeholder="월" readonly>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 점검일자/점검구분 섹션 -->
+                <div class="form-section">
+                    <h4 class="section-title">점검일자/점검구분</h4>
+                    <div class="form-row-inline">
+                        <div class="form-group-inline">
+                            <label for="inspection-date">점검일자</label>
+                            <div class="datepicker-01">
+                                <input type="text" id="inspection-date" name="inspection_date" placeholder="점검일자를 선택하세요" readonly>
+                                <button type="button" class="btn-datepicker"></button>
+                            </div>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="inspection-category">점검 구분</label>
+                            <select id="inspection-category" name="inspection-category" class="select-01">
+                                <option value="">구분을 선택하세요</option>
+                                <option value="regular">정기점검</option>
+                                <option value="special">특별점검</option>
+                                <option value="emergency">긴급점검</option>
+                            </select>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="inspection-method">현장/원격 구분</label>
+                            <select id="inspection-method" name="inspection-method" class="select-01">
+                                <option value="">구분을 선택하세요</option>
+                                <option value="onsite">현장</option>
+                                <option value="remote">원격</option>
+                            </select>
+                        </div>
+                        <div class="form-group-inline">
+                            <label for="inspection-type">점검 유형</label>
+                            <select id="inspection-type" name="inspection-type" class="select-01">
+                                <option value="">선택하세요</option>
+                                <option value="safety">안전점검</option>
+                                <option value="maintenance">유지보수점검</option>
+                                <option value="quality">품질점검</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 점검자 섹션 -->
+                <div class="form-section">
+                    <h4 class="section-title">점검자</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-orange btn-employee-search">직원검색</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 점검내용 섹션 -->
+                <div class="form-section">
+                    <h4 class="section-title">점검내용</h4>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <textarea id="inspection_content" name="inspection_content" class="textarea-01" placeholder="점검내용을 입력하세요" rows="6"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 점검결과보고 섹션 -->
+                <div class="form-section">
+                    <h4 class="section-title">점검결과보고</h4>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <textarea id="inspection_report" name="inspection_report" class="textarea-01" placeholder="점검결과보고를 입력하세요" rows="6"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 첨부파일 섹션 -->
+                <div class="form-section">
+                    <h4 class="section-title">첨부파일</h4>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-gray btn-file-select">파일 선택</button>
+                            <input type="file" id="file-input" multiple style="display: none;">
+                        </div>
+                        <div class="form-group">
+                            <span class="file-info">선택된 파일 없음</span>
+                        </div>
+                        <div class="form-group">
+                            <span class="file-note">※ 최대 5개까지 등록 가능</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- 하단 버튼 섹션 -->
+            <div class="form-bottom-section">
+                <div class="btn-group-center">
+                    <button type="button" class="btn btn-blueline-02 btn-cancel">취소</button>
+                    <button type="button" class="btn btn-red-01 btn-save">저장</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../assets/js/lucide.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script>
+        $(document).ready(function() {
+            console.log('jQuery Ready - Starting initialization');
+            
+            // GNB 로드
+            if (typeof loadGNB === 'function') {
+                console.log('Loading GNB from jQuery ready...');
+                loadGNB();
+            } else {
+                console.error('loadGNB function not found in jQuery ready');
+            }
+            
+            // Lucide 아이콘 초기화
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide Icons initialized from jQuery ready');
+            } else {
+                console.warn('Lucide library not found in jQuery ready');
+            }
+            
+            // 달력 피커 버튼 클릭 이벤트
+            $('.btn-datepicker').on('click', function() {
+                // 간단한 날짜 선택 (실제로는 달력 라이브러리 사용)
+                var today = new Date();
+                var year = today.getFullYear();
+                var month = String(today.getMonth() + 1).padStart(2, '0');
+                var day = String(today.getDate()).padStart(2, '0');
+                var dateString = year + '-' + month + '-' + day;
+                
+                $('#inspection-date').val(dateString);
+                console.log('선택된 날짜:', dateString);
+            });
+            
+            // 셀렉트 박스 변경 이벤트
+            $('.select-01').on('change', function() {
+                console.log('선택된 값:', $(this).val());
+            });
+            
+            // 취소 버튼 클릭
+            $('.btn-cancel').on('click', function() {
+                if(confirm('작성 중인 내용이 사라집니다. 정말 취소하시겠습니까?')) {
+                    window.history.back();
+                }
+            });
+            
+            // 닫힘 버튼 클릭
+            $('.btn-close').on('click', function() {
+                if(confirm('작성 중인 내용이 사라집니다. 정말 닫으시겠습니까?')) {
+                    window.history.back();
+                }
+            });
+            
+            // 저장 버튼 클릭
+            $('.btn-save').on('click', function() {
+                alert('저장 기능을 구현해주세요.');
+            });
+        });
+        
+        // GNB 토글 기능 초기화
+        function initGNBToggle() {
+            // 1레벨 메뉴 토글
+            const toggleButtons = document.querySelectorAll('.gnb-depth1 .btn-toggle');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 다른 활성 메뉴들 닫기
+                    document.querySelectorAll('.gnb-depth1 .btn-toggle.active').forEach(activeBtn => {
+                        if (activeBtn !== this) {
+                            activeBtn.classList.remove('active');
+                            const activeSubmenu = activeBtn.nextElementSibling;
+                            if (activeSubmenu) {
+                                activeSubmenu.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // 현재 메뉴 토글
+                    if (isActive) {
+                        this.classList.remove('active');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    } else {
+                        this.classList.add('active');
+                        if (submenu) {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+            
+            // 2레벨 메뉴 토글 (3레벨 서브메뉴용)
+            const toggleButtons2 = document.querySelectorAll('.gnb-depth2 .btn-toggle');
+            toggleButtons2.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 같은 2레벨 내의 다른 활성 메뉴들 닫기
+                    const parentLi = this.closest('li');
+                    parentLi.querySelectorAll('.gnb-depth2 .btn-toggle.active').forEach(activeBtn => {
+                        if (activeBtn !== this) {
+                            activeBtn.classList.remove('active');
+                            const activeSubmenu = activeBtn.nextElementSibling;
+                            if (activeSubmenu) {
+                                activeSubmenu.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // 현재 메뉴 토글
+                    if (isActive) {
+                        this.classList.remove('active');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    } else {
+                        this.classList.add('active');
+                        if (submenu) {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+        }
+        
+        // GNB 토글 기능 초기화
+        initGNBToggle();
+    </script>
+</body>
+</html>

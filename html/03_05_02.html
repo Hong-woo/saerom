@@ -1,0 +1,2699 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>사업장 근태현황 등록</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body onload="$('#popup-contract-type4').show();">
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">
+					<h2 class="blind">본문</h2>
+					<div class="contents-title">
+						<h3 class="title-page">사업장 근태현황 등록</h3>
+						<a href="#" class="btn btn-back">뒤로가기</a>
+					</div>
+
+					<!-- .calculate-wrap start // -->
+					<div class="calculate-wrap">
+						<!-- .select-class -->
+						
+						<form>
+							<ul class="form-style-02 sports">
+								<li class="w03">
+									<div class="form-title">구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">전체</option>
+										</select>
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">검색구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">사업장</option>
+										</select>
+									</div>
+								</li>
+								<li class="w01">
+									<div class="form-title">키워드</div>
+									<div class="form-con">
+										<input type="text" class="input-02" id="idsearch02">
+									</div>
+								</li>
+							</ul>
+							<div class="form-bottom-01">
+								<a href="#" class="btn btn-blackline-02">초기화</a>
+								<a href="#" class="btn btn-black-02">검색</a>
+							</div>
+						</form>
+
+            <!-- .board-top -->
+						<div class="board-top">
+							<div class="left">
+								<label for="idselect01" class="blind">보여줄 상품 갯수</label>
+								<select id="idselect01" class="select-01">
+									<option value="">10개</option>
+								</select>
+								<label for="idboardall" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+								<div class="guide-board">
+									<strong>24</strong>
+									<span>개 선택 됨</span>
+								</div>
+							</div>
+							<div class="right">
+								<a href="#popup-alert-01" class="btn btn-white-01 btn-popup-open">스마트체크 등록</a>
+								<a href="#" class="btn btn-excel">엑셀 다운로드</a>
+							</div>
+							<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+						</div>
+						<!-- table -->
+						<div class="table-style-04 x-scroll">
+							<table style="width:2000px;">
+								<caption>월간업무보고 현황</caption>
+								<colgroup>
+									<col style="width:70px"><!-- 번호 -->
+									<col style="width:120px"><!-- 본부 -->
+									<col><!-- 사업장명 -->
+									<col style="width:160px"><!-- 현장소장명 -->
+									<col style="width:100px"><!-- 해당연도 -->
+									<!-- 1~12월은 자동 가변 -->
+								</colgroup>
+							
+								<thead>
+									<tr>
+										<th scope="col">번호</th>
+										<th scope="col">본부</th>
+										<th scope="col">사업장명</th>
+										<th scope="col">현장소장명</th>
+										<th scope="col">해당연도</th>
+										<th scope="col">1월</th>
+										<th scope="col">2월</th>
+										<th scope="col">3월</th>
+										<th scope="col">4월</th>
+										<th scope="col">5월</th>
+										<th scope="col">6월</th>
+										<th scope="col">7월</th>
+										<th scope="col">8월</th>
+										<th scope="col">9월</th>
+										<th scope="col">10월</th>
+										<th scope="col">11월</th>
+										<th scope="col">12월</th>
+									</tr>
+							
+									<!-- 월별 보고현황 합계 행 -->
+									<tr style="background:#F7F8FC;">
+										<th scope="row" colspan="5" style="text-align:left;padding-left:16px;">보고현황</th>
+										<th>1/302<br><span style="color:#e74c3c;">(0.3%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+										<th>1/302<br><span style="color:#e74c3c;">(0.3%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+										<th>1/302<br><span style="color:#e74c3c;">(0.3%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+										<th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+									</tr>
+								</thead>
+							
+								<tbody>
+									<!-- 사업장 1 -->
+									<tr>
+										<td>7</td>
+										<td>ACE 1본부</td>
+										<td>경기광주역금호리첸시아</td>
+										<td>김현장</td>
+										<td>2025년</td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01">완료</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+									</tr>
+							
+									<!-- 사업장 2 -->
+									<tr>
+										<td>8</td>
+										<td>ACE 1본부</td>
+										<td>쥬네브쎈월드</td>
+										<td>이소장</td>
+										<td>2025년</td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+										<td><a href="#" class="box-round-01 red-01">미작성</a></td>
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+
+						<!-- paging -->
+						<div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+							<a href="#" class="btn first">처음으로</a>
+							<a href="#" class="btn prev">이전</a>
+							<a href="#" class="btn">1</a>
+							<a href="#" class="btn active" title="현재 페이지">2</a>
+							<a href="#" class="btn">3</a>
+							<a href="#" class="btn">4</a>
+							<a href="#" class="btn">5</a>
+							<a href="#" class="btn next">다음</a>
+							<a href="#" class="btn last">마지막으로</a>
+						</div>
+
+					</div>
+					<!-- // .calculate-wrap end -->
+
+
+				</div>
+			</div>
+		</div>
+
+
+		<div class="popup-wrap popup-style-02" id="popup-contract-type4" style="display: block;">
+			<div class="popup-box">
+				<div class="popup-head">
+					<h3 class="popup-title">사업장 근태현황 등록</h3>
+					<a href="#" class="btn btn-popup-close">닫기</a>
+				</div>
+				<div class="popup-body">
+		
+					<div class="calculate-wrap">
+						<form>
+							<!-- .board-top -->
+							<div class="board-top mt10">
+								<div class="left">
+									<a href="#" class="btn btn-excel">엑셀 다운로드</a>
+									<a href="#" class="btn btn-print">인쇄</a>
+									<span style="line-height: 20px; margin-left: 20px;">※ 격일제는 전월 마지막날이 근무일 경우 2일부터, 전월 마지막날이 비번일 경우 1일부터 근무로
+										체크<br>※ 신규 입력시 우측 저장할 라인을 체크 후 화면 아래쪽의 "저장"을 눌러 주세요</span>
+								</div>
+								<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+							</div>
+							<div class="table-style-04 contact mt10">
+								<table>
+									<caption>연차정산관리</caption>
+									<colgroup>
+										<col style="width:10%;">
+										<col style="width:14%;">
+										<col style="width:10%;">
+										<col style="width:14%;">
+										<col style="width:10%;">
+										<col style="width:auto;">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="col">사업장명</th>
+											<td scope="col">둔촌프라자</td>
+											<th scope="col">인원</th>
+											<td scope="col">12명</td>
+											<th scope="col">일괄변경</th>
+											<td scope="col">
+												<div class="input-btn-set-01">
+													<select name="" id="" class="select-01">
+														<option value="">근무조</option>
+													</select>
+													<select name="" id="" class="select-01">
+														<option value="">근무일</option>
+													</select>
+													<a href="#" class="btn btn-white-02">변경</a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+		
+							<div class="table-style-04">
+								<table>
+									<caption>근무상황표</caption>
+									<colgroup>
+										<col style="width:auto;">
+										<col style="width:auto;">
+										<col style="width:auto;">
+										<col style="width:auto;">
+										<col style="width:auto;">
+										<col style="width:auto;">
+										<col style="width:auto;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">근무조</th>
+											<th scope="col">근무일</th>
+											<th scope="col">구분</th>
+											<th scope="col">순번</th>
+											<th scope="col">성명</th>
+											<th scope="col">직책</th>
+											<th scope="col">배치/폐지일</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="col">
+												<div class="radio-set-02">
+													<p class="radio-01">
+														<input type="radio" id="idapp0101" name="idapp01">
+														<label for="idapp0101">A조</label>
+													</p>
+													<p class="radio-01">
+														<input type="radio" id="idapp0102" name="idapp01">
+														<label for="idapp0102">B조</label>
+													</p>
+													<p class="radio-01">
+														<input type="radio" id="idapp0103" name="idapp01">
+														<label for="idapp0103">일근</label>
+													</p>
+												</div>
+											</td>
+											<td scope="col">
+												<div class="radio-set-02">
+													<p class="radio-01">
+														<input type="radio" id="idapp010201" name="idapp0102">
+														<label for="idapp010201">A조</label>
+													</p>
+													<p class="radio-01">
+														<input type="radio" id="idapp010202" name="idapp0102">
+														<label for="idapp010202">B조</label>
+													</p>
+													<p class="radio-01">
+														<input type="radio" id="idapp010203" name="idapp0102">
+														<label for="idapp010203">일근</label>
+													</p>
+												</div>
+											</td>
+											<td scope="col">
+												<select name="" id="" class="select-01">
+													<option value="">연</option>
+												</select>
+											</td>
+											<td scope="col">1</td>
+											<td scope="col">이용만</td>
+											<td scope="col">보안실장</td>
+											<td scope="col">2021-01-01<br>~</td>
+										</tr>
+										<tr>
+											<td scope="col">&nbsp;</td>
+											<td scope="col">&nbsp;</td>
+											<td scope="col">&nbsp;</td>
+											<td scope="col">&nbsp;</td>
+											<td scope="col">&nbsp;</td>
+											<td scope="col">&nbsp;</td>
+											<td scope="col">&nbsp;</td>
+										</tr>
+									</tbody>
+								</table>
+		
+								<div class="board-top">
+									<div class="left">
+										<p class="text-02 lh50"><label for="idmember02">등록</label></p>
+									</div>
+									<div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+								</div>
+								<div class="table-style-04 x-scroll">
+									<table>
+										<caption>근무현황표 등록</caption>
+										<colgroup>
+											<col style="width:auto;">
+											<col style="width:auto;">
+											<col style="width:auto;">
+											<col style="width:auto;">
+											<col style="width:auto;">
+											<col style="width:auto;">
+											<col style="width:auto;">
+											<col style="width:auto;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">1</th>
+												<th scope="col">2</th>
+												<th scope="col">3</th>
+												<th scope="col">4</th>
+												<th scope="col">5</th>
+												<th scope="col">6</th>
+												<th scope="col">7</th>
+												<th scope="col">8</th>
+												<th scope="col">9</th>
+												<th scope="col">10</th>
+												<th scope="col">11</th>
+												<th scope="col">12</th>
+												<th scope="col">13</th>
+												<th scope="col">14</th>
+												<th scope="col">15</th>
+												<th scope="col">16</th>
+												<th scope="col">17</th>
+												<th scope="col">18</th>
+												<th scope="col">19</th>
+												<th scope="col">20</th>
+												<th scope="col">21</th>
+												<th scope="col">22</th>
+												<th scope="col">23</th>
+												<th scope="col">24</th>
+												<th scope="col">25</th>
+												<th scope="col">26</th>
+												<th scope="col">27</th>
+												<th scope="col">28</th>
+												<th scope="col">29</th>
+												<th scope="col">30</th>
+												<th scope="col">31</th>
+												<th scope="col">일괄저장</th>
+												<th scope="col">관리</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+											<tr>
+												<td scope="col">
+													<p>1</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>2</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>3</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>4</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>5</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>6</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>7</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>8</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>9</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>10</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>11</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>12</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>13</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>14</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>15</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>16</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>17</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>18</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>19</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>20</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>21</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>22</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>23</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>24</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>25</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>26</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>27</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>28</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>29</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>30</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p>31</p>
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col">
+													<p class="check-04">
+														<input type="checkbox" name="boardcheck" id="idboard01">
+														<label for="idboard01"><span class="blind">선택</span></label>
+													</p>
+												</td>
+												<td scope="col"><a class="box-round-01 orange-01">수정</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</form>
+					</div>
+		
+					<div class="btns-page-bottom">
+						<div class="right">
+							<a href="#" class="btn btn-blueline-03 btn-popup-close">취소</a>
+							<a href="#" class="btn btn-blue-03 btn-popup-close">확인</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

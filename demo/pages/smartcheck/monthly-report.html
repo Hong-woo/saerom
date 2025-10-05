@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' data:;">
+    <title>월간업무보고 - SAEROM 용역관리시스템</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23495EF4'/><text x='16' y='22' font-family='Arial' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>S</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../../html_cms/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../../html_cms/css/slick.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../html_cms/css/style.css">
+    <link rel="stylesheet" href="../../../html_cms/css/add.css">
+    <link rel="stylesheet" href="../../../assets/css/lucide-icons.css">
+    <link rel="stylesheet" href="../../../css/common.css">
+    <link rel="stylesheet" href="monthly-report.css">
+    
+    <!-- 고정 사이드바 스타일 -->
+    <style>
+        #header {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 321px !important;
+            height: 100vh !important;
+            padding: 188px 24px 24px !important;
+            background-color: #fff !important;
+            border-right: 1px solid #e0e0e0 !important;
+            overflow-y: auto !important;
+            z-index: 1000 !important;
+        }
+        
+        #gnb {
+            position: relative !important;
+            z-index: 1000 !important;
+        }
+        
+        .container {
+            margin-left: 321px !important;
+            width: calc(100% - 321px) !important;
+            min-height: 100vh !important;
+            background-color: #f8f9fa !important;
+        }
+        
+        #header h1 img {
+            width: 180px !important;
+            height: auto !important;
+        }
+        
+        .quick-nav {
+            display: none !important;
+        }
+        
+        @media (max-width: 1600px) {
+            #header {
+                width: 280px !important;
+            }
+            .container {
+                margin-left: 280px !important;
+                width: calc(100% - 280px) !important;
+            }
+            #header h1 img {
+                width: 160px !important;
+            }
+        }
+        
+        @media (max-width: 1300px) {
+            #header {
+                width: 260px !important;
+            }
+            .container {
+                margin-left: 260px !important;
+                width: calc(100% - 260px) !important;
+            }
+            #header h1 img {
+                width: 140px !important;
+            }
+        }
+    </style>
+    
+    <!-- Lucide Icons -->
+    <script src="../../../assets/js/lucide.js"></script>
+    
+    <!-- JavaScript -->
+    <script src="../../../html_cms/js/jquery-1.11.3.js"></script>
+    <script src="../../../html_cms/js/jquery-ui.min.js"></script>
+    <script src="../../../html_cms/js/slick.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../assets/js/lucide-utils.js"></script>
+    <script>
+        // SAEROM Lucide 아이콘 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lucide 아이콘 초기화
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide Icons initialized successfully');
+            } else {
+                console.warn('Lucide library not found');
+            }
+            
+            // GNB 토글 기능은 common.js에서 처리됨
+            
+            // Datepicker 초기화
+            if (typeof $.fn.datepicker !== 'undefined') {
+                $('.input-datepicker').datepicker({
+                    dateFormat: 'yy.mm.dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: '2020:2030'
+                });
+            }
+            
+            // 월간업무보고 페이지 로드 시작
+            console.log('월간업무보고 페이지 로드 시작');
+            
+            // 월간업무보고 메뉴 활성화
+            activateMonthlyReportMenu();
+            
+            // 전체 선택 기능
+            $('.btn-allcheck').on('click', function() {
+                var target = $(this).data('target');
+                var isChecked = $(this).hasClass('active');
+                
+                if (isChecked) {
+                    $('input[name="' + target + '"]').prop('checked', false);
+                    $(this).removeClass('active');
+                } else {
+                    $('input[name="' + target + '"]').prop('checked', true);
+                    $(this).addClass('active');
+                }
+                
+                updateSelectedCount();
+            });
+            
+            // 개별 체크박스 변경 시
+            $('input[name="boardcheck"]').on('change', function() {
+                updateSelectedCount();
+            });
+            
+            // 선택된 항목 수 업데이트
+            function updateSelectedCount() {
+                var selectedCount = $('input[name="boardcheck"]:checked').length;
+                $('.guide-board strong').text(selectedCount);
+            }
+            
+            // 검색 기능
+            $('.btn-black-02').on('click', function(e) {
+                e.preventDefault();
+                console.log('월간업무보고 검색 기능이 구현되었습니다.');
+                alert('검색 기능이 구현되었습니다.');
+            });
+            
+            // 초기화 기능
+            $('.btn-blackline-02').on('click', function(e) {
+                e.preventDefault();
+                $('form')[0].reset();
+                $('input[name="boardcheck"]').prop('checked', false);
+                $('.btn-allcheck').removeClass('active');
+                updateSelectedCount();
+                console.log('검색 조건이 초기화되었습니다.');
+            });
+            
+            // 엑셀 다운로드 기능
+            $('.btn-excel').on('click', function(e) {
+                e.preventDefault();
+                console.log('월간업무보고 데이터를 Excel로 다운로드합니다.');
+                alert('Excel 다운로드 기능이 구현되었습니다.');
+            });
+            
+            
+            // 상태별 버튼 클릭 이벤트 (미작성, 완료 버튼 제외)
+            $('.box-round-01').on('click', function(e) {
+                var status = $(this).text();
+                var month = $(this).closest('td').index() - 4; // 5번째 컬럼부터 월별 데이터
+                
+                // 미작성, 완료 버튼은 페이지 이동 허용
+                if (status === '미작성' || status === '완료') {
+                    console.log(month + '월 ' + status + ' 버튼이 클릭되었습니다. 페이지 이동합니다.');
+                    return; // preventDefault() 실행하지 않음
+                }
+                
+                // 다른 상태 버튼은 기본 동작 막기
+                e.preventDefault();
+                console.log(month + '월 ' + status + ' 버튼이 클릭되었습니다.');
+            });
+        });
+        
+        // 월간업무보고 메뉴 활성화
+        function activateMonthlyReportMenu() {
+            // GNB가 로드된 후 현재 페이지 메뉴 활성화
+            setTimeout(function() {
+                // 모든 메뉴에서 active 클래스 제거
+                $('#gnb .btn').removeClass('active');
+                $('#gnb .gnb-depth2').hide();
+                $('#gnb .gnb-depth3').hide();
+                
+                // 스마트체크 메뉴 열기
+                $('#gnb .btn.smartcheck').addClass('active');
+                $('#gnb .btn.smartcheck').siblings('.gnb-depth2').show();
+                
+                // 현재 페이지 메뉴 활성화
+                $('#gnb .gnb-depth2 a[href*="monthly-report"]').addClass('active');
+                
+                console.log('월간업무보고 메뉴 활성화 완료');
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu"><i data-lucide="menu" class="quick-nav-icon"></i>메뉴</a></li>
+                <li><a href="#" class="btn approval"><i data-lucide="check-square" class="quick-nav-icon"></i>전자결제</a></li>
+                <li><a href="../../../index.html" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
+                <li><a href="#" class="btn workplace"><i data-lucide="building-2" class="quick-nav-icon"></i>사업장관리</a></li>
+                <li><a href="#" class="btn hr"><i data-lucide="users" class="quick-nav-icon"></i>직원관리</a></li>
+                <li><a href="#" class="btn system"><i data-lucide="settings" class="quick-nav-icon"></i>시스템</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close"><i data-lucide="x" class="icon-close"></i>닫기</a>
+                <!-- GNB는 JavaScript로 동적 로드됩니다 -->
+            </div>
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li><a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">관리자 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                <div class="contents-title">
+                    <h3 class="title-page">월간업무보고</h3>
+                    <a href="#" class="btn btn-back">뒤로가기</a>
+                </div>
+
+                <!-- KPI Cards Section -->
+                <ul class="main-top-warp mt40">
+                    <li style="width: 100%;">
+                        <div class="main-top">
+                            <div class="info">
+                                <div class="text">
+                                    <p class="name">월간업무보고</p>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <p class="title today">전체 사업장</p>
+                                    <p class="num">302개</p>
+                                </li>
+                                <li>
+                                    <p class="title today">완료 건수</p>
+                                    <p class="num">3건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">미작성 건수</p>
+                                    <p class="num">299건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">완료율</p>
+                                    <p class="num">1.0%</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Search Filter Section -->
+                <div class="calculate-wrap">
+                    <form>
+                        <ul class="form-style-02 sports">
+                            <li class="w03">
+                                <div class="form-title">구분</div>
+                                <div class="form-con">
+                                    <select id="idsearch01" class="select-01">
+                                        <option value="">전체</option>
+                                        <option value="1본부">1본부</option>
+                                        <option value="2본부">2본부</option>
+                                        <option value="HQ">HQ</option>
+                                        <option value="3본부">3본부</option>
+                                        <option value="4본부">4본부</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w03">
+                                <div class="form-title">검색구분</div>
+                                <div class="form-con">
+                                    <select id="idsearch02" class="select-01">
+                                        <option value="">사업장</option>
+                                        <option value="사업장명">사업장명</option>
+                                        <option value="현장소장명">현장소장명</option>
+                                        <option value="본부">본부</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w01">
+                                <div class="form-title">키워드</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-02" id="idsearch03" placeholder="검색어를 입력하세요">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="form-bottom-01">
+                            <a href="#" class="btn btn-blackline-02">초기화</a>
+                            <a href="#" class="btn btn-black-02">검색</a>
+                        </div>
+                    </form>
+
+                    <!-- Board Top Section -->
+                    <div class="board-top">
+                        <div class="left">
+                            <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+                            <select id="idselect01" class="select-01">
+                                <option value="">10개</option>
+                                <option value="20">20개</option>
+                                <option value="50">50개</option>
+                                <option value="100">100개</option>
+                            </select>
+                        </div>
+                        <div class="right">
+                            <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+                        </div>
+                        <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                    </div>
+
+                    <!-- Monthly Report Table -->
+                    <div class="table-style-02 x-scroll">
+                        <table style="width: 2000px; min-width: 100%;">
+                            <caption>월간업무보고 현황</caption>
+                        
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 60px;">번호</th>
+                                    <th scope="col" style="width: 120px;">본부</th>
+                                    <th scope="col" style="width: 200px;">사업장명</th>
+                                    <th scope="col" style="width: 160px;">현장소장명</th>
+                                    <th scope="col" style="width: 100px;">해당연도</th>
+                                    <th scope="col" style="width: 100px;">1월</th>
+                                    <th scope="col" style="width: 100px;">2월</th>
+                                    <th scope="col" style="width: 100px;">3월</th>
+                                    <th scope="col" style="width: 100px;">4월</th>
+                                    <th scope="col" style="width: 100px;">5월</th>
+                                    <th scope="col" style="width: 100px;">6월</th>
+                                    <th scope="col" style="width: 100px;">7월</th>
+                                    <th scope="col" style="width: 100px;">8월</th>
+                                    <th scope="col" style="width: 100px;">9월</th>
+                                    <th scope="col" style="width: 100px;">10월</th>
+                                    <th scope="col" style="width: 100px;">11월</th>
+                                    <th scope="col" style="width: 100px;">12월</th>
+                                </tr>
+                            
+                                <!-- 월별 보고현황 합계 행 -->
+                                <tr style="background:#F7F8FC;">
+                                    <th scope="row" colspan="5" style="text-align:left;padding-left:16px;">보고현황</th>
+                                    <th>1/302<br><span style="color:#e74c3c;">(0.3%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>1/302<br><span style="color:#e74c3c;">(0.3%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>1/302<br><span style="color:#e74c3c;">(0.3%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                    <th>0/302<br><span style="color:#999;">(0.0%)</span></th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <!-- 사업장 1 -->
+                                <tr>
+                                    <td>7</td>
+                                    <td>ACE 1본부</td>
+                                    <td>경기광주역금호리첸시아</td>
+                                    <td>김현장</td>
+                                    <td>2025년</td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-detail.html" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                        
+                                <!-- 사업장 2 -->
+                                <tr>
+                                    <td>8</td>
+                                    <td>ACE 1본부</td>
+                                    <td>쥬네브쎈월드</td>
+                                    <td>이소장</td>
+                                    <td>2025년</td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                                
+                                <!-- 사업장 3 -->
+                                <tr>
+                                    <td>9</td>
+                                    <td>ACE 2본부</td>
+                                    <td>서울강남아이파크</td>
+                                    <td>박소장</td>
+                                    <td>2025년</td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-detail.html" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                                
+                                <!-- 사업장 4 -->
+                                <tr>
+                                    <td>10</td>
+                                    <td>HQ 본부</td>
+                                    <td>부산해운대마린시티</td>
+                                    <td>최소장</td>
+                                    <td>2025년</td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-detail.html" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                                
+                                <!-- 사업장 5 -->
+                                <tr>
+                                    <td>11</td>
+                                    <td>ACE 3본부</td>
+                                    <td>대구수성구대구은행</td>
+                                    <td>정소장</td>
+                                    <td>2025년</td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-detail.html" class="box-round-01">완료</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                    <td><a href="/src/pages/monthly-report/monthly-report-register.html" class="box-round-01 red-01">미작성</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Paging Section -->
+                    <div class="paging-01">
+                        <a href="#" class="btn first">처음으로</a>
+                        <a href="#" class="btn prev">이전</a>
+                        <a href="#" class="btn">1</a>
+                        <a href="#" class="btn active" title="현재 페이지">2</a>
+                        <a href="#" class="btn">3</a>
+                        <a href="#" class="btn">4</a>
+                        <a href="#" class="btn">5</a>
+                        <a href="#" class="btn next">다음</a>
+                        <a href="#" class="btn last">마지막으로</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

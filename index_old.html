@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>웹퍼블리싱 페이지 리스트</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style>
+		body {font-family:'NotoSansKR', sans-serif;font-size:14px;color:#333;}
+		.pub-guide-top {width:100%;background:#333;}
+		.pub-guide-wrap {width:100%;max-width:1400px;margin:30px auto;padding:0 20px;}
+		h1 {font-size:20px;font-weight:bold;color:#fff;width:100%;max-width:1000px;margin:0 auto;padding:20px;}
+		h2 {margin:30px 0 10px;font-size:16px;font-weight:600;border-left:2px solid #333;padding-left:10px;line-height:1.6em;}
+		.table-style {border-top:1px solid #ddd;border-left:1px solid #ddd;}
+		.table-style table {width:100%;}
+		.table-style th {text-align:left;background-color:#f8f8f8;}
+		.table-style th,
+		.table-style td {border-right:1px solid #ddd;border-bottom:1px solid #ddd;padding:5px;line-height:1.6em;vertical-align:top;}
+		.table-style td.bg-gray {background-color:#fafafa;}
+		.table-style a {color:#4217a7;text-decoration:underline;}
+		.table-style td > ul > li {position:relative;font-size:14px;padding-left:12px;}
+		.table-style td > ul > li:before {content:"";position:absolute;display:inline-block;top:10px;left:0;width:4px;height:4px;border-radius:50%;border:1px solid #aaa;}
+		ul {list-style:none;}
+		.list-dash {margin:5px 0 10px;}
+		.list-dash > li {position:relative;font-size:13px;padding-left:10px;}
+		.list-dash > li:before {content:"";position:absolute;display:inline-block;top:10px;left:0;width:4px;height:1px;background:#666;}
+		.list-dot > li {position:relative;font-size:13px;padding-left:10px;}
+		.list-dot > li:before {content:"";position:absolute;display:inline-block;top:10px;left:0;width:2px;height:2px;background:#666;}
+		.text-blue {color:#4573F0;}
+		.text-red {color:#D11515;}
+    .c-red {color: red;}
+    .c-green {color: green;}
+	</style>
+</head>
+<body>
+	<div class="pub-guide-top">
+		<h1>웹퍼블리싱 페이지 리스트</h1>
+	</div>
+	<div class="pub-guide-wrap">
+
+		<h2>웹퍼블리싱 폴더 구조</h2>
+		<div class="table-style">
+			<table>
+				<caption>웹퍼블리싱 기본 폴더 구조 테이블</caption>
+				<colgroup>
+					<col style="width:33.5%">
+					<col style="width:33.5%">
+					<col style="width:33%">
+				</colgroup>
+				<tbody>
+					<tr>
+						<th>html</th>
+						<td colspan="2">HTML 문서</td>
+					</tr>
+					<tr>
+						<th rowspan="2">css</th>
+						<td colspan="2">스타일시트</td>
+					</tr>
+					<tr>
+						<td class="bg-gray">font</td>
+						<td>폰트</td>
+					</tr>
+					<tr>
+						<th>images</th>
+						<td colspan="2">이미지</td>
+					</tr>
+					<tr>
+						<th>js</th>
+						<td colspan="2">자바스크립트</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<h2>웹퍼블리싱 HTMl 문서 콘텐츠 구조</h2>
+		<div class="table-style">
+			<table>
+				<caption>웹퍼블리싱 HTMl 문서 콘텐츠 구조</caption>
+				<colgroup>
+					<col style="width:25%">
+					<col style="width:auto">
+					<col style="width:auto">
+					<col style="width:auto">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>그룹명</th>
+						<th>파일명</th>
+						<th>내용</th>
+						<th>비고</th>
+						<th>세부콘텐츠</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="5">새롬인트라넷 </td>
+					</tr>
+					<tr>
+						<td rowspan="2">메인/공통</td>
+						<td><a href="html_bk/00_01_login.html" target="_blank">00_01_login.html</a></td>
+						<td>로그인</td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+					<tr>
+						<td><a href="html_bk/00_02_main.html" target="_blank">00_02_main.html</a></td>
+						<td>메인</td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+					<tr>
+						<td>이메일</td>
+						<td><a href="html_bk/01_01_01_이메일.html" target="_blank">01_01_01_이메일.html</a></td>
+						<td>이메일</td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          <tr>
+						<td rowspan="4">전자결제</td>
+						<td><a href="html_bk/01_02_01_01_전자결제_기안작성함.html" target="_blank">01_02_01_01_전자결제_기안작성함.html</a></td>
+						<td>기안작성함 목록</td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot">
+						  </ul></td>
+					</tr>
+          <tr>
+            <td>01_02_01_02_전자결제_기안작성함_기안작성.html</td>
+            <td>기안작성함 기안작성</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/01_02_02_01_전자결제_결제문서함.html" target="_blank">01_02_02_01_전자결제_결제문서함.html</a></td>
+            <td>결제문서함 목록</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>01_02_02_02_전자결제_결제문서함_상세페이지.html</td>
+            <td>결제문서함 상세페이지</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td rowspan="4">공지사항</td>
+            <td><a href="html_bk/01_03_01_01_공지사항.html" target="_blank">01_03_01_01_공지사항.html</a></td>
+            <td>공지사항 목록</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/01_03_01_02_공지사항_글쓰기.html" target="_blank">01_03_01_02_공지사항_글쓰기.html</a></td>
+            <td>공지사항 글쓰기 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/01_03_01_03_공지사항_수정.html" target="_blank">01_03_01_03_공지사항_수정.html</a></td>
+            <td>공지사항 수정 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/01_03_01_04_공지사항_상세.html" target="_blank">01_03_01_04_공지사항_상세.html</a></td>
+						<td>공지사항 상세 </td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          <tr>
+            <td rowspan="4">신규사업장정보</td>
+            <td><a href="html_bk/01_04_01_01_신규사업장.html" target="_blank">01_04_01_01_신규사업장.html</a></td>
+            <td>신규사업장 목록</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/01_04_01_02_신규사업장_글쓰기.html" target="_blank">01_04_01_02_신규사업장_글쓰기.html</a></td>
+            <td>신규사업장 글쓰기 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/01_04_01_03_신규사업장_수정.html" target="_blank">01_04_01_03_신규사업장_수정.html</a></td>
+            <td>신규사업장 수정 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/01_04_01_04_신규사업장_상세.html" target="_blank">01_04_01_04_신규사업장_상세.html</a></td>
+						<td>신규사업장 상세 </td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          <tr>
+            <td rowspan="4">자료실</td>
+            <td><a href="html_bk/01_05_01_01_자료실.html" target="_blank">01_05_01_01_자료실.html</a></td>
+            <td>자료실 목록</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/01_05_01_02_자료실_글쓰기.html" target="_blank">01_05_01_02_자료실_글쓰기.html</a></td>
+            <td>자료실 글쓰기 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/01_05_01_03_자료실_수정.html" target="_blank">01_05_01_03_자료실_수정.html</a></td>
+            <td>자료실 수정 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/01_05_01_04_자료실_상세.html" target="_blank">01_05_01_04_자료실_상세.html</a></td>
+						<td>자료실 상세 </td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          <tr>
+            <td rowspan="5">업무일정표</td>
+            <td><a href="html_bk/02_01_01_02_업무일정표_월간.html" target="_blank">02_01_01_02_업무일정표_월간.html</a></td>
+            <td>업무일정표 월간 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_01_01_03_업무일정표_주간.html" target="_blank">02_01_01_03_업무일정표_주간.html</a></td>
+            <td>업무일정표 주간</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_01_01_04_업무일정표_일간.html" target="_blank">02_01_01_04_업무일정표_일간.html</a></td>
+            <td>업무일정표 일간 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_01_01_05_업무일정표_일정등록_사업장별.html" target="_blank">02_01_01_05_업무일정표_일정등록_사업장별.html</a></td>
+            <td>업무일정표 일정등록 사업장별</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/02_01_01_06_업무일정표_일정등록_일자별.html" target="_blank">02_01_01_06_업무일정표_일정등록_일자별.html</a></td>
+						<td>업무일정표 일정등록 일자별</td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot">
+						  팝업
+						</ul></td>
+					</tr>
+          <tr>
+            <td rowspan="27">사업장직원관리</td>
+            <td><a href="html_bk/02_02_01_01_사업장직원현황.html" target="_blank">02_02_01_01_사업장직원현황.html</a></td>
+            <td>사업장직원현황 </td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_01_02_사업장직원현황_목록팝업.html" target="_blank">02_02_01_02_사업장직원현황_목록팝업.html</a></td>
+            <td>사업장직원현황 목록팝업</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_02_01_사업장직원관리.html" target="_blank">02_02_02_01_사업장직원관리.html</a></td>
+            <td>사업자직원관리</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_02_02_사업장직원관리_등록.html" target="_blank">02_02_02_02_사업장직원관리_등록.html</a></td>
+            <td>사업장직원관리 등록</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>사업장검색 팝업포함</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_02_03_사업장직원관리_상세수정.html" target="_blank">02_02_02_03_사업장직원관리_상세수정.html</a></td>
+            <td>사업장직원관리 상세수정</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/02_02_03_01_근로계약서.html" target="_blank">02_02_03_01_근로계약서.html</a></td>
+						<td>근로계약서 </td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          <tr>
+            <td><a href="html_bk/02_02_03_02_01_근로계약서_작성_격일.html" target="_blank">02_02_03_02_01_근로계약서_작성_격일.html</a></td>
+            <td>근로계약서 작성(격일)</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_03_02_02_근로계약서_작성_일근.html" target="_blank">02_02_03_02_02_근로계약서_작성_일근.html</a></td>
+            <td>근로계약서 작성(일근)</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_03_02_03_근로계약서_작성_3교대.html" target="_blank">02_02_03_02_03_근로계약서_작성_3교대.html</a></td>
+            <td>근로계약서 작성(3교대)</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_03_03_01_근로계약서_전자결제_작성.html" target="_blank">02_02_03_03_01_근로계약서_전자결제_작성.html</a></td>
+            <td>근로계약서 전자결제 작성</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_03_03_05_근로계약서_전자결제_동의서명_그리기.html" target="_blank">02_02_03_03_05_근로계약서_전자결제_동의서명_그리기.html</a></td>
+            <td>근로계약서 전자결제 동의서명(그리기)</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_03_03_05_근로계약서_전자결제_동의서명_업로드.html" target="_blank">02_02_03_03_05_근로계약서_전자결제_동의서명_업로드.html</a></td>
+            <td>근로계약서 전자결제 동의서명(업로드)</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_03_03_06_근로계약서_전자결제_동의서명_서명완료.html" target="_blank">02_02_03_03_06_근로계약서_전자결제_동의서명_서명완료.html</a></td>
+            <td>근로계약서 전자결제 동의서명 서명완료</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_03_03_07_근로계약서_전자결제_동의서명_작성이력.html" target="_blank">02_02_03_03_07_근로계약서_전자결제_동의서명_작성이력.html</a></td>
+            <td>근로계약서 전자결제 동의서명 작성이력</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/02_02_04_01_동의서관리.html" target="_blank">02_02_04_01_동의서관리.html</a></td>
+						<td>동의서관리 </td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          <tr>
+            <td><a href="html_bk/02_02_04_02_01_동의서관리_동의서수정.html" target="_blank">02_02_04_02_01_동의서관리_동의서수정.html</a></td>
+            <td>동의서관리 동의서 수정</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_04_03_02_동의서관리_전자결제_확인서.html" target="_blank">02_02_04_03_02_동의서관리_전자결제_확인서.html</a></td>
+            <td>동의서관리 동의서 전자결제 확인서</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_04_03_03_동의서관리_전자결제_서약서.html" target="_blank">02_02_04_03_03_동의서관리_전자결제_서약서.html</a></td>
+            <td>동의서관리 동의서 전자결제 서약서</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_04_03_04_동의서관리_전자결제_평가기준서약서.html" target="_blank">02_02_04_03_04_동의서관리_전자결제_평가기준서약서.html</a></td>
+            <td>동의서관리 동의서 전자결제 평가기준서약서</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_04_03_05_동의서관리_전자결제_개인정보이용동의서.html" target="_blank">02_02_04_03_05_동의서관리_전자결제_개인정보이용동의서.html</a></td>
+            <td>동의서관리 동의서 전자결제 개인정보이용동의</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_04_03_06_동의서관리_작성이력.html" target="_blank">02_02_04_03_06_동의서관리_작성이력.html</a></td>
+            <td>동의서관리 동의서 작성이력</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/02_02_05_01_01_연차사용현황.html" target="_blank">02_02_05_01_01_연차사용현황.html</a></td>
+						<td>연차사용현황 </td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          <tr>
+            <td><a href="html_bk/02_02_05_01_02_연차사용현황_연차정산관리.html" target="_blank">02_02_05_01_02_연차사용현황_연차정산관리.html</a></td>
+            <td>연차사용현황 연차정산관리</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_05_02_01_연차사용현황_사업자명부현황_재직자.html" target="_blank">02_02_05_02_01_연차사용현황_사업자명부현황_재직자.html</a></td>
+            <td>연차사용현황 사업자명부현황 재직자</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_02_05_02_02_연차사용현황_사업자명부현황_퇴직자.html" target="_blank">02_02_05_02_02_연차사용현황_사업자명부현황_퇴직자.html</a></td>
+            <td>연차사용현황 사업자명부현황 퇴직자</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/02_02_06_01_장애인현황.html" target="_blank">02_02_06_01_장애인현황.html</a></td>
+						<td>장애인현황 </td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          <tr>
+						<td><a href="html_bk/02_02_07_01_국가유공자현황.html" target="_blank">02_02_07_01_국가유공자현황.html</a></td>
+						<td>국가유공자현황 </td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td><ul class="list-dot"></ul></td>
+					</tr>
+          
+          <tr>
+            <td rowspan="16">경비업무</td>
+            <td><a href="html_bk/02_03_01_01_배치폐지신고_배치신고리스트.html" target="_blank">02_03_01_01_배치폐지신고_배치신고리스트.html</a></td>
+            <td>배치폐지신고 배치 신고리스트</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_01_02_배치폐지신고_폐지신고리스트.html" target="_blank">02_03_01_02_배치폐지신고_폐지신고리스트.html</a></td>
+            <td>배치폐지신고 폐지 신고리스트</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>02_03_01_03_배치폐지신고_배치폐지신고서.html</td>
+            <td>배치폐지신고 폐지 경비원배치폐지신고서</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_02_01_근무상황표.html" target="_blank">02_03_02_01_근무상황표.html</a></td>
+            <td>근무상황표</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_02_02_근무상황표_등록.html" target="_blank">02_03_02_02_근무상황표_등록.html</a></td>
+            <td>근무상황표 등록</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_02_03_근무상황표_상세수정.html" target="_blank">02_03_02_03_근무상황표_상세수정.html</a></td>
+            <td>근무상황표 상세수정</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_03_01_경비원명부.html" target="_blank">02_03_03_01_경비원명부.html</a></td>
+            <td>경비원명부</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_03_02_경비원명부_상세수정.html" target="_blank">02_03_03_02_경비원명부_상세수정.html</a></td>
+            <td>경비원명부 상세수정</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_03_03_경비원명부_상세수정_팝업.html" target="_blank">02_03_03_03_경비원명부_상세수정_팝업.html</a></td>
+            <td>경비원명부 상세수정 팝업</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_04_01_경비지도사.html" target="_blank">02_03_04_01_경비지도사.html</a></td>
+            <td>경비지도사</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_04_02_경비지도사_등록.html" target="_blank">02_03_04_02_경비지도사_등록.html</a></td>
+            <td>경비지도사 등록</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_04_02_경비지도사_상세수정.html" target="_blank">02_03_04_02_경비지도사_상세수정.html</a></td>
+            <td>경비지도사 상세수정</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_03_05_01_순회점검.html" target="_blank">02_03_05_01_순회점검.html</a></td>
+            <td>순회점검</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>02_03_05_02_순회점검_등록.html</td>
+            <td>순회점검 등록</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td>02_03_05_03_순회점검_상세수정.html</td>
+            <td>순회점검 상세수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+						<td><a href="html_bk/02_03_05_04_순회점검_배치인원.html" target="_blank">02_03_05_04_순회점검_배치인원.html</a></td>
+						<td>순회점검 배치인원</td>
+						<td align="center"><span class="c-red">완료</span></td>
+						<td>팝업</td>
+					</tr>
+          
+          <tr>
+            <td rowspan="5">청소업무</td>
+            <td><a href="html_bk/02_04_01_01_청소업무보고.html" target="_blank">02_04_01_01_청소업무보고.html</a></td>
+            <td>청소업무보고</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_04_01_02_청소업무보고_작성.html" target="_blank">02_04_01_02_청소업무보고_작성.html</a></td>
+            <td>청소업무보고 작성</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_04_01_03_청소업무보고_상세수정.html" target="_blank">02_04_01_03_청소업무보고_상세수정.html</a></td>
+            <td>청소업무보고 상세수정</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_04_02_01_청소업무보고서_작성.html" target="_blank">02_04_02_01_청소업무보고서_작성.html</a></td>
+            <td>청소업무보고서 작성</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_04_02_02_청소업무보고서_보고내역.html" target="_blank">02_04_02_02_청소업무보고서_보고내역.html</a></td>
+            <td>청소업무보고서 보고내역</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          
+          <tr>
+            <td rowspan="5">소독업무</td>
+            <td><a href="html_bk/02_05_01_01_소독업무보고.html" target="_blank">02_05_01_01_소독업무보고.html</a></td>
+            <td>소독업무보고</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_05_01_02_소독업무보고_작성.html" target="_blank">02_05_01_02_소독업무보고_작성.html</a></td>
+            <td>소독업무보고 작성</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_05_01_03_소독업무보고_상세수정.html" target="_blank">02_05_01_03_소독업무보고_상세수정.html</a></td>
+            <td>소독업무보고 상세수정</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_05_02_01_소독업무보고서_작성.html" target="_blank">02_05_02_01_소독업무보고서_작성.html</a></td>
+            <td>소독업무보고서 작성</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/02_05_02_02_소독업무보고서_보고내역.html" target="_blank">02_05_02_02_소독업무보고서_보고내역.html</a></td>
+            <td>소독업무보고서 보고내역</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>팝업</td>
+          </tr>
+          
+          <tr>
+            <td rowspan="5">일반관리</td>
+            <td><a href="html_bk/03_01_01_01_일반관리_물품관리.html" target="_blank">03_01_01_01_일반관리_물품관리.html</a></td>
+            <td>일반관리 물품관리</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_01_02_01_일반관리_물품검색.html" target="_blank">03_01_02_01_일반관리_물품검색.html</a></td>
+            <td>일반관리 물품검색</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_01_03_01_일반관리_장비검색.html" target="_blank">03_01_03_01_일반관리_장비검색.html</a></td>
+            <td>일반관리 장비검색</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>03_01_03_02_일반관리_장비검색_점검체크리스트_등록수정.html</td>
+            <td>일반관리 장비검색 점검체크리스트 등록/수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td>03_01_03_03_일반관리_장비검색_점검체크리스트_상세.html</td>
+            <td>일반관리 장비검색 점검체크리스트 상세</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          
+          <tr>
+            <td rowspan="22">사업장정보</td>
+            <td><a href="html_bk/03_02_01_01_관리사업장.html" target="_blank">03_02_01_01_관리사업장.html</a></td>
+            <td>관리업무 관리사업장</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_02_01_종료사업장.html" target="_blank">03_02_02_01_종료사업장.html</a></td>
+            <td>관리업무 종료사업장</td>
+            <td align="center"><span class="c-red">완료</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_03_01_사업장정보_기본정보.html" target="_blank">03_02_03_01_사업장정보_기본정보.html</a></td>
+            <td>관리업무 사업장정보 기본정보</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_03_02_사업장정보_도급계약서.html" target="_blank">03_02_03_02_사업장정보_도급계약서.html</a></td>
+            <td>관리업무 사업장정보 도급계약서</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_03_03_사업장정보_직원정보_재직자.html" target="_blank">03_02_03_03_사업장정보_직원정보_재직자.html</a></td>
+            <td>관리업무 사업장정보 직원정보 재직자</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_03_04_사업장정보_직원정보_퇴직자.html" target="_blank">03_02_03_04_사업장정보_직원정보_퇴직자.html</a></td>
+            <td>관리업무 사업장정보 직원정보 퇴직자</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_03_05_사업장정보_용역업체.html" target="_blank">03_02_03_05_사업장정보_용역업체.html</a></td>
+            <td>관리업무 사업장정보 용역업체</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_03_06_사업장정보_용역업체_관할경찰서_검색.html" target="_blank">03_02_03_06_사업장정보_용역업체_관할경찰서_검색.html</a></td>
+            <td>관리업무 사업장정보 용역업체 관할경찰서 검색</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_03_07_사업장정보_용역업체_본사직원_검색.html" target="_blank">03_02_03_07_사업장정보_용역업체_본사직원_검색.html</a></td>
+            <td>관리업무 사업장정보 용역업체 본사직원 검색</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          
+          <tr>
+            <td><a href="html_bk/03_02_04_01_도급계약서.html" target="_blank">03_02_04_01_도급계약서.html</a></td>
+            <td>관리업무 도급계약서</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_05_01_거래처관리.html" target="_blank">03_02_05_01_거래처관리.html</a></td>
+            <td>관리업무 거래처관리 </td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_05_02_거래처관리_거래처등록수정.html" target="_blank">03_02_05_02_거래처관리_거래처등록수정.html</a></td>
+            <td>관리업무 거래처관리 거래처 등록/수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_06_01_기타계약서관리.html" target="_blank">03_02_06_01_기타계약서관리.html</a></td>
+            <td>관리업무 기타계약서관리</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_06_02_기타계약서관리_등록수정.html" target="_blank">03_02_06_02_기타계약서관리_등록수정.html</a></td>
+            <td>관리업무 기타계약서관리 등록/수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_07_01_본사직원관리.html" target="_blank">03_02_07_01_본사직원관리.html</a></td>
+            <td><p>관리업무 본사직원관리</p></td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_07_02_본사직원관리_등록수정.html" target="_blank">03_02_07_02_본사직원관리_등록수정.html</a></td>
+            <td>관리업무 본사직원관리 등록/수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_07_03_본사직원관리_발령이력.html" target="_blank">03_02_07_03_본사직원관리_발령이력.html</a></td>
+            <td>관리업무 본사직원관리 발령이력</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_07_04_본사직원관리_퇴사.html" target="_blank">03_02_07_04_본사직원관리_퇴사.html</a></td>
+            <td>관리업무 본사직원관리 퇴사</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_07_05_본사직원관리_권한그룹.html" target="_blank">03_02_07_05_본사직원관리_권한그룹.html</a></td>
+            <td>관리업무 본사직원관리 권한그룹</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_07_06_본사직원관리_ID승계.html" target="_blank">03_02_07_06_본사직원관리_ID승계.html</a></td>
+            <td>관리업무 본사직원관리 ID승계</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_07_07_본사직원관리_퇴직정보변경.html" target="_blank">03_02_07_07_본사직원관리_퇴직정보변경.html</a></td>
+            <td>관리업무 본사직원관리 퇴직정보 변경</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_02_08_01_본사정보관리.html" target="_blank">03_02_08_01_본사정보관리.html</a></td>
+            <td>관리업무 본사정보관리</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          
+          <tr>
+            <td rowspan="17">행정업무</td>
+            <td><a href="html_bk/03_03_01_01_행정업무_사업장방문관리.html" target="_blank">03_03_01_01_행정업무_사업장방문관리.html</a></td>
+            <td>행정업무 사업장방문관리</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_01_02_행정업무_사업장방문관리_방문등록수정.html" target="_blank">03_03_01_02_행정업무_사업장방문관리_방문등록수정.html</a></td>
+            <td>행정업무 사업장방문관리 방문등록/수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          
+          <tr>
+            <td><a href="html_bk/03_03_02_01_행정업무_주간업무보고.html" target="_blank">03_03_02_01_행정업무_주간업무보고.html</a></td>
+            <td>행정업무 주간업무보고</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_02_02_행정업무_주간업무보고_작성수정.html" target="_blank">03_03_02_02_행정업무_주간업무보고_작성수정.html</a></td>
+            <td>행정업무 주간업무보고 작성/수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_02_03_행정업무_주간업무보고_인쇄.html" target="_blank">03_03_02_03_행정업무_주간업무보고_인쇄.html</a></td>
+            <td>행정업무 주간업무보고 인쇄</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_03_01_행정업무_민원관리.html" target="_blank">03_03_03_01_행정업무_민원관리.html</a></td>
+            <td>행정업무 민원관리</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_03_02_행정업무_민원관리_민원등록수정.html" target="_blank">03_03_03_02_행정업무_민원관리_민원등록수정.html</a></td>
+            <td>행정업무 민원관리 민원등록/수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_03_03_행정업무_민원관리_민원_상세.html" target="_blank">03_03_03_03_행정업무_민원관리_민원_상세.html</a></td>
+            <td>행정업무 민원관리 상세</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_04_01_행정업무_문서발송관리_문서발송.html" target="_blank">03_03_04_01_행정업무_문서발송관리_문서발송.html</a></td>
+            <td>행정업무 문서발송관리 문서발송</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_04_02_행정업무_문서발송관리_등록.html" target="_blank">03_03_04_02_행정업무_문서발송관리_등록.html</a></td>
+            <td>행정업무 문서발송관리 등록</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_04_02_행정업무_문서발송관리_상세수정.html" target="_blank">03_03_04_02_행정업무_문서발송관리_상세수정.html</a></td>
+            <td>행정업무 문서발송관리 상세/수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_05_01_행정업무_문서접수.html" target="_blank">03_03_05_01_행정업무_문서접수.html</a></td>
+            <td>행정업무 문서접수</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_05_02_행정업무_문서접수_등록.html" target="_blank">03_03_05_02_행정업무_문서접수_등록.html</a></td>
+            <td>행정업무 문서접수 등록</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_05_03_행정업무_문서접수_상세수정.html" target="_blank">03_03_05_03_행정업무_문서접수_상세수정.html</a></td>
+            <td>행정업무 문서접수 상세수정</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_06_01_행정업무_제증명신청관리.html" target="_blank">03_03_06_01_행정업무_제증명신청관리.html</a></td>
+            <td>행정업무 제증명신청관리</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_06_02_행정업무_제증명신청관리_제증명서발송.html" target="_blank">03_03_06_02_행정업무_제증명신청관리_제증명서발송.html</a></td>
+            <td>행정업무 제증명신청관리 제증명서 발송</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="html_bk/03_03_06_03_행정업무_제증명신청관리_용역직원검색.html" target="_blank">03_03_06_03_행정업무_제증명신청관리_용역직원검색.html</a></td>
+            <td>행정업무 제증명신청관리 용역직원검색</td>
+            <td align="center"><span class="c-green">검수중</span></td>
+            <td>팝업</td>
+          </tr>
+        </tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

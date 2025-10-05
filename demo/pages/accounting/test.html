@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>재무제표 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .search-area {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .form-group {
+            min-width: 150px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .download-area {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-download {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .summary-row {
+            background-color: #e3f2fd;
+            font-weight: bold;
+        }
+        .status-btn {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .status-incomplete {
+            background-color: #dc3545;
+        }
+        .status-complete {
+            background-color: #28a745;
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 0 2px;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .pagination a:hover {
+            background-color: #f8f9fa;
+        }
+        
+        /* 선택된 행 스타일 */
+        tbody tr.selected {
+            background-color: #e3f2fd;
+        }
+        
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        tbody tr.selected:hover {
+            background-color: #bbdefb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>재무제표</h1>
+        
+        <!-- 검색 영역 -->
+        <div class="search-area">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="year">년도</label>
+                    <select id="year">
+                        <option value="2025" selected>2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="department">본부</label>
+                    <select id="department">
+                        <option value="">본부 전체</option>
+                        <option value="ACE 1본부">ACE 1본부</option>
+                        <option value="ACE 2본부">ACE 2본부</option>
+                        <option value="ACE 3본부">ACE 3본부</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workplace">사업장명</label>
+                    <input type="text" id="workplace" placeholder="사업장명">
+                </div>
+                <div class="form-group">
+                    <label for="status">상태</label>
+                    <select id="status">
+                        <option value="">상태 전체</option>
+                        <option value="completed">완료</option>
+                        <option value="incomplete">미작성</option>
+                        <option value="confirmed">확인</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="count">횟수</label>
+                    <select id="count">
+                        <option value="">횟수 선택</option>
+                        <option value="1">1회</option>
+                        <option value="2">2회</option>
+                        <option value="3">3회</option>
+                        <option value="4">4회</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-secondary" onclick="resetSearch()">초기화</button>
+                <button class="btn btn-primary" onclick="searchData()">조회</button>
+            </div>
+        </div>
+        
+        <!-- 다운로드 영역 -->
+        <div class="download-area">
+            <button class="btn-download" onclick="downloadExcel()">📊 엑셀 다운로드</button>
+        </div>
+        
+        <!-- 테이블 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>본부</th>
+                    <th>사업장명</th>
+                    <th>현장소장명</th>
+                    <th>해당연도</th>
+                    <th>1월</th>
+                    <th>2월</th>
+                    <th>3월</th>
+                    <th>4월</th>
+                    <th>5월</th>
+                    <th>6월</th>
+                    <th>7월</th>
+                    <th>8월</th>
+                    <th>9월</th>
+                    <th>10월</th>
+                    <th>11월</th>
+                    <th>12월</th>
+                </tr>
+                <tr class="summary-row">
+                    <th colspan="5">보고현황</th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                    <th>1/309<br><span style="color:#e74c3c;">(0.3%)</span></th>
+                    <th>1/309<br><span style="color:#e74c3c;">(0.3%)</span></th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                    <th>0/309<br><span style="color:#999;">(0.0%)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7</td>
+                    <td>ACE 1본부</td>
+                    <td>경기광주역금호리첸시아</td>
+                    <td>김현장</td>
+                    <td>2025년</td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-complete">확인</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>ACE 1본부</td>
+                    <td>쥬네브썬월드</td>
+                    <td>이소장</td>
+                    <td>2025년</td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>ACE 1본부</td>
+                    <td>판교큐브타워</td>
+                    <td>박소장</td>
+                    <td>2025년</td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                    <td><a href="#" class="status-btn status-incomplete">미작성</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- 페이지네이션 -->
+        <div class="pagination">
+            <a href="#">처음으로</a>
+            <a href="#">이전</a>
+            <a href="#">1</a>
+            <a href="#" class="active">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">다음</a>
+            <a href="#">마지막으로</a>
+        </div>
+    </div>
+    
+    <script>
+        // 페이지 로드 완료 후 실행
+        window.addEventListener('load', function() {
+            console.log('재무제표 페이지가 로드되었습니다.');
+            
+            // 검색 버튼 이벤트
+            const searchBtn = document.querySelector('.btn-primary');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    searchData();
+                });
+            }
+            
+            // 초기화 버튼 이벤트
+            const resetBtn = document.querySelector('.btn-secondary');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    resetSearch();
+                });
+            }
+            
+            // 다운로드 버튼 이벤트
+            const downloadBtn = document.querySelector('.btn-download');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    downloadExcel();
+                });
+            }
+            
+            // 테이블 행 클릭 이벤트
+            document.querySelectorAll('tbody tr').forEach(row => {
+                row.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('selected');
+                    updateSelectedCount();
+                    console.log('테이블 행이 클릭되었습니다.');
+                });
+            });
+            
+            // 상태 버튼 클릭 이벤트
+            document.querySelectorAll('.status-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const status = this.textContent;
+                    const row = this.closest('tr');
+                    const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+                    alert(`${rowIndex + 1}번째 행의 ${status} 버튼이 클릭되었습니다.`);
+                    console.log(`${rowIndex + 1}번째 행의 ${status} 버튼이 클릭되었습니다.`);
+                });
+            });
+        });
+        
+        function searchData() {
+            const year = document.getElementById('year').value;
+            const department = document.getElementById('department').value;
+            const workplace = document.getElementById('workplace').value;
+            const status = document.getElementById('status').value;
+            const count = document.getElementById('count').value;
+            
+            console.log('검색 조건:', {
+                year, department, workplace, status, count
+            });
+            
+            alert('검색 기능이 실행되었습니다!\n검색 조건:\n' + 
+                  '년도: ' + year + '\n' +
+                  '본부: ' + (department || '전체') + '\n' +
+                  '사업장명: ' + (workplace || '없음') + '\n' +
+                  '상태: ' + (status || '전체') + '\n' +
+                  '횟수: ' + (count || '없음'));
+        }
+        
+        function resetSearch() {
+            document.getElementById('year').value = '2025';
+            document.getElementById('department').value = '';
+            document.getElementById('workplace').value = '';
+            document.getElementById('status').value = '';
+            document.getElementById('count').value = '';
+            alert('검색 조건이 초기화되었습니다.');
+        }
+        
+        function downloadExcel() {
+            alert('엑셀 다운로드가 시작됩니다!\n파일명: 재무제표_보고현황.xlsx');
+        }
+        
+        function updateSelectedCount() {
+            const selectedCount = document.querySelectorAll('tbody tr.selected').length;
+            console.log('선택된 항목 수:', selectedCount);
+        }
+    </script>
+</body>
+</html>

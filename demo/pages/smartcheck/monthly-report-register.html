@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정기업무보고 등록 - SAEROM</title>
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/lucide-icons.css">
+    <link rel="stylesheet" href="monthly-report-register.css">
+    
+    <style>
+        /* GroundFit 헤더 구조 적용 */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 321px;
+            padding: 188px 24px 24px;
+            min-height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        #header h1 {
+            position: absolute;
+            top: 79px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        #header h1 img {
+            vertical-align: top;
+            width: 180px;
+            height: auto;
+        }
+        
+        #header .quick-nav {
+            display: none;
+        }
+        
+        #gnb {
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .container {
+            margin-left: 321px;
+            position: relative;
+            width: calc(100% - 321px);
+            min-height: 100vh;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+    
+    <!-- JavaScript Files -->
+    <script src="../../../js/jquery-1.11.3.js"></script>
+    <script src="../../../js/slick.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../assets/js/lucide.js"></script>
+    <script src="../../../assets/js/lucide-utils.js"></script>
+    
+    <script>
+        // SAEROM Lucide 아이콘 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lucide 아이콘 초기화
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+                console.log('Lucide Icons initialized successfully');
+            } else {
+                console.warn('Lucide library not found');
+            }
+            
+            // Datepicker 초기화
+            if (typeof $.fn.datepicker !== 'undefined') {
+                $('.input-datepicker').datepicker({
+                    dateFormat: 'yy.mm.dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: '2020:2030'
+                });
+            }
+            
+            // 정기업무보고 등록 페이지 로드 시작
+            console.log('정기업무보고 등록 페이지 로드 시작');
+            
+            // GNB 동적 로드
+            loadGNB();
+            
+            // 읽기전용 필드 클릭 이벤트 비활성화
+            $('input[readonly]').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('읽기전용 필드 클릭이 비활성화되었습니다.');
+            });
+            
+            // 읽기전용 필드 포커스 방지
+            $('input[readonly]').on('focus', function(e) {
+                e.preventDefault();
+                this.blur();
+                console.log('읽기전용 필드 포커스가 방지되었습니다.');
+            });
+            
+            // 폼 검증
+            $('#btn-save-report').on('click', function(e) {
+                e.preventDefault();
+                
+                // 필수 필드 검증
+                var managerName = $('#manager-name').val().trim();
+                if (!managerName) {
+                    alert('현장소장명을 입력해주세요.');
+                    $('#manager-name').focus();
+                    return;
+                }
+                
+                // 저장 확인
+                if (confirm('정기업무보고를 저장하시겠습니까?')) {
+                    // 저장 로직 (실제로는 서버로 전송)
+                    console.log('정기업무보고 저장 중...');
+                    alert('정기업무보고가 저장되었습니다.');
+                    
+                    // 목록 페이지로 이동
+                    window.location.href = 'index.html';
+                }
+            });
+            
+            // 파일 업로드 처리
+            $('#file-upload').on('change', function() {
+                var files = this.files;
+                var fileCount = files.length;
+                
+                if (fileCount > 5) {
+                    alert('최대 5개까지 파일을 업로드할 수 있습니다.');
+                    this.value = '';
+                    return;
+                }
+                
+                if (fileCount > 0) {
+                    $('.file-status').text(fileCount + '개 파일 선택됨');
+                } else {
+                    $('.file-status').text('선택된 파일 없음');
+                }
+            });
+            
+            // 뒤로가기 버튼
+            $('.btn-back').on('click', function(e) {
+                e.preventDefault();
+                window.history.back();
+            });
+        });
+        
+        // GNB 토글 기능 초기화
+        function initGNBToggle() {
+            // 1레벨 메뉴 토글
+            const toggleButtons = document.querySelectorAll('.gnb-depth1 .btn-toggle');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 다른 활성 메뉴들 닫기
+                    document.querySelectorAll('.gnb-depth1 .btn-toggle.active').forEach(activeBtn => {
+                        if (activeBtn !== this) {
+                            activeBtn.classList.remove('active');
+                            const activeSubmenu = activeBtn.nextElementSibling;
+                            if (activeSubmenu) {
+                                activeSubmenu.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // 현재 메뉴 토글
+                    if (isActive) {
+                        this.classList.remove('active');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    } else {
+                        this.classList.add('active');
+                        if (submenu) {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+            
+            // 2레벨 메뉴 토글 (3레벨 서브메뉴용)
+            const toggleButtons2 = document.querySelectorAll('.gnb-depth2 .btn-toggle');
+            toggleButtons2.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 같은 2레벨 내의 다른 활성 메뉴들 닫기
+                    const parentLi = this.closest('li');
+                    parentLi.querySelectorAll('.gnb-depth2 .btn-toggle.active').forEach(activeBtn => {
+                        if (activeBtn !== this) {
+                            activeBtn.classList.remove('active');
+                            const activeSubmenu = activeBtn.nextElementSibling;
+                            if (activeSubmenu) {
+                                activeSubmenu.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    // 현재 메뉴 토글
+                    if (isActive) {
+                        this.classList.remove('active');
+                        if (submenu) {
+                            submenu.style.display = 'none';
+                        }
+                    } else {
+                        this.classList.add('active');
+                        if (submenu) {
+                            submenu.style.display = 'block';
+                        }
+                    }
+                });
+            });
+        }
+        
+        // GNB 토글 기능 초기화
+        initGNBToggle();
+    </script>
+</head>
+
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            <h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+            <ul class="quick-nav">
+                <li><a href="#" class="btn menu"><i data-lucide="menu" class="quick-nav-icon"></i>메뉴</a></li>
+                <li><a href="#" class="btn approval"><i data-lucide="check-square" class="quick-nav-icon"></i>전자결제</a></li>
+                <li><a href="#" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
+                <li><a href="#" class="btn workplace"><i data-lucide="building-2" class="quick-nav-icon"></i>사업장관리</a></li>
+                <li><a href="#" class="btn hr"><i data-lucide="users" class="quick-nav-icon"></i>직원관리</a></li>
+                <li><a href="#" class="btn system"><i data-lucide="settings" class="quick-nav-icon"></i>시스템</a></li>
+            </ul>
+            <div id="gnb">
+                <h2 class="blind">주메뉴</h2>
+                <a href="#" class="btn btn-gnb-close"><i data-lucide="x" class="icon-close"></i>닫기</a>
+                <!-- GNB는 JavaScript로 동적 로드됩니다 -->
+            </div>
+        </div>
+        <!-- // #header end -->
+        
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li>
+                            <a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">정보변경 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                
+                <!-- Page Title Section -->
+                <div class="contents-title">
+                    <h3 class="title-page">정기업무보고 등록</h3>
+                    <div class="title-buttons">
+                        <a href="index.html" class="btn btn-back">뒤로가기</a>
+                        <a href="index.html" class="btn btn-close" title="닫기">
+                            <i data-lucide="x"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Report Form Section -->
+                <div class="monthly-report-form-wrap">
+                    <!-- 보고 정보 섹션 -->
+                    <div class="form-section">
+                        <h4 class="section-title">보고 정보</h4>
+                        <div class="form-grid-2x3">
+                            <div class="form-item">
+                                <div class="form-title">구분</div>
+                                <div class="form-con">
+                                    <select class="select-01" id="report-type">
+                                        <option value="general">업무보고서(일반)</option>
+                                        <option value="special">업무보고서(특별)</option>
+                                        <option value="emergency">긴급보고서</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <div class="form-title">보고시기</div>
+                                <div class="form-con">
+                                    <div class="date-input-group">
+                                        <input type="text" class="input-01" id="report-year" value="2025년" readonly>
+                                        <input type="text" class="input-01" id="report-month" value="02월" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <div class="form-title">지사·본부</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-01" id="branch" value="ACE 1본부" readonly>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <div class="form-title">사업장명</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-01" id="workplace" value="판교큐브타워" readonly>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <div class="form-title">현소장명</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-01" id="manager-name" placeholder="현장소장명을 입력하세요">
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <div class="form-title">보고일자</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-01" id="report-date" value="2025-09-28" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 보고 사항 섹션 -->
+                    <div class="form-section">
+                        <h4 class="section-title">보고 사항</h4>
+                        <div class="report-items">
+                            <div class="report-item">
+                                <div class="item-category">입주자대표회의 관련 / 동정 주요 민원 사항</div>
+                                <div class="item-content">
+                                    <textarea class="textarea-01" id="resident-issues" placeholder="내용을 입력하세요"></textarea>
+                                </div>
+                            </div>
+                            <div class="report-item">
+                                <div class="item-category">주요 업무 실시 사항</div>
+                                <div class="item-content">
+                                    <textarea class="textarea-01" id="main-business" placeholder="내용을 입력하세요"></textarea>
+                                </div>
+                            </div>
+                            <div class="report-item">
+                                <div class="item-category">용역업체 운영 / 관리실태</div>
+                                <div class="item-content">
+                                    <textarea class="textarea-01" id="contractor-management" placeholder="내용을 입력하세요"></textarea>
+                                </div>
+                            </div>
+                            <div class="report-item">
+                                <div class="item-category">기타 사항</div>
+                                <div class="item-content">
+                                    <textarea class="textarea-01" id="other-matters" placeholder="내용을 입력하세요"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 첨부파일 섹션 -->
+                    <div class="form-section">
+                        <h4 class="section-title">첨부파일</h4>
+                        <div class="file-upload-section">
+                            <div class="file-upload-area">
+                                <input type="file" id="file-upload" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                                <label for="file-upload" class="btn btn-white-02">파일 선택</label>
+                                <span class="file-status">선택된 파일 없음</span>
+                            </div>
+                            <p class="file-guide">※ 최대 5개까지 등록 가능</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Button Section -->
+                <div class="form-bottom-section">
+                    <div class="btn-group-center">
+                        <a href="index.html" class="btn btn-blueline-02">취소</a>
+                        <a href="#" class="btn btn-red-01" id="btn-save-report">저장</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

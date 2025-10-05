@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAEROM</title>
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/slick.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/add.css">
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/slick.js"></script>
+		<script src="../js/common.js"></script>
+	</head>
+
+	<body>
+		<!-- .skip-nav -->
+		<div class="skip-nav">
+			<a href="#gnb" class="btn">본문 바로가기</a>
+			<a href="#contents" class="btn">주메뉴 바로가기</a>
+		</div>
+		<div class="wrap clearfix">
+			<!-- #header start // -->
+			<div id="header">
+				
+			</div>
+			<!-- // #header end -->
+			<div class="container">
+				<div class="contents-top clearfix">
+					<p class="title">Management System</p>
+					<div class="snb">
+						<ul class="snb-depth1 clearfix">
+							<li>
+								<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+								<ul class="snb-depth2">
+									<li><a href="#" class="btn">정보변경 정보</a></li>
+									<li><a href="#" class="btn">로그인 관리</a></li>
+									<li><a href="#" class="btn">로그아웃</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="contents" class="contents-body">					
+					<h2 class="blind">본문</h2>
+          <div class="contents-title">
+            <h3 class="title-page">소독업무보고</h3>
+            <a href="#" class="btn btn-back">뒤로가기</a>
+          </div>
+					<div class="calculate-wrap">
+						<form>
+							<ul class="form-style-02 sports">	
+								<li class="w03">
+									<div class="form-title">년도</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">2022</option>
+										</select>										
+									</div>
+								</li>
+								<li class="w03">
+									<div class="form-title">월</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">2월</option>
+										</select>										
+									</div>
+								</li>		
+								<li class="w03">
+									<div class="form-title">검색구분</div>
+									<div class="form-con">
+										<select id="idsearch01" class="select-01">
+											<option value="">성명</option>
+										</select>										
+									</div>
+								</li>
+								<li class="w01">
+									<div class="form-title">키워드</div>
+									<div class="form-con">
+										<input type="text" class="input-02" id="idsearch02">
+									</div>
+								</li>
+							</ul>
+							<div class="form-bottom-01">
+								<a href="#" class="btn btn-blackline-02">초기화</a>
+								<a href="#" class="btn btn-black-02">검색</a>
+							</div>
+						</form>
+					</div>
+
+          <!-- .calculate-wrap start // -->
+          <div class="calculate-wrap">
+            <!-- .board-top -->
+            <div class="board-top">
+              <div class="left">
+                <label for="idselect01" class="blind">보여줄 목록 갯수</label>
+                <select id="idselect01" class="select-01">
+                  <option value="">10개</option>
+                </select>
+              </div>
+              <div class="right">
+								<a href="#" class="btn btn-excel">다운로드</a>
+              </div>
+              <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+            </div>
+            <!-- table -->
+            <div class="table-style-04">
+							<table>
+								<caption>출금 관리 테이블</caption>
+								<colgroup>
+									<col style="width:80px;">
+									<col style="width:auto;">
+									<col style="width:auto;">
+									<col style="width:auto;">
+									<col style="width:auto;">
+									<col style="width:auto;">
+									<col style="width:auto;">
+									<col style="width:auto;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">번호</th>
+										<th scope="col">용역구분</th>
+										<th scope="col">사업장명</th>
+										<th colspan="3" scope="col">일정 등록</th>
+										<th scope="col">완료여부</th>
+										<th scope="col">보고서작성</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									  <td rowspan="6">100</td>
+									  <td rowspan="6">미화</td>
+									  <td rowspan="6">한보미도맨션</td>
+									  <td rowspan="5">계단소독(5회/년)</td>
+									  <td>1회</td>
+									  <td>2021-02-01</td>
+									  <td><a class="box-round-01 orange-01">예약취소</a></td>
+									  <td><a href="#" class="btn btn-blackline-01">보고서작성</a></td>
+								  </tr>
+									<tr>
+									  <td>2회</td>
+										<td>2021-02-01 ~ 2021-02-30</td>
+										<td><span class="box-round-01">작업전</span></td>
+										<td><a href="#" class="btn btn-blue-01">보고서상세</a></td>
+									</tr>
+									<tr>
+									  <td>3회</td>
+										<td>2021-02-01</td>
+										<td><a class="box-round-01 blue-01">작업완료</a></td>
+										<td><a href="#" class="btn btn-blackline-01">보고서작성</a></td>
+									</tr>
+									<tr>
+									  <td>4회</td>
+										<td>2021-02-01</td>
+										<td><span class="box-round-01">작업전</span></td>
+										<td><a href="#" class="btn btn-blackline-01">보고서작성</a></td>
+									</tr>
+									<tr>
+									  <td>5회</td>
+										<td>2021-02-01</td>
+										<td><a class="box-round-01 blue-01">작업완료</a></td>
+										<td><a href="#" class="btn btn-blackline-01">보고서작성</a></td>
+									</tr>
+									<tr>
+									  <td>지하주차장(1회/년)</td>
+										<td>1회</td>
+										<td>2021-02-01</td>
+										<td><span class="box-round-01">작업전</span></td>
+										<td><a href="#" class="btn btn-blackline-01">보고서작성</a></td>
+									</tr>
+									<tr>
+									  <td>100</td>
+									  <td>미화</td>
+									  <td>한보미도맨션</td>
+									  <td>지하주차장(1회/년)</td>
+									  <td>1회</td>
+									  <td>일정미정</td>
+									  <td>-</td>
+									  <td>&nbsp</td>
+								  </tr>
+									<tr>
+										<td>100</td>
+										<td>미화</td>
+										<td>한보미도맨션</td>
+										<td>계약없음</td>
+										<td>-</td>
+										<td>-</td>
+										<td>-</td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+            </div>
+            <!-- paging -->
+            <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+              <a href="#" class="btn first">처음으로</a>
+              <a href="#" class="btn prev">이전</a>
+              <a href="#" class="btn">1</a>
+              <a href="#" class="btn active" title="현재 페이지">2</a>
+              <a href="#" class="btn">3</a>
+              <a href="#" class="btn">4</a>
+              <a href="#" class="btn">5</a>
+              <a href="#" class="btn next">다음</a>
+              <a href="#" class="btn last">마지막으로</a>
+            </div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
