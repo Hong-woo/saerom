@@ -15,6 +15,143 @@
     <script src="../js/jquery-ui.min.js"></script>
     <script src="../js/slick.js"></script>
     <script src="../js/common.js"></script>
+    <style>
+        /* 추가 스타일 - 기존 CSS 클래스 활용 */
+        .period-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .period-buttons .btn {
+            padding: 4px 12px;
+            font-size: 12px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+        
+        .left-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .right-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .tab-menu {
+            margin: 20px 0;
+        }
+        
+        .tab-list {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: none;
+            color: #666;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: #495EF4;
+            border-bottom-color: #495EF4;
+            font-weight: 600;
+        }
+        
+        .tab-btn:hover {
+            color: #495EF4;
+        }
+        
+        .resend-text {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        .btn-success-01 {
+            background-color: #22c55e;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+        
+        .btn-warning-01 {
+            background-color: #f59e0b;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+        
+        .btn-sm {
+            padding: 4px 8px;
+            font-size: 11px;
+        }
+        
+        .text-link {
+            color: #495EF4;
+            text-decoration: none;
+        }
+        
+        .text-link:hover {
+            text-decoration: underline;
+        }
+        
+        .paging-01 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            margin: 30px 0;
+        }
+        
+        .paging-01 .btn {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .paging-01 .btn.active {
+            background: #495EF4;
+            color: white;
+            border-color: #495EF4;
+        }
+        
+        .paging-01 .btn:hover {
+            background: #f8f9fa;
+        }
+        
+        .paging-01 .btn.active:hover {
+            background: #495EF4;
+        }
+    </style>
 </head>
 <body>
     <!-- .skip-nav -->
@@ -53,7 +190,7 @@
                     <a href="../index.html" class="btn btn-back"><i data-lucide="arrow-left"></i>뒤로가기</a>
                 </div>
 
-                <!-- KPI Cards - main-top 구조 -->
+                <!-- 상단 요약 정보 패널 -->
                 <ul class="main-top-warp mt40">
                     <li>
                         <div class="main-top">
@@ -64,538 +201,269 @@
                             </div>
                             <ul>
                                 <li>
-                                    <div class="item">
-                                        <div class="number">156</div>
-                                        <div class="label">총 등록건수</div>
-                                    </div>
+                                    <div class="title">전체 건수</div>
+                                    <div class="num">128건</div>
                                 </li>
                                 <li>
-                                    <div class="item">
-                                        <div class="number">142</div>
-                                        <div class="label">완료건수</div>
-                                    </div>
+                                    <div class="title">완료 건수</div>
+                                    <div class="num">92건</div>
                                 </li>
                                 <li>
-                                    <div class="item">
-                                        <div class="number">14</div>
-                                        <div class="label">진행중</div>
-                                    </div>
+                                    <div class="title">미완료 건수</div>
+                                    <div class="num">24건</div>
                                 </li>
                                 <li>
-                                    <div class="item">
-                                        <div class="number">91%</div>
-                                        <div class="label">완료율</div>
-                                    </div>
+                                    <div class="title">지연 건수</div>
+                                    <div class="num">12건</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="main-top n2">
+                            <div class="info">
+                                <div class="text">
+                                    <p class="name">일일현황</p>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="title">금일 건수</div>
+                                    <div class="num">18건</div>
+                                </li>
+                                <li>
+                                    <div class="title">완료율</div>
+                                    <div class="num">72%</div>
+                                </li>
+                                <li>
+                                    <div class="title">지연율</div>
+                                    <div class="num">9%</div>
+                                </li>
+                                <li>
+                                    <div class="title">평균 처리시간</div>
+                                    <div class="num">2.3일</div>
                                 </li>
                             </ul>
                         </div>
                     </li>
                 </ul>
 
-                <!-- 기획/행정 스마트체크 현황 -->
-                <div class="calculate-wrap">
-                    <div class="calculate-top">
-                        <div class="left">
-                            <h4 class="title">기획/행정 스마트체크 현황</h4>
+                <!-- 검색 및 필터링 섹션 -->
+                <ul class="form-style-02">
+                    <li class="w01">
+                        <div class="form-title word4">기간선택</div>
+                        <div class="form-con">
+                            <div class="datepicker-set-01">
+                                <input type="text" class="input-01 datepicker-01" placeholder="2023.00.00" readonly>
+                                <span class="date-separator">~</span>
+                                <input type="text" class="input-01 datepicker-01" placeholder="2023.00.00" readonly>
+                            </div>
+                            <div class="period-buttons">
+                                <button type="button" class="btn btn-blackline-02 btn-sm">1개월</button>
+                                <button type="button" class="btn btn-blackline-02 btn-sm">3개월</button>
+                                <button type="button" class="btn btn-blackline-02 btn-sm">6개월</button>
+                                <button type="button" class="btn btn-blackline-02 btn-sm">1년</button>
+                            </div>
                         </div>
-                        <div class="right">
-                            <a href="smartcheck-register.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
+                    </li>
+                    <li class="w02">
+                        <div class="form-title word3">본부</div>
+                        <div class="form-con">
+                            <select class="select-01">
+                                <option value="">본부 전체</option>
+                                <option value="1">1본부</option>
+                                <option value="2">2본부</option>
+                                <option value="3">3본부</option>
+                                <option value="4">4본부</option>
+                                <option value="5">5본부</option>
+                                <option value="6">6본부</option>
+                                <option value="HQ">HQ</option>
+                            </select>
                         </div>
-                    </div>
+                    </li>
+                    <li class="w03">
+                        <div class="form-title word3">구분</div>
+                        <div class="form-con">
+                            <select class="select-01">
+                                <option value="">유형전체</option>
+                                <option value="planning">기획/행정</option>
+                                <option value="accounting">회계</option>
+                                <option value="sales">영업</option>
+                                <option value="security">경비활동</option>
+                                <option value="cleaning">미화활동</option>
+                                <option value="disinfection">소독</option>
+                                <option value="landscaping">조경</option>
+                                <option value="facility">시설관리</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="w04">
+                        <div class="form-title word4">검색구분</div>
+                        <div class="form-con">
+                            <select class="select-01">
+                                <option value="">전체</option>
+                                <option value="title">제목</option>
+                                <option value="content">내용</option>
+                                <option value="manager">담당자</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="w05">
+                        <div class="form-title word3">키워드</div>
+                        <div class="form-con">
+                            <input type="text" class="input-01" placeholder="검색어를 입력하세요">
+                        </div>
+                    </li>
+                    <li class="w06">
+                        <div class="form-con">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-blackline-02">초기화</button>
+                                <button type="button" class="btn btn-black-02">검색</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
 
-                    <div class="table-style-02">
-                        <table>
-                            <caption>기획/행정 스마트체크 현황</caption>
-                            <colgroup>
-                                <col style="width: 40px;">
-                                <col style="width: 80px;">
-                                <col style="width: 120px;">
-                                <col style="width: 200px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="selectAll1"></th>
-                                    <th>번호</th>
-                                    <th>구분</th>
-                                    <th>제목</th>
-                                    <th>담당자</th>
-                                    <th>등록일</th>
-                                    <th>완료일</th>
-                                    <th>상태</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>1</td>
-                                    <td>기획/행정</td>
-                                    <td><a href="#" class="text-link">2024년 1분기 업무계획 수립</a></td>
-                                    <td>김새롬</td>
-                                    <td>2024.01.15</td>
-                                    <td>2024.01.20</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>2</td>
-                                    <td>기획/행정</td>
-                                    <td><a href="#" class="text-link">월간 업무보고서 작성</a></td>
-                                    <td>이새롬</td>
-                                    <td>2024.01.10</td>
-                                    <td>2024.01.25</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>3</td>
-                                    <td>기획/행정</td>
-                                    <td><a href="#" class="text-link">예산 계획 수립</a></td>
-                                    <td>박새롬</td>
-                                    <td>2024.01.05</td>
-                                    <td>-</td>
-                                    <td><span class="status-badge status-progress">진행중</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <!-- 탭 메뉴 -->
+                <div class="tab-menu">
+                    <ul class="tab-list">
+                        <li><a href="#" class="btn tab-btn active">기획/행정</a></li>
+                        <li><a href="#" class="btn tab-btn">회계</a></li>
+                        <li><a href="#" class="btn tab-btn">영업</a></li>
+                        <li><a href="#" class="btn tab-btn">경비활동</a></li>
+                        <li><a href="#" class="btn tab-btn">미화활동</a></li>
+                        <li><a href="#" class="btn tab-btn">소독</a></li>
+                        <li><a href="#" class="btn tab-btn">조경</a></li>
+                        <li><a href="#" class="btn tab-btn">시설관리</a></li>
+                    </ul>
+                </div>
+
+                <!-- 테이블 컨트롤 -->
+                <div class="table-controls">
+                    <div class="left-controls">
+                        <select class="select-01">
+                            <option value="10">10개</option>
+                            <option value="20">20개</option>
+                            <option value="50">50개</option>
+                            <option value="100">100개</option>
+                        </select>
+                        <button type="button" class="btn btn-blackline-02">다운로드</button>
+                        <button type="button" class="btn btn-danger-01">삭제</button>
+                    </div>
+                    <div class="right-controls">
+                        <a href="smartcheck-register.html" class="btn btn-blue-02">스마트체크 등록</a>
                     </div>
                 </div>
 
-                <!-- 회계 스마트체크 현황 -->
-                <div class="calculate-wrap">
-                    <div class="calculate-top">
-                        <div class="left">
-                            <h4 class="title">회계 스마트체크 현황</h4>
-                        </div>
-                        <div class="right">
-                            <a href="smartcheck-register.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
-                        </div>
-                    </div>
-
-                    <div class="table-style-02">
-                        <table>
-                            <caption>회계 스마트체크 현황</caption>
-                            <colgroup>
-                                <col style="width: 40px;">
-                                <col style="width: 80px;">
-                                <col style="width: 120px;">
-                                <col style="width: 200px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="selectAll2"></th>
-                                    <th>번호</th>
-                                    <th>구분</th>
-                                    <th>제목</th>
-                                    <th>담당자</th>
-                                    <th>등록일</th>
-                                    <th>완료일</th>
-                                    <th>상태</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>1</td>
-                                    <td>회계</td>
-                                    <td><a href="#" class="text-link">월간 회계보고서 작성</a></td>
-                                    <td>최새롬</td>
-                                    <td>2024.01.12</td>
-                                    <td>2024.01.18</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>2</td>
-                                    <td>회계</td>
-                                    <td><a href="#" class="text-link">부가세 신고서 작성</a></td>
-                                    <td>정새롬</td>
-                                    <td>2024.01.08</td>
-                                    <td>2024.01.22</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <!-- 데이터 테이블 -->
+                <div class="table-style-02">
+                    <table>
+                        <caption>스마트체크 현황</caption>
+                        <colgroup>
+                            <col style="width: 40px;">
+                            <col style="width: 60px;">
+                            <col style="width: 60px;">
+                            <col style="width: 60px;">
+                            <col style="width: 80px;">
+                            <col style="width: 200px;">
+                            <col style="width: 80px;">
+                            <col style="width: 80px;">
+                            <col style="width: 60px;">
+                            <col style="width: 60px;">
+                            <col style="width: 120px;">
+                            <col style="width: 120px;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAll"></th>
+                                <th>번호</th>
+                                <th>년</th>
+                                <th>월</th>
+                                <th>본부</th>
+                                <th>제목</th>
+                                <th>시작일</th>
+                                <th>마감일</th>
+                                <th>응답</th>
+                                <th>미응답</th>
+                                <th>알림</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>1</td>
+                                <td>2025</td>
+                                <td>07</td>
+                                <td>1본부</td>
+                                <td><a href="#" class="text-link">본부별 업무보고</a></td>
+                                <td>07-01</td>
+                                <td>07-05</td>
+                                <td>25</td>
+                                <td>3</td>
+                                <td>
+                                    <button type="button" class="btn btn-blue-02 btn-sm">알림 발송</button>
+                                    <div class="resend-text">알림 재발송</div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success-01 btn-sm">메모</button>
+                                    <button type="button" class="btn btn-warning-01 btn-sm">복사하기</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>2</td>
+                                <td>2025</td>
+                                <td>07</td>
+                                <td>2본부</td>
+                                <td><a href="#" class="text-link">인사발령 보고</a></td>
+                                <td>07-02</td>
+                                <td>07-06</td>
+                                <td>18</td>
+                                <td>2</td>
+                                <td>
+                                    <button type="button" class="btn btn-blue-02 btn-sm">알림 발송</button>
+                                    <div class="resend-text">알림 재발송</div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success-01 btn-sm">메모</button>
+                                    <button type="button" class="btn btn-warning-01 btn-sm">복사하기</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>3</td>
+                                <td>2025</td>
+                                <td>07</td>
+                                <td>HQ</td>
+                                <td><a href="#" class="text-link">본사 교육계획</a></td>
+                                <td>07-01</td>
+                                <td>07-07</td>
+                                <td>30</td>
+                                <td>5</td>
+                                <td>
+                                    <button type="button" class="btn btn-blue-02 btn-sm">알림 발송</button>
+                                    <div class="resend-text">알림 재발송</div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success-01 btn-sm">메모</button>
+                                    <button type="button" class="btn btn-warning-01 btn-sm">복사하기</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <!-- 영업 스마트체크 현황 -->
-                <div class="calculate-wrap">
-                    <div class="calculate-top">
-                        <div class="left">
-                            <h4 class="title">영업 스마트체크 현황</h4>
-                        </div>
-                        <div class="right">
-                            <a href="smartcheck-register.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
-                        </div>
-                    </div>
-
-                    <div class="table-style-02">
-                        <table>
-                            <caption>영업 스마트체크 현황</caption>
-                            <colgroup>
-                                <col style="width: 40px;">
-                                <col style="width: 80px;">
-                                <col style="width: 120px;">
-                                <col style="width: 200px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="selectAll3"></th>
-                                    <th>번호</th>
-                                    <th>구분</th>
-                                    <th>제목</th>
-                                    <th>담당자</th>
-                                    <th>등록일</th>
-                                    <th>완료일</th>
-                                    <th>상태</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>1</td>
-                                    <td>영업</td>
-                                    <td><a href="#" class="text-link">신규 고객 발굴</a></td>
-                                    <td>한새롬</td>
-                                    <td>2024.01.14</td>
-                                    <td>2024.01.28</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- 경비활동 스마트체크 현황 -->
-                <div class="calculate-wrap">
-                    <div class="calculate-top">
-                        <div class="left">
-                            <h4 class="title">경비활동 스마트체크 현황</h4>
-                        </div>
-                        <div class="right">
-                            <a href="smartcheck-register.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
-                        </div>
-                    </div>
-
-                    <div class="table-style-02">
-                        <table>
-                            <caption>경비활동 스마트체크 현황</caption>
-                            <colgroup>
-                                <col style="width: 40px;">
-                                <col style="width: 80px;">
-                                <col style="width: 120px;">
-                                <col style="width: 200px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="selectAll4"></th>
-                                    <th>번호</th>
-                                    <th>구분</th>
-                                    <th>제목</th>
-                                    <th>담당자</th>
-                                    <th>등록일</th>
-                                    <th>완료일</th>
-                                    <th>상태</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>1</td>
-                                    <td>경비활동</td>
-                                    <td><a href="#" class="text-link">출입통제 점검</a></td>
-                                    <td>강새롬</td>
-                                    <td>2024.01.16</td>
-                                    <td>2024.01.20</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- 미화활동 스마트체크 현황 -->
-                <div class="calculate-wrap">
-                    <div class="calculate-top">
-                        <div class="left">
-                            <h4 class="title">미화활동 스마트체크 현황</h4>
-                        </div>
-                        <div class="right">
-                            <a href="smartcheck-register.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
-                        </div>
-                    </div>
-
-                    <div class="table-style-02">
-                        <table>
-                            <caption>미화활동 스마트체크 현황</caption>
-                            <colgroup>
-                                <col style="width: 40px;">
-                                <col style="width: 80px;">
-                                <col style="width: 120px;">
-                                <col style="width: 200px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="selectAll5"></th>
-                                    <th>번호</th>
-                                    <th>구분</th>
-                                    <th>제목</th>
-                                    <th>담당자</th>
-                                    <th>등록일</th>
-                                    <th>완료일</th>
-                                    <th>상태</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>1</td>
-                                    <td>미화활동</td>
-                                    <td><a href="#" class="text-link">청소 일정 점검</a></td>
-                                    <td>윤새롬</td>
-                                    <td>2024.01.18</td>
-                                    <td>2024.01.25</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- 소독 스마트체크 현황 -->
-                <div class="calculate-wrap">
-                    <div class="calculate-top">
-                        <div class="left">
-                            <h4 class="title">소독 스마트체크 현황</h4>
-                        </div>
-                        <div class="right">
-                            <a href="smartcheck-register.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
-                        </div>
-                    </div>
-
-                    <div class="table-style-02">
-                        <table>
-                            <caption>소독 스마트체크 현황</caption>
-                            <colgroup>
-                                <col style="width: 40px;">
-                                <col style="width: 80px;">
-                                <col style="width: 120px;">
-                                <col style="width: 200px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="selectAll6"></th>
-                                    <th>번호</th>
-                                    <th>구분</th>
-                                    <th>제목</th>
-                                    <th>담당자</th>
-                                    <th>등록일</th>
-                                    <th>완료일</th>
-                                    <th>상태</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>1</td>
-                                    <td>소독</td>
-                                    <td><a href="#" class="text-link">정기 소독 실시</a></td>
-                                    <td>조새롬</td>
-                                    <td>2024.01.20</td>
-                                    <td>2024.01.26</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- 조경 스마트체크 현황 -->
-                <div class="calculate-wrap">
-                    <div class="calculate-top">
-                        <div class="left">
-                            <h4 class="title">조경 스마트체크 현황</h4>
-                        </div>
-                        <div class="right">
-                            <a href="smartcheck-register.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
-                        </div>
-                    </div>
-
-                    <div class="table-style-02">
-                        <table>
-                            <caption>조경 스마트체크 현황</caption>
-                            <colgroup>
-                                <col style="width: 40px;">
-                                <col style="width: 80px;">
-                                <col style="width: 120px;">
-                                <col style="width: 200px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="selectAll7"></th>
-                                    <th>번호</th>
-                                    <th>구분</th>
-                                    <th>제목</th>
-                                    <th>담당자</th>
-                                    <th>등록일</th>
-                                    <th>완료일</th>
-                                    <th>상태</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>1</td>
-                                    <td>조경</td>
-                                    <td><a href="#" class="text-link">화단 관리</a></td>
-                                    <td>임새롬</td>
-                                    <td>2024.01.22</td>
-                                    <td>2024.01.28</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- 시설관리 스마트체크 현황 -->
-                <div class="calculate-wrap">
-                    <div class="calculate-top">
-                        <div class="left">
-                            <h4 class="title">시설관리 스마트체크 현황</h4>
-                        </div>
-                        <div class="right">
-                            <a href="smartcheck-register.html" class="btn btn-blue-02 btn-smartcheck-register">스마트체크 등록</a>
-                        </div>
-                    </div>
-
-                    <div class="table-style-02">
-                        <table>
-                            <caption>시설관리 스마트체크 현황</caption>
-                            <colgroup>
-                                <col style="width: 40px;">
-                                <col style="width: 80px;">
-                                <col style="width: 120px;">
-                                <col style="width: 200px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                                <col style="width: 100px;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="selectAll8"></th>
-                                    <th>번호</th>
-                                    <th>구분</th>
-                                    <th>제목</th>
-                                    <th>담당자</th>
-                                    <th>등록일</th>
-                                    <th>완료일</th>
-                                    <th>상태</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" class="row-checkbox"></td>
-                                    <td>1</td>
-                                    <td>시설관리</td>
-                                    <td><a href="#" class="text-link">엘리베이터 점검</a></td>
-                                    <td>서새롬</td>
-                                    <td>2024.01.24</td>
-                                    <td>2024.01.30</td>
-                                    <td><span class="status-badge status-complete">완료</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">수정</button>
-                                        <button class="btn btn-sm btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <!-- 페이지네이션 -->
+                <div class="paging-01">
+                    <a href="#" class="btn btn-prev">이전</a>
+                    <a href="#" class="btn">1</a>
+                    <a href="#" class="btn active">2</a>
+                    <a href="#" class="btn">3</a>
+                    <a href="#" class="btn">4</a>
+                    <a href="#" class="btn">5</a>
+                    <a href="#" class="btn btn-next">다음</a>
+                    <a href="#" class="btn btn-end">막으</a>
                 </div>
             </div>
         </div>
@@ -604,39 +472,78 @@
     <script>
         $(document).ready(function() {
             // 전체 선택 체크박스
-            $('#selectAll1, #selectAll2, #selectAll3, #selectAll4, #selectAll5, #selectAll6, #selectAll7, #selectAll8').on('change', function() {
-                var table = $(this).closest('table');
-                var checkboxes = table.find('.row-checkbox');
+            $('#selectAll').on('change', function() {
+                var checkboxes = $('.row-checkbox');
                 checkboxes.prop('checked', this.checked);
             });
 
             // 개별 체크박스 변경 시 전체 선택 상태 업데이트
             $('.row-checkbox').on('change', function() {
-                var table = $(this).closest('table');
-                var totalCheckboxes = table.find('.row-checkbox').length;
-                var checkedCheckboxes = table.find('.row-checkbox:checked').length;
-                var selectAllCheckbox = table.find('thead input[type="checkbox"]');
-                selectAllCheckbox.prop('checked', totalCheckboxes === checkedCheckboxes);
+                var totalCheckboxes = $('.row-checkbox').length;
+                var checkedCheckboxes = $('.row-checkbox:checked').length;
+                $('#selectAll').prop('checked', totalCheckboxes === checkedCheckboxes);
             });
 
-            // 스마트체크 등록 버튼 이벤트
-            $('.btn-smartcheck-register').on('click', function(e) {
+            // 탭 메뉴 이벤트
+            $('.tab-btn').on('click', function(e) {
                 e.preventDefault();
-                // 등록 페이지로 이동
-                window.location.href = 'smartcheck-register.html';
+                $('.tab-btn').removeClass('active');
+                $(this).addClass('active');
             });
 
-            // 수정 버튼 이벤트
-            $('.btn-primary').on('click', function(e) {
+            // 기간 선택 버튼 이벤트
+            $('.period-buttons .btn').on('click', function(e) {
                 e.preventDefault();
-                alert('수정 기능을 구현해주세요.');
+                $('.period-buttons .btn').removeClass('active');
+                $(this).addClass('active');
             });
 
-            // 삭제 버튼 이벤트
-            $('.btn-danger').on('click', function(e) {
+            // 검색 버튼 이벤트
+            $('.btn-group .btn').on('click', function(e) {
                 e.preventDefault();
-                if (confirm('정말 삭제하시겠습니까?')) {
-                    $(this).closest('tr').remove();
+                if ($(this).text() === '초기화') {
+                    $('input[type="text"], select').val('');
+                } else if ($(this).text() === '검색') {
+                    // 검색 로직 구현
+                    console.log('검색 실행');
+                }
+            });
+
+            // 테이블 액션 버튼 이벤트
+            $('.btn-blue-02').on('click', function(e) {
+                e.preventDefault();
+                alert('알림 발송 기능을 구현해주세요.');
+            });
+
+            $('.btn-success-01').on('click', function(e) {
+                e.preventDefault();
+                alert('메모 기능을 구현해주세요.');
+            });
+
+            $('.btn-warning-01').on('click', function(e) {
+                e.preventDefault();
+                alert('복사하기 기능을 구현해주세요.');
+            });
+
+            $('.btn-danger-01').on('click', function(e) {
+                e.preventDefault();
+                if (confirm('선택된 항목을 삭제하시겠습니까?')) {
+                    $('.row-checkbox:checked').closest('tr').remove();
+                }
+            });
+
+            // 다운로드 버튼 이벤트
+            $('.left-controls .btn-blackline-02').on('click', function(e) {
+                e.preventDefault();
+                alert('다운로드 기능을 구현해주세요.');
+            });
+
+            // 페이지네이션 이벤트
+            $('.paging-01 .btn').on('click', function(e) {
+                e.preventDefault();
+                if (!$(this).hasClass('btn-prev') && !$(this).hasClass('btn-next') && !$(this).hasClass('btn-end')) {
+                    $('.paging-01 .btn').removeClass('active');
+                    $(this).addClass('active');
                 }
             });
         });
