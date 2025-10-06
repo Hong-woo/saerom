@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트체크현황 - SAEROM</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+    <style>
+        /* 추가 스타일 - 기존 CSS 클래스 활용 */
+        .period-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .period-buttons .btn {
+            padding: 4px 12px;
+            font-size: 12px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+        
+        
+        .tab-menu {
+            margin: 20px 0;
+        }
+
+        .tab-list {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: none;
+            color: #666;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: #495EF4;
+            border-bottom-color: #495EF4;
+            font-weight: 600;
+        }
+
+        .tab-btn:hover {
+            color: #495EF4;
+        }
+        
+        .resend-text {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        .btn-success-01 {
+            background-color: #22c55e;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+        
+        .btn-warning-01 {
+            background-color: #f59e0b;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+        
+        .btn-sm {
+            padding: 4px 8px;
+            font-size: 11px;
+        }
+        
+        .text-link {
+            color: #495EF4;
+            text-decoration: none;
+        }
+        
+        .text-link:hover {
+            text-decoration: underline;
+        }
+        
+        
+        /* form-style-02 sports 간격 조정 */
+        .form-style-02.sports + .form-style-02.sports {
+            margin-top: -32px;
+        }
+        
+        /* form-bottom-01 간격 조정 */
+        .form-bottom-01 {
+            margin-top: -16px;
+        }
+        
+        /* form-style-02 백그라운드 색상 강제 적용 */
+        .form-style-02 {
+            background-color: #F7F8FC !important;
+        }
+        
+        .form-style-02.sports {
+            background-color: #F7F8FC !important;
+        }
+        
+        /* main-top-warp 가로 배치 강제 */
+        .main-top-warp {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 20px !important;
+        }
+        
+        .main-top-warp li {
+            flex: 1 !important;
+            width: 50% !important;
+        }
+        
+        /* 일일현황 카드 파란색 배경 - add.css 스타일 반영 */
+        .main-top.n2 {
+            background-color: #152596 !important;
+        }
+        
+        /* main-top-warp 스타일 - add.css 반영 */
+        .main-top-warp .main-top {
+            overflow: hidden;
+            min-height: 180px;
+            height: 180px !important;
+            display: flex !important;
+            align-items: stretch !important;
+        }
+        
+        .main-top-warp .main-top .info {
+            width: 10%;
+            padding: 18px 24px 32px 24px;
+                        display: flex !important;
+                        align-items: center !important;
+        }
+        
+        .main-top-warp .main-top .info .text .name {
+            font-size: 26px;
+        }
+        
+        .main-top-warp .main-top > ul {
+            width: 90%;
+            padding: 60px 16px;
+                        display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-around !important;
+                        align-items: center !important;
+        }
+        
+        .main-top-warp .main-top > ul > li {
+            flex: 1 !important;
+            text-align: center !important;
+            min-width: 0 !important;
+        }
+        
+        /* 반응형 - 1240px 이하 */
+        @media screen and (max-width: 1240px) {
+            .main-top-warp .main-top > ul {
+                flex-wrap: wrap !important;
+                padding: 40px 8px !important;
+            }
+            
+            .main-top-warp .main-top > ul > li {
+                flex: 1 1 50% !important;
+                min-width: 120px !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .main-top-warp .main-top .info {
+                width: 15% !important;
+                padding: 12px 16px !important;
+            }
+            
+            .main-top-warp .main-top > ul {
+                width: 85% !important;
+            }
+        }
+        
+        /* 반응형 - 768px 이하 */
+        @media screen and (max-width: 768px) {
+            .main-top-warp {
+                        flex-direction: column !important;
+                gap: 10px !important;
+            }
+            
+                    .main-top-warp li {
+                width: 100% !important;
+            }
+            
+            .main-top-warp .main-top {
+                height: auto !important;
+                min-height: 120px !important;
+            }
+            
+            .main-top-warp .main-top .info {
+                width: 20% !important;
+            }
+            
+            .main-top-warp .main-top > ul {
+                width: 80% !important;
+                flex-wrap: wrap !important;
+            }
+            
+            .main-top-warp .main-top > ul > li {
+                flex: 1 1 50% !important;
+            }
+        }
+        
+        .main-top-warp .main-top > ul .num {
+            font-size: 26px;
+        }
+        
+        /* 캘린더 아이콘 스타일 */
+        .title.today {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>') left top no-repeat;
+            padding-left: 24px;
+            background-size: 16px 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- .skip-nav -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    <div class="wrap clearfix">
+        <!-- #header start // -->
+        <div id="header">
+            
+        </div>
+        <!-- // #header end -->
+        <div class="container">
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li>
+                            <a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">정보변경 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                
+                <!-- Page Title -->
+                <div class="contents-title">
+                    <h3 class="title-page">스마트체크현황</h3>
+                    <a href="../index.html" class="btn btn-back"><i data-lucide="arrow-left"></i>뒤로가기</a>
+                </div>
+
+                <!-- 상단 요약 정보 패널 -->
+                <ul class="main-top-warp mt40">
+                    <li>
+                        <div class="main-top">
+                            <div class="info">
+                                <div class="text">
+                                     <p class="name">스마트체크</p>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <p class="title today">전체 건수</p>
+                                    <p class="num">128건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">완료 건수</p>
+                                    <p class="num">92건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">미완료 건수</p>
+                                    <p class="num">24건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">지연 건수</p>
+                                    <p class="num">12건</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="n2">
+                        <div class="main-top n2">
+                            <div class="info">
+                                <div class="text">
+                                     <p class="name">일일현황</p>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <p class="title today">금일 건수</p>
+                                    <p class="num">18건</p>
+                                </li>
+                                <li>
+                                    <p class="title today">완료율</p>
+                                    <p class="num">72%</p>
+                                </li>
+                                <li>
+                                    <p class="title today">지연율</p>
+                                    <p class="num">9%</p>
+                                </li>
+                                <li>
+                                    <p class="title today">평균 처리시간</p>
+                                    <p class="num">2.3일</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- .calculate-wrap start // -->
+                <div class="calculate-wrap">
+                    <form>
+                        <ul class="form-style-02 sports">
+                            <li class="w01">
+                                <div class="form-title">인정일</div>
+                                <div class="form-con">
+                                    <div class="datepicker-set-01">
+                                        <div class="datepicker-01">
+                                            <input type="text" class="input-datepicker hasDatepicker" id="iddate05" placeholder="2023.00.00">
+                                            <label for="iddate05">등록일 시작일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                                        </div>
+                                        <span>~</span>
+                                        <div class="datepicker-01">
+                                            <input type="text" class="input-datepicker hasDatepicker" id="iddate06" placeholder="2023.00.00">
+                                            <label for="iddate06">등록일 종료일 선택. 마우스 사용이 어려운 경우 2023.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="w02">
+                                <div class="form-title">기간선택</div>
+                                <div class="form-con">
+                                    <ul class="radio-set-01">
+                                        <li>
+                                            <p class="radio-01">
+                                                <input type="radio" id="idradio0101" name="nameradio01">
+                                                <label for="idradio0101">1개월</label>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="radio-01">
+                                                <input type="radio" id="idradio0102" name="nameradio01">
+                                                <label for="idradio0102">3개월</label>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="radio-01">
+                                                <input type="radio" id="idradio0103" name="nameradio01">
+                                                <label for="idradio0103">6개월</label>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="radio-01">
+                                                <input type="radio" id="idradio0104" name="nameradio01">
+                                                <label for="idradio0104">1년</label>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="form-style-02 sports">
+                            <li class="w03">
+                                <div class="form-title">구분</div>
+                                <div class="form-con">
+                                <select id="idsearch01" class="select-01">
+                                        <option value="">등급전체</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w03">
+                                <div class="form-title">구분</div>
+                                <div class="form-con">
+                                    <select id="idsearch01" class="select-01">
+                                        <option value="">유형전체</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w03">
+                                <div class="form-title">검색구분</div>
+                                <div class="form-con">
+                                    <select id="idsearch01" class="select-01">
+                                        <option value="">전체</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="w01">
+                                <div class="form-title">키워드</div>
+                                <div class="form-con">
+                                    <input type="text" class="input-02" id="idsearch02">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="form-bottom-01">
+                            <a href="#" class="btn btn-blackline-02">초기화</a>
+                            <a href="#" class="btn btn-black-02">검색</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 탭 메뉴 -->
+                <div class="tab-menu">
+                    <ul class="tab-list">
+                        <li><a href="#" class="btn tab-btn active">기획/행정</a></li>
+                        <li><a href="#" class="btn tab-btn">회계</a></li>
+                        <li><a href="#" class="btn tab-btn">영업</a></li>
+                        <li><a href="#" class="btn tab-btn">경비활동</a></li>
+                        <li><a href="#" class="btn tab-btn">미화활동</a></li>
+                        <li><a href="#" class="btn tab-btn">소독</a></li>
+                        <li><a href="#" class="btn tab-btn">조경</a></li>
+                        <li><a href="#" class="btn tab-btn">시설관리</a></li>
+                    </ul>
+                </div>
+
+                <!-- .board-top -->
+                <div class="board-top">
+                    <div class="left">
+                        <label for="idselect01" class="blind">보여줄 상품 갯수</label>
+                        <select id="idselect01" class="select-01">
+                            <option value="">10개</option>
+                        </select>
+                        <label for="idboardall" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+                        <div class="guide-board">
+                            <strong>24</strong>
+                            <span>개 선택 됨</span>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <a href="#popup-alert-01" class="btn btn-white-01 btn-popup-open">스마트체크 등록</a>
+                        <a href="#" class="btn btn-excel">엑셀 다운로드</a>
+                    </div>
+                    <div class="scroll-guide">가로로 스크롤하여 내용을 확인하세요.</div>
+                </div>
+                        
+                <!-- 데이터 테이블 -->
+                        <div class="table-style-02">
+                            <table>
+                        <caption>스마트 체크 목록</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">년</th>
+                                <th scope="col">월</th>
+                                <th scope="col">구분</th>
+                                <th scope="col">본부</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">시작일</th>
+                                <th scope="col">마감일</th>
+                                <th scope="col">응답</th>
+                                <th scope="col">미응답</th>
+                                <th scope="col">알림</th>
+                                <th scope="col">관리</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25</td>
+                                <td>2025년</td>
+                                <td>08월</td>
+                                <td>기획/행정</td>
+                                <td>본부별</td>
+                                <td><a href="#" class="btn btn-link">8월 월간업무보고 진행</a></td>
+                                <td>2025-08-01</td>
+                                <td>2025-09-30</td>
+                                <td>0</td>
+                                <td>22</td>
+                                <td><a href="#" class="box-round-01 green-01">알람 재발송</a></td>
+                                <td>
+                                    <div class="btns-table-01">
+                                        <a href="#" class="btn btn-blackline-01">메모</a>
+                                        <a href="#" class="btn btn-blue-01">복사하기</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>2025년</td>
+                                <td>06월</td>
+                                <td>시설/안전</td>
+                                <td>본부별</td>
+                                <td><a href="#" class="btn btn-link">반기 업무공유 업로드 및 안전진단 실시 여부_1본부, 9본부</a></td>
+                                <td>2025-06-01</td>
+                                <td>2025-06-30</td>
+                                <td>0</td>
+                                <td>33</td>
+                                <td><a href="#" class="box-round-01 green-01">알람 발송</a></td>
+                                <td>
+                                    <div class="btns-table-01">
+                                        <a href="#" class="btn btn-blackline-01">메모</a>
+                                        <a href="#" class="btn btn-blue-01">복사하기</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>2025년</td>
+                                <td>07월</td>
+                                <td>기획/행정</td>
+                                <td>전사업장</td>
+                                <td><a href="#" class="btn btn-link">6월 월간업무보고 제출 확인</a></td>
+                                <td>2025-07-01</td>
+                                <td>2025-07-31</td>
+                                <td>2</td>
+                                <td>95</td>
+                                <td><a href="#" class="box-round-01 green-01">알람 재발송</a></td>
+                                <td>
+                                    <div class="btns-table-01">
+                                        <a href="#" class="btn btn-blackline-01">메모</a>
+                                        <a href="#" class="btn btn-blue-01">복사하기</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>2025년</td>
+                                <td>06월</td>
+                                <td>기획/행정</td>
+                                <td>전사업장</td>
+                                <td><a href="#" class="btn btn-link">4월 월간업무보고 제출 확인</a></td>
+                                <td>2025-06-01</td>
+                                <td>0000-00-00</td>
+                                <td>3</td>
+                                <td>94</td>
+                                <td><a href="#" class="box-round-01 green-01">알람 발송</a></td>
+                                <td>
+                                    <div class="btns-table-01">
+                                        <a href="#" class="btn btn-blackline-01">메모</a>
+                                        <a href="#" class="btn btn-blue-01">복사하기</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                            </table>
+                        </div>
+                        
+                <!-- 페이지네이션 -->
+                        <div class="paging-01"><!-- 현재 페이지에 class="active" title="현재 페이지" 추가-->
+                            <a href="#" class="btn first">처음으로</a>
+                            <a href="#" class="btn prev">이전</a>
+                            <a href="#" class="btn">1</a>
+                            <a href="#" class="btn active" title="현재 페이지">2</a>
+                            <a href="#" class="btn">3</a>
+                            <a href="#" class="btn">4</a>
+                            <a href="#" class="btn">5</a>
+                            <a href="#" class="btn next">다음</a>
+                            <a href="#" class="btn last">마지막으로</a>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                        
+    <script>
+        $(document).ready(function() {
+            
+            // 전체 선택 체크박스
+            $('#selectAll').on('change', function() {
+                var checkboxes = $('.row-checkbox');
+                checkboxes.prop('checked', this.checked);
+            });
+
+            // 개별 체크박스 변경 시 전체 선택 상태 업데이트
+            $('.row-checkbox').on('change', function() {
+                var totalCheckboxes = $('.row-checkbox').length;
+                var checkedCheckboxes = $('.row-checkbox:checked').length;
+                $('#selectAll').prop('checked', totalCheckboxes === checkedCheckboxes);
+            });
+
+            // 탭 메뉴 이벤트
+            $('.tab-btn').on('click', function(e) {
+                e.preventDefault();
+                $('.tab-btn').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // 기간 선택 버튼 이벤트
+            $('.period-buttons .btn').on('click', function(e) {
+                e.preventDefault();
+                $('.period-buttons .btn').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // 검색 버튼 이벤트
+            $('.btn-group .btn').on('click', function(e) {
+                e.preventDefault();
+                if ($(this).text() === '초기화') {
+                    $('input[type="text"], select').val('');
+                } else if ($(this).text() === '검색') {
+                    // 검색 로직 구현
+                    console.log('검색 실행');
+                }
+            });
+
+            // 테이블 액션 버튼 이벤트
+            $('.btn-blue-02').on('click', function(e) {
+                e.preventDefault();
+                alert('알림 발송 기능을 구현해주세요.');
+            });
+
+            $('.btn-success-01').on('click', function(e) {
+                e.preventDefault();
+                alert('메모 기능을 구현해주세요.');
+            });
+
+            $('.btn-warning-01').on('click', function(e) {
+                e.preventDefault();
+                alert('복사하기 기능을 구현해주세요.');
+            });
+
+            $('.btn-danger-01').on('click', function(e) {
+                e.preventDefault();
+                if (confirm('선택된 항목을 삭제하시겠습니까?')) {
+                    $('.row-checkbox:checked').closest('tr').remove();
+                }
+            });
+
+            // 다운로드 버튼 이벤트
+            $('.left-controls .btn-blackline-02').on('click', function(e) {
+                e.preventDefault();
+                alert('다운로드 기능을 구현해주세요.');
+            });
+
+            // 페이지네이션 이벤트
+            $('.paging-01 .btn').on('click', function(e) {
+                e.preventDefault();
+                if (!$(this).hasClass('btn-prev') && !$(this).hasClass('btn-next') && !$(this).hasClass('btn-end')) {
+                    $('.paging-01 .btn').removeClass('active');
+                    $(this).addClass('active');
+                }
+            });
+            
+            // 알람 발송/재발송 이벤트
+            $('.box-round-01.green-01').on('click', function(e) {
+                e.preventDefault();
+                var actionText = $(this).text();
+                var confirmMessage = actionText === '알람 발송' ? '알람을 발송하시겠습니까?' : '알람을 재발송하시겠습니까?';
+                var successMessage = actionText === '알람 발송' ? '알람이 발송되었습니다.' : '알람이 재발송되었습니다.';
+                
+                if (confirm(confirmMessage)) {
+                    alert(successMessage);
+                    // 여기에 실제 알람 발송/재발송 로직을 추가할 수 있습니다
+                }
+            });
+            
+            // 전체 선택 기능
+            $('.btn-allcheck').on('click', function(e) {
+                e.preventDefault();
+                var isChecked = $(this).hasClass('active');
+                if (isChecked) {
+                    $(this).removeClass('active');
+                    $('.row-checkbox').prop('checked', false);
+                    $('.guide-board strong').text('0');
+                } else {
+                    $(this).addClass('active');
+                    $('.row-checkbox').prop('checked', true);
+                    $('.guide-board strong').text($('.row-checkbox').length);
+                }
+            });
+            
+            // 개별 체크박스 이벤트
+            $(document).on('change', '.row-checkbox', function() {
+                var totalCheckboxes = $('.row-checkbox').length;
+                var checkedCheckboxes = $('.row-checkbox:checked').length;
+                
+                $('.guide-board strong').text(checkedCheckboxes);
+                
+                if (checkedCheckboxes === totalCheckboxes) {
+                    $('.btn-allcheck').addClass('active');
+                } else {
+                    $('.btn-allcheck').removeClass('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

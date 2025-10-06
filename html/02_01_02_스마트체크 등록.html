@@ -9,16 +9,15 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23495EF4'/><text x='16' y='22' font-family='Arial' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>S</text></svg>">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/jquery-ui.min.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/add.css">
-    <link rel="stylesheet" href="css/lucide-icons.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="smartcheck-register.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/add.css">
+    <link rel="stylesheet" href="../css/lucide-icons.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/global.css">
     
     <style>
         /* GroundFit 헤더 구조 적용 */
@@ -62,17 +61,120 @@
             min-height: 100vh;
             border-left: 1px solid #ccc;
         }
+        
+        /* SNB 버튼 색상 통일 */
+        .contents-top .snb .snb-depth1 > li > .btn {
+            color: #333 !important;
+        }
+        
+        .contents-top .snb .snb-depth2 > li > .btn {
+            color: #333 !important;
+        }
+        
+        .contents-top .snb .snb-depth2 > li > .btn:hover,
+        .contents-top .snb .snb-depth2 > li > .btn:focus {
+            color: #495EF4 !important;
+        }
+        
+        /* 보고 사항 섹션 간격 조정 */
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #495EF4;
+        }
+        
+        .form-style-01 li {
+            margin-bottom: 20px;
+        }
+        
+        .form-style-01 .form-title {
+            min-width: 120px;
+            padding-right: 20px;
+            line-height: 40px;
+        }
+        
+        .form-style-01 .form-con {
+            flex: 1;
+        }
+        
+        .input-btn-set-01 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .input-btn-set-01 .input-01 {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .input-btn-set-01 .select-01 {
+            min-width: 100px;
+            max-width: 150px;
+            flex-shrink: 0;
+        }
+        
+        .survey-items,
+        .response-items {
+            margin-top: 15px;
+        }
+        
+        .survey-item,
+        .response-item {
+            margin-bottom: 10px;
+            padding: 15px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+        
+        .survey-item .form-group,
+        .response-item .form-group {
+            margin-bottom: 0;
+        }
+        
+        .survey-item .form-controls,
+        .response-item .form-controls {
+            align-items: flex-start;
+        }
+        
+        .survey-item .form-controls .input-01,
+        .response-item .form-controls .input-01 {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .survey-item .form-controls .select-01,
+        .response-item .form-controls .select-01 {
+            min-width: 100px;
+            max-width: 150px;
+            flex-shrink: 0;
+        }
     </style>
     
     <!-- Lucide Icons -->
-    <script src="../../../assets/js/lucide.js"></script>
+    <script src="../assets/js/lucide.js"></script>
     
     <!-- JavaScript -->
-    <script src="../../../js/jquery-1.11.3.js"></script>
-    <script src="../../../html_cms/js/jquery-ui.min.js"></script>
-    <script src="../../../js/slick.js"></script>
-    <script src="../../../js/common.js"></script>
-    <script src="../../../assets/js/lucide-utils.js"></script>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../assets/js/lucide-utils.js"></script>
     <script>
         // SAEROM Lucide 아이콘 초기화
         $(document).ready(function() {
@@ -157,7 +259,8 @@
             });
             
             // 취소 버튼 클릭 이벤트
-            $('#btn-cancel').on('click', function() {
+            $('#btn-cancel').on('click', function(e) {
+                e.preventDefault();
                 // 확인 대화상자 표시
                 if (confirm('작성 중인 내용이 모두 삭제됩니다. 정말 취소하시겠습니까?')) {
                     // 이전 페이지로 이동
@@ -166,7 +269,8 @@
             });
             
             // 저장 버튼 클릭 이벤트
-            $('#btn-save').on('click', function() {
+            $('#btn-save').on('click', function(e) {
+                e.preventDefault();
                 // 폼 유효성 검사
                 if (validateForm()) {
                     // 저장 로직 실행
@@ -227,7 +331,7 @@
                 setTimeout(function() {
                     alert('스마트체크가 성공적으로 저장되었습니다.');
                     // 저장 후 목록 페이지로 이동
-                    window.location.href = '../smartcheck/index.html';
+                    window.location.href = '02_01_01_스마트체크 현황.html';
                 }, 1000);
             }
         });
@@ -317,11 +421,11 @@
     <div class="wrap clearfix">
         <!-- #header start // -->
         <div id="header">
-            <h1><a href="../../index.html"><img src="../../../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
+            <h1><a href="../index.html"><img src="../assets/images/logo.png" alt="SAEROM 용역관리시스템"></a></h1>
             <ul class="quick-nav">
                 <li><a href="#" class="btn menu"><i data-lucide="menu" class="quick-nav-icon"></i>메뉴</a></li>
                 <li><a href="#" class="btn approval"><i data-lucide="check-square" class="quick-nav-icon"></i>전자결제</a></li>
-                <li><a href="../../../index.html" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
+                <li><a href="../index.html" class="btn home"><i data-lucide="home" class="quick-nav-icon"></i>Main</a></li>
                 <li><a href="#" class="btn workplace"><i data-lucide="building-2" class="quick-nav-icon"></i>사업장관리</a></li>
                 <li><a href="#" class="btn hr"><i data-lucide="users" class="quick-nav-icon"></i>직원관리</a></li>
                 <li><a href="#" class="btn system"><i data-lucide="settings" class="quick-nav-icon"></i>시스템</a></li>
@@ -363,8 +467,7 @@
                         <h4 class="section-title">스마트 체크 정보</h4>
                         <ul class="form-style-01">
                             <li>
-                                <div class="form-title">
-                                    <label for="start-date">시작일</label>
+                                <div class="form-title">시작일
                                     <p class="required">*<span class="blind">필수사항</span></p>
                                 </div>
                                 <div class="form-con">
@@ -428,8 +531,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="form-title">
-                                    <label for="end-date">마감일</label>
+                                <div class="form-title">마감일
                                     <p class="required">*<span class="blind">필수사항</span></p>
                                 </div>
                                 <div class="form-con">
@@ -456,7 +558,6 @@
                                         </select>
                                         <span>월</span>
                                         <select class="select-01" id="end-day">
-                                            <option value="31">31일</option>
                                             <option value="01">01일</option>
                                             <option value="02">02일</option>
                                             <option value="03">03일</option>
@@ -487,26 +588,24 @@
                                             <option value="28">28일</option>
                                             <option value="29">29일</option>
                                             <option value="30">30일</option>
+                                            <option value="31">31일</option>
                                         </select>
                                         <span>일</span>
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <div class="form-title">
-                                    <label for="workplace">대상사업장</label>
+                                <div class="form-title">대상사업장
                                     <p class="required">*<span class="blind">필수사항</span></p>
                                 </div>
                                 <div class="form-con">
-                                    <div class="workplace-select">
-                                        <input type="text" class="input-01" id="workplace" name="workplace" placeholder="선택된 사업장이 없습니다" readonly>
-                                        <button type="button" class="btn btn-blue-02 btn-add-workplace">추가</button>
+                                    <div class="input-btn-set-01">
+                                        <button type="button" class="btn btn-black-02 btn-add-workplace">추가</button>
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <div class="form-title">
-                                    <label for="title">제목</label>
+                                <div class="form-title">제목
                                     <p class="required">*<span class="blind">필수사항</span></p>
                                 </div>
                                 <div class="form-con">
@@ -514,9 +613,7 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="form-title">
-                                    <label for="category">구분</label>
-                                </div>
+                                <div class="form-title">구분</div>
                                 <div class="form-con">
                                     <select id="category" class="select-01">
                                         <option value="">구분선택</option>
@@ -528,12 +625,10 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="form-title">
-                                    <label for="attachment">첨부파일</label>
-                                </div>
+                                <div class="form-title">첨부파일</div>
                                 <div class="form-con">
-                                    <div class="file-upload">
-                                        <input type="file" id="attachment" class="file-input" multiple>
+                                    <div class="input-btn-set-01">
+                                        <input type="file" id="attachment" class="file-input" multiple style="display: none;">
                                         <label for="attachment" class="btn btn-white-01">파일선택</label>
                                         <span class="file-name">파일선택</span>
                                     </div>
@@ -546,50 +641,57 @@
                     <!-- 보고 사항 섹션 -->
                     <div class="form-section">
                         <h4 class="section-title">보고 사항</h4>
-                        <div class="report-type-select">
-                            <select class="select-01">
-                                <option value="direct">직접 입력</option>
-                                <option value="template">템플릿 선택</option>
-                            </select>
-                        </div>
-                        
-                        <div class="survey-section">
-                            <div class="form-group">
-                                <label class="form-label">설문항목</label>
-                                <div class="form-controls">
-                                    <input type="text" class="input-01" placeholder="설문항목을 입력하세요">
-                                    <select class="select-01">
-                                        <option value="short">단답형</option>
-                                        <option value="multiple">객관식</option>
-                                        <option value="essay">서술형</option>
+                        <ul class="form-style-01">
+                            <li>
+                                <div class="form-title">보고 사항</div>
+                                <div class="form-con">
+                                    <select id="report-type" class="select-01">
+                                        <option value="direct">직접 입력</option>
+                                        <option value="template">템플릿 선택</option>
                                     </select>
-                                    <button type="button" class="btn btn-blue-02 btn-add-item">항목추가</button>
                                 </div>
-                            </div>
-                            <div class="survey-items">
-                                <!-- 동적으로 추가되는 설문항목들 -->
-                            </div>
-                        </div>
+                            </li>
+                            <li>
+                                <div class="form-title">설문항목</div>
+                                <div class="form-con">
+                                    <div class="input-btn-set-01">
+                                        <input type="text" class="input-01" id="survey-item" placeholder="설문항목을 입력하세요">
+                                        <select class="select-01">
+                                            <option value="short">단답형</option>
+                                            <option value="multiple">객관식</option>
+                                            <option value="essay">서술형</option>
+                                        </select>
+                                        <button type="button" class="btn btn-black-02 btn-add-item">항목추가</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-title">응답항목</div>
+                                <div class="form-con">
+                                    <div class="input-btn-set-01">
+                                        <input type="text" class="input-01" id="response-item" placeholder="응답항목을 입력하세요">
+                                        <button type="button" class="btn btn-black-02 btn-add-response">행추가</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                         
-                        <div class="response-section">
-                            <div class="form-group">
-                                <label class="form-label">응답항목</label>
-                                <div class="form-controls">
-                                    <input type="text" class="input-01" placeholder="응답항목을 입력하세요">
-                                    <button type="button" class="btn btn-blue-02 btn-add-response">행추가</button>
-                                </div>
-                            </div>
-                            <div class="response-items">
-                                <!-- 동적으로 추가되는 응답항목들 -->
-                            </div>
+                        <!-- 동적으로 추가되는 항목들 -->
+                        <div class="survey-items">
+                            <!-- 동적으로 추가되는 설문항목들 -->
+                        </div>
+                        <div class="response-items">
+                            <!-- 동적으로 추가되는 응답항목들 -->
                         </div>
                     </div>
                 </div>
 
                 <!-- 하단 버튼 -->
-                <div class="form-actions">
-                    <button type="button" class="btn btn-white-01" id="btn-cancel">취소</button>
-                    <button type="button" class="btn btn-blue-02" id="btn-save">저장</button>
+                <div class="btns-page-bottom">
+                    <div class="right">
+                        <a href="javascript:history.back()" class="btn btn-blueline-03" id="btn-cancel">취소</a>
+                        <a href="#" class="btn btn-blue-03" id="btn-save">저장</a>
+                    </div>
                 </div>
             </div>
         </div>

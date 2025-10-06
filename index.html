@@ -4,36 +4,40 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>새롬 통합관리시스템 · 전체 메뉴(심플)</title>
-<style>
+	<style>
 :root{ --bg:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e5e7eb; --panel:#f8fafc; --radius:14px; --shadow:0 10px 30px rgba(2,6,23,.06); }
-*{box-sizing:border-box}
-html,body{height:100%}
+*{box-sizing:border-box} html,body{height:100%}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,'Noto Sans KR',Helvetica,Arial,'Apple SD Gothic Neo','맑은 고딕',sans-serif;color:var(--ink);background:var(--bg)}
 header{position:sticky;top:0;z-index:20;padding:12px 16px;border-bottom:1px solid var(--line);background:#fff;font-weight:800}
 .wrap{display:flex;justify-content:center;padding:16px}
-.container{width:min(1200px,94vw)}
+.container{width:min(1400px,98vw)}
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,.06);padding:10px}
-h1{font-size:18px;margin:6px 0 10px}
-.desc{color:var(--muted);font-size:13px;margin-bottom:6px}
+h1{font-size:18px;margin:6px 0 10px}.desc{color:var(--muted);font-size:13px;margin-bottom:6px}
 
 /* 테이블 */
-.table-wrap{overflow:auto;max-height:70vh;border:1px solid var(--line);border-radius:12px}
+.table-wrap{overflow:auto;max-height:85vh;border:1px solid var(--line);border-radius:12px}
 .table{width:100%;border-collapse:separate;border-spacing:0;min-width:1200px}
 .table thead th{position:sticky;top:0;background:#f1f5f9;border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;font-size:13px;z-index:10}
 .table tbody td{border-bottom:1px solid var(--line);padding:9px 10px;vertical-align:top;font-size:13px;line-height:1.45;background:#fff}
 .table tbody tr:nth-child(even) td{background:#fcfdff}
 .table tbody tr:hover td{background:#f7fbff}
 
-/* 좌측 컬럼 고정 */
+/* 좌측 고정 */
 .sticky-col-1{position:sticky;left:0;z-index:5;background:inherit}
 .sticky-col-2{position:sticky;left:160px;z-index:5;background:inherit}
-.sticky-shadow-right{box-shadow: 6px 0 8px -6px rgba(2,6,23,.12) inset}
+.sticky-shadow-right{box-shadow:6px 0 8px -6px rgba(2,6,23,.12) inset}
 
-/* 편집 */
+/* 편집/버튼 */
 .cell-edit{outline:1px dashed transparent}
 .cell-edit:focus{outline-color:#cfe8ff;background:#f7fbff}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-size:13px;cursor:pointer}
+.btn:hover{background:#eef6ff}
+.btn-tiny{border:1px solid var(--line);background:#fff;border-radius:8px;padding:2px 6px;font-size:11px;cursor:pointer}
+.btn-tiny:hover{background:#eef6ff}
+.btn-del{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 8px;cursor:pointer;font-size:12px}
+.btn-del:hover{background:#ffecec;border-color:#ffd1d1}
 
-/* 경로 선택(심플) */
+/* 경로(파일명) */
 .path-simple{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 input[type="file"].pick{display:none}
 label.pick-btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:6px 10px;font-size:12px;cursor:pointer}
@@ -42,16 +46,9 @@ label.pick-btn:hover{background:#eef6ff}
 .path-preview a{border:1px solid var(--line);border-radius:8px;padding:4px 8px;text-decoration:none}
 .path-preview code{background:#f8fafc;padding:2px 6px;border-radius:8px;white-space:nowrap}
 
-/* 버튼 */
-.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-size:13px;cursor:pointer}
-.btn:hover{background:#eef6ff}
-.btn-tiny{border:1px solid var(--line);background:#fff;border-radius:8px;padding:2px 6px;font-size:11px;cursor:pointer}
-.btn-tiny:hover{background:#eef6ff}
-.btn-del{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 8px;cursor:pointer;font-size:12px}
-.btn-del:hover{background:#ffecec;border-color:#ffd1d1}
 .footer{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
 .note{color:#64748b;font-size:12px;margin-top:6px}
-</style>
+	</style>
 </head>
 <body>
 <header>새롬 통합관리시스템 · 전체 메뉴(심플)</header>
@@ -60,12 +57,12 @@ label.pick-btn:hover{background:#eef6ff}
   <div class="container">
     <div class="card">
       <h1>전체 메뉴 구조</h1>
-      <p class="desc">헤더 고정 · 1/2Depth 병합 · 2Depth 기준 행추가 · 경로 선택 미리보기 · 하단 저장(JSON)</p>
+      <p class="desc">헤더 고정 · 1/2 Depth 병합 · 2 Depth 기준 행추가 · 인라인 편집 · 경로 선택 미리보기 · 하단 저장(JSON)</p>
 
       <div class="table-wrap">
         <table class="table" id="menuTable" aria-label="전체 메뉴 표">
-          <thead>
-            <tr>
+				<thead>
+					<tr>
               <th style="width:160px" class="sticky-col-1 sticky-shadow-right">1 Depth</th>
               <th style="width:200px" class="sticky-col-2 sticky-shadow-right">2 Depth</th>
               <th style="width:220px">3 Depth</th>
@@ -74,34 +71,98 @@ label.pick-btn:hover{background:#eef6ff}
               <th style="width:90px">유형</th>
               <th>경로(파일명) : 링크처리</th>
               <th style="width:110px">비고</th>
-            </tr>
-          </thead>
+					</tr>
+				</thead>
           <tbody id="tbody"></tbody>
-        </table>
-      </div>
+			</table>
+		</div>
 
       <div class="footer">
-        <button class="btn" id="btnSave">저장(JSON)</button>
+        <button class="btn" id="btnSave">저장(HTML)</button>
+        <button class="btn" id="btnSaveIndex">저장(Index.html)</button>
       </div>
-      <div class="note">※ 첫 저장 시 한 번 폴더를 선택하면, 그 이후부터는 그 폴더에 자동 저장됩니다. (미지원 브라우저는 다운로드로 저장)</div>
+      <div class="note">※ 첫 저장 시 한 번 폴더를 선택하면, 이후 같은 폴더에 자동 저장됩니다. (미지원 브라우저는 다운로드)</div>
     </div>
   </div>
 </main>
 
 <script>
-/* ===== 1) 메뉴 데이터(CSV) ===== */
+/* 1) 초기 메뉴 데이터 (CSV) — 줄 간 공백/쉼표 자동 처리 */
 const CSV = `
-스마트체크,스마트체크,현황,스마트체크현황,현황,페이지,html/02_01_03.html
+로그인/공통,,,"공통 로그인",열기,페이지,html_bk/00_01_login.html
+로그인/공통,,,"비밀번호 변경",,팝업,
+로그인/공통,,,"메인 페이지",,페이지,
+로그인/공통,,,"공통영역",,페이지,
+로그인/공통,,,"검색결과",,페이지,
+로그인/공통,,,"알림현황",,페이지,
+
+문서관리,발신,,"공문채번",등록,팝업,
+문서관리,발신,,"공문채번",상세/수정,팝업,
+문서관리,발신,,"사업장",검색,페이지,
+문서관리,발신,,"수신처",검색,페이지,
+문서관리,발신,,"수신",목록,페이지,
+문서관리,발신,,"이메일",메일,연동,
+
+전자결제,기안함,,"기안",작성,페이지,
+전자결제,기안함,,"결재자",선택,페이지,
+전자결제,기안함,,"기안",상세,페이지,
+전자결제,기안함,,"기안",수정,페이지,
+전자결제,,,"결재문서함",목록,페이지,
+
+스마트 체크 · 보고/일지,스마트 체크,,"현황",보기,페이지,
+스마트 체크 · 보고/일지,스마트 체크,,"등록",작성,페이지,
+스마트 체크 · 보고/일지,스마트 체크,,"상세/수정",편집,페이지,
+스마트 체크 · 보고/일지,월간업무보고,,"등록",작성,페이지,
+스마트 체크 · 보고/일지,월간업무보고,,"상세",보기,페이지,
+스마트 체크 · 보고/일지,월간업무보고,,"수정",편집,페이지,
+스마트 체크 · 보고/일지,점검일지,,"현황",보기,페이지,
+스마트 체크 · 보고/일지,점검일지,,"등록",작성,페이지,
+스마트 체크 · 보고/일지,점검일지,,"상세/수정",편집,페이지,
+
+회계업무,재무제표,재무제표,재무제표,등록,페이지,
+회계업무,재무제표,재무제표,재무제표,상세,페이지,
+회계업무,재무제표,재무제표,재무제표,수정,페이지,
+회계업무,회계보고(매입),회계보고,회계보고,등록,페이지,
+회계업무,회계보고(매입),회계보고,회계보고,상세,페이지,
+회계업무,회계보고(매입),회계보고,회계보고,수정,페이지,
+회계업무,회계보고(부과),회계보고,회계보고,등록,페이지,
+회계업무,회계보고(부과),회계보고,회계보고,상세,페이지,
+회계업무,회계보고(부과),회계보고,회계보고,수정,페이지,
+회계업무,부가세산출내역,부가세,부가세,등록,페이지,
+회계업무,부가세산출내역,부가세,부가세,상세,페이지,
+회계업무,부가세산출내역,부가세,부가세,수정,페이지,
+
+영업관리,영업사업장,사업장,사업장,목록,페이지,
+영업관리,영업사업장,사업장,사업장,상세,페이지,
+영업관리,영업사업장,신규사업장,신규사업장,등록,페이지,
+영업관리,영업사업장,영업활동,영업활동,등록,페이지,
+영업관리,재계약영업,재계약,재계약,목록,페이지,
+영업관리,재계약영업,재계약,재계약,상세,페이지,
+
 사업장관리,,,"관리 사업장",목록,페이지,html/05_01_01.html
 사업장관리,사업장 등록/상세/수정,기본정보,기본정보,보기,페이지,html/05_01_02.html
 사업장관리,사업장 등록/상세/수정,관리주체,관리주체,보기,페이지,html/05_01_02.html#t1
+사업장관리,사업장 등록/상세/수정,계약정보,계약정보,보기,페이지,html/05_01_02.html#t2
+사업장관리,장비/비품,비품관리,비품관리,관리,페이지,html_bk/03_01_01_01_일반관리_물품관리.html
+
+인사관리,사업장 직원관리,직원,직원,등록,페이지,
+인사관리,사업장 직원관리,직원,직원,상세/수정,페이지,
 인사관리,근퇴관리,연차사용현황,연차사용현황,현황,페이지,html_bk/02_02_05_01_01_연차사용현황.html
 인사관리,근퇴관리,경비원명부,경비원명부,현황,페이지,html_bk/02_03_03_01_경비원명부.html
-`;
 
-/* ===== 2) CSV 파싱 ===== */
+현장관리,경비활동,,주차위반서,발급,페이지,
+현장관리,순찰,,순찰일지,기록,페이지,
+현장관리,안전/미화/조경,,미화활동,일정,페이지,
+
+시스템관리 · 게시판,시스템관리,,사용자 관리,관리,페이지,
+시스템관리 · 게시판,시스템관리,,권한관리,그룹/사용자,페이지,
+시스템관리 · 게시판,게시판,공지사항,목록,보기,페이지,
+시스템관리 · 게시판,게시판,자료실,등록,작성,페이지,
+`.trim();
+
+/* 2) CSV 파싱 — 공백/빈줄 필터링 */
 function parseCSV(csv){
-  return csv.split(/\r?\n/).map(l=>l.trim()).filter(l=>l).map(line=>{
+  return csv.split(/\r?\n/).map(l=>l.trim()).filter(Boolean).map(line=>{
     const parts = line.split(',');
     return {
       d1:parts[0]||'', d2:parts[1]||'', d3:parts[2]||'',
@@ -112,127 +173,371 @@ function parseCSV(csv){
 }
 let DATA = parseCSV(CSV);
 
-/* ===== 3) 렌더링/편집 ===== */
 const tbody = document.getElementById('tbody');
 
-function mkEditableCell(text){ const td=document.createElement('td'); td.className='cell-edit'; td.contentEditable='true'; td.textContent=text||''; return td; }
+/* 3) 셀 제작 도우미 */
+function mkEditableCell(text){
+  const td=document.createElement('td');
+  td.className='cell-edit';
+  td.contentEditable='true';
+  td.textContent=text||'';
+  return td;
+}
 
+/* 4) 렌더링 */
 function render(){
   tbody.innerHTML='';
   DATA.forEach((row, idx)=>{
     const tr=document.createElement('tr'); tr.dataset.idx=idx;
 
-    const td1=document.createElement('td'); td1.className='sticky-col-1 sticky-shadow-right d1'; td1.textContent=row.d1; tr.appendChild(td1);
+    // 1Depth(읽기)
+    const td1=document.createElement('td');
+    td1.className='sticky-col-1 sticky-shadow-right d1';
+    td1.textContent=row.d1; tr.appendChild(td1);
 
+    // 2Depth(편집 + 그룹 행추가 버튼)
     const td2=document.createElement('td'); td2.className='sticky-col-2 sticky-shadow-right d2';
-    const wrap=document.createElement('div'); wrap.style.display='flex'; wrap.style.alignItems='center'; wrap.style.gap='6px';
-    const span=document.createElement('span'); span.className='cell-edit'; span.contentEditable='true'; span.textContent=row.d2;
+    const w=document.createElement('div'); w.style.display='flex'; w.style.alignItems='center'; w.style.gap='6px';
+    const s=document.createElement('span'); s.className='cell-edit'; s.contentEditable='true'; s.textContent=row.d2;
     const add=document.createElement('button'); add.className='btn-tiny'; add.textContent='+ 행추가';
-    add.addEventListener('click', ()=> addRowAt2Depth(row.d1, (span.textContent||'').trim()||row.d2));
-    wrap.appendChild(span); wrap.appendChild(add); td2.appendChild(wrap); tr.appendChild(td2);
+    add.title='이 2 Depth 그룹 뒤에 새 행 추가';
+    add.addEventListener('click', ()=> addRowAt2Depth(row.d1, (s.textContent||'').trim() || row.d2));
+    w.appendChild(s); w.appendChild(add); td2.appendChild(w); tr.appendChild(td2);
 
+    // 3Depth/화면/기능/유형
     const td3=mkEditableCell(row.d3), tds=mkEditableCell(row.screen), tdf=mkEditableCell(row.func), tdt=mkEditableCell(row.type);
     tr.appendChild(td3); tr.appendChild(tds); tr.appendChild(tdf); tr.appendChild(tdt);
 
-    // 경로 파일 선택 + 링크 미리보기
-    const tdp=document.createElement('td'); const pwrap=document.createElement('div'); pwrap.className='path-simple';
+    // 경로(파일명): 파일 선택 + 링크 미리보기 + 텍스트 편집
+    const tdp=document.createElement('td'); const p=document.createElement('div'); p.className='path-simple';
     const inputId='file-'+idx; const label=document.createElement('label'); label.className='pick-btn'; label.setAttribute('for',inputId); label.textContent='파일 선택';
     const input=document.createElement('input'); input.type='file'; input.accept='.html'; input.id=inputId; input.className='pick';
+    
+    // 경로 텍스트 편집을 위한 입력 필드
+    const pathInput=document.createElement('input'); 
+    pathInput.type='text'; 
+    pathInput.className='cell-edit'; 
+    pathInput.style.width='200px'; 
+    pathInput.style.marginRight='8px';
+    pathInput.value=row.path||'';
+    pathInput.placeholder='경로를 입력하세요 (예: html/02_01_03.html)';
+    
     const preview=document.createElement('div'); preview.className='path-preview';
-    function refresh(path,file){ preview.innerHTML=''; if(file){ const url=URL.createObjectURL(file); const a=document.createElement('a'); a.href=url; a.target='_blank'; a.textContent='열기'; const code=document.createElement('code'); code.textContent=file.webkitRelativePath||file.name; preview.appendChild(a); preview.appendChild(code);} else if(path){ const a=document.createElement('a'); a.href=path; a.target='_blank'; a.textContent='열기'; const code=document.createElement('code'); code.textContent=path; preview.appendChild(a); preview.appendChild(code);} else { const code=document.createElement('code'); code.textContent='(미지정)'; preview.appendChild(code);} }
-    refresh(row.path);
-    input.addEventListener('change', e=>{ const f=e.target.files&&e.target.files[0]; if(!f) return; DATA[idx].path=f.webkitRelativePath||f.name; refresh(DATA[idx].path, f); });
-    pwrap.appendChild(label); pwrap.appendChild(input); pwrap.appendChild(preview); tdp.appendChild(pwrap); tr.appendChild(tdp);
+    function refreshPreview(path, file){
+      preview.innerHTML='';
+      if(file){
+        const url=URL.createObjectURL(file);
+        const a=document.createElement('a'); a.href=url; a.target='_blank'; a.textContent='열기';
+        const code=document.createElement('code'); code.textContent=file.webkitRelativePath||file.name;
+        preview.appendChild(a); preview.appendChild(code);
+      }else if(path){
+        // 상대 경로를 절대 경로로 변환
+        let fullPath = path;
+        if (!path.startsWith('http') && !path.startsWith('/')) {
+          // 상대 경로인 경우 현재 도메인 기준으로 절대 경로 생성
+          const currentOrigin = window.location.origin;
+          const currentPath = window.location.pathname;
+          const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+          fullPath = currentOrigin + basePath + '/' + path;
+        }
+        
+        // HTML 파일을 새 창에서 열 때 CSS 경로 문제 해결을 위한 특별 처리
+        const a=document.createElement('a'); 
+        a.href=fullPath; 
+        a.target='_blank'; 
+        a.textContent='열기';
+        
+        // 클릭 이벤트에서 경로 수정
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('링크 클릭됨:', path);
+          
+          // 간단한 경로 처리
+          let targetPath = path;
+          if (path && !path.startsWith('http') && !path.startsWith('/')) {
+            // 상대 경로인 경우 현재 도메인 기준으로 절대 경로 생성
+            const currentOrigin = window.location.origin;
+            const currentPath = window.location.pathname;
+            const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+            targetPath = currentOrigin + basePath + '/' + path;
+          }
+          
+          console.log('최종 경로:', targetPath);
+          window.open(targetPath, '_blank');
+        });
+        
+        const code=document.createElement('code'); code.textContent=path;
+        preview.appendChild(a); preview.appendChild(code);
+      }else{
+        const code=document.createElement('code'); code.textContent='(미지정)';
+        preview.appendChild(code);
+      }
+    }
+    refreshPreview(row.path);
+    
+    // 파일 선택 이벤트
+    input.addEventListener('change', e=>{
+      const f=e.target.files && e.target.files[0]; if(!f) return;
+      DATA[idx].path = f.webkitRelativePath || f.name;
+      pathInput.value = DATA[idx].path; // 입력 필드도 업데이트
+      refreshPreview(DATA[idx].path, f);
+    });
+    
+    // 경로 텍스트 입력 이벤트
+    pathInput.addEventListener('input', e=>{
+      DATA[idx].path = e.target.value;
+      refreshPreview(DATA[idx].path);
+    });
+    
+    // 경로 텍스트 입력 완료 이벤트 (Enter 키 또는 포커스 아웃)
+    pathInput.addEventListener('blur', e=>{
+      DATA[idx].path = e.target.value;
+      refreshPreview(DATA[idx].path);
+    });
+    
+    pathInput.addEventListener('keypress', e=>{
+      if(e.key === 'Enter'){
+        e.target.blur(); // 포커스 아웃으로 blur 이벤트 발생
+      }
+    });
+    
+    p.appendChild(label); p.appendChild(input); p.appendChild(pathInput); p.appendChild(preview); tdp.appendChild(p); tr.appendChild(tdp);
 
-    const tdn=document.createElement('td'); const del=document.createElement('button'); del.className='btn-del'; del.textContent='삭제'; del.addEventListener('click', ()=>{ DATA.splice(idx,1); render(); }); tdn.appendChild(del); tr.appendChild(tdn);
+    // 비고(삭제)
+    const tdn=document.createElement('td');
+    const del=document.createElement('button'); del.className='btn-del'; del.textContent='삭제';
+    del.addEventListener('click', ()=>{ DATA.splice(idx,1); render(); });
+    tdn.appendChild(del); tr.appendChild(tdn);
 
-    [span,td3,tds,tdf,tdt].forEach(el=> el.addEventListener('blur', ()=>{ const i=parseInt(tr.dataset.idx,10); DATA[i].d2=span.textContent.trim(); DATA[i].d3=td3.textContent.trim(); DATA[i].screen=tds.textContent.trim(); DATA[i].func=tdf.textContent.trim(); DATA[i].type=tdt.textContent.trim(); applyRowspan(); toggleAddButtonsForMerged(); }));
+    // 편집 반영
+    [s, td3, tds, tdf, tdt].forEach(el=>{
+      el.addEventListener('blur', ()=>{
+        const i = parseInt(tr.dataset.idx,10);
+        DATA[i].d2 = s.textContent.trim();
+        DATA[i].d3 = td3.textContent.trim();
+        DATA[i].screen = tds.textContent.trim();
+        DATA[i].func = tdf.textContent.trim();
+        DATA[i].type = tdt.textContent.trim();
+        applyRowspan();
+        toggleAddButtonsForMerged();
+      });
+    });
+    
+    // 경로 입력 필드 편집 반영
+    pathInput.addEventListener('blur', ()=>{
+      const i = parseInt(tr.dataset.idx,10);
+      DATA[i].path = pathInput.value.trim();
+    });
+
     tbody.appendChild(tr);
   });
-  applyRowspan(); toggleAddButtonsForMerged();
+
+  applyRowspan();
+  toggleAddButtonsForMerged();
 }
 
+/* 5) 1·2 Depth 자동 병합 */
 function applyRowspan(){
   mergeCol('d1'); mergeCol('d2');
   function mergeCol(cls){
-    const cells=Array.from(tbody.querySelectorAll('td.'+cls));
+    const cells = Array.from(tbody.querySelectorAll('td.'+cls));
     cells.forEach(c=>{ c.style.display=''; c.rowSpan=1; });
     let prev=null, span=1;
     Array.from(tbody.querySelectorAll('tr')).forEach(tr=>{
-      const cell=tr.querySelector('td.'+cls);
+      const cell = tr.querySelector('td.'+cls);
       if(!prev){ prev=cell; span=1; return; }
-      if(cell.textContent.trim()===prev.textContent.trim()){ cell.style.display='none'; prev.rowSpan=++span; }
-      else{ prev=cell; span=1; }
+      if(cell.textContent.trim() === prev.textContent.trim()){
+        cell.style.display='none'; prev.rowSpan = ++span;
+      }else{ prev=cell; span=1; }
     });
   }
 }
 function toggleAddButtonsForMerged(){
   Array.from(tbody.querySelectorAll('tr')).forEach(tr=>{
-    const c=tr.querySelector('td.d2'); if(!c) return;
-    const btn=c.querySelector('.btn-tiny'); if(!btn) return;
+    const c = tr.querySelector('td.d2');
+    if(!c) return;
+    const btn = c.querySelector('.btn-tiny');
+    if(!btn) return;
     btn.style.display = (c.style.display==='none') ? 'none' : 'inline-flex';
   });
 }
 
-function addRowAt2Depth(d1,d2){
-  const useD2=d2||''; let insertIdx=-1;
-  for(let i=DATA.length-1;i>=0;i--){ if(DATA[i].d1===d1 && DATA[i].d2===useD2){ insertIdx=i+1; break; } }
-  const row={d1, d2:useD2, d3:'', screen:'', func:'', type:'페이지', path:'', note:''};
+/* 6) 2 Depth 기준 행추가 */
+function addRowAt2Depth(d1, d2){
+  const useD2 = d2 || '';
+  let insertIdx = -1;
+  for(let i=DATA.length-1;i>=0;i--){
+    if(DATA[i].d1===d1 && DATA[i].d2===useD2){ insertIdx=i+1; break; }
+  }
+  const row = { d1, d2:useD2, d3:'', screen:'', func:'', type:'페이지', path:'', note:'' };
   if(insertIdx===-1) DATA.push(row); else DATA.splice(insertIdx,0,row);
   render();
 }
 
-/* ===== 4) 저장 — 같은 폴더에 저장 (File System Access API 사용) ===== */
+/* 7) 저장 — HTML 파일로 직접 저장 */
 let saveDirHandle = null;
-
 async function ensureDirHandle(){
-  // 이미 권한 있는 핸들이면 종료
-  if (saveDirHandle && (await saveDirHandle.queryPermission({mode:'readwrite'})) === 'granted') return saveDirHandle;
-
-  // 권한 요청/부여 확인
-  if (saveDirHandle){
+  if(saveDirHandle && (await saveDirHandle.queryPermission({mode:'readwrite'}))==='granted') return saveDirHandle;
+  if(saveDirHandle){
     const p = await saveDirHandle.requestPermission({mode:'readwrite'});
-    if (p === 'granted') return saveDirHandle;
+    if(p==='granted') return saveDirHandle;
   }
-
-  // 최초 또는 권한 거부 → 폴더 선택
-  if ('showDirectoryPicker' in window){
+  if('showDirectoryPicker' in window){
     saveDirHandle = await window.showDirectoryPicker({id:'saerom-menu-save-dir'});
     return saveDirHandle;
   }
-  return null; // 미지원
+  return null;
 }
 
-async function saveJSONToFolder(){
-  const blob = new Blob([JSON.stringify(DATA, null, 2)], {type:'application/json'});
+// CSV 데이터를 HTML 테이블로 변환
+function generateHTMLTable() {
   const now = new Date();
-  const y=now.getFullYear(), m=String(now.getMonth()+1).padStart(2,'0'), d=String(now.getDate()).padStart(2,'0'), hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
-  const filename = `menu_data_${y}${m}${d}_${hh}${mm}.json`;
+  const timestamp = now.toLocaleString('ko-KR');
+  
+  let html = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>새롬 통합관리시스템 · 전체 메뉴</title>
+<style>
+body { font-family: 'Noto Sans KR', sans-serif; margin: 20px; }
+h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+th { background-color: #f8f9fa; font-weight: bold; }
+tr:nth-child(even) { background-color: #f8f9fa; }
+tr:hover { background-color: #e9ecef; }
+.path-link { color: #007bff; text-decoration: none; }
+.path-link:hover { text-decoration: underline; }
+.timestamp { color: #666; font-size: 12px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<h1>새롬 통합관리시스템 · 전체 메뉴</h1>
+<p class="timestamp">생성일시: ${timestamp}</p>
+			<table>
+				<thead>
+					<tr>
+<th>1 Depth</th>
+<th>2 Depth</th>
+<th>3 Depth</th>
+<th>화면</th>
+<th>기능</th>
+<th>유형</th>
+<th>경로(파일명)</th>
+					</tr>
+				</thead>
+<tbody>`;
 
+  DATA.forEach(row => {
+    const pathLink = row.path ? `<a href="${row.path}" target="_blank" class="path-link">${row.path}</a>` : '-';
+    html += `
+<tr>
+<td>${row.d1 || ''}</td>
+<td>${row.d2 || ''}</td>
+<td>${row.d3 || ''}</td>
+<td>${row.screen || ''}</td>
+<td>${row.func || ''}</td>
+<td>${row.type || ''}</td>
+<td>${pathLink}</td>
+</tr>`;
+  });
+
+  html += `
+				</tbody>
+			</table>
+</body>
+</html>`;
+
+  return html;
+}
+
+async function saveHTMLToFolder(){
+  const htmlContent = generateHTMLTable();
+  const blob = new Blob([htmlContent], {type:'text/html;charset=utf-8'});
+  const now=new Date(); const y=now.getFullYear(), m=String(now.getMonth()+1).padStart(2,'0'), d=String(now.getDate()).padStart(2,'0'), hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
+  const filename = `menu_list_${y}${m}${d}_${hh}${mm}.html`;
   try{
     const dir = await ensureDirHandle();
-    if (dir){
-      const fileHandle = await dir.getFileHandle(filename, { create:true });
-      const writable = await fileHandle.createWritable();
-      await writable.write(blob);
-      await writable.close();
-      alert(`저장 완료: ${filename}`);
+    if(dir){
+      const h = await dir.getFileHandle(filename,{create:true});
+      const w = await h.createWritable();
+      await w.write(blob); await w.close();
+      alert('HTML 파일 저장 완료: ' + filename);
       return;
     }
-  }catch(err){
-    console.warn('폴더 저장 실패, 다운로드로 대체:', err);
-  }
-
-  // Fallback: 브라우저 다운로드
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download=filename;
-  a.click();
+  }catch(e){ console.warn('폴더 저장 실패 → 다운로드로 대체', e); }
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click();
 }
 
-document.getElementById('btnSave').addEventListener('click', saveJSONToFolder);
+// 현재 index.html을 업데이트된 내용으로 저장
+async function saveCurrentIndex(){
+  // 현재 페이지의 HTML 내용을 가져와서 CSV 데이터를 업데이트
+  const currentHTML = document.documentElement.outerHTML;
+  
+  // CSV 데이터를 현재 HTML에 포함시키기 위해 script 태그 내용을 업데이트
+  const csvData = DATA.map(row => 
+    `${row.d1},${row.d2},${row.d3},${row.screen},${row.func},${row.type},${row.path}`
+  ).join('\n');
+  
+  // 현재 HTML에서 CSV 부분을 찾아서 교체
+  const updatedHTML = currentHTML.replace(
+    /const CSV = `[\s\S]*?`;/.exec(currentHTML)[0],
+    `const CSV = \`\n${csvData}\n\`;`
+  );
+  
+  // 링크 처리 로직을 저장된 파일에서도 작동하도록 수정
+  const fixedHTML = updatedHTML.replace(
+    /a\.addEventListener\('click', function\(e\) \{\s*e\.preventDefault\(\);\s*console\.log\('링크 클릭됨:', path\);\s*\/\/ 간단한 경로 처리\s*let targetPath = path;\s*if \(path && !path\.startsWith\('http'\) && !path\.startsWith\('\/'\)\) \{\s*\/\/ 상대 경로인 경우 현재 도메인 기준으로 절대 경로 생성\s*const currentOrigin = window\.location\.origin;\s*const currentPath = window\.location\.pathname;\s*const basePath = currentPath\.substring\(0, currentPath\.lastIndexOf\('\/'\)\);\s*targetPath = currentOrigin \+ basePath \+ '\/' \+ path;\s*\}\s*console\.log\('최종 경로:', targetPath\);\s*window\.open\(targetPath, '_blank'\);\s*\}\);/g,
+    `a.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('링크 클릭됨:', path);
+          
+          // 강화된 경로 처리 - 저장된 파일에서도 작동
+          let targetPath = path;
+          if (path && !path.startsWith('http') && !path.startsWith('/')) {
+            const currentOrigin = window.location.origin;
+            const currentPath = window.location.pathname;
+            
+            // 현재 파일이 루트에 있는지 확인
+            if (currentPath === '/' || currentPath.endsWith('.html')) {
+              // 루트에 있거나 HTML 파일인 경우
+              targetPath = currentOrigin + '/' + path;
+            } else {
+              // 하위 폴더에 있는 경우
+              const currentDir = currentPath.substring(0, currentPath.lastIndexOf('/'));
+              targetPath = currentOrigin + currentDir + '/' + path;
+            }
+          }
+          
+          console.log('최종 경로:', targetPath);
+          window.open(targetPath, '_blank');
+        });`
+  );
+  
+  const blob = new Blob([fixedHTML], {type:'text/html;charset=utf-8'});
+  const now=new Date(); const y=now.getFullYear(), m=String(now.getMonth()+1).padStart(2,'0'), d=String(now.getDate()).padStart(2,'0'), hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
+  const filename = `index_updated_${y}${m}${d}_${hh}${mm}.html`;
+  
+  try{
+    const dir = await ensureDirHandle();
+    if(dir){
+      const h = await dir.getFileHandle(filename,{create:true});
+      const w = await h.createWritable();
+      await w.write(blob); await w.close();
+      alert('업데이트된 index.html 저장 완료: ' + filename);
+      return;
+    }
+  }catch(e){ console.warn('폴더 저장 실패 → 다운로드로 대체', e); }
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click();
+}
+document.getElementById('btnSave').addEventListener('click', saveHTMLToFolder);
+document.getElementById('btnSaveIndex').addEventListener('click', saveCurrentIndex);
 
-/* 초기 렌더 */
+/* 8) DOMContentLoaded 이후 렌더 보장 */
+document.addEventListener('DOMContentLoaded', render);
+// 바로 실행(스크립트가 body 끝이라 즉시 렌더도 문제 없음)
 render();
 </script>
 </body>
