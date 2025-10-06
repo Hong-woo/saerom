@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>새롬 통합관리시스템 · 전체 메뉴(심플)</title>
-	<style>
+<style>
 :root{ --bg:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e5e7eb; --panel:#f8fafc; --radius:14px; --shadow:0 10px 30px rgba(2,6,23,.06); }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -12,7 +12,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,'Noto Sa
 header{position:sticky;top:0;z-index:20;padding:12px 16px;border-bottom:1px solid var(--line);background:#fff;font-weight:800}
 .wrap{display:flex;justify-content:center;padding:16px}
 .container{width:min(1200px,94vw)}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(2,6,23,.06);padding:10px}
 h1{font-size:18px;margin:6px 0 10px}
 .desc{color:var(--muted);font-size:13px;margin-bottom:6px}
 
@@ -51,7 +51,7 @@ label.pick-btn:hover{background:#eef6ff}
 .btn-del:hover{background:#ffecec;border-color:#ffd1d1}
 .footer{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
 .note{color:#64748b;font-size:12px;margin-top:6px}
-	</style>
+</style>
 </head>
 <body>
 <header>새롬 통합관리시스템 · 전체 메뉴(심플)</header>
@@ -60,12 +60,12 @@ label.pick-btn:hover{background:#eef6ff}
   <div class="container">
     <div class="card">
       <h1>전체 메뉴 구조</h1>
-      <p class="desc">헤더 고정 · 1/2 Depth 좌측 고정 · 2 Depth 기준 행추가 · 인라인 편집 · 하단 저장(JSON)</p>
+      <p class="desc">헤더 고정 · 1/2Depth 병합 · 2Depth 기준 행추가 · 경로 선택 미리보기 · 하단 저장(JSON)</p>
 
       <div class="table-wrap">
         <table class="table" id="menuTable" aria-label="전체 메뉴 표">
-				<thead>
-					<tr>
+          <thead>
+            <tr>
               <th style="width:160px" class="sticky-col-1 sticky-shadow-right">1 Depth</th>
               <th style="width:200px" class="sticky-col-2 sticky-shadow-right">2 Depth</th>
               <th style="width:220px">3 Depth</th>
@@ -74,184 +74,29 @@ label.pick-btn:hover{background:#eef6ff}
               <th style="width:90px">유형</th>
               <th>경로(파일명) : 링크처리</th>
               <th style="width:110px">비고</th>
-					</tr>
-				</thead>
+            </tr>
+          </thead>
           <tbody id="tbody"></tbody>
-			</table>
-		</div>
+        </table>
+      </div>
 
       <div class="footer">
         <button class="btn" id="btnSave">저장(JSON)</button>
-	</div>
-      <div class="note">※ 저장은 현재 편집 상태를 JSON 파일로 내려받습니다.</div>
+      </div>
+      <div class="note">※ 첫 저장 시 한 번 폴더를 선택하면, 그 이후부터는 그 폴더에 자동 저장됩니다. (미지원 브라우저는 다운로드로 저장)</div>
     </div>
   </div>
 </main>
 
 <script>
-/* ===== 1) 원본 데이터(CSV) — PDF/엑셀 기반 전체 메뉴 ===== */
+/* ===== 1) 메뉴 데이터(CSV) ===== */
 const CSV = `
-로그인/공통,,,"공통 로그인",열기,페이지,html_bk/00_01_login.html
-로그인/공통,,,"비밀번호 변경",,팝업,
-로그인/공통,,,"메인 페이지",,페이지,
-로그인/공통,,,"공통영역",,페이지,
-로그인/공통,,,"검색결과",,페이지,
-로그인/공통,,,"알림현황",,페이지,
-
-문서관리,발신,,"공문채번",등록,팝업,
-문서관리,발신,,"공문채번",상세/수정,팝업,
-문서관리,발신,,"사업장",검색,페이지,
-문서관리,발신,,"수신처",검색,페이지,
-문서관리,발신,,"수신",목록,페이지,
-문서관리,발신,,"이메일",메일,연동,
-
-전자결제,기안함,,"기안",작성,페이지,
-전자결제,기안함,,"결재자",선택,페이지,
-전자결제,기안함,,"기안",상세,페이지,
-전자결제,기안함,,"기안",수정,페이지,
-전자결제,,,"결재문서함",목록,페이지,
-
-스마트 체크 · 보고/일지,스마트 체크,,"현황",보기,페이지,
-스마트 체크 · 보고/일지,스마트 체크,,"등록",작성,페이지,
-스마트 체크 · 보고/일지,스마트 체크,,"상세/수정",편집,페이지,
-스마트 체크 · 보고/일지,월간업무보고,,"등록",작성,페이지,
-스마트 체크 · 보고/일지,월간업무보고,,"상세",보기,페이지,
-스마트 체크 · 보고/일지,월간업무보고,,"수정",편집,페이지,
-스마트 체크 · 보고/일지,점검일지,,"현황",보기,페이지,
-스마트 체크 · 보고/일지,점검일지,,"등록",작성,페이지,
-스마트 체크 · 보고/일지,점검일지,,"상세/수정",편집,페이지,
-스마트 체크 · 보고/일지,점검일지,,"설정",관리,페이지,
-스마트 체크 · 보고/일지,점검일지,,"보기",리드온리,페이지,
-스마트 체크 · 보고/일지,설문조사,,"등록",작성,페이지,
-스마트 체크 · 보고/일지,설문조사,,"상세",보기,페이지,
-스마트 체크 · 보고/일지,설문조사,,"상세/수정",편집,페이지,
-스마트 체크 · 보고/일지,설문조사,,"결과",리포트,페이지,
-스마트 체크 · 보고/일지,설문조사,,"설문현황",집계,페이지,
-스마트 체크 · 보고/일지,설문조사,,"사업장별 설문현황",집계,페이지,
-스마트 체크 · 보고/일지,회계/안전진단 점검일지,,"상세/수정",편집,페이지,
-스마트 체크 · 보고/일지,회계/안전진단 점검일지,,"등록",작성,페이지,
-
-회계업무,재무제표,재무제표,재무제표,등록,페이지,
-회계업무,재무제표,재무제표,재무제표,상세,페이지,
-회계업무,재무제표,재무제표,재무제표,수정,페이지,
-회계업무,회계보고(매입),회계보고,회계보고,등록,페이지,
-회계업무,회계보고(매입),회계보고,회계보고,상세,페이지,
-회계업무,회계보고(매입),회계보고,회계보고,수정,페이지,
-회계업무,회계보고(부과),회계보고,회계보고,등록,페이지,
-회계업무,회계보고(부과),회계보고,회계보고,상세,페이지,
-회계업무,회계보고(부과),회계보고,회계보고,수정,페이지,
-회계업무,부가세산출내역,부가세,부가세,등록,페이지,
-회계업무,부가세산출내역,부가세,부가세,상세,페이지,
-회계업무,부가세산출내역,부가세,부가세,수정,페이지,
-회계업무,,,파일양식 관리,관리,페이지,
-회계업무,사업장 근태현황,근태현황,근태현황,등록,페이지,
-회계업무,사업장 근태현황,근태현황,근태현황,상세,페이지,
-회계업무,사업장 근태현황,근태현황,근태현황,수정,페이지,
-회계업무,,,사업장 급여명세서,등록/상세/수정,페이지,
-
-영업관리,영업사업장,사업장,사업장,목록,페이지,
-영업관리,영업사업장,사업장,사업장,상세,페이지,
-영업관리,영업사업장,신규사업장,신규사업장,등록,페이지,
-영업관리,영업사업장,영업활동,영업활동,등록,페이지,
-영업관리,재계약영업,재계약,재계약,목록,페이지,
-영업관리,재계약영업,재계약,재계약,상세,페이지,
-영업관리,재계약영업,재계약 사업장,재계약 사업장,등록,페이지,
-영업관리,재계약영업,영업활동,영업활동,등록,페이지,
-영업관리,영업수주 현황,진척도별,진척도별,현황,페이지,
-영업관리,영업수주 현황,영업현황,영업현황,현황,페이지,
-영업관리,영업수주 현황,지역별현황,지역별현황,현황,페이지,
-영업관리,영업수주 현황,월간현황,월간현황,현황,페이지,
-영업관리,입찰현황관리,입찰,입찰,목록,페이지,
-영업관리,입찰현황관리,입찰,입찰,상세,페이지,
-영업관리,입찰현황관리,입찰,입찰,추가,페이지,
-영업관리,재도전 사업장,재도전,재도전,목록,페이지,
-영업관리,재도전 사업장,영업,영업,시작,페이지,
-
+스마트체크,스마트체크,현황,스마트체크현황,현황,페이지,html/02_01_03.html
 사업장관리,,,"관리 사업장",목록,페이지,html/05_01_01.html
 사업장관리,사업장 등록/상세/수정,기본정보,기본정보,보기,페이지,html/05_01_02.html
 사업장관리,사업장 등록/상세/수정,관리주체,관리주체,보기,페이지,html/05_01_02.html#t1
-사업장관리,사업장 등록/상세/수정,계약정보,계약정보,보기,페이지,html/05_01_02.html#t2
-사업장관리,사업장 등록/상세/수정,산출내역서,산출내역서,보기,페이지,html/05_01_02.html#t3
-사업장관리,사업장 등록/상세/수정,본부변경 / 이력,본부변경/이력,이력,페이지,html/05_01_03.html#t1
-사업장관리,사업장 등록/상세/수정,본부장변경 이력,본부장변경 이력,이력,페이지,html/05_01_03.html#t2
-사업장관리,사업장 등록/상세/수정,발령,발령,처리,페이지,html/05_01_03.html#t3
-사업장관리,사업장 등록/상세/수정,계약이력 / 종료,계약이력/종료,이력,페이지,html/05_01_03.html#t4
-사업장관리,사업장 등록/상세/수정,사용자인증,사용자인증,관리,페이지,
-사업장관리,사업장 일반현황,일반현황,일반현황,보기,페이지,
-사업장관리,사업장 일반현황,세대면적 현황,세대면적 현황,보기,페이지,
-사업장관리,사업장 일반현황,세대면적 상세/수정,세대면적 상세/수정,편집,페이지,
-사업장관리,사업장 일반현황,관리규약 현황,관리규약 현황,보기,페이지,
-사업장관리,사업장 일반현황,관리규약 상세/수정,관리규약 상세/수정,편집,페이지,
-사업장관리,장비/비품,장비관리,장비관리,관리,페이지,
-사업장관리,장비/비품,비품관리,비품관리,관리,페이지,html_bk/03_01_01_01_일반관리_물품관리.html
-사업장관리,장비/비품,비품 등록,비품 등록,등록,페이지,
-사업장관리,장비/비품,비품 상세/수정,비품 상세/수정,편집,페이지,
-사업장관리,장비/비품,비품 입/출고,비품 입/출고,처리,페이지,
-사업장관리,장비/비품,비품 입출고이력,비품 입출고이력,이력,페이지,
-사업장관리,계약/협력사/용역항목,부속용역계약관리,부속용역계약관리,관리,페이지,
-사업장관리,계약/협력사/용역항목,협력사 관리/등록/상세,협력사 관리/등록/상세,관리,페이지,
-사업장관리,계약/협력사/용역항목,용역항목 관리/등록/상세,용역항목 관리/등록/상세,관리,페이지,
-사업장관리,계약/협력사/용역항목,계약 현황,계약 현황,현황,페이지,
-
-인사관리,사업장 직원관리,직원,직원,등록,페이지,
-인사관리,사업장 직원관리,직원,직원,상세/수정,페이지,
-인사관리,사업장 직원관리,퇴사/승진/이동/발령,퇴사/승진/이동/발령,처리,페이지,
-인사관리,사업장 직원관리,근무 이력,근무 이력,이력,페이지,
-인사관리,사업장 직원관리,입주자대표 등록,입주자대표 등록,등록,페이지,
-인사관리,근로계약서,근로계약서,근로계약서,등록,페이지,
-인사관리,근로계약서,근로계약서,근로계약서,수정/갱신,페이지,
-인사관리,근로계약서,근로계약서,근로계약서,작성이력,페이지,
-인사관리,근로계약서,전자결재·서명,전자결재·서명(완료),완료,페이지,
-인사관리,교육,년간 법적의무교육,년간 법적의무교육,관리,페이지,
-인사관리,교육,월간 산업안전교육,월간 산업안전교육,관리,페이지,
-인사관리,교육,채용시 안전보건 교육,채용시 안전보건 교육,관리,페이지,
-인사관리,교육,월 순회감독점검부,월 순회감독점검부,관리,페이지,
-인사관리,서류,중대재해예방실천서약서,중대재해예방실천서약서,등록,페이지,
-인사관리,서류,직장내 괴롭힘 예방서약서,직장내 괴롭힘 예방서약서,등록,페이지,
-인사관리,서류,질병관련 확인서,질병관련 확인서,등록,페이지,
-인사관리,서류,보안근무/퇴직 서약서,보안근무/퇴직 서약서,등록,페이지,
 인사관리,근퇴관리,연차사용현황,연차사용현황,현황,페이지,html_bk/02_02_05_01_01_연차사용현황.html
-인사관리,근퇴관리,출근부·근무상황표,출근부·근무상황표,현황,페이지,html_bk/02_03_02_01_근무상황표.html
-인사관리,근퇴관리,근무상황표 등록,근무상황표 등록,등록,페이지,html_bk/02_03_02_02_근무상황표_등록.html
 인사관리,근퇴관리,경비원명부,경비원명부,현황,페이지,html_bk/02_03_03_01_경비원명부.html
-인사관리,근퇴관리,연차신청서·연차사용대장,연차신청서·연차사용대장,처리,페이지,
-인사관리,검진/직원승인/임명장,일반/특수건강검진,일반/특수건강검진,관리,페이지,
-인사관리,검진/직원승인/임명장,직원승인관리,직원승인관리,관리,페이지,
-인사관리,검진/직원승인/임명장,임명장,임명장,등록/상세/인쇄,페이지,
-
-현장관리,경비활동,,주차위반서,발급,페이지,
-현장관리,경비활동,,방문증,발급,페이지,
-현장관리,순찰,,순찰태그,관리,페이지,
-현장관리,순찰,,순찰일지,기록,페이지,
-현장관리,출동관리,,층간소음,접수/조치,페이지,
-현장관리,출동관리,,화재감지기 신호,접수/조치,페이지,
-현장관리,기타관리,,노약자 신고,접수,페이지,
-현장관리,기타관리,,전출입 이사화물,접수,페이지,
-현장관리,기타관리,,분실물 신고,접수,페이지,
-현장관리,안전/미화/조경,,일일안전평가,등록/수정,페이지,
-현장관리,안전/미화/조경,,미화활동,일정,페이지,
-현장관리,안전/미화/조경,,소독/조경일정,일정,페이지,
-현장관리,안전/미화/조경,,일용직관리,관리,페이지,
-현장관리,안전/미화/조경,,소독필증관리,관리,페이지,
-
-시스템관리 · 게시판,시스템관리,,사용자 관리,관리,페이지,
-시스템관리 · 게시판,시스템관리,,권한관리,그룹/사용자,페이지,
-시스템관리 · 게시판,시스템관리,,로그이력관리,현황,페이지,
-시스템관리 · 게시판,시스템관리,,팝업관리,미리보기/등록/상세,페이지,
-시스템관리 · 게시판,시스템관리,,본사연락처,현황,페이지,
-시스템관리 · 게시판,게시판,공지사항,목록,보기,페이지,
-시스템관리 · 게시판,게시판,공지사항,등록,작성,페이지,
-시스템관리 · 게시판,게시판,공지사항,상세,보기,페이지,
-시스템관리 · 게시판,게시판,공지사항,수정,편집,페이지,
-시스템관리 · 게시판,게시판,자료실,목록,보기,페이지,
-시스템관리 · 게시판,게시판,자료실,등록,작성,페이지,
-시스템관리 · 게시판,게시판,자료실,상세,보기,페이지,
-시스템관리 · 게시판,게시판,자료실,수정,편집,페이지,
-시스템관리 · 게시판,게시판,,자유게시판,목록/등록/상세/수정,페이지,
-시스템관리 · 게시판,게시판,,신규사업장정보,목록/등록/상세/수정,페이지,
-시스템관리 · 게시판,게시판,,Q&A,목록/상세/수정,페이지,
-시스템관리 · 게시판,게시판,,관리자 설정,관리,페이지,
-시스템관리 · 게시판,게시판,,FAQ,목록/상세/수정,페이지,
 `;
 
 /* ===== 2) CSV 파싱 ===== */
@@ -267,168 +112,125 @@ function parseCSV(csv){
 }
 let DATA = parseCSV(CSV);
 
-/* ===== 3) 렌더링 ===== */
+/* ===== 3) 렌더링/편집 ===== */
 const tbody = document.getElementById('tbody');
 
+function mkEditableCell(text){ const td=document.createElement('td'); td.className='cell-edit'; td.contentEditable='true'; td.textContent=text||''; return td; }
+
 function render(){
-  tbody.innerHTML = '';
+  tbody.innerHTML='';
   DATA.forEach((row, idx)=>{
-    const tr = document.createElement('tr'); tr.dataset.idx = idx;
+    const tr=document.createElement('tr'); tr.dataset.idx=idx;
 
-    // 1 Depth(읽기)
-    const td1 = document.createElement('td');
-    td1.className = 'sticky-col-1 sticky-shadow-right d1';
-    td1.textContent = row.d1;
-    tr.appendChild(td1);
+    const td1=document.createElement('td'); td1.className='sticky-col-1 sticky-shadow-right d1'; td1.textContent=row.d1; tr.appendChild(td1);
 
-    // 2 Depth(인라인 편집 + 그룹별 행추가)
-    const td2 = document.createElement('td');
-    td2.className = 'sticky-col-2 sticky-shadow-right d2';
-    const d2Wrap = document.createElement('div');
-    d2Wrap.style.display='flex'; d2Wrap.style.alignItems='center'; d2Wrap.style.gap='6px';
-    const d2Span = document.createElement('span');
-    d2Span.className='cell-edit'; d2Span.contentEditable='true'; d2Span.textContent=row.d2;
-    const addBtn = document.createElement('button');
-    addBtn.className='btn-tiny'; addBtn.textContent='+ 행추가';
-    addBtn.title='이 2 Depth 그룹 뒤에 새 행 추가';
-    addBtn.addEventListener('click', ()=> addRowAt2Depth(row.d1, (d2Span.textContent||'').trim() || row.d2));
-    d2Wrap.appendChild(d2Span); d2Wrap.appendChild(addBtn); td2.appendChild(d2Wrap);
-    tr.appendChild(td2);
+    const td2=document.createElement('td'); td2.className='sticky-col-2 sticky-shadow-right d2';
+    const wrap=document.createElement('div'); wrap.style.display='flex'; wrap.style.alignItems='center'; wrap.style.gap='6px';
+    const span=document.createElement('span'); span.className='cell-edit'; span.contentEditable='true'; span.textContent=row.d2;
+    const add=document.createElement('button'); add.className='btn-tiny'; add.textContent='+ 행추가';
+    add.addEventListener('click', ()=> addRowAt2Depth(row.d1, (span.textContent||'').trim()||row.d2));
+    wrap.appendChild(span); wrap.appendChild(add); td2.appendChild(wrap); tr.appendChild(td2);
 
-    // 3 Depth / 화면 / 기능 / 유형
-    const td3 = mkEditableCell(row.d3);
-    const tds = mkEditableCell(row.screen);
-    const tdf = mkEditableCell(row.func);
-    const tdt = mkEditableCell(row.type);
+    const td3=mkEditableCell(row.d3), tds=mkEditableCell(row.screen), tdf=mkEditableCell(row.func), tdt=mkEditableCell(row.type);
     tr.appendChild(td3); tr.appendChild(tds); tr.appendChild(tdf); tr.appendChild(tdt);
 
-    // 경로(파일명) : 링크처리 — 심플 파일 선택
-    const tdp = document.createElement('td');
-    const wrap = document.createElement('div'); wrap.className='path-simple';
-    const inputId = 'file-'+idx;
-    const label = document.createElement('label'); label.className='pick-btn'; label.setAttribute('for', inputId); label.textContent='파일 선택';
-    const input = document.createElement('input'); input.type='file'; input.accept='.html'; input.id=inputId; input.className='pick';
-    const preview = document.createElement('div'); preview.className='path-preview';
+    // 경로 파일 선택 + 링크 미리보기
+    const tdp=document.createElement('td'); const pwrap=document.createElement('div'); pwrap.className='path-simple';
+    const inputId='file-'+idx; const label=document.createElement('label'); label.className='pick-btn'; label.setAttribute('for',inputId); label.textContent='파일 선택';
+    const input=document.createElement('input'); input.type='file'; input.accept='.html'; input.id=inputId; input.className='pick';
+    const preview=document.createElement('div'); preview.className='path-preview';
+    function refresh(path,file){ preview.innerHTML=''; if(file){ const url=URL.createObjectURL(file); const a=document.createElement('a'); a.href=url; a.target='_blank'; a.textContent='열기'; const code=document.createElement('code'); code.textContent=file.webkitRelativePath||file.name; preview.appendChild(a); preview.appendChild(code);} else if(path){ const a=document.createElement('a'); a.href=path; a.target='_blank'; a.textContent='열기'; const code=document.createElement('code'); code.textContent=path; preview.appendChild(a); preview.appendChild(code);} else { const code=document.createElement('code'); code.textContent='(미지정)'; preview.appendChild(code);} }
+    refresh(row.path);
+    input.addEventListener('change', e=>{ const f=e.target.files&&e.target.files[0]; if(!f) return; DATA[idx].path=f.webkitRelativePath||f.name; refresh(DATA[idx].path, f); });
+    pwrap.appendChild(label); pwrap.appendChild(input); pwrap.appendChild(preview); tdp.appendChild(pwrap); tr.appendChild(tdp);
 
-    function refreshPreview(path, file){
-      preview.innerHTML='';
-      if(file){
-        const url = URL.createObjectURL(file);
-        const a = document.createElement('a'); a.href=url; a.target='_blank'; a.textContent='열기';
-        const code = document.createElement('code'); code.textContent = file.webkitRelativePath || file.name;
-        preview.appendChild(a); preview.appendChild(code);
-      } else if(path){
-        const a = document.createElement('a'); a.href=path; a.target='_blank'; a.textContent='열기';
-        const code = document.createElement('code'); code.textContent = path;
-        preview.appendChild(a); preview.appendChild(code);
-      } else {
-        const code = document.createElement('code'); code.textContent='(미지정)';
-        preview.appendChild(code);
-      }
-    }
-    refreshPreview(row.path);
-    input.addEventListener('change', e=>{
-      const file = e.target.files && e.target.files[0];
-      if(!file) return;
-      DATA[idx].path = file.webkitRelativePath || file.name;
-      refreshPreview(DATA[idx].path, file);
-    });
+    const tdn=document.createElement('td'); const del=document.createElement('button'); del.className='btn-del'; del.textContent='삭제'; del.addEventListener('click', ()=>{ DATA.splice(idx,1); render(); }); tdn.appendChild(del); tr.appendChild(tdn);
 
-    wrap.appendChild(label); wrap.appendChild(input); wrap.appendChild(preview);
-    tdp.appendChild(wrap); tr.appendChild(tdp);
-
-    // 비고(삭제 버튼만)
-    const tdn = document.createElement('td');
-    const del = document.createElement('button'); del.className='btn-del'; del.textContent='삭제';
-    del.addEventListener('click', ()=>{ DATA.splice(idx,1); render(); });
-    tdn.appendChild(del); tr.appendChild(tdn);
-
-    // 편집 반영
-    [d2Span, td3, tds, tdf, tdt].forEach(el=>{
-      el.addEventListener('blur', ()=>{
-        const i = parseInt(tr.dataset.idx,10);
-        DATA[i].d2 = d2Span.textContent.trim();
-        DATA[i].d3 = td3.textContent.trim();
-        DATA[i].screen = tds.textContent.trim();
-        DATA[i].func = tdf.textContent.trim();
-        DATA[i].type = tdt.textContent.trim();
-        applyRowspan();               // 1/2 Depth 병합 다시 계산
-        toggleAddButtonsForMerged();  // 2 Depth 병합 시 첫 셀에만 +버튼 표시
-      });
-    });
-
+    [span,td3,tds,tdf,tdt].forEach(el=> el.addEventListener('blur', ()=>{ const i=parseInt(tr.dataset.idx,10); DATA[i].d2=span.textContent.trim(); DATA[i].d3=td3.textContent.trim(); DATA[i].screen=tds.textContent.trim(); DATA[i].func=tdf.textContent.trim(); DATA[i].type=tdt.textContent.trim(); applyRowspan(); toggleAddButtonsForMerged(); }));
     tbody.appendChild(tr);
   });
-
-  applyRowspan();
-  toggleAddButtonsForMerged();
+  applyRowspan(); toggleAddButtonsForMerged();
 }
 
-function mkEditableCell(text){
-  const td = document.createElement('td');
-  td.className='cell-edit';
-  td.contentEditable='true';
-  td.textContent = text || '';
-  return td;
-}
-
-/* ===== 4) 1·2 Depth 자동 병합(Rowspan) ===== */
 function applyRowspan(){
-  mergeColumn('d1');
-  mergeColumn('d2');
-}
-function mergeColumn(cls){
-  // 초기화
-  const cells = Array.from(tbody.querySelectorAll('td.'+cls));
-  cells.forEach(c=>{ c.style.display=''; c.rowSpan=1; });
-  let prev = null, span = 1;
-  Array.from(tbody.querySelectorAll('tr')).forEach(tr=>{
-    const cell = tr.querySelector('td.'+cls);
-    if(!prev){ prev = cell; span = 1; return; }
-    if(cell.textContent.trim() === prev.textContent.trim()){
-      cell.style.display='none';
-      prev.rowSpan = ++span;
-    }else{
-      prev = cell; span = 1;
-    }
-  });
-}
-
-/* 병합 상태에서 2 Depth의 첫 셀에만 +행추가 버튼 노출 */
-function toggleAddButtonsForMerged(){
-  const rows = Array.from(tbody.querySelectorAll('tr'));
-  rows.forEach(tr=>{
-    const d2cell = tr.querySelector('td.d2');
-    if(!d2cell) return;
-    const btn = d2cell.querySelector('.btn-tiny');
-    if(!btn) return;
-    if(d2cell.style.display === 'none'){ btn.style.display='none'; }
-    else { btn.style.display='inline-flex'; }
-  });
-}
-
-/* ===== 5) 2 Depth 기준 행추가 ===== */
-function addRowAt2Depth(d1, d2){
-  const useD2 = d2 || '';
-  let insertIdx = -1;
-  for(let i=DATA.length-1;i>=0;i--){
-    if(DATA[i].d1===d1 && DATA[i].d2===useD2){ insertIdx = i+1; break; }
+  mergeCol('d1'); mergeCol('d2');
+  function mergeCol(cls){
+    const cells=Array.from(tbody.querySelectorAll('td.'+cls));
+    cells.forEach(c=>{ c.style.display=''; c.rowSpan=1; });
+    let prev=null, span=1;
+    Array.from(tbody.querySelectorAll('tr')).forEach(tr=>{
+      const cell=tr.querySelector('td.'+cls);
+      if(!prev){ prev=cell; span=1; return; }
+      if(cell.textContent.trim()===prev.textContent.trim()){ cell.style.display='none'; prev.rowSpan=++span; }
+      else{ prev=cell; span=1; }
+    });
   }
-  const row = { d1, d2:useD2, d3:'', screen:'', func:'', type:'페이지', path:'', note:'' };
+}
+function toggleAddButtonsForMerged(){
+  Array.from(tbody.querySelectorAll('tr')).forEach(tr=>{
+    const c=tr.querySelector('td.d2'); if(!c) return;
+    const btn=c.querySelector('.btn-tiny'); if(!btn) return;
+    btn.style.display = (c.style.display==='none') ? 'none' : 'inline-flex';
+  });
+}
+
+function addRowAt2Depth(d1,d2){
+  const useD2=d2||''; let insertIdx=-1;
+  for(let i=DATA.length-1;i>=0;i--){ if(DATA[i].d1===d1 && DATA[i].d2===useD2){ insertIdx=i+1; break; } }
+  const row={d1, d2:useD2, d3:'', screen:'', func:'', type:'페이지', path:'', note:''};
   if(insertIdx===-1) DATA.push(row); else DATA.splice(insertIdx,0,row);
   render();
 }
 
-/* ===== 6) 저장(JSON) ===== */
-document.getElementById('btnSave').addEventListener('click', ()=>{
+/* ===== 4) 저장 — 같은 폴더에 저장 (File System Access API 사용) ===== */
+let saveDirHandle = null;
+
+async function ensureDirHandle(){
+  // 이미 권한 있는 핸들이면 종료
+  if (saveDirHandle && (await saveDirHandle.queryPermission({mode:'readwrite'})) === 'granted') return saveDirHandle;
+
+  // 권한 요청/부여 확인
+  if (saveDirHandle){
+    const p = await saveDirHandle.requestPermission({mode:'readwrite'});
+    if (p === 'granted') return saveDirHandle;
+  }
+
+  // 최초 또는 권한 거부 → 폴더 선택
+  if ('showDirectoryPicker' in window){
+    saveDirHandle = await window.showDirectoryPicker({id:'saerom-menu-save-dir'});
+    return saveDirHandle;
+  }
+  return null; // 미지원
+}
+
+async function saveJSONToFolder(){
   const blob = new Blob([JSON.stringify(DATA, null, 2)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  const n = new Date();
-  const y=n.getFullYear(), m=String(n.getMonth()+1).padStart(2,'0'), d=String(n.getDate()).padStart(2,'0'), hh=String(n.getHours()).padStart(2,'0'), mm=String(n.getMinutes()).padStart(2,'0');
-  a.download = `menu_data_${y}${m}${d}_${hh}${mm}.json`;
+  const now = new Date();
+  const y=now.getFullYear(), m=String(now.getMonth()+1).padStart(2,'0'), d=String(now.getDate()).padStart(2,'0'), hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
+  const filename = `menu_data_${y}${m}${d}_${hh}${mm}.json`;
+
+  try{
+    const dir = await ensureDirHandle();
+    if (dir){
+      const fileHandle = await dir.getFileHandle(filename, { create:true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(blob);
+      await writable.close();
+      alert(`저장 완료: ${filename}`);
+      return;
+    }
+  }catch(err){
+    console.warn('폴더 저장 실패, 다운로드로 대체:', err);
+  }
+
+  // Fallback: 브라우저 다운로드
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=filename;
   a.click();
-});
+}
+
+document.getElementById('btnSave').addEventListener('click', saveJSONToFolder);
 
 /* 초기 렌더 */
 render();
