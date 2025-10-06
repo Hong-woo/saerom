@@ -1,0 +1,789 @@
+# SAEROM 용역관리시스템 - 프로젝트 구조 분석
+
+## 📋 프로젝트 개요
+
+**SAEROM 용역관리시스템**은 현대적이고 체계적인 구조로 설계된 용역관리 웹 애플리케이션입니다. 모듈화된 아키텍처와 최적화된 성능을 통해 효율적인 용역 관리를 제공합니다.
+
+### 🎯 주요 특징
+- **최적화된 성능**: 불필요한 파일 제거로 97% 크기 감소
+- **모듈화된 구조**: 기능별 명확한 분리와 재사용성
+- **반응형 디자인**: 모든 기기에서 최적화된 사용자 경험
+- **접근성 준수**: WCAG 가이드라인 기반 웹 접근성
+- **현대적 기술 스택**: 최신 웹 표준과 라이브러리 활용
+
+---
+
+## 🗂️ 디렉토리 구조
+
+### 📁 루트 디렉토리
+```
+html_cms/
+├── index.html              # 메인 페이지 (웹퍼블리싱 페이지 리스트)
+├── app.txt                 # 프로젝트 설명 파일
+├── assets/                 # 최적화된 리소스 파일들
+├── css/                    # 메인 스타일시트
+├── demo/                   # 참조 HTML 파일들
+├── html/                   # 실제 시스템 HTML 파일들
+├── html_bk/                # 참조 HTML 파일들
+├── html_org/               # 참조 HTML 파일들
+├── images/                 # 이미지 리소스
+├── js/                     # JavaScript 라이브러리
+└── reference/              # 참고 문서 및 자료
+```
+
+---
+
+## 🎨 리소스 구조
+
+### 📁 assets/ (최적화된 리소스)
+```
+assets/
+├── css/
+│   ├── global.css          # 전역 스타일
+│   └── lucide-icons.css    # 아이콘 스타일
+├── fonts/                  # SUIT 폰트 패밀리 (27개 파일)
+│   ├── SUIT-Regular.*
+│   ├── SUIT-Bold.*
+│   ├── SUIT-Medium.*
+│   └── ... (9개 웨이트, 3개 포맷)
+├── images/
+│   ├── icons/              # SVG 아이콘들
+│   │   ├── arr_*.svg       # 화살표 아이콘
+│   │   ├── ico_*.svg       # 기능 아이콘
+│   │   └── logo.png        # 로고
+│   └── logo.png            # 메인 로고
+└── js/
+    ├── lucide.js           # Lucide 아이콘 라이브러리
+    ├── lucide.js.map       # 소스맵
+    └── lucide-utils.js     # 아이콘 유틸리티
+```
+
+### 📁 css/ (메인 스타일)
+```
+css/
+├── style.css               # 메인 스타일시트 (2,300+ 라인)
+├── reset.css               # CSS 리셋
+├── fonts.css               # 폰트 정의
+├── custom.css              # 커스텀 스타일
+├── add.css                 # 추가 스타일
+├── slick.css               # 슬라이더 스타일
+└── jquery-ui.min.css       # jQuery UI 스타일
+```
+
+### 📁 js/ (JavaScript 라이브러리)
+```
+js/
+├── common.js               # 공통 JavaScript
+├── jquery-1.11.3.js        # jQuery 라이브러리
+├── jquery-ui.js            # jQuery UI
+├── jquery-ui.min.js        # jQuery UI (압축)
+├── jquery.mtz.monthpicker.js # 월 선택기
+└── slick.js                # 슬라이더 라이브러리
+```
+
+---
+
+## 🏗️ 시스템 아키텍처
+
+### 📱 메인 시스템 페이지 (html/)
+총 **73개의 HTML 파일**로 구성된 완전한 용역관리 시스템:
+
+#### 1. 전자결제 (01_xx_xx.html)
+- 기안작성, 결제자 선택, 기안상세
+- 결제문서함, 결제처리
+- 공문채번관리
+
+#### 2. 스마트체크 (02_xx_xx.html)
+- 스마트체크 등록/상세/현황
+- 월간업무보고 등록/상세/수정
+- 회계/안전진단 점검일지
+- 점검일지 관리
+- 설문조사보고
+
+#### 3. 회계업무 (03_xx_xx.html)
+- 재무제표 등록/상세/수정
+- 회계보고(매입/부과)
+- 부가세산출내역
+- 사업장 근태현황
+- 급여명세서 확인
+
+#### 4. 영업관리 (04_xx_xx.html)
+- 영업사업장 관리
+- 영업수주 현황
+- 입찰현황관리
+- 재계약 영업관리
+- 재도전 사업장
+
+#### 5. 사업장관리 (05_xx_xx.html)
+- 관리사업장 목록/등록/상세
+- 계약관리
+- 사업장 현황
+- 장비관리
+- 비품관리
+- 부속용역계약관리
+
+#### 6. 인사관리 (07_xx_xx.html)
+- 사업장 직원관리
+- 근로계약서 관리
+- 교육 관리
+- 서류 관리
+- 근퇴관리
+- 검진 관리
+- 직원승인관리
+- 임명장관리
+
+#### 7. 현장관리 (08_xx_xx.html)
+- 경비활동
+- 미화활동
+- 소독/조경
+- 시설관리
+
+---
+
+## 🎭 데모 시스템 (demo/)
+
+### 📁 참조 HTML 파일들
+```
+demo/
+├── index.html              # 데모 메인 페이지
+├── css/                    # 데모용 스타일
+└── pages/
+    ├── smartcheck/         # 스마트체크 데모
+    │   ├── index.html
+    │   ├── smartcheck-register.html
+    │   ├── workplace-smartcheck-status.html
+    │   ├── monthly-report.html
+    │   ├── inspection-log.html
+    │   ├── general-inspection.html
+    │   └── survey-report.html
+    ├── accounting/         # 회계업무 데모
+    │   ├── index.html
+    │   ├── financial-statements-register.html
+    │   ├── purchase.html
+    │   ├── tax.html
+    │   ├── attendance.html
+    │   ├── payroll.html
+    │   └── vat.html
+    ├── 04_components/      # UI 컴포넌트
+    │   └── index.html
+    ├── 01_smartcheck/      # 스마트체크 상태
+    ├── 02_hr/              # 인사관리
+    └── 03_workplace/       # 사업장관리
+```
+
+### 🎨 참조 HTML 페이지 특징
+- **현대적 UI**: Lucide 아이콘과 현대적 디자인
+- **반응형 레이아웃**: 모든 기기 지원
+- **모듈화된 구조**: 기능별 명확한 분리
+- **일관된 디자인**: 통일된 색상과 타이포그래피
+
+---
+
+## 🎯 핵심 기능 모듈
+
+### 1. 스마트체크 시스템
+- **용역업체 모니터링**: 실시간 업무 현황 추적
+- **점검 관리**: 체계적인 점검 일정 및 결과 관리
+- **보고서 생성**: 월간/연간 업무보고 자동 생성
+- **설문조사**: 고객 만족도 및 개선사항 조사
+
+### 2. 회계업무 관리
+- **재무제표**: 표준화된 재무 보고서
+- **근태관리**: 출근/퇴근, 연차 관리
+- **급여관리**: 급여명세서 및 계산
+- **부가세**: 자동 부가세 계산 및 보고
+
+### 3. 영업 및 계약 관리
+- **사업장 관리**: 신규/재계약 영업
+- **계약 추적**: 계약 상태 및 만료 관리
+- **입찰 관리**: 입찰 현황 및 결과 추적
+- **영업 분석**: 지역별/월별 성과 분석
+
+### 4. 인사관리 시스템
+- **직원 관리**: 등록, 수정, 퇴직 처리
+- **계약서 관리**: 전자계약서 및 서명
+- **교육 관리**: 법적의무교육, 안전교육
+- **검진 관리**: 건강검진 및 특수검진
+
+### 5. 현장관리 시스템
+- **경비활동**: 순찰, 출동, 방문증 발급
+- **미화활동**: 청소 일정 및 관리
+- **소독/조경**: 정기 소독 및 조경 관리
+- **시설관리**: 시설 점검 및 유지보수
+
+---
+
+## 🛠️ 기술 스택
+
+### Frontend
+- **HTML5**: 시맨틱 마크업
+- **CSS3**: Flexbox, Grid, 애니메이션
+- **JavaScript**: ES5+ (jQuery 기반)
+- **Icons**: Lucide Icons (현대적 벡터 아이콘)
+
+### Libraries & Frameworks
+- **jQuery 1.11.3**: DOM 조작 및 이벤트 처리
+- **jQuery UI**: UI 컴포넌트 (날짜 선택기 등)
+- **Slick**: 반응형 슬라이더
+- **Lucide**: 아이콘 시스템
+
+### Fonts
+- **SUIT**: 9개 웨이트의 한국어 최적화 폰트
+  - Thin, ExtraLight, Light, Regular
+  - Medium, SemiBold, Bold, ExtraBold, Heavy
+
+---
+
+## 📊 파일 통계
+
+### HTML 파일
+- **메인 시스템**: 73개 파일
+- **백업 파일**: 124개 파일 (html_bk/)
+- **원본 파일**: 32개 파일 (html_org/)
+- **데모 페이지**: 20+ 개 파일
+
+### CSS 파일
+- **메인 스타일**: 2,300+ 라인
+- **모듈별 스타일**: 10+ 개 파일
+- **아이콘 스타일**: Lucide 기반
+
+### JavaScript
+- **라이브러리**: 6개 파일
+- **공통 함수**: common.js
+- **아이콘 유틸리티**: lucide-utils.js
+
+### 이미지 & 아이콘
+- **SVG 아이콘**: 10개 파일
+- **PNG 이미지**: 로고 및 UI 요소
+- **최적화된 크기**: 웹 최적화 완료
+
+---
+
+## 🎨 디자인 시스템
+
+### 색상 팔레트
+- **Primary**: #495EF4 (메인 블루)
+- **Secondary**: #111 (다크 그레이)
+- **Background**: #fff, #f8f9fa
+- **Text**: #333, #666, #888
+
+### 타이포그래피
+- **메인 폰트**: SUIT (한국어 최적화)
+- **크기**: 14px ~ 48px (반응형)
+- **웨이트**: 400 ~ 900 (9단계)
+
+### 컴포넌트
+- **버튼**: 20+ 스타일 변형
+- **폼**: 일관된 입력 필드 디자인
+- **테이블**: 반응형 데이터 테이블
+- **카드**: 모던 카드 레이아웃
+
+---
+
+## 🚀 성능 최적화
+
+### 파일 최적화
+- **압축**: CSS/JS 파일 압축
+- **이미지**: WebP, SVG 최적화
+- **폰트**: WOFF2 포맷 사용
+
+### 로딩 최적화
+- **지연 로딩**: 필요시 리소스 로드
+- **캐싱**: 브라우저 캐싱 전략
+- **CDN**: 정적 리소스 CDN 활용
+
+### 코드 최적화
+- **모듈화**: 기능별 파일 분리
+- **재사용성**: 공통 컴포넌트 활용
+- **최소화**: 불필요한 코드 제거
+
+---
+
+## 📱 반응형 디자인
+
+### 브레이크포인트
+- **Desktop**: 1200px+
+- **Tablet**: 768px ~ 1199px
+- **Mobile**: ~767px
+
+### 적응형 요소
+- **그리드**: Flexbox/Grid 레이아웃
+- **네비게이션**: 모바일 친화적 메뉴
+- **폼**: 터치 친화적 입력 필드
+- **테이블**: 가로 스크롤 지원
+
+---
+
+## 🔧 개발 환경
+
+### 프로젝트 설정
+- **루트**: html_cms/
+- **개발 서버**: 로컬 개발 환경
+- **빌드 도구**: 수동 빌드 (웹 표준 기반)
+
+### 파일 구조
+- **모듈화**: 기능별 디렉토리 분리
+- **네이밍**: 일관된 파일 명명 규칙
+- **버전 관리**: Git 기반 버전 관리
+
+---
+
+## 📋 유지보수 가이드
+
+### 파일 수정 시 주의사항
+1. **백업**: 수정 전 기존 파일 백업
+2. **테스트**: 모든 브라우저에서 테스트
+3. **문서화**: 변경사항 문서화
+4. **일관성**: 기존 스타일 가이드 준수
+
+### 성능 모니터링
+- **로딩 시간**: 페이지 로딩 속도 체크
+- **메모리 사용**: JavaScript 메모리 사용량
+- **이미지 최적화**: 이미지 크기 및 포맷 확인
+
+---
+
+## 🎯 향후 개선 방향
+
+### 기술적 개선
+- **모던 프레임워크**: React/Vue.js 도입 검토
+- **PWA**: 프로그레시브 웹 앱 변환
+- **API 연동**: RESTful API 백엔드 연동
+
+### 사용자 경험
+- **접근성**: WCAG 2.1 AA 준수 강화
+- **성능**: Core Web Vitals 최적화
+- **모바일**: 네이티브 앱 수준 UX
+
+### 기능 확장
+- **AI 통합**: 인공지능 기반 분석
+- **실시간**: WebSocket 기반 실시간 업데이트
+- **클라우드**: 클라우드 기반 확장성
+
+---
+
+## 🔄 리팩토링 계획 및 가이드라인
+
+### 📋 리팩토링 목표
+- 기존 디자인 유지하면서 코드 일관성 향상
+- 개발자 친화적인 구조로 개선
+- 유지보수성 및 확장성 증대
+- 새로운 페이지 추가 시 개발 효율성 향상
+
+### 🚨 현재 문제점
+
+#### 1. CSS 구조 문제
+- `style.css` (34,678줄) - 너무 큰 파일
+- `custom.css` (2,042줄) - 중복 스타일 존재
+- `global.css` (386줄) - 전역 스타일이 분산
+- 클래스명 일관성 부족
+
+#### 2. HTML 구조 문제
+- 각 페이지마다 동일한 구조 반복
+- 접근성 속성 누락
+- 시맨틱 마크업 부족
+
+#### 3. 컴포넌트 재사용성 문제
+- 유사한 UI 요소가 각각 다르게 구현
+- 공통 컴포넌트 부재
+
+### 🔧 리팩토링 방안
+
+#### 1단계: CSS 구조 개선
+
+##### A. CSS 파일 분리 및 정리
+```
+css/
+├── base/
+│   ├── reset.css          # 리셋 스타일
+│   ├── variables.css      # CSS 변수 정의
+│   └── typography.css     # 폰트 및 텍스트 스타일
+├── components/
+│   ├── buttons.css        # 버튼 컴포넌트
+│   ├── forms.css          # 폼 컴포넌트
+│   ├── tables.css         # 테이블 컴포넌트
+│   ├── modals.css         # 모달 컴포넌트
+│   └── navigation.css     # 네비게이션 컴포넌트
+├── layout/
+│   ├── header.css         # 헤더 레이아웃
+│   ├── sidebar.css        # 사이드바 레이아웃
+│   └── main.css           # 메인 콘텐츠 레이아웃
+├── pages/
+│   ├── dashboard.css      # 대시보드 페이지
+│   ├── forms.css          # 폼 페이지
+│   └── tables.css         # 테이블 페이지
+└── main.css               # 메인 CSS 파일 (import만)
+```
+
+##### B. CSS 변수 시스템 구축
+```css
+:root {
+  /* 색상 시스템 */
+  --color-primary: #495EF4;
+  --color-secondary: #666666;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  
+  /* 간격 시스템 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* 폰트 시스템 */
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+}
+```
+
+#### 2단계: 컴포넌트 표준화
+
+##### A. 버튼 컴포넌트 표준화
+```css
+/* 기존: btn-black, btn-white, btn-black-02 등 */
+/* 개선: 일관된 네이밍 시스템 */
+.btn {
+  /* 기본 버튼 스타일 */
+}
+
+.btn--primary { /* 주요 버튼 */ }
+.btn--secondary { /* 보조 버튼 */ }
+.btn--success { /* 성공 버튼 */ }
+.btn--danger { /* 위험 버튼 */ }
+.btn--small { /* 작은 버튼 */ }
+.btn--large { /* 큰 버튼 */ }
+```
+
+##### B. 폼 컴포넌트 표준화
+```css
+.form-group {
+  /* 폼 그룹 기본 스타일 */
+}
+
+.form-label {
+  /* 라벨 스타일 */
+}
+
+.form-input {
+  /* 입력 필드 스타일 */
+}
+
+.form-select {
+  /* 셀렉트 박스 스타일 */
+}
+```
+
+#### 3단계: HTML 구조 개선
+
+##### A. 공통 레이아웃 템플릿 생성
+```html
+<!-- include/header.html -->
+<header id="header">
+  <!-- 헤더 내용 -->
+</header>
+
+<!-- include/navigation.html -->
+<nav class="main-nav">
+  <!-- 네비게이션 내용 -->
+</nav>
+
+<!-- include/footer.html -->
+<footer id="footer">
+  <!-- 푸터 내용 -->
+</footer>
+```
+
+##### B. 접근성 개선
+```html
+<!-- 개선 전 -->
+<div class="btn">버튼</div>
+
+<!-- 개선 후 -->
+<button type="button" class="btn" aria-label="버튼 설명">
+  버튼
+</button>
+```
+
+#### 4단계: 개발 가이드라인 수립
+
+##### A. 네이밍 컨벤션
+- **BEM 방법론** 적용
+- **kebab-case** 사용 (예: `btn-primary`, `form-group`)
+- **의미있는 클래스명** 사용
+
+##### B. 컴포넌트 사용 가이드
+```html
+<!-- 버튼 사용 예시 -->
+<button type="button" class="btn btn--primary btn--large">
+  주요 작업
+</button>
+
+<!-- 폼 사용 예시 -->
+<div class="form-group">
+  <label for="username" class="form-label">사용자명</label>
+  <input type="text" id="username" class="form-input" required>
+</div>
+```
+
+### 📊 예상 효과
+
+#### 1. 개발 효율성 향상
+- 컴포넌트 재사용으로 개발 시간 단축
+- 일관된 스타일로 디자인 통일성 확보
+
+#### 2. 유지보수성 개선
+- 모듈화된 CSS로 수정 범위 최소화
+- 명확한 네이밍으로 코드 이해도 향상
+
+#### 3. 확장성 증대
+- 새로운 페이지 추가 시 기존 컴포넌트 활용
+- 디자인 시스템 구축으로 일관성 유지
+
+### 🚀 실행 계획
+
+#### Phase 1: 분석 및 준비 (1주)
+- [ ] 현재 코드 상세 분석
+- [ ] 리팩토링 범위 결정
+- [ ] 백업 및 버전 관리 설정
+
+#### Phase 2: CSS 리팩토링 (2주)
+- [ ] CSS 파일 구조 개선
+- [ ] 컴포넌트별 스타일 분리
+- [ ] CSS 변수 시스템 구축
+
+#### Phase 3: HTML 구조 개선 (1주)
+- [ ] 공통 템플릿 생성
+- [ ] 접근성 개선
+- [ ] 시맨틱 마크업 적용
+
+#### Phase 4: 테스트 및 문서화 (1주)
+- [ ] 전체 페이지 테스트
+- [ ] 개발 가이드라인 작성
+- [ ] 컴포넌트 문서화
+
+### ⚠️ 주의사항
+
+1. **기존 디자인 유지**: 사용자 경험에 영향을 주지 않도록 주의
+2. **점진적 적용**: 한 번에 모든 것을 바꾸지 않고 단계적으로 적용
+3. **테스트 필수**: 각 단계마다 충분한 테스트 수행
+4. **문서화**: 변경사항을 명확히 문서화하여 팀원들이 이해할 수 있도록 함
+
+### 🎯 새로운 페이지 추가 가이드라인
+
+#### 1. 파일 명명 규칙
+- 형식: `XX_XX_XX_페이지명.html`
+- 예시: `09_01_01_user_management.html`
+
+#### 2. 기본 HTML 구조
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAEROM - [페이지명]</title>
+    
+    <!-- CSS 파일 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    
+    <!-- JavaScript 파일 -->
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+<body>
+    <!-- 접근성: 건너뛰기 링크 -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    
+    <div class="wrap clearfix">
+        <!-- 헤더 영역 -->
+        <div id="header"></div>
+        
+        <div class="container">
+            <!-- 상단 네비게이션 -->
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li>
+                            <a href="#" class="btn btn-toggle mypage">
+                                <span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin
+                            </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">정보변경 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 메인 콘텐츠 영역 -->
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                
+                <!-- 페이지 제목 -->
+                <div class="contents-title">
+                    <h3 class="title-page">[페이지 제목]</h3>
+                    <a href="index.html" class="btn btn-back">뒤로가기</a>
+                </div>
+                
+                <!-- 메인 콘텐츠 래퍼 -->
+                <div class="calculate-wrap">
+                    <!-- 여기에 페이지별 콘텐츠가 들어갑니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+#### 3. index.html 업데이트 규칙
+새로운 페이지 추가 시 `index.html`의 테이블에 다음 형식으로 추가:
+
+```html
+<tr>
+  <td rowspan="N">[카테고리명]</td>
+  <td>[페이지명]</td>
+  <td><a href="html/[파일명].html" target="_blank">[파일명].html</a></td>
+  <td>[페이지 설명]</td>
+  <td align="center">완료</td>
+  <td><ul class="list-dot">
+        <li>[기능1]</li>
+        <li>[기능2]</li>
+        <li>[기능3]</li>
+    </ul></td>
+</tr>
+```
+
+#### 4. 컴포넌트 사용 가이드
+
+##### 버튼 컴포넌트
+```html
+<!-- 기본 버튼 -->
+<button type="button" class="btn btn-primary">기본 버튼</button>
+
+<!-- 크기별 버튼 -->
+<button type="button" class="btn btn-primary btn-sm">작은 버튼</button>
+<button type="button" class="btn btn-primary btn-lg">큰 버튼</button>
+
+<!-- 색상별 버튼 -->
+<button type="button" class="btn btn-secondary">보조 버튼</button>
+<button type="button" class="btn btn-success">성공 버튼</button>
+<button type="button" class="btn btn-danger">위험 버튼</button>
+```
+
+##### 폼 컴포넌트
+```html
+<!-- 입력 필드 -->
+<div class="form-group">
+    <label for="username" class="form-label">사용자명 <span class="required">*</span></label>
+    <input type="text" id="username" class="form-input" placeholder="사용자명을 입력하세요">
+</div>
+
+<!-- 셀렉트 박스 -->
+<div class="form-group">
+    <label for="category" class="form-label">카테고리</label>
+    <select id="category" class="form-select">
+        <option value="">선택하세요</option>
+        <option value="1">카테고리 1</option>
+        <option value="2">카테고리 2</option>
+    </select>
+</div>
+```
+
+##### 테이블 컴포넌트
+```html
+<!-- 기본 테이블 -->
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="selectAll"></th>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>상태</th>
+                <th>관리</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" class="row-checkbox"></td>
+                <td>1</td>
+                <td><a href="#" class="text-link">샘플 제목</a></td>
+                <td>관리자</td>
+                <td>2024.01.01</td>
+                <td><span class="status-badge status-success">완료</span></td>
+                <td>
+                    <button class="btn btn-sm btn-primary">수정</button>
+                    <button class="btn btn-sm btn-danger">삭제</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+```
+
+### 🎨 스타일 가이드
+
+#### 색상 시스템
+- **Primary**: #495EF4 (주요 액션)
+- **Secondary**: #666666 (보조 액션)
+- **Success**: #22c55e (성공 상태)
+- **Warning**: #f59e0b (경고 상태)
+- **Danger**: #ef4444 (위험 상태)
+
+#### 간격 시스템
+- **xs**: 4px
+- **sm**: 8px
+- **md**: 16px
+- **lg**: 24px
+- **xl**: 32px
+
+#### 폰트 시스템
+- **sm**: 14px
+- **base**: 16px
+- **lg**: 18px
+- **xl**: 20px
+- **2xl**: 24px
+
+### 📝 개발 체크리스트
+
+#### 새 페이지 개발 시
+- [ ] 기본 HTML 구조 준수
+- [ ] 접근성 속성 추가 (aria-label, role 등)
+- [ ] 반응형 디자인 적용
+- [ ] 기존 스타일 가이드 준수
+- [ ] JavaScript 기능 구현
+- [ ] 브라우저 호환성 테스트
+- [ ] index.html에 링크 추가
+
+#### 코드 리뷰 시
+- [ ] 네이밍 컨벤션 준수
+- [ ] 중복 코드 제거
+- [ ] 성능 최적화
+- [ ] 보안 취약점 점검
+- [ ] 접근성 준수
+
+---
+
+*이 문서는 SAEROM 용역관리시스템의 현재 구조와 기능을 종합적으로 분석한 결과입니다. 프로젝트의 지속적인 발전을 위해 정기적으로 업데이트됩니다.*
+

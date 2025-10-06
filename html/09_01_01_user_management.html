@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 관리</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+
+<body>
+    <!-- 접근성: 건너뛰기 링크 -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    
+    <div class="wrap clearfix">
+        <!-- 헤더 영역 -->
+        <div id="header"></div>
+        
+        <div class="container">
+            <!-- 상단 네비게이션 -->
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li>
+                            <a href="#" class="btn btn-toggle mypage">
+                                <span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin
+                            </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">정보변경 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 메인 콘텐츠 영역 -->
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                
+                <!-- 페이지 제목 -->
+                <div class="contents-title">
+                    <h3 class="title-page">사용자 관리</h3>
+                    <a href="index.html" class="btn btn-back">뒤로가기</a>
+                </div>
+                
+                <!-- 메인 콘텐츠 래퍼 -->
+                <div class="calculate-wrap">
+                    <!-- 검색 폼 -->
+                    <div class="search-section">
+                        <form class="search-form">
+                            <ul class="form-style-02 sports">
+                                <li class="w03">
+                                    <div class="form-title">구분</div>
+                                    <div class="form-con">
+                                        <select id="search_category" class="select-01">
+                                            <option value="">전체</option>
+                                            <option value="admin">관리자</option>
+                                            <option value="user">일반사용자</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="w03">
+                                    <div class="form-title">검색구분</div>
+                                    <div class="form-con">
+                                        <select id="search_type" class="select-01">
+                                            <option value="name">이름</option>
+                                            <option value="email">이메일</option>
+                                            <option value="department">부서</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="w01">
+                                    <div class="form-title">키워드</div>
+                                    <div class="form-con">
+                                        <input type="text" class="input-02" id="search_keyword" placeholder="검색어를 입력하세요">
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="form-bottom-01">
+                                <button type="button" class="btn btn-blackline-02" onclick="resetSearch()">초기화</button>
+                                <button type="submit" class="btn btn-black-02">검색</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- 통계 카드 -->
+                    <div class="stats-section">
+                        <div class="calculate-top">
+                            <ul>
+                                <li>
+                                    <p class="title">전체 사용자<br>등록된 사용자</p>
+                                    <p class="text-01">150명</p>
+                                </li>
+                                <li>
+                                    <p class="title">활성 사용자<br>활성 상태</p>
+                                    <p class="text-01">120명</p>
+                                </li>
+                                <li>
+                                    <p class="title">비활성 사용자<br>비활성 상태</p>
+                                    <p class="text-01">30명</p>
+                                </li>
+                                <li>
+                                    <p class="title">관리자<br>관리자 권한</p>
+                                    <p class="text-01">5명</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 테이블 헤더 -->
+                    <div class="table-header">
+                        <div class="board-top">
+                            <div class="left">
+                                <label for="page_size" class="blind">보여줄 항목 갯수</label>
+                                <select id="page_size" class="select-01">
+                                    <option value="10">10개</option>
+                                    <option value="20">20개</option>
+                                    <option value="50">50개</option>
+                                    <option value="100">100개</option>
+                                </select>
+                                <label for="select_all" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+                                <div class="guide-board">
+                                    <strong id="selected_count">0</strong>
+                                    <span>개 선택 됨</span>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <a href="09_01_02_user_form.html" class="btn btn-primary">사용자 등록</a>
+                                <a href="#" class="btn btn-secondary">엑셀 다운로드</a>
+                                <a href="#" class="btn btn-danger">선택 삭제</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 데이터 테이블 -->
+                    <div class="table-section">
+                        <div class="table-style">
+                            <table>
+                                <caption>사용자 목록 테이블</caption>
+                                <colgroup>
+                                    <col style="width:5%">
+                                    <col style="width:8%">
+                                    <col style="width:15%">
+                                    <col style="width:20%">
+                                    <col style="width:15%">
+                                    <col style="width:12%">
+                                    <col style="width:10%">
+                                    <col style="width:15%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <p class="check-04">
+                                                <input type="checkbox" id="select_all" class="boardcheck">
+                                                <label for="select_all"><span class="blind">전체 선택</span></label>
+                                            </p>
+                                        </th>
+                                        <th>번호</th>
+                                        <th>이름</th>
+                                        <th>이메일</th>
+                                        <th>부서</th>
+                                        <th>권한</th>
+                                        <th>상태</th>
+                                        <th>관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p class="check-04">
+                                                <input type="checkbox" id="user_1" class="boardcheck" value="1">
+                                                <label for="user_1"><span class="blind">선택</span></label>
+                                            </p>
+                                        </td>
+                                        <td>1</td>
+                                        <td><a href="09_01_03_user_detail.html" class="text-link">김철수</a></td>
+                                        <td>kim@company.com</td>
+                                        <td>개발팀</td>
+                                        <td>관리자</td>
+                                        <td><span class="label label-success">활성</span></td>
+                                        <td>
+                                            <a href="09_01_02_user_form.html?id=1" class="btn btn-sm btn-primary">수정</a>
+                                            <a href="#" class="btn btn-sm btn-danger" onclick="deleteUser(1)">삭제</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="check-04">
+                                                <input type="checkbox" id="user_2" class="boardcheck" value="2">
+                                                <label for="user_2"><span class="blind">선택</span></label>
+                                            </p>
+                                        </td>
+                                        <td>2</td>
+                                        <td><a href="09_01_03_user_detail.html" class="text-link">이영희</a></td>
+                                        <td>lee@company.com</td>
+                                        <td>마케팅팀</td>
+                                        <td>사용자</td>
+                                        <td><span class="label label-success">활성</span></td>
+                                        <td>
+                                            <a href="09_01_02_user_form.html?id=2" class="btn btn-sm btn-primary">수정</a>
+                                            <a href="#" class="btn btn-sm btn-danger" onclick="deleteUser(2)">삭제</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="check-04">
+                                                <input type="checkbox" id="user_3" class="boardcheck" value="3">
+                                                <label for="user_3"><span class="blind">선택</span></label>
+                                            </p>
+                                        </td>
+                                        <td>3</td>
+                                        <td><a href="09_01_03_user_detail.html" class="text-link">박민수</a></td>
+                                        <td>park@company.com</td>
+                                        <td>영업팀</td>
+                                        <td>사용자</td>
+                                        <td><span class="label label-warning">비활성</span></td>
+                                        <td>
+                                            <a href="09_01_02_user_form.html?id=3" class="btn btn-sm btn-primary">수정</a>
+                                            <a href="#" class="btn btn-sm btn-danger" onclick="deleteUser(3)">삭제</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 페이지네이션 -->
+                    <div class="pagination-section">
+                        <div class="paging">
+                            <a href="#" class="btn btn-prev" style="display:none">
+                                <span class="blind">이전 페이지</span>
+                            </a>
+                            <ul class="paging-list">
+                                <li><a href="#" class="btn active">1</a></li>
+                                <li><a href="#" class="btn">2</a></li>
+                                <li><a href="#" class="btn">3</a></li>
+                                <li><a href="#" class="btn">4</a></li>
+                                <li><a href="#" class="btn">5</a></li>
+                            </ul>
+                            <a href="#" class="btn btn-next">
+                                <span class="blind">다음 페이지</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // 검색 폼 초기화
+    function resetSearch() {
+        document.getElementById('search_category').value = '';
+        document.getElementById('search_type').value = 'name';
+        document.getElementById('search_keyword').value = '';
+    }
+
+    // 전체 선택 기능
+    document.getElementById('select_all').addEventListener('change', function() {
+        const checkboxes = document.querySelectorAll('.boardcheck:not(#select_all)');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = this.checked;
+        });
+        updateSelectedCount();
+    });
+
+    // 선택된 항목 수 업데이트
+    function updateSelectedCount() {
+        const checkedBoxes = document.querySelectorAll('.boardcheck:checked:not(#select_all)');
+        document.getElementById('selected_count').textContent = checkedBoxes.length;
+    }
+
+    // 개별 체크박스 변경 시
+    document.querySelectorAll('.boardcheck:not(#select_all)').forEach(checkbox => {
+        checkbox.addEventListener('change', updateSelectedCount);
+    });
+
+    // 사용자 삭제 함수
+    function deleteUser(userId) {
+        if (confirm('정말로 이 사용자를 삭제하시겠습니까?')) {
+            // 삭제 로직 구현
+            alert('사용자가 삭제되었습니다.');
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 등록/수정</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+
+<body>
+    <!-- 접근성: 건너뛰기 링크 -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    
+    <div class="wrap clearfix">
+        <!-- 헤더 영역 -->
+        <div id="header"></div>
+        
+        <div class="container">
+            <!-- 상단 네비게이션 -->
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li>
+                            <a href="#" class="btn btn-toggle mypage">
+                                <span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin
+                            </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">정보변경 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 메인 콘텐츠 영역 -->
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                
+                <!-- 페이지 제목 -->
+                <div class="contents-title">
+                    <h3 class="title-page">사용자 등록/수정</h3>
+                    <a href="09_01_01_user_management.html" class="btn btn-back">뒤로가기</a>
+                </div>
+                
+                <!-- 메인 콘텐츠 래퍼 -->
+                <div class="calculate-wrap">
+                    <form class="form-container" method="post" action="#" enctype="multipart/form-data">
+                        <!-- 폼 헤더 -->
+                        <div class="form-header">
+                            <h4 class="form-title">사용자 정보 입력</h4>
+                            <p class="form-description">사용자의 기본 정보를 입력해주세요. <span class="required">*</span> 표시는 필수 입력 항목입니다.</p>
+                        </div>
+                        
+                        <!-- 폼 본문 -->
+                        <div class="form-body">
+                            <ul class="form-style-02">
+                                <li class="w01">
+                                    <div class="form-title">이름 <span class="required">*</span></div>
+                                    <div class="form-con">
+                                        <input type="text" class="input-02" id="user_name" name="name" placeholder="이름을 입력하세요" required>
+                                    </div>
+                                </li>
+                                <li class="w01">
+                                    <div class="form-title">이메일 <span class="required">*</span></div>
+                                    <div class="form-con">
+                                        <input type="email" class="input-02" id="user_email" name="email" placeholder="이메일을 입력하세요" required>
+                                    </div>
+                                </li>
+                                <li class="w03">
+                                    <div class="form-title">부서 <span class="required">*</span></div>
+                                    <div class="form-con">
+                                        <select id="user_department" class="select-01" name="department" required>
+                                            <option value="">부서를 선택하세요</option>
+                                            <option value="development">개발팀</option>
+                                            <option value="marketing">마케팅팀</option>
+                                            <option value="sales">영업팀</option>
+                                            <option value="hr">인사팀</option>
+                                            <option value="finance">재무팀</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="w03">
+                                    <div class="form-title">직급</div>
+                                    <div class="form-con">
+                                        <select id="user_position" class="select-01" name="position">
+                                            <option value="">직급을 선택하세요</option>
+                                            <option value="intern">인턴</option>
+                                            <option value="staff">사원</option>
+                                            <option value="senior">대리</option>
+                                            <option value="manager">과장</option>
+                                            <option value="director">부장</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="w03">
+                                    <div class="form-title">권한 <span class="required">*</span></div>
+                                    <div class="form-con">
+                                        <div class="radio-group">
+                                            <p class="check-04">
+                                                <input type="radio" id="role_admin" name="role" value="admin">
+                                                <label for="role_admin">
+                                                    <span>관리자</span>
+                                                </label>
+                                            </p>
+                                            <p class="check-04">
+                                                <input type="radio" id="role_user" name="role" value="user" checked>
+                                                <label for="role_user">
+                                                    <span>일반사용자</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="w01">
+                                    <div class="form-title">전화번호</div>
+                                    <div class="form-con">
+                                        <input type="tel" class="input-02" id="user_phone" name="phone" placeholder="010-1234-5678">
+                                    </div>
+                                </li>
+                                <li class="w01">
+                                    <div class="form-title">입사일</div>
+                                    <div class="form-con">
+                                        <div class="datepicker-01">
+                                            <input type="text" class="input-datepicker" id="user_join_date" name="join_date" placeholder="2024.01.01">
+                                            <label for="user_join_date">입사일 선택</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="w03">
+                                    <div class="form-title">상태 <span class="required">*</span></div>
+                                    <div class="form-con">
+                                        <div class="radio-group">
+                                            <p class="check-04">
+                                                <input type="radio" id="status_active" name="status" value="active" checked>
+                                                <label for="status_active">
+                                                    <span>활성</span>
+                                                </label>
+                                            </p>
+                                            <p class="check-04">
+                                                <input type="radio" id="status_inactive" name="status" value="inactive">
+                                                <label for="status_inactive">
+                                                    <span>비활성</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="w01">
+                                    <div class="form-title">비밀번호 <span class="required">*</span></div>
+                                    <div class="form-con">
+                                        <input type="password" class="input-02" id="user_password" name="password" placeholder="비밀번호를 입력하세요" required>
+                                        <p class="form-help">8자 이상, 영문, 숫자, 특수문자 포함</p>
+                                    </div>
+                                </li>
+                                <li class="w01">
+                                    <div class="form-title">비밀번호 확인 <span class="required">*</span></div>
+                                    <div class="form-con">
+                                        <input type="password" class="input-02" id="user_password_confirm" name="password_confirm" placeholder="비밀번호를 다시 입력하세요" required>
+                                    </div>
+                                </li>
+                                <li class="w01">
+                                    <div class="form-title">프로필 사진</div>
+                                    <div class="form-con">
+                                        <input type="file" class="input-file" id="user_photo" name="photo" accept="image/*">
+                                        <label for="user_photo" class="btn btn-secondary">파일 선택</label>
+                                        <p class="form-help">JPG, PNG 파일만 업로드 가능 (최대 5MB)</p>
+                                    </div>
+                                </li>
+                                <li class="w01">
+                                    <div class="form-title">메모</div>
+                                    <div class="form-con">
+                                        <textarea class="textarea-01" id="user_memo" name="memo" placeholder="추가 정보나 메모를 입력하세요"></textarea>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 폼 푸터 -->
+                        <div class="form-footer">
+                            <div class="form-actions">
+                                <a href="09_01_01_user_management.html" class="btn btn-blackline-02">취소</a>
+                                <button type="submit" class="btn btn-black-02">저장</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // 폼 유효성 검사
+    document.querySelector('.form-container').addEventListener('submit', function(e) {
+        const requiredFields = document.querySelectorAll('[required]');
+        let isValid = true;
+        
+        // 필수 필드 검사
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                field.classList.add('error');
+                isValid = false;
+            } else {
+                field.classList.remove('error');
+            }
+        });
+        
+        // 비밀번호 확인 검사
+        const password = document.getElementById('user_password').value;
+        const passwordConfirm = document.getElementById('user_password_confirm').value;
+        
+        if (password !== passwordConfirm) {
+            document.getElementById('user_password_confirm').classList.add('error');
+            alert('비밀번호가 일치하지 않습니다.');
+            isValid = false;
+        }
+        
+        // 이메일 형식 검사
+        const email = document.getElementById('user_email').value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email && !emailRegex.test(email)) {
+            document.getElementById('user_email').classList.add('error');
+            alert('올바른 이메일 형식을 입력해주세요.');
+            isValid = false;
+        }
+        
+        if (!isValid) {
+            e.preventDefault();
+            alert('필수 항목을 모두 올바르게 입력해주세요.');
+        }
+    });
+
+    // 에러 스타일 추가
+    const style = document.createElement('style');
+    style.textContent = `
+        .input-02.error,
+        .textarea-01.error,
+        .select-01.error {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+        }
+        .form-help {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+        .required {
+            color: #ef4444;
+        }
+    `;
+    document.head.appendChild(style);
+    </script>
+</body>
+</html>

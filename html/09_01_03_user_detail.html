@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 상세보기</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/slick.js"></script>
+    <script src="../js/common.js"></script>
+</head>
+
+<body>
+    <!-- 접근성: 건너뛰기 링크 -->
+    <div class="skip-nav">
+        <a href="#gnb" class="btn">본문 바로가기</a>
+        <a href="#contents" class="btn">주메뉴 바로가기</a>
+    </div>
+    
+    <div class="wrap clearfix">
+        <!-- 헤더 영역 -->
+        <div id="header"></div>
+        
+        <div class="container">
+            <!-- 상단 네비게이션 -->
+            <div class="contents-top clearfix">
+                <p class="title">Management System</p>
+                <div class="snb">
+                    <ul class="snb-depth1 clearfix">
+                        <li>
+                            <a href="#" class="btn btn-toggle mypage">
+                                <span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin
+                            </a>
+                            <ul class="snb-depth2">
+                                <li><a href="#" class="btn">정보변경 정보</a></li>
+                                <li><a href="#" class="btn">로그인 관리</a></li>
+                                <li><a href="#" class="btn">로그아웃</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 메인 콘텐츠 영역 -->
+            <div id="contents" class="contents-body">
+                <h2 class="blind">본문</h2>
+                
+                <!-- 페이지 제목 -->
+                <div class="contents-title">
+                    <h3 class="title-page">사용자 상세보기</h3>
+                    <a href="09_01_01_user_management.html" class="btn btn-back">뒤로가기</a>
+                </div>
+                
+                <!-- 메인 콘텐츠 래퍼 -->
+                <div class="calculate-wrap">
+                    <!-- 사용자 기본 정보 -->
+                    <div class="user-info-section">
+                        <div class="user-profile">
+                            <div class="profile-image">
+                                <img src="../images/default-avatar.png" alt="프로필 이미지" class="avatar">
+                            </div>
+                            <div class="profile-info">
+                                <h4 class="user-name">김철수</h4>
+                                <p class="user-email">kim@company.com</p>
+                                <p class="user-department">개발팀 · 과장</p>
+                                <div class="user-status">
+                                    <span class="status-badge status-success">활성</span>
+                                    <span class="role-badge role-admin">관리자</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <a href="09_01_02_user_form.html?id=1" class="btn btn-primary">수정</a>
+                            <a href="#" class="btn btn-secondary">비밀번호 초기화</a>
+                            <a href="#" class="btn btn-danger" onclick="deleteUser(1)">삭제</a>
+                        </div>
+                    </div>
+
+                    <!-- 상세 정보 테이블 -->
+                    <div class="detail-info-section">
+                        <h4 class="section-title">기본 정보</h4>
+                        <div class="table-style">
+                            <table>
+                                <caption>사용자 기본 정보</caption>
+                                <colgroup>
+                                    <col style="width:20%">
+                                    <col style="width:30%">
+                                    <col style="width:20%">
+                                    <col style="width:30%">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>이름</th>
+                                        <td>김철수</td>
+                                        <th>이메일</th>
+                                        <td>kim@company.com</td>
+                                    </tr>
+                                    <tr>
+                                        <th>부서</th>
+                                        <td>개발팀</td>
+                                        <th>직급</th>
+                                        <td>과장</td>
+                                    </tr>
+                                    <tr>
+                                        <th>전화번호</th>
+                                        <td>010-1234-5678</td>
+                                        <th>입사일</th>
+                                        <td>2020.03.15</td>
+                                    </tr>
+                                    <tr>
+                                        <th>권한</th>
+                                        <td>관리자</td>
+                                        <th>상태</th>
+                                        <td><span class="label label-success">활성</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>최근 로그인</th>
+                                        <td>2024.01.15 14:30</td>
+                                        <th>등록일</th>
+                                        <td>2020.03.15 09:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 활동 이력 -->
+                    <div class="activity-section">
+                        <h4 class="section-title">최근 활동</h4>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="icon-login"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p class="activity-title">로그인</p>
+                                    <p class="activity-desc">시스템에 로그인했습니다.</p>
+                                    <p class="activity-time">2024.01.15 14:30</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="icon-edit"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p class="activity-title">정보 수정</p>
+                                    <p class="activity-desc">프로필 정보를 수정했습니다.</p>
+                                    <p class="activity-time">2024.01.14 16:45</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="icon-document"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p class="activity-title">문서 작성</p>
+                                    <p class="activity-desc">새로운 문서를 작성했습니다.</p>
+                                    <p class="activity-time">2024.01.13 11:20</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 권한 관리 -->
+                    <div class="permission-section">
+                        <h4 class="section-title">권한 관리</h4>
+                        <div class="permission-grid">
+                            <div class="permission-card">
+                                <h5 class="permission-title">시스템 관리</h5>
+                                <div class="permission-items">
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>사용자 관리</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>권한 관리</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>시스템 설정</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="permission-card">
+                                <h5 class="permission-title">콘텐츠 관리</h5>
+                                <div class="permission-items">
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>문서 작성</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>문서 수정</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>문서 삭제</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="permission-card">
+                                <h5 class="permission-title">보고서</h5>
+                                <div class="permission-items">
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>보고서 조회</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>보고서 생성</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>통계 조회</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    .user-info-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .profile-image .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .profile-info h4 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    .profile-info p {
+        margin-bottom: 4px;
+        color: #666;
+    }
+
+    .user-status {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .status-badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .status-success {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .role-badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+        background: #cce5ff;
+        color: #004085;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #495EF4;
+    }
+
+    .detail-info-section,
+    .activity-section,
+    .permission-section {
+        margin-bottom: 30px;
+    }
+
+    .activity-list {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .activity-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .activity-item:last-child {
+        border-bottom: none;
+    }
+
+    .activity-icon {
+        width: 40px;
+        height: 40px;
+        background: #f0f0f0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .activity-content p {
+        margin-bottom: 4px;
+    }
+
+    .activity-title {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .activity-desc {
+        color: #666;
+    }
+
+    .activity-time {
+        font-size: 12px;
+        color: #999;
+    }
+
+    .permission-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .permission-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .permission-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .permission-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .permission-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+
+    .permission-item input[type="checkbox"] {
+        margin: 0;
+    }
+    </style>
+
+    <script>
+    // 사용자 삭제 함수
+    function deleteUser(userId) {
+        if (confirm('정말로 이 사용자를 삭제하시겠습니까?\n삭제된 사용자는 복구할 수 없습니다.')) {
+            // 삭제 로직 구현
+            alert('사용자가 삭제되었습니다.');
+            window.location.href = '09_01_01_user_management.html';
+        }
+    }
+    </script>
+</body>
+</html>

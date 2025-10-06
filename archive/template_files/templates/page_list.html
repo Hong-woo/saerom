@@ -1,0 +1,190 @@
+<!-- 목록 페이지 템플릿 -->
+{% extends "layout_base.html" %}
+
+{% block content %}
+<!-- 검색 폼 -->
+<div class="search-section">
+    <form class="search-form">
+        <ul class="form-style-02 sports">
+            <li class="w03">
+                <div class="form-title">구분</div>
+                <div class="form-con">
+                    <select id="search_category" class="select-01">
+                        <option value="">전체</option>
+                        {% for category in categories %}
+                        <option value="{{category.value}}">{{category.label}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </li>
+            <li class="w03">
+                <div class="form-title">검색구분</div>
+                <div class="form-con">
+                    <select id="search_type" class="select-01">
+                        <option value="">사업장</option>
+                        <option value="name">이름</option>
+                        <option value="code">코드</option>
+                    </select>
+                </div>
+            </li>
+            <li class="w01">
+                <div class="form-title">키워드</div>
+                <div class="form-con">
+                    <input type="text" class="input-02" id="search_keyword" placeholder="검색어를 입력하세요">
+                </div>
+            </li>
+        </ul>
+        <div class="form-bottom-01">
+            <button type="button" class="btn btn-blackline-02" onclick="resetSearch()">초기화</button>
+            <button type="submit" class="btn btn-black-02">검색</button>
+        </div>
+    </form>
+</div>
+
+<!-- 통계 카드 (선택사항) -->
+{% if show_stats %}
+<div class="stats-section">
+    <div class="calculate-top">
+        <ul>
+            {% for stat in stats %}
+            <li>
+                <p class="title">{{stat.title}}<br>{{stat.subtitle}}</p>
+                <p class="text-01">{{stat.count}}건</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<!-- 테이블 헤더 -->
+<div class="table-header">
+    <div class="board-top">
+        <div class="left">
+            <label for="page_size" class="blind">보여줄 항목 갯수</label>
+            <select id="page_size" class="select-01">
+                <option value="10">10개</option>
+                <option value="20">20개</option>
+                <option value="50">50개</option>
+                <option value="100">100개</option>
+            </select>
+            <label for="select_all" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+            <div class="guide-board">
+                <strong id="selected_count">0</strong>
+                <span>개 선택 됨</span>
+            </div>
+        </div>
+        <div class="right">
+            {% for action in actions %}
+            <a href="{{action.url}}" class="btn {{action.class}}">{{action.label}}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- 데이터 테이블 -->
+<div class="table-section">
+    <div class="table-style">
+        <table>
+            <caption>{{table_caption}}</caption>
+            <colgroup>
+                {% for col in table_columns %}
+                <col style="width:{{col.width}}">
+                {% endfor %}
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>
+                        <p class="check-04">
+                            <input type="checkbox" id="select_all" class="boardcheck">
+                            <label for="select_all"><span class="blind">전체 선택</span></label>
+                        </p>
+                    </th>
+                    {% for col in table_columns %}
+                    <th>{{col.header}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table_data %}
+                <tr>
+                    <td>
+                        <p class="check-04">
+                            <input type="checkbox" id="row_{{loop.index}}" class="boardcheck" value="{{row.id}}">
+                            <label for="row_{{loop.index}}"><span class="blind">선택</span></label>
+                        </p>
+                    </td>
+                    {% for col in table_columns %}
+                    <td>
+                        {% if col.type == 'link' %}
+                        <a href="{{row[col.field + '_url']}}" class="text-link">{{row[col.field]}}</a>
+                        {% elif col.type == 'status' %}
+                        <span class="label label-{{row[col.field + '_class']}}">{{row[col.field]}}</span>
+                        {% elif col.type == 'actions' %}
+                        <div class="action-buttons">
+                            {% for action in row.actions %}
+                            <a href="{{action.url}}" class="btn btn-sm {{action.class}}">{{action.label}}</a>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{row[col.field]}}
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 페이지네이션 -->
+<div class="pagination-section">
+    <div class="paging">
+        <a href="{{pagination.prev_url}}" class="btn btn-prev" {% if not pagination.has_prev %}style="display:none"{% endif %}>
+            <span class="blind">이전 페이지</span>
+        </a>
+        <ul class="paging-list">
+            {% for page in pagination.pages %}
+            <li>
+                <a href="{{page.url}}" class="btn {% if page.current %}active{% endif %}">{{page.number}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{{pagination.next_url}}" class="btn btn-next" {% if not pagination.has_next %}style="display:none"{% endif %}>
+            <span class="blind">다음 페이지</span>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_js %}
+<script>
+// 검색 폼 초기화
+function resetSearch() {
+    document.getElementById('search_category').value = '';
+    document.getElementById('search_type').value = '';
+    document.getElementById('search_keyword').value = '';
+}
+
+// 전체 선택 기능
+document.getElementById('select_all').addEventListener('change', function() {
+    const checkboxes = document.querySelectorAll('.boardcheck:not(#select_all)');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = this.checked;
+    });
+    updateSelectedCount();
+});
+
+// 선택된 항목 수 업데이트
+function updateSelectedCount() {
+    const checkedBoxes = document.querySelectorAll('.boardcheck:checked:not(#select_all)');
+    document.getElementById('selected_count').textContent = checkedBoxes.length;
+}
+
+// 개별 체크박스 변경 시
+document.querySelectorAll('.boardcheck:not(#select_all)').forEach(checkbox => {
+    checkbox.addEventListener('change', updateSelectedCount);
+});
+</script>
+{% endblock %}

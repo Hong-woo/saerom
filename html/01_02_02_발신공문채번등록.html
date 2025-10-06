@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>발신 공문채번 등록 - SAEROM</title>
+	<link rel="stylesheet" href="../css/jquery-ui.min.css">
+	<link rel="stylesheet" href="../css/slick.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/add.css">
+	<script src="../js/jquery-1.11.3.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/slick.js"></script>
+	<script src="../js/common.js"></script>
+</head>
+
+<body>
+	<!-- .skip-nav -->
+	<div class="skip-nav">
+		<a href="#gnb" class="btn">본문 바로가기</a>
+		<a href="#contents" class="btn">주메뉴 바로가기</a>
+	</div>
+	<div class="wrap clearfix">
+		<!-- #header start // -->
+		<div id="header">
+			
+		</div>
+		<!-- // #header end -->
+		<div class="container">
+			<div class="contents-top clearfix">
+				<p class="title">Management System</p>
+				<div class="snb">
+					<ul class="snb-depth1 clearfix">
+						<li>
+							<a href="#" class="btn btn-toggle mypage"><span class="blind">관리자 관련메뉴 열고 닫기.</span>Admin</a>
+							<ul class="snb-depth2">
+								<li><a href="#" class="btn">정보변경 정보</a></li>
+								<li><a href="#" class="btn">로그인 관리</a></li>
+								<li><a href="#" class="btn">로그아웃</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="contents" class="contents-body">
+				<h2 class="blind">본문</h2>
+				<div class="contents-title">
+					<h3 class="title-page">발신 공문채번 등록</h3>
+					<a href="01_02_01_공문채번관리.html" class="btn btn-back">뒤로가기</a>
+				</div>
+
+				<!-- .calculate-wrap start // -->
+				<div class="calculate-wrap">
+					<form>
+						<ul class="form-style-02 register">
+							<li class="w01">
+								<div class="form-title word3">작성자</div>
+								<div class="form-con">
+									<span class="text-display">개발자</span>
+								</div>
+							</li>
+							<li class="w02">
+								<div class="form-title word3">구분</div>
+								<div class="form-con">
+									<div class="radio-set-03">
+										<p class="radio-02">
+											<input type="radio" name="category" id="idcategory01" checked>
+											<label for="idcategory01">접수</label>
+										</p>
+										<p class="radio-02">
+											<input type="radio" name="category" id="idcategory02">
+											<label for="idcategory02">공문</label>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="w03">
+								<div class="form-title word3">발신일</div>
+								<div class="form-con">
+									<div class="datepicker-set-01">
+										<div class="datepicker-01">
+											<input type="text" class="input-datepicker" id="iddate01" placeholder="발신일">
+											<label for="iddate01">발신일 선택. 마우스 사용이 어려운 경우 2025.01.01 의 형식으로 날짜를 직접 입력해주세요.</label>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="w04">
+								<div class="form-title word3">수신처</div>
+								<div class="form-con">
+									<div id="recipientList">
+										<!-- 수신처 행들이 여기에 동적으로 추가됩니다 -->
+									</div>
+									<div class="btns-group-01">
+										<a href="#" class="btn btn-blue-01" id="addRecipientBtn">수신처 추가</a>
+										<a href="#" class="btn btn-blue-01">수신처검색</a>
+										<a href="#" class="btn btn-blue-01">사업장검색</a>
+									</div>
+								</div>
+							</li>
+							<li class="w05">
+								<div class="form-title word3">발송처</div>
+								<div class="form-con">
+									<div id="senderList">
+										<!-- 발송처 행들이 여기에 동적으로 추가됩니다 -->
+									</div>
+									<div class="btns-group-01">
+										<a href="#" class="btn btn-blue-01" id="addSenderBtn">발송처 추가</a>
+									</div>
+								</div>
+							</li>
+							<li class="w06">
+								<div class="form-title word3">내용</div>
+								<div class="form-con">
+									<textarea class="textarea-01" id="idcontent01" placeholder="내용을 입력하세요" rows="8"></textarea>
+								</div>
+							</li>
+							<li class="w07">
+								<div class="form-title word3">첨부파일</div>
+								<div class="form-con">
+									<div class="file-upload-01">
+										<input type="file" id="idfile01" class="file-input" multiple>
+										<label for="idfile01" class="btn btn-white-01">파일 선택</label>
+										<span class="file-info">선택된 파일 없음</span>
+										<span class="file-guide">※ 최대 5개까지 등록 가능</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="form-bottom-01">
+							<a href="01_02_01_공문채번관리.html" class="btn btn-blackline-02">취소</a>
+							<a href="#" class="btn btn-danger-01">저장</a>
+						</div>
+					</form>
+				</div>
+				<!-- // .calculate-wrap end -->
+
+			</div>
+		</div>
+	</div>
+
+	<!-- 수신처검색 모달 팝업 -->
+	<div id="popup-recipient-search" class="popup-wrap" style="display: none;">
+		<div class="popup-content">
+			<div class="popup-header">
+				<h3 class="popup-title">수신처검색</h3>
+				<button type="button" class="btn btn-close" id="closeRecipientSearch">×</button>
+			</div>
+			<div class="popup-body">
+				<!-- 검색 영역 -->
+				<div class="search-section">
+					<div class="form-con">
+						<div class="input-btn-set-01">
+							<input type="text" id="searchRecipientName" class="input-01" placeholder="수신처명을 입력해주세요">
+							<button type="button" class="btn btn-black-02" id="searchRecipientBtn">조회</button>
+							<button type="button" class="btn btn-blackline-02" id="resetRecipientSearch">초기화</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- 결과 테이블 -->
+				<div class="table-container">
+					<table class="data-table">
+						<thead>
+							<tr>
+								<th style="width: 50px;">
+									<input type="checkbox" id="selectAllRecipients">
+								</th>
+								<th>수신처</th>
+								<th>등록자</th>
+								<th>등록일시</th>
+							</tr>
+						</thead>
+						<tbody id="recipientSearchResults">
+							<tr>
+								<td>
+									<input type="checkbox" class="recipient-checkbox" value="연수대우삼환상가">
+								</td>
+								<td>연수대우삼환상가</td>
+								<td>김지선</td>
+								<td>2025-07-10 17:03:46</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox" class="recipient-checkbox" value="서울시청">
+								</td>
+								<td>서울시청</td>
+								<td>이새롬</td>
+								<td>2025-07-09 14:20:15</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox" class="recipient-checkbox" value="부산시청">
+								</td>
+								<td>부산시청</td>
+								<td>박새롬</td>
+								<td>2025-07-08 09:45:30</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="popup-footer">
+				<button type="button" class="btn btn-danger-01" id="cancelRecipientSearch">취소</button>
+				<button type="button" class="btn btn-black-02" id="selectRecipients">선택</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 사업장검색 모달 팝업 -->
+	<div id="popup-workplace-search" class="popup-wrap" style="display: none;">
+		<div class="popup-content">
+			<div class="popup-header">
+				<h3 class="popup-title">사업장검색</h3>
+				<button type="button" class="btn btn-close" id="closeWorkplaceSearch">×</button>
+			</div>
+			<div class="popup-body">
+				<!-- 검색 영역 -->
+				<div class="search-section">
+					<div class="form-con">
+						<div class="input-btn-set-01">
+							<select id="searchHeadquarters" class="select-01">
+								<option value="">본부전체</option>
+								<option value="1">ACE 1본부</option>
+								<option value="2">ACE 2본부</option>
+								<option value="3">ACE 3본부</option>
+								<option value="4">ACE 4본부</option>
+								<option value="5">ACE 5본부</option>
+								<option value="6">ACE 6본부</option>
+							</select>
+							<label for="searchWorkplaceName" class="form-label">사업장명</label>
+							<input type="text" id="searchWorkplaceName" class="input-01" placeholder="사업장명">
+							<button type="button" class="btn btn-black-02" id="searchWorkplaceBtn">조회</button>
+							<button type="button" class="btn btn-blackline-02" id="resetWorkplaceSearch">초기화</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- 결과 테이블 -->
+				<div class="table-container">
+					<table class="data-table">
+						<thead>
+							<tr>
+								<th style="width: 50px;">
+									<input type="checkbox" id="selectAllWorkplaces">
+								</th>
+								<th style="width: 80px;">번호</th>
+								<th>본부</th>
+								<th>사업장명</th>
+								<th>소장명</th>
+							</tr>
+						</thead>
+						<tbody id="workplaceSearchResults">
+							<tr>
+								<td>
+									<input type="checkbox" class="workplace-checkbox" value="연수대우삼환상가">
+								</td>
+								<td>1</td>
+								<td>ACE 6본부</td>
+								<td>연수대우삼환상가</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox" class="workplace-checkbox" value="목동14단지">
+								</td>
+								<td>2</td>
+								<td>ACE 6본부</td>
+								<td>목동14단지</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox" class="workplace-checkbox" value="신길우성4차">
+								</td>
+								<td>3</td>
+								<td>ACE 6본부</td>
+								<td>신길우성4차</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox" class="workplace-checkbox" value="강남역와이즈플레이스">
+								</td>
+								<td>4</td>
+								<td>ACE 6본부</td>
+								<td>강남역와이즈플레이스</td>
+								<td>김정순</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox" class="workplace-checkbox" value="래미안에스티움">
+								</td>
+								<td>5</td>
+								<td>ACE 6본부</td>
+								<td>래미안에스티움</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="popup-footer">
+				<button type="button" class="btn btn-danger-01" id="cancelWorkplaceSearch">취소</button>
+				<button type="button" class="btn btn-black-02" id="selectWorkplaces">선택</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			var recipientCount = 0;
+			var senderCount = 0;
+
+			// 수신처 행 추가 함수
+			function addRecipientRow() {
+				recipientCount++;
+				
+				var recipientRow = `
+					<div class="recipient-row" data-index="${recipientCount}">
+						<div class="input-btn-set-01">
+							<input type="text" class="input-01" id="idrecipient${recipientCount}" placeholder="수신처 입력">
+							<p class="check-04">
+								<input type="checkbox" id="idsave${recipientCount}">
+								<label for="idsave${recipientCount}"><span>수신처저장</span></label>
+							</p>
+							<button type="button" class="btn btn-danger-02 remove-recipient">수신처삭제</button>
+						</div>
+					</div>
+				`;
+				
+				$('#recipientList').append(recipientRow);
+			}
+
+			// 발송처 행 추가 함수
+			function addSenderRow() {
+				senderCount++;
+				
+				var senderRow = `
+					<div class="sender-row" data-index="${senderCount}">
+						<div class="input-btn-set-01">
+							<input type="text" class="input-01" id="idsender${senderCount}" placeholder="발송처 입력">
+							<button type="button" class="btn btn-danger-02 remove-sender">발송처삭제</button>
+						</div>
+					</div>
+				`;
+				
+				$('#senderList').append(senderRow);
+			}
+
+			// 사업장 행 추가 함수
+			function addWorkplaceRow() {
+				// 사업장 행 추가 로직 (필요시 구현)
+				console.log('사업장 행 추가');
+			}
+
+			// 페이지 로드 시 기본 행 추가
+			addRecipientRow();
+			addSenderRow();
+
+			// 수신처 추가 버튼 이벤트
+			$('#addRecipientBtn').on('click', function(e) {
+				e.preventDefault();
+				addRecipientRow();
+			});
+
+			// 발송처 추가 버튼 이벤트
+			$('#addSenderBtn').on('click', function(e) {
+				e.preventDefault();
+				addSenderRow();
+			});
+
+			// 수신처 삭제 버튼 이벤트 (동적 이벤트 위임)
+			$(document).on('click', '.remove-recipient', function() {
+				$(this).closest('.recipient-row').remove();
+			});
+
+			// 발송처 삭제 버튼 이벤트 (동적 이벤트 위임)
+			$(document).on('click', '.remove-sender', function() {
+				$(this).closest('.sender-row').remove();
+			});
+
+			// 파일 선택 이벤트
+			$('#idfile01').on('change', function() {
+				var files = this.files;
+				var fileCount = files.length;
+				
+				if (fileCount > 0) {
+					var fileNames = [];
+					for (var i = 0; i < fileCount; i++) {
+						fileNames.push(files[i].name);
+					}
+					$('.file-info').text(fileNames.join(', '));
+				} else {
+					$('.file-info').text('선택된 파일 없음');
+				}
+			});
+
+			// 저장 버튼 이벤트
+			$('.btn-danger-01').on('click', function(e) {
+				e.preventDefault();
+				// 저장 로직 구현
+				alert('저장되었습니다.');
+			});
+
+			// 취소 버튼 이벤트
+			$('.btn-blackline-02').on('click', function(e) {
+				e.preventDefault();
+				if (confirm('작성 중인 내용이 사라집니다. 정말 취소하시겠습니까?')) {
+					window.location.href = '01_02_01_공문채번관리.html';
+				}
+			});
+
+			// 수신처검색 팝업 이벤트
+			$('a[href="#"]').filter(function() {
+				return $(this).text() === '수신처검색';
+			}).on('click', function(e) {
+				e.preventDefault();
+				$('#popup-recipient-search').show();
+			});
+
+			// 사업장검색 팝업 이벤트
+			$('a[href="#"]').filter(function() {
+				return $(this).text() === '사업장검색';
+			}).on('click', function(e) {
+				e.preventDefault();
+				$('#popup-workplace-search').show();
+			});
+
+			// 팝업 닫기 이벤트
+			$('#closeRecipientSearch, #cancelRecipientSearch').on('click', function() {
+				$('#popup-recipient-search').hide();
+			});
+
+			$('#closeWorkplaceSearch, #cancelWorkplaceSearch').on('click', function() {
+				$('#popup-workplace-search').hide();
+			});
+
+			// 전체 선택 체크박스
+			$('#selectAllRecipients').on('change', function() {
+				$('.recipient-checkbox').prop('checked', this.checked);
+			});
+
+			// 개별 체크박스 변경 시 전체 선택 상태 업데이트
+			$(document).on('change', '.recipient-checkbox', function() {
+				var totalCheckboxes = $('.recipient-checkbox').length;
+				var checkedCheckboxes = $('.recipient-checkbox:checked').length;
+				$('#selectAllRecipients').prop('checked', totalCheckboxes === checkedCheckboxes);
+			});
+
+			// 사업장 전체 선택 체크박스
+			$('#selectAllWorkplaces').on('change', function() {
+				$('.workplace-checkbox').prop('checked', this.checked);
+			});
+
+			// 사업장 개별 체크박스 변경 시 전체 선택 상태 업데이트
+			$(document).on('change', '.workplace-checkbox', function() {
+				var totalCheckboxes = $('.workplace-checkbox').length;
+				var checkedCheckboxes = $('.workplace-checkbox:checked').length;
+				$('#selectAllWorkplaces').prop('checked', totalCheckboxes === checkedCheckboxes);
+			});
+
+			// 수신처 선택 버튼 이벤트
+			$('#selectRecipients').on('click', function() {
+				var selectedRecipients = [];
+				$('.recipient-checkbox:checked').each(function() {
+					selectedRecipients.push($(this).val());
+				});
+
+				if (selectedRecipients.length > 0) {
+					// 선택된 수신처들을 기존 수신처 입력 필드에 추가
+					selectedRecipients.forEach(function(recipient) {
+						// 첫 번째 빈 수신처 입력 필드 찾기
+						var emptyInput = $('#recipientList input[type="text"]').filter(function() {
+							return $(this).val() === '';
+						}).first();
+
+						if (emptyInput.length > 0) {
+							emptyInput.val(recipient);
+						} else {
+							// 빈 입력 필드가 없으면 새 행 추가
+							addRecipientRow();
+							$('#recipientList input[type="text"]').last().val(recipient);
+						}
+					});
+					
+					$('#popup-recipient-search').hide();
+					alert('선택된 수신처가 추가되었습니다.');
+				} else {
+					alert('수신처를 선택해주세요.');
+				}
+			});
+
+			// 검색 버튼 이벤트
+			$('#searchRecipientBtn').on('click', function() {
+				var searchTerm = $('#searchRecipientName').val();
+				// 검색 로직 구현 (실제로는 서버와 통신)
+				console.log('검색어:', searchTerm);
+			});
+
+			// 초기화 버튼 이벤트
+			$('#resetRecipientSearch').on('click', function() {
+				$('#searchRecipientName').val('');
+				$('.recipient-checkbox').prop('checked', false);
+				$('#selectAllRecipients').prop('checked', false);
+			});
+
+			// 사업장 선택 버튼 이벤트
+			$('#selectWorkplaces').on('click', function() {
+				var selectedWorkplaces = [];
+				$('.workplace-checkbox:checked').each(function() {
+					selectedWorkplaces.push($(this).val());
+				});
+
+				if (selectedWorkplaces.length > 0) {
+					// 선택된 사업장들을 기존 사업장 입력 필드에 추가
+					selectedWorkplaces.forEach(function(workplace) {
+						// 첫 번째 빈 사업장 입력 필드 찾기
+						var emptyInput = $('#workplaceList input[type="text"]').filter(function() {
+							return $(this).val() === '';
+						}).first();
+
+						if (emptyInput.length > 0) {
+							emptyInput.val(workplace);
+						} else {
+							// 빈 입력 필드가 없으면 새 행 추가
+							addWorkplaceRow();
+							$('#workplaceList input[type="text"]').last().val(workplace);
+						}
+					});
+					
+					$('#popup-workplace-search').hide();
+					alert('선택된 사업장이 추가되었습니다.');
+				} else {
+					alert('사업장을 선택해주세요.');
+				}
+			});
+
+			// 사업장 검색 버튼 이벤트
+			$('#searchWorkplaceBtn').on('click', function() {
+				var headquarters = $('#searchHeadquarters').val();
+				var searchTerm = $('#searchWorkplaceName').val();
+				// 검색 로직 구현 (실제로는 서버와 통신)
+				console.log('본부:', headquarters, '검색어:', searchTerm);
+			});
+
+			// 사업장 초기화 버튼 이벤트
+			$('#resetWorkplaceSearch').on('click', function() {
+				$('#searchHeadquarters').val('');
+				$('#searchWorkplaceName').val('');
+				$('.workplace-checkbox').prop('checked', false);
+				$('#selectAllWorkplaces').prop('checked', false);
+			});
+		});
+	</script>
+
+	<style>
+		/* 등록 폼 스타일 */
+		.form-style-02.register {
+			flex-wrap: wrap;
+		}
+		.form-style-02.register > li {
+			width: 100%;
+			margin-bottom: 20px;
+		}
+		.form-style-02.register > li:last-child {
+			margin-bottom: 0;
+		}
+
+		/* 텍스트 표시 */
+		.text-display {
+			display: inline-block;
+			padding: 12px 16px;
+			background: #f8f9fa;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			color: #333;
+			font-weight: 500;
+		}
+
+		/* 입력 버튼 세트 */
+		.input-btn-set-01 {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 10px;
+		}
+		.input-btn-set-01 .input-01 {
+			flex: 1;
+		}
+		.input-btn-set-01 .check-04 {
+			white-space: nowrap;
+		}
+
+		/* 버튼 그룹 */
+		.btns-group-01 {
+			display: flex;
+			gap: 8px;
+			flex-wrap: wrap;
+		}
+
+		/* 텍스트 영역 */
+		.textarea-01 {
+			width: 100%;
+			padding: 12px 16px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			font-size: 14px;
+			line-height: 1.5;
+			resize: vertical;
+			min-height: 120px;
+		}
+		.textarea-01:focus {
+			outline: none;
+			border-color: #495EF4;
+			box-shadow: 0 0 0 2px rgba(73, 94, 244, 0.25);
+		}
+
+		/* 파일 업로드 */
+		.file-upload-01 {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+			flex-wrap: wrap;
+		}
+		.file-input {
+			display: none;
+		}
+		.file-info {
+			color: #666;
+			font-size: 14px;
+		}
+		.file-guide {
+			color: #999;
+			font-size: 12px;
+		}
+
+		/* 위험 버튼 (저장) */
+		.btn-danger-01 {
+			background-color: #dc3545;
+			color: #fff;
+			border: none;
+			padding: 15px 24px;
+			border-radius: 4px;
+			font-weight: 600;
+			font-size: 18px;
+			cursor: pointer;
+			transition: background-color 0.2s;
+		}
+		.btn-danger-01:hover {
+			background-color: #c82333;
+		}
+
+		/* 삭제 버튼 */
+		.btn-danger-02 {
+			background-color: #dc3545;
+			color: #fff;
+			border: none;
+			padding: 8px 16px;
+			border-radius: 4px;
+			font-weight: 500;
+			font-size: 14px;
+			cursor: pointer;
+			transition: background-color 0.2s;
+		}
+		.btn-danger-02:hover {
+			background-color: #c82333;
+		}
+
+		/* 동적 행 스타일 */
+		.recipient-row, .sender-row {
+			margin-bottom: 10px;
+		}
+		.recipient-row:last-child, .sender-row:last-child {
+			margin-bottom: 0;
+		}
+
+		/* 모달 팝업 스타일 */
+		.popup-wrap {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 9999;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.popup-content {
+			background: #fff;
+			border-radius: 8px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+			width: 90%;
+			max-width: 800px;
+			max-height: 80vh;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.popup-header {
+			padding: 20px 24px;
+			border-bottom: 1px solid #eee;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.popup-title {
+			font-size: 20px;
+			font-weight: 600;
+			color: #333;
+			margin: 0;
+		}
+
+		.btn-close {
+			background: none;
+			border: none;
+			font-size: 24px;
+			color: #999;
+			cursor: pointer;
+			padding: 0;
+			width: 30px;
+			height: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.btn-close:hover {
+			color: #666;
+		}
+
+		.popup-body {
+			padding: 24px;
+			flex: 1;
+			overflow-y: auto;
+		}
+
+		.search-section {
+			margin-bottom: 20px;
+			padding: 20px;
+			background: #f8f9fa;
+			border-radius: 4px;
+		}
+
+		.form-label {
+			font-size: 14px;
+			font-weight: 500;
+			color: #666;
+			white-space: nowrap;
+			margin-right: 8px;
+		}
+
+		/* 사업장검색 모달의 입력 필드 가로폭 조정 */
+		#popup-workplace-search .input-btn-set-01 .input-01 {
+			width: 200px;
+			min-width: 200px;
+		}
+
+		#popup-workplace-search .input-btn-set-01 .select-01 {
+			width: 120px;
+			min-width: 120px;
+		}
+
+
+
+
+		.table-container {
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			overflow: hidden;
+		}
+
+		.data-table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		.data-table th {
+			background: #f8f9fa;
+			padding: 12px 8px;
+			text-align: left;
+			font-weight: 600;
+			color: #495057;
+			border-bottom: 1px solid #dee2e6;
+			font-size: 14px;
+		}
+
+		.data-table td {
+			padding: 12px 8px;
+			border-bottom: 1px solid #dee2e6;
+			font-size: 14px;
+		}
+
+		.data-table tbody tr:hover {
+			background: #f8f9fa;
+		}
+
+		.data-table tbody tr:last-child td {
+			border-bottom: none;
+		}
+
+		.popup-footer {
+			padding: 20px 24px;
+			border-top: 1px solid #eee;
+			display: flex;
+			justify-content: flex-end;
+			gap: 10px;
+		}
+
+		/* 반응형 대응 */
+		@media screen and (max-width: 768px) {
+			.input-btn-set-01 {
+				flex-direction: column;
+				align-items: stretch;
+			}
+			.btns-group-01 {
+				justify-content: center;
+			}
+			.file-upload-01 {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			
+			.popup-content {
+				width: 95%;
+				margin: 20px;
+			}
+			
+		}
+	</style>
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!-- ==============================================
+     SAEROM UI 컴포넌트 템플릿 모음
+     ============================================== -->
+
+<!-- 1. 검색 폼 컴포넌트 -->
+<div class="search-form-component">
+    <form>
+        <ul class="form-style-02 sports">
+            <li class="w03">
+                <div class="form-title">구분</div>
+                <div class="form-con">
+                    <select id="idsearch01" class="select-01">
+                        <option value="">전체</option>
+                        <option value="option1">옵션1</option>
+                        <option value="option2">옵션2</option>
+                    </select>
+                </div>
+            </li>
+            <li class="w03">
+                <div class="form-title">검색구분</div>
+                <div class="form-con">
+                    <select id="idsearch02" class="select-01">
+                        <option value="">사업장</option>
+                        <option value="name">이름</option>
+                        <option value="code">코드</option>
+                    </select>
+                </div>
+            </li>
+            <li class="w01">
+                <div class="form-title">키워드</div>
+                <div class="form-con">
+                    <input type="text" class="input-02" id="idsearch03" placeholder="검색어를 입력하세요">
+                </div>
+            </li>
+        </ul>
+        <div class="form-bottom-01">
+            <a href="#" class="btn btn-blackline-02">초기화</a>
+            <a href="#" class="btn btn-black-02">검색</a>
+        </div>
+    </form>
+</div>
+
+<!-- 2. 날짜 선택 컴포넌트 -->
+<div class="date-picker-component">
+    <ul class="form-style-02 calculate">
+        <li class="w01">
+            <div class="form-title word3">기간</div>
+            <div class="form-con">
+                <div class="datepicker-set-01">
+                    <div class="datepicker-01">
+                        <input type="text" class="input-datepicker" id="iddate01" placeholder="2023.00.00">
+                        <label for="iddate01">시작일 선택</label>
+                    </div>
+                    <span>~</span>
+                    <div class="datepicker-01">
+                        <input type="text" class="input-datepicker" id="iddate02" placeholder="2023.00.00">
+                        <label for="iddate02">종료일 선택</label>
+                    </div>
+                    <p class="check-04">
+                        <input type="checkbox" id="idmonth01">
+                        <label for="idmonth01"><span>이번 달</span></label>
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- 3. 통계 카드 컴포넌트 -->
+<div class="stats-cards-component">
+    <div class="calculate-top">
+        <ul>
+            <li>
+                <p class="title">진행중<br>진행중인 항목</p>
+                <p class="text-01">30건</p>
+            </li>
+            <li>
+                <p class="title">완료<br>완료된 항목</p>
+                <p class="text-01">20건</p>
+            </li>
+            <li>
+                <p class="title">대기<br>대기중인 항목</p>
+                <p class="text-01">10건</p>
+            </li>
+            <li>
+                <p class="title">오류<br>오류가 있는 항목</p>
+                <p class="text-01">5건</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 4. 테이블 헤더 컴포넌트 -->
+<div class="table-header-component">
+    <div class="board-top">
+        <div class="left">
+            <label for="idselect01" class="blind">보여줄 항목 갯수</label>
+            <select id="idselect01" class="select-01">
+                <option value="10">10개</option>
+                <option value="20">20개</option>
+                <option value="50">50개</option>
+                <option value="100">100개</option>
+            </select>
+            <label for="idboardall" class="btn btn-white-01 btn-allcheck" data-target="boardcheck">전체 선택</label>
+            <div class="guide-board">
+                <strong>0</strong>
+                <span>개 선택 됨</span>
+            </div>
+        </div>
+        <div class="right">
+            <a href="#" class="btn btn-primary">등록</a>
+            <a href="#" class="btn btn-secondary">수정</a>
+            <a href="#" class="btn btn-danger">삭제</a>
+        </div>
+    </div>
+</div>
+
+<!-- 5. 데이터 테이블 컴포넌트 -->
+<div class="data-table-component">
+    <div class="table-style">
+        <table>
+            <caption>데이터 목록 테이블</caption>
+            <colgroup>
+                <col style="width:5%">
+                <col style="width:10%">
+                <col style="width:15%">
+                <col style="width:20%">
+                <col style="width:15%">
+                <col style="width:15%">
+                <col style="width:10%">
+                <col style="width:10%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>
+                        <p class="check-04">
+                            <input type="checkbox" id="idboardall" class="boardcheck">
+                            <label for="idboardall"><span class="blind">전체 선택</span></label>
+                        </p>
+                    </th>
+                    <th>번호</th>
+                    <th>구분</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>상태</th>
+                    <th>관리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p class="check-04">
+                            <input type="checkbox" id="idboard01" class="boardcheck">
+                            <label for="idboard01"><span class="blind">선택</span></label>
+                        </p>
+                    </td>
+                    <td>1</td>
+                    <td>일반</td>
+                    <td><a href="#" class="text-link">샘플 데이터 제목</a></td>
+                    <td>관리자</td>
+                    <td>2024.01.01</td>
+                    <td><span class="label label-success">완료</span></td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-primary">수정</a>
+                        <a href="#" class="btn btn-sm btn-danger">삭제</a>
+                    </td>
+                </tr>
+                <!-- 추가 행들... -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 6. 페이지네이션 컴포넌트 -->
+<div class="pagination-component">
+    <div class="paging">
+        <a href="#" class="btn btn-prev"><span class="blind">이전 페이지</span></a>
+        <ul class="paging-list">
+            <li><a href="#" class="btn active">1</a></li>
+            <li><a href="#" class="btn">2</a></li>
+            <li><a href="#" class="btn">3</a></li>
+            <li><a href="#" class="btn">4</a></li>
+            <li><a href="#" class="btn">5</a></li>
+        </ul>
+        <a href="#" class="btn btn-next"><span class="blind">다음 페이지</span></a>
+    </div>
+</div>
+
+<!-- 7. 모달 컴포넌트 -->
+<div class="modal-component" id="modal01" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">모달 제목</h3>
+            <button type="button" class="btn-close" data-dismiss="modal">
+                <span class="blind">닫기</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>모달 내용이 여기에 들어갑니다.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-secondary" data-dismiss="modal">취소</a>
+            <a href="#" class="btn btn-primary">확인</a>
+        </div>
+    </div>
+</div>
+
+<!-- 8. 알림 메시지 컴포넌트 -->
+<div class="alert-component">
+    <div class="alert alert-success">
+        <strong>성공!</strong> 작업이 완료되었습니다.
+    </div>
+    <div class="alert alert-warning">
+        <strong>주의!</strong> 확인이 필요한 항목이 있습니다.
+    </div>
+    <div class="alert alert-danger">
+        <strong>오류!</strong> 처리 중 오류가 발생했습니다.
+    </div>
+</div>
+
+<!-- 9. 탭 컴포넌트 -->
+<div class="tab-component">
+    <ul class="tab-list">
+        <li class="active"><a href="#tab1" class="btn">탭1</a></li>
+        <li><a href="#tab2" class="btn">탭2</a></li>
+        <li><a href="#tab3" class="btn">탭3</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane active">
+            <p>탭1 내용</p>
+        </div>
+        <div id="tab2" class="tab-pane">
+            <p>탭2 내용</p>
+        </div>
+        <div id="tab3" class="tab-pane">
+            <p>탭3 내용</p>
+        </div>
+    </div>
+</div>
+
+<!-- 10. 폼 입력 컴포넌트 -->
+<div class="form-input-component">
+    <ul class="form-style-02">
+        <li class="w01">
+            <div class="form-title">제목 <span class="required">*</span></div>
+            <div class="form-con">
+                <input type="text" class="input-02" id="idtitle" placeholder="제목을 입력하세요">
+            </div>
+        </li>
+        <li class="w01">
+            <div class="form-title">내용 <span class="required">*</span></div>
+            <div class="form-con">
+                <textarea class="textarea-01" id="idcontent" placeholder="내용을 입력하세요"></textarea>
+            </div>
+        </li>
+        <li class="w03">
+            <div class="form-title">카테고리</div>
+            <div class="form-con">
+                <select id="idcategory" class="select-01">
+                    <option value="">선택하세요</option>
+                    <option value="category1">카테고리1</option>
+                    <option value="category2">카테고리2</option>
+                </select>
+            </div>
+        </li>
+        <li class="w03">
+            <div class="form-title">파일첨부</div>
+            <div class="form-con">
+                <input type="file" class="input-file" id="idfile">
+                <label for="idfile" class="btn btn-secondary">파일 선택</label>
+            </div>
+        </li>
+    </ul>
+</div>
